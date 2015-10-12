@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>飞扬短信营销平台_注册</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+    <link href="css/regist.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/layer_action.js"></script>
+    <script type="text/javascript" src="js/validate.js"></script>
+    <style type="text/css">
+        .code
+        {
+            background-image: url(111.jpg);
+            font-family: Arial,宋体;
+            font-style: italic;
+            color: green;
+            border: 0;
+            padding: 2px 2px;
+            letter-spacing: 3px;
+            font-weight: bolder;
+        }
+        .unchanged
+        {
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="bgt">
+        <div class="reg_head">
+            <img src="images/logo.png" alt="EGM" class="logo" />
+            <ul>
+                <li class="bg_none"><a href="#">帮助</a> </li>
+                <li><a href="#">意见反馈</a> </li>
+                <li><a href="#">联系我们</a> </li>
+            </ul>
+        </div>
+        <div class="reg_content ">
+            <h2>
+                免费体验企业短信群发，赶快注册吧！</h2>
+            <form id="reg" action="#" class="reg_form" onsubmit="return check_form()">
+            <div class="input_line line_parentAccount wrapfix">
+                <label>
+                    企业账号:</label>
+                <input type="text" class="pass_text_input " name="user_account" />
+                <div class="tips_star">
+                    *</div>
+                <div class="right_icon" id="right_icon_account">
+                </div>
+                <div class="tips" id="tips_account">
+                    <div class="tips_left">
+                    </div>
+                    <div class="tips_middle" id="tips_account_msg">
+                        sdfsdf</div>
+                    <div class="tips_right">
+                    </div>
+                </div>
+            </div>
+            <div class="input_line line_password wrapfix">
+                <label>
+                    密码:</label>
+                <input type="password" class="pass_text_input " name="user_password" />
+                <div class="tips_star">
+                    *</div>
+                <div class="right_icon" id="right_icon_password">
+                </div>
+                <div class="tips" id="tips_password">
+                    <div class="tips_left">
+                    </div>
+                    <div class="tips_middle" id="tips_password_msg">
+                        sdfsdf</div>
+                    <div class="tips_right">
+                    </div>
+                </div>
+            </div>
+            <div class="input_line line_pwdConfirm wrapfix">
+                <label>
+                    确认密码:</label>
+                <input type="password" class="pass_text_input " name="user_password_comfirm" />
+                <div class="tips_star">
+                    *</div>
+                <div class="right_icon" id="right_icon_password_comfirm">
+                </div>
+                <div class="tips" id="tips_password_comfirm">
+                    <div class="tips_left">
+                    </div>
+                    <div class="tips_middle" id="tips_password_comfirm_msg">
+                        sdfsdf</div>
+                    <div class="tips_right">
+                    </div>
+                </div>
+            </div>
+            <div class="input_line line_email wrapfix">
+                <label>
+                    企业邮箱:</label>
+                <input type="text" class="pass_text_input " name="user_email" />
+                <div class="tips_star">
+                    &nbsp;</div>
+                <div class="right_icon" id="right_icon_email">
+                </div>
+                <div class="tips" id="tips_email">
+                    <div class="tips_left">
+                    </div>
+                    <div class="tips_middle" id="tips_email_msg">
+                        sdfsdf</div>
+                    <div class="tips_right">
+                    </div>
+                </div>
+            </div>
+            <div class="input_line line_corpName wrapfix">
+                <label>
+                    企业名称:</label>
+                <input type="text" class="pass_text_input " name="user_company" />
+                <div class="tips_star">
+                    &nbsp;</div>
+                <div class="right_icon" id="right_icon_company">
+                </div>
+                <div class="tips" id="tips_company">
+                    <div class="tips_left">
+                    </div>
+                    <div class="tips_middle" id="tips_company_msg">
+                        sdfsdf</div>
+                    <div class="tips_right">
+                    </div>
+                </div>
+            </div>
+            <div class="input_line line_signature wrapfix">
+                <label>
+                    企业签名:</label>
+                <input type="text" class="pass_text_input " name="user_signature" />
+                <div class="tips_star">
+                    &nbsp;</div>
+                <div class="right_icon" id="right_icon_signature">
+                </div>
+                <div class="tips" id="tips_signature">
+                    <div class="tips_left">
+                    </div>
+                    <div class="tips_middle" id="tips_signature_msg">
+                        sdfsdf</div>
+                    <div class="tips_right">
+                    </div>
+                </div>
+            </div>
+            <div class="input_line line_telephone wrapfix">
+                <label>
+                    固定电话:</label>
+                <input type="text" class="pass_text_input " name="user_fixed_tel" />
+                <div class="tips_star">
+                    &nbsp;</div>
+                <div class="right_icon" id="right_icon_fixed_tel">
+                </div>
+                <div class="tips" id="tips_fixed_tel">
+                    <div class="tips_left">
+                    </div>
+                    <div class="tips_middle" id="tips_fixed_tel_msg">
+                        sdfsdf</div>
+                    <div class="tips_right">
+                    </div>
+                </div>
+            </div>
+            <div class="input_line line_mobilePhone wrapfix">
+                <label>
+                    移动电话:</label>
+                <input type="text" class="pass_text_input " name="user_mobile_tel" />
+                <div class="tips_star">
+                    &nbsp;</div>
+                <div class="right_icon" id="right_icon_mobile_tel">
+                </div>
+                <div class="tips" id="tips_mobile_tel">
+                    <div class="tips_left">
+                    </div>
+                    <div class="tips_middle" id="tips_mobile_tel_msg">
+                        sdfssdfdgdf</div>
+                    <div class="tips_right">
+                    </div>
+                </div>
+            </div>
+            <div class="input_line line_mobilePhone wrapfix">
+                <label>
+                    验证码:</label>
+                <input type="text" class="pass_text_input " name="txt_Validate" style="width: 100px" />
+                <img id="imgValidate" src="validate.aspx" alt="验证码" style="float: left; height: 30px;
+                    margin-left: 10px; vertical-align: middle" onclick="this.src=this.src+'?'" />
+                <div class="tips_star">
+                    &nbsp;</div>
+                <div class="right_icon" id="right_icon_validate">
+                </div>
+                <div class="tips" id="Div2">
+                    <div class="tips_left">
+                    </div>
+                    <div class="tips_middle" id="Div3">
+                        sdfssdfdgdf</div>
+                    <div class="tips_right">
+                    </div>
+                </div>
+            </div>
+            <div class="input_line wrapfix checkbox_line">
+                <label>
+                </label>
+                <input type="checkbox" class="checkbox_line" />
+                <span>我已经阅读并接受企业短信群发系统协议</span>
+            </div>
+            <div class="input_line wrapfix submit_line">
+                <label>
+                </label>
+                <input type="submit" value="立即注册" class="pass_button pass_button_submit" />
+                <span class="login_line">已经有账号？<a href="index.html">马上登陆</a></span>
+            </div>
+            </form>
+        </div>
+        <div class="reg_foot">
+            <div class="mid">
+                <script type="text/javascript">
+                    var myDate = new Date();
+                    document.write("Copyright © 2013 - " + myDate.getFullYear() + " 八七工作室. All Rights Reserved.");
+                </script>
+            </div>
+        </div>
+    </div>
+    <!--遮罩层开始-->
+    <div id="mask_layer">
+    </div>
+    <!--遮罩层结束-->
+    <!--弹出层开始-->
+    <div id="pop_layer" class="pop_layer_wrap">
+        <div>
+            <h3 class="pop_layer_title_wrap wrapfix">
+                <span id="pop_layer_title"></span><a id="pop_layer_close_icon" onclick="mask_set_none()"
+                    href="#">X</a></h3>
+            <div class="pop_layer_content wrapfix">
+                <div class="pop_layer_content_left">
+                </div>
+                <div id="pop_layer_content" class="pop_layer_content_right">
+                </div>
+            </div>
+            <div class="pop_layer_bottom">
+                <a id="pop_layer_close_btn" href="#" onclick="mask_set_none()">确定</a></div>
+        </div>
+    </div>
+    <!--弹出层结束-->
+</body>
+<!--[if IE 6]>
+		<script src="js/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		DD_belatedPNG.fix('*');
+		</script>
+		<![endif]-->
+</html>

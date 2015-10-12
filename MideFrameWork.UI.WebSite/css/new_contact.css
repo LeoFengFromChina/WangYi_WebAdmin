@@ -1,0 +1,92 @@
+@charset "utf-8";
+.newcontact {
+	padding-bottom:30px;
+	margin:20px auto;
+}
+.line {
+	height: 30px;
+	line-height: 30px;
+	width: 300px;
+	margin: 10px auto;
+	color: #333333;
+}
+.title {
+	width:auto;
+	height:30px;
+	line-height:30px;
+	padding-left:10px;
+	border-top:1px solid #FFF;
+	background:#DBECF6;
+	color:#334968;
+	font-weight:bold;
+	margin:0 auto;
+	text-algin:center;
+}
+.line label, .line input, .line span, .line select, {
+display:block;
+float:left;
+}
+.line label {
+	font-weight:bold;
+}
+.line span {
+	margin-left:5px;
+}
+.line .inputtext {
+	height:22px;
+	line-height:22px;
+	width:180px;
+	border:1px solid #359EE5;
+	outline:none;
+	text-indent:5px;
+}
+.line .result {
+	display:none;
+	margin-left:5px;
+}
+.line .success {
+	display:inline;
+	margin-left:5px;
+	background:url(../images/regist_img.png) no-repeat 0px -54px;
+	width:30px;
+	height:30px;
+	text-indent:-9999px;
+}
+.line .tip {
+	position:relative;
+	display:none;
+}
+.line .tip_content {
+	border:1px solid #cccccc;
+	padding:0px 8px;
+	font-size:12px;
+	color:#666666;
+	margin:0px;
+}
+.line .tip_header {
+	background:url(../images/linkman/tip_header_t.gif) no-repeat;
+	width:5px;
+	height:10px;
+	display:block;
+	position:absolute;
+	top:10px;
+	left:-9px;
+}
+#savetext, #saveType, #cancelType {
+	display:none;
+	float:left;
+	margin:4px 0px 0px 4px;
+}
+#contactType {
+	position:relative;
+}
+#newContent {
+	position: absolute;
+	top: 0px;
+	left: 230px;
+	width: 190px;
+}
+#contactTypeText {
+	height:22px;
+	width:80px;
+}

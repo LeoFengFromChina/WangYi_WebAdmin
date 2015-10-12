@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B9D281CE-C8EC-4FAA-A87E-AED13F9D5FD4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MideFrameWork.Data.Interface</RootNamespace>
+    <AssemblyName>MideFrameWork.Data.Interface</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataProvider.cs" />
+    <Compile Include="Extention\GetPageEx.cs" />
+    <Compile Include="GenerareCode\Article.cs" />
+    <Compile Include="GenerareCode\ArticleType.cs" />
+    <Compile Include="GenerareCode\Base_Button.cs" />
+    <Compile Include="GenerareCode\Base_Privilege.cs" />
+    <Compile Include="GenerareCode\District.cs" />
+    <Compile Include="GenerareCode\FriendLinks.cs" />
+    <Compile Include="GenerareCode\GlobalMenu.cs" />
+    <Compile Include="GenerareCode\GlobalPicture.cs" />
+    <Compile Include="GenerareCode\Groups.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GenerareCode\Log.cs" />
+    <Compile Include="GenerareCode\Menu.cs" />
+    <Compile Include="GenerareCode\Notice.cs" />
+    <Compile Include="GenerareCode\RegisterDetail.cs" />
+    <Compile Include="GenerareCode\Users.cs" />
+    <Compile Include="GenerareCode\WebSiteManagement.cs" />
+    <Compile Include="GenerareCode\WG_Activities.cs" />
+    <Compile Include="GenerareCode\WG_Education.cs" />
+    <Compile Include="GenerareCode\WG_Feeback.cs" />
+    <Compile Include="GenerareCode\WG_Gifts.cs" />
+    <Compile Include="GenerareCode\WG_HelpRequest.cs" />
+    <Compile Include="GenerareCode\WG_Major.cs" />
+    <Compile Include="GenerareCode\WG_Menber.cs" />
+    <Compile Include="GenerareCode\WG_OnGoingActivities.cs" />
+    <Compile Include="GenerareCode\WG_OnGoingGifts.cs" />
+    <Compile Include="GenerareCode\WG_Region.cs" />
+    <Compile Include="GenerareCode\WG_Score.cs" />
+    <Compile Include="GenerareCode\WG_ServiceIntention.cs" />
+    <Compile Include="GenerareCode\WG_Team.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MideFrameWork.Data.Entity\MideFrameWork.Data.Entity.csproj">
+      <Project>{36EC37AC-097F-44EE-8B78-5088BA4F7969}</Project>
+      <Name>MideFrameWork.Data.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

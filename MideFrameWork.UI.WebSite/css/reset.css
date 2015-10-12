@@ -1,0 +1,142 @@
+@charset "utf-8";
+/* CSS reset */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+	padding: 0;
+	margin: 0;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+fieldset, img {
+	border: 0;
+}
+address, caption, cite, code, dfn, em, strong, th, var {
+	font-weight: normal;
+	font-style: normal;
+}
+ol, ul {
+	list-style: none;
+}
+caption, th {
+	text-align: left;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	font-size: 100%;
+}
+q:before, q:after {
+	content:'';
+}
+abbr, acronym {
+	border: 0;
+}
+a {
+	color:#61b8ec;
+	text-decoration:none;
+}
+body{
+text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3);	
+font-size:12px;
+	}
+	/*! Font Faces*/
+	@font-face {
+ font-family: 'museo500';
+ src: url('../fonts/MuseoSans_500-webfont.eot');
+ src: url('../fonts/MuseoSans_500-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/MuseoSans_500-webfont.woff') format('woff'), url('../fonts/MuseoSans_500-webfont.ttf') format('truetype'), url('../fonts/MuseoSans_500-webfont.svg#museo_sans_500regular') format('svg');
+ font-weight: normal;
+ font-style: normal;
+}
+ 
+/*闭合元素*/
+.wrapfix:after {
+	content:".";
+	display:block;
+	clear:both;
+	height:0px;
+	line-height:0px;
+	visibility:hidden;
+}
+.wrapfix {
+	zoom:1;
+} /*兼容IE*/
+/***左右浮动***/
+.floatleft {
+	float:left;
+}
+.floatright {
+	float:right;
+}
+/***左右浮动***/
+/*表格样式*/
+.tab_11 {
+	border: solid 1px #a9cfff;
+	line-height: 22px;
+	width: 100%;
+	border-collapse: collapse;
+}
+.tab_11 a{color:#359ee5;}
+.tab_11 a:hover{color:#F60;}
+.tab_11 th {
+	padding: 6px 0px 4px;
+	font-weight: bold;
+	color: #395B7E;
+	background: #DDEEFE;
+	text-align:left;
+		border: solid 1px #a9cfff;
+}
+.tab_11 td {
+	padding: 4px 0px 3px;
+	color: #359ee5;
+	border: solid 1px #a9cfff;
+	text-align:left;
+}
+.tab_11 th, .tab_11 td {
+text-align: center;
+}
+.text_left, table th.text_left, table td.text_left {
+text-align: left;
+}
+.text_right,table th.text_right, table td.text_right{text-align:right;}
+
+/***表格样式结束****/
+
+/**按钮样式*开始**/
+.btn_a ,.btn_a .textbtn{
+	display: inline-block;
+	padding: 0 0 0 12px;
+	height: 22px;
+	line-height: 22px;
+	line-height: 23px\0;
+	background-image:url(../images/bg_btn.png);
+	overflow: hidden;
+		cursor: pointer;
+	color: #000000;
+}
+.btn_a{
+	background-position: 0px -120px;}
+.btn_a:hover {
+	background-position:0px 0px;
+}
+.btn_a .textbtn {
+	padding: 0 12px 0 0;
+	background-position: right -150px;
+	margin:0px;
+	font-size:12px;
+
+}
+
+.btn_a:hover .textbtn {
+	background-position: right -30px;
+	color: #000000;
+}
+/**按钮样式*结束**/
+
+/***文本输入框样式*开始**/
+.inputText{
+	width:150px;
+	height:22px;
+	border:1px solid #359ee5;
+	outline:none;
+	}
+/***文本输入框样式*结束**/

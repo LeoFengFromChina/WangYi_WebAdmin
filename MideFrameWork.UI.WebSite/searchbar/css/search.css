@@ -1,0 +1,84 @@
+@charset "utf-8";
+/* CSS Document */
+
+/***查询控件***/
+#searchLabel{ height:22px; line-height:22px; font-size:14px;width:35px;}
+#selectAll {
+	width:60px;
+}
+#selectStatus{width:80px;}
+#selectAll,#selectKeyWord,#selectDate,#selectStatus,#searchLabel{ float:left; display:inline; margin-left:4px;}
+/***默认选择全部***/
+#selectDate,#selectStatus{ display:none;}
+
+#selectKeyWord{ width:90px;height:22px;line-height:22px;}
+.inputtext {display:block;float:left; width:90px;height:20px;line-height:20px;background:url(../images/search.png) no-repeat 0px -34px; padding:1px 0px; }
+.inputtext input{height:20px; width:80px; border:none;outline:none;padding:0px 5px;background: transparent;}
+#selectDate label{ display:block; height:22px;line-height:22px;padding:0px 2px;float:left;}
+
+.searchBtn{float:left; display:inline-block;}
+.searchBtn{ width:22px; height:22px; background:url(../images/search.png) no-repeat -90px -34px; text-indent:-9999px;}
+
+
+/***下拉列表样式   开始***/
+.widgetSelect{
+	border: 1px solid #abacad;
+	cursor: pointer;
+	height: 20px;
+	line-height: 20px;
+	line-height: 24pxurl(0);
+	_line-height: 20px;
+	position: relative;
+}
+.widgetSelect .selectTitle{
+	padding: 0 28px 0 4px;
+	text-align: center;
+}
+.selectTitle{
+	height: 20px;
+	background:url(../images/search.png) no-repeat;
+	background-position: right -67px;
+}
+.fd-hide {
+	display:none;
+}
+.selectContent {
+	position:absolute;
+	top:20px;
+	left:-1px;
+	z-index: 1000;
+	width: 50px;
+	padding: 4px 0;
+	margin: 0;
+	list-style: none;
+	background-color: #ffffff;
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+	-webkit-border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
+	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+}
+. selectContent li {
+background:#ccc;
+}
+.selectContent a {
+	display: block;
+	clear: both;
+	font-weight: normal;
+	line-height: 18px;
+	color: #333333;
+	white-space: nowrap;
+}
+.selectContent li a:hover, .selectContent .active {
+	color: #ffffff;
+	text-decoration: none;
+	background:#0088cc;
+}
+/***下拉列表样式  结束***/

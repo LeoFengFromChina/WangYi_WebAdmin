@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+.box{ float:left; margin-top:10px; padding:10px;}
+.box .box_title{ height:30px;line-height:30px;font-size:14px; font-weight:bold; padding-left:22px; background:url(../images/cont_images/btn.png) no-repeat;}
+.box .box_main{color:#585858; font-size:12px;line-height:22px; border:1px solid #a9cfff;padding:8px;margin-top:0px;}
+.box .box_time{font-size:12px; color:#666666;height:24px; line-height:24px;}
+
+.message .box_title{ background-position:0px -363px;}
+.help .box_title{ background-position:0px -333px;}
+
+.poster{ float:left;}
+.poster li{width:280px;height:95px; padding:10px;}
+.poster li img{margin:0 auto;width:280px;}

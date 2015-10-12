@@ -1,0 +1,154 @@
+@charset "utf-8";
+html
+{
+    display:inline;
+    }
+.monitor_main {
+	width:100%;
+	height:auto;
+	background:#ffffff;
+
+}
+OL LI
+{
+    margin: 8px;
+}
+#con
+{
+    font-size: 14px;
+    margin-top: 10px;
+    width: 100%;
+}
+#tags
+{
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    width: 600px;
+    padding-top: 0px;
+    height: 25px;
+    border-bottom: 1px solid #96CDEF;
+}
+#tags LI
+{
+    float: left;
+    list-style-type: none;
+    height: 23px;
+    border: 1px solid #96CDEF;
+    border-bottom: none;
+    border-right: none;
+    display: block;
+    height: 25px;
+}
+#tags .last
+{
+    border-right: 1px solid #96CDEF;
+}
+#tags LI A
+{
+    padding-right: 10px;
+    padding-left: 10px;
+    float: left;
+    padding-bottom: 0px;
+    color: #999;
+    line-height: 23px;
+    padding-top: 0px;
+    height: 23px;
+    text-decoration: none;
+}
+#tags LI.emptyTag
+{
+    background: none transparent scroll repeat 0% 0%;
+    width: 4px;
+}
+#tags LI.selectTag
+{
+    background-position: left top;
+    margin-bottom: -2px;
+    position: relative;
+    height: 25px;
+    background: #96CDEF;
+}
+#tags LI.selectTag A
+{
+    background-position: right top;
+    color: #000;
+    line-height: 25px;
+    height: 25px;
+}
+#tagContent
+{
+}
+.tagContent
+{
+    padding-right: 10px;
+    display: none;
+    padding-bottom: 10px;
+    width: 600px;
+    color: #474747;
+    padding-top: 0;
+    height: 250px;
+}
+#tagContent DIV.selectTag
+{
+    display: block;
+}
+/*表格样式*/
+.tab_11
+{
+    border: solid 1px #a9cfff;
+    line-height: 12px;
+    margin-top: 10px;
+    width: 100%;
+    border-collapse: separate;
+}
+.tab_11 a
+{
+    color: #359ee5;
+}
+.tab_11 a:hover
+{
+    color: #F60;
+}
+.tab_11 th
+{
+    padding: 6px 0px 4px;
+    font-weight: bold;
+    color: #395B7E;
+    background: #DDEEFE;
+    border-top: solid 1px #FFF;
+    text-align: left;
+}
+.tab_11 td
+{
+    padding: 4px 0px 3px;
+    color: #959595;
+    border-top: solid 1px #C7DCEF;
+    text-align: left;
+}
+.tab_11 th, .tab_11 td
+{
+    text-align: center;
+}
+.text_left, table th.text_left, table td.text_left
+{
+    text-align: left;
+}
+.text_right, table th.text_right, table td.text_right
+{
+    text-align: right;
+}
+.page_max
+{
+    margin-top: 10px;
+}
+.send, .delete, .change_type
+{
+    float: left;
+    display: inline;
+    margin-right: 8px;
+}
+.hover
+{
+    background: #DDEEFE;
+}

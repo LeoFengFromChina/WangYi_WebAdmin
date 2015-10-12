@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:i0="http://sdk.worldsms.cn/webservice/common/service" xmlns:i1="http://sdk.worldsms.cn/webservice/mm/service" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:i2="http://sdk.worldsms.cn/webservice/sm/service" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://sdk.worldsms.cn/webservice/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://sdk.worldsms.cn/webservice/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://sdk.worldsms.cn/webservice/common/service" location="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx?wsdl=wsdl1" />
+  <wsdl:import namespace="http://sdk.worldsms.cn/webservice/mm/service" location="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx?wsdl=wsdl2" />
+  <wsdl:import namespace="http://sdk.worldsms.cn/webservice/sm/service" location="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx?wsdl=wsdl3" />
+  <wsdl:types>
+    <s:schema targetNamespace="http://sdk.worldsms.cn/webservice/">
+      <s:import schemaLocation="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx?schema=schema1" namespace="http://sdk.worldsms.cn/webservice/common/types" />
+      <s:import schemaLocation="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx?schema=schema2" namespace="http://sdk.worldsms.cn/webservice/mm/types" />
+      <s:import schemaLocation="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx?schema=schema3" namespace="http://sdk.worldsms.cn/webservice/sm/types" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:service name="SDKWebService">
+    <wsdl:port name="commonService" binding="i0:commonService">
+      <soap:address location="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="mmsService" binding="i1:mmsService">
+      <soap:address location="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="smsService" binding="i2:smsService">
+      <soap:address location="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="commonService1" binding="i0:commonService1">
+      <soap12:address location="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="mmsService1" binding="i1:mmsService1">
+      <soap12:address location="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="smsService1" binding="i2:smsService1">
+      <soap12:address location="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

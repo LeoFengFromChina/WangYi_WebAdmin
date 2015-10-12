@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://sdk.worldsms.cn/webservice/common/types" elementFormDefault="qualified" targetNamespace="http://sdk.worldsms.cn/webservice/common/types" id="schema1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="GetUserInfo">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="GetUserInfo_Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="UserInfo_Result" type="tns:UserInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="UserInfo">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="Balance" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CorpName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="UserName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ClientID" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SpNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse2" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RequestSoapHeader" type="tns:RequestSoapHeader" />
+  <xs:complexType name="RequestSoapHeader">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="UserName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Password" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Timestamp" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="TransactionID" type="xs:string" />
+    </xs:sequence>
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:element name="ResponseSoapHeader" type="tns:ResponseSoapHeader" />
+  <xs:complexType name="ResponseSoapHeader">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="TransactionID" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="LoginStatus" type="xs:boolean" />
+    </xs:sequence>
+    <xs:anyAttribute />
+  </xs:complexType>
+  <xs:element name="GetUserInfoByChannel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="channel" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserInfoByChannel_Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="UserInfo_Result" type="tns:UserInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyPassword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="NewPassword" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyPassword_Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="ModifyPassword_Result" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="RequestReport">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="RequestCount" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SubCode" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="SeqID" type="xs:long" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MsgID" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse2" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Report" nillable="true" type="tns:Report" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Report">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="Result" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ResultText" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Mobile" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SendTime" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ReceiveTime" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="SeqID" type="xs:long" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MsgID" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SubCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse2" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

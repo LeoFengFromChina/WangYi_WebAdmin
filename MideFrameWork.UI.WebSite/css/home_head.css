@@ -1,0 +1,74 @@
+@charset "utf-8";
+/*******页头******/
+body{
+
+	min-width:900px;
+　　width: e?xpression_r_r_r( document.body.clientWidth < 901px ? "900pxpx" : "auto" );	
+	}
+.manage_header {
+	width:100%;
+	min-width:600px;
+	float:left;
+　　width: e?xpression_r_r_r( document.body.clientWidth < 601px ? "900pxpx" : "auto" );
+	height:60px;
+	margin-bottom:3px;
+	/*border:1px solid #ccc;*/
+	display:inline;
+	background:url(../images/regist_bg.gif) repeat-x;
+}
+.manage_header .logo {
+	float:left;
+	margin-left:10px;
+	display:inline;
+}
+.manage_header ul {
+	float:right;
+	padding-top:40px;
+	display:inline;
+}
+.manage_header li {
+	float:left;
+	padding:0px 8px;
+	display:inline;
+	background:url(../images/regist_img.png) repeat-y;
+}
+.manage_header li a{ font-size:12px; color:#359ee5;}
+.manage_header li a:hover{color:#2a79b5; text-decoration:underline;}
+.manage_header .bg_none{ background:none;}
+/*******主内容布局******/
+#connent { width:100%; height:auto ;min-width:600px;}
+#menuframe{
+	width:215px;
+	height:100px;
+	float:left;
+	display:inline;
+	margin-bottom:50px;
+}
+#app_main {
+	float:left;
+	display:inline;
+}
+
+/*******程序主内容******/
+#app_main{min-width:385px; }
+.top_main{ background:#A9CFFF;width:100%;height:20px; padding-top:5px;}
+.left_radius {
+	background:#ffffff;
+	width:100%;
+	height:20px;
+	-moz-border-radius-topleft: 5px 5px;
+	-moz-border-radius-topright:  0px 0px;
+	-moz-border-radius-bottomright:  0px 0px;
+	-moz-border-radius-bottomleft:  0px 0px;
+	-webkit-border-top-left-radius:   5px5px;
+	-webkit-border-top-right-radius:  0px 0px;
+	-webkit-border-bottom-right-radius: 0px 0px;
+	-webkit-border-bottom-left-radius:   0px 0px;
+	border-top-left-radius: 5px 5px;
+	border-top-right-radius:  0px 0px;
+	border-bottom-right-radius: 0px 0px;
+	border-bottom-left-radius:  0px 0px;
+}
+#content_main{ float:left;display:inline;padding:0px 15px; margin-bottom:50px;}
+
+#message_main{width:220px;float:left;display:inline; padding-right:5px;}

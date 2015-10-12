@@ -1,0 +1,79 @@
+@charset "utf-8";
+/* CSS Document */
+.meg_top_dh {
+	font-size: 14px;
+}
+.meg_top_dh a {
+	color: #61b8ec;
+	font-weight: bold;
+	font-size: 16px;
+	text-decoration: none;
+}
+.profile_pinfo {
+}
+fieldset {
+	display: block;
+	border-style: solid;
+	border-width: 1px 0 0 0;
+}
+fieldset legend {
+	padding: 0 5px;
+	font-weight: bold;
+}
+.S_line2 {
+	border-color: #e6e6e6;
+}
+.infowrap {
+	min-width:650px;
+}
+.profile_pinfo .info_title {
+	margin-top:20px;
+}
+.profile_pinfo .info_title .tit {
+	font-size: 12px;
+	padding: 0 5px 0 0;
+}
+.info_title .btns {
+	float: right;
+	margin-top: -18px;
+	position: relative;
+}
+.info_title .btns a {
+	margin-left: 5px;
+	vertical-align: middle;
+}
+.profile_pinfo .pf_item .label {
+	float: left;
+	width: 100px;
+	text-align: right;
+	white-space: nowrap;
+}
+.profile_pinfo .pf_item .con {
+	margin-left: 110px;
+	padding: 0 10px;
+	word-wrap: break-word;
+	height:24px;
+	line-height:24px;
+}
+.pf_item .con input {
+	height:22px;
+	line-height:22px;
+	 border:1px solid #6E9FDE;
+}
+.profile_pinfo .pf_item {
+	font-size: 12px;
+	line-height: 24px;
+	margin-bottom: 5px;
+	position: relative;
+}
+.S_txt2 {
+	color: #808080;
+}
+#infobtn {
+	float:right;
+}
+/***表格***/
+.subAccountTable {
+	width:100%;
+	margin-top:10px;
+}

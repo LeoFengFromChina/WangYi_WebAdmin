@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://sdk.worldsms.cn/webservice/mm/service" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://sdk.worldsms.cn/webservice/mm/service" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema targetNamespace="http://sdk.worldsms.cn/webservice/mm/service">
+      <s:import schemaLocation="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx?schema=schema1" namespace="http://sdk.worldsms.cn/webservice/common/types" />
+      <s:import schemaLocation="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx?schema=schema2" namespace="http://sdk.worldsms.cn/webservice/mm/types" />
+      <s:import schemaLocation="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx?schema=schema3" namespace="http://sdk.worldsms.cn/webservice/sm/types" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetMM_MOSoapIn">
+    <wsdl:part xmlns:q1="http://sdk.worldsms.cn/webservice/mm/types" name="parameters" element="q1:GetMM_MO" />
+  </wsdl:message>
+  <wsdl:message name="GetMM_MOSoapOut">
+    <wsdl:part xmlns:q2="http://sdk.worldsms.cn/webservice/mm/types" name="parameters" element="q2:GetMM_MO_Response" />
+  </wsdl:message>
+  <wsdl:message name="GetMM_MORequestSoapHeader">
+    <wsdl:part xmlns:q3="http://sdk.worldsms.cn/webservice/common/types" name="RequestSoapHeader" element="q3:RequestSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetMM_MOResponseSoapHeader">
+    <wsdl:part xmlns:q4="http://sdk.worldsms.cn/webservice/common/types" name="ResponseSoapHeader" element="q4:ResponseSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="SendMMSSoapIn">
+    <wsdl:part xmlns:q5="http://sdk.worldsms.cn/webservice/mm/types" name="parameters" element="q5:SendMMS" />
+  </wsdl:message>
+  <wsdl:message name="SendMMSSoapOut">
+    <wsdl:part xmlns:q6="http://sdk.worldsms.cn/webservice/mm/types" name="parameters" element="q6:SendMMS_Response" />
+  </wsdl:message>
+  <wsdl:message name="SendMMSRequestSoapHeader">
+    <wsdl:part xmlns:q7="http://sdk.worldsms.cn/webservice/common/types" name="RequestSoapHeader" element="q7:RequestSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="SendMMSResponseSoapHeader">
+    <wsdl:part xmlns:q8="http://sdk.worldsms.cn/webservice/common/types" name="ResponseSoapHeader" element="q8:ResponseSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetMM_ReportSoapIn">
+    <wsdl:part xmlns:q9="http://sdk.worldsms.cn/webservice/mm/types" name="parameters" element="q9:GetMM_Report" />
+  </wsdl:message>
+  <wsdl:message name="GetMM_ReportSoapOut">
+    <wsdl:part xmlns:q10="http://sdk.worldsms.cn/webservice/mm/types" name="parameters" element="q10:GetMM_Report_Response" />
+  </wsdl:message>
+  <wsdl:message name="GetMM_ReportRequestSoapHeader">
+    <wsdl:part xmlns:q11="http://sdk.worldsms.cn/webservice/common/types" name="RequestSoapHeader" element="q11:RequestSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetMM_ReportResponseSoapHeader">
+    <wsdl:part xmlns:q12="http://sdk.worldsms.cn/webservice/common/types" name="ResponseSoapHeader" element="q12:ResponseSoapHeader" />
+  </wsdl:message>
+  <wsdl:portType name="mmsService">
+    <wsdl:operation name="GetMM_MO">
+      <wsdl:input message="tns:GetMM_MOSoapIn" />
+      <wsdl:output message="tns:GetMM_MOSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMMS">
+      <wsdl:input message="tns:SendMMSSoapIn" />
+      <wsdl:output message="tns:SendMMSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMM_Report">
+      <wsdl:input message="tns:GetMM_ReportSoapIn" />
+      <wsdl:output message="tns:GetMM_ReportSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="mmsService" type="tns:mmsService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMM_MO">
+      <soap:operation soapAction="GetMM_MO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetMM_MORequestSoapHeader" part="RequestSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetMM_MOResponseSoapHeader" part="ResponseSoapHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMMS">
+      <soap:operation soapAction="SendMMS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendMMSRequestSoapHeader" part="RequestSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendMMSResponseSoapHeader" part="ResponseSoapHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMM_Report">
+      <soap:operation soapAction="GetMM_Report" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetMM_ReportRequestSoapHeader" part="RequestSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetMM_ReportResponseSoapHeader" part="ResponseSoapHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="mmsService1" type="tns:mmsService">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMM_MO">
+      <soap12:operation soapAction="GetMM_MO" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetMM_MORequestSoapHeader" part="RequestSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetMM_MOResponseSoapHeader" part="ResponseSoapHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMMS">
+      <soap12:operation soapAction="SendMMS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendMMSRequestSoapHeader" part="RequestSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendMMSResponseSoapHeader" part="ResponseSoapHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMM_Report">
+      <soap12:operation soapAction="GetMM_Report" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetMM_ReportRequestSoapHeader" part="RequestSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetMM_ReportResponseSoapHeader" part="ResponseSoapHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+</wsdl:definitions>

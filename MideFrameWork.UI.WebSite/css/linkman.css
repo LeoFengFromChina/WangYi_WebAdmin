@@ -1,0 +1,155 @@
+@charset "utf-8";
+.left_margin {
+	width:100%;
+}
+.linkman_main {
+	width:100%;
+	height:auto;
+	background:#ffffff;
+}
+.meg_top_dh {
+	font-size:14px;
+}
+.meg_top_dh a {
+	color:#61b8ec;
+	font-weight:bold;
+	font-size:16px;
+	text-decoration:none;
+}
+.btn {
+	display:block;
+	width:92px;
+	height:26px;
+	line-height:26px;
+	text-align:center;
+	background:url(../images/cont_images/btn.png) no-repeat;
+	color:#334968;
+	text-decoration:none;
+	font-size:14px;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3);
+}
+.btn:active {
+	color:#000000;
+	background-position:0px -26px;
+}
+.linknav {
+	width:100%;
+	height:30px;
+	border-bottom:1px solid #a9cfff;
+	margin-top:16px;
+}
+.search_btn {
+	float:left;
+	margin-left:-40px;
+	margin-top:6px;
+	display:inline;
+	height:23px;
+	width:23px;
+	position:relative;
+	text-indent:-99999px;
+	background:url(../images/linkman/icon.png) no-repeat;
+}
+.searchtext {
+	float:left;
+	margin-top:6px;
+	margin-right:10px;
+	padding-left:10px;
+	padding-right:23px;
+	display:inline;
+	height:23px;
+	border:1px solid #a9cfff;
+	outline:none;
+}
+.new_contact {
+	float:left;
+	margin-right:10px;
+	display:inline;
+}
+.import_contact {
+	float:left;
+	margin-right:10px;
+	display:inline;
+}
+.export_contact {
+	float:left;
+	margin-right:10px;
+	display:inline;
+}
+.type_contact {
+	width:180px;
+	height:auto;
+	margin-top:10px;
+}
+.head_contact {
+	width:178px;
+	height:30px;
+	line-height:30px;
+	border:1px solid #a9cfff;
+	background:url(../images/linkman/icon.png) repeat-x 0px -23px;
+}
+.contact_type {
+	display:block;
+	height:30px;
+	color:#61b8ec;
+	font-weight:bold;
+	float:left;
+	padding-left:10px;
+}
+.management_type {
+	display:block;
+	height:30px;
+	color:#666666;
+	float:right;
+	padding-right:10px;
+}
+.content_contact {
+	border:1px solid #a9cfff;
+	border-top:none;
+	height:400px;
+}
+.content_contact li a {
+	color:#359ee5;
+	display:block;
+	width:180px;
+	height:30px;
+	line-height:30px;
+	text-indent:18px;
+}
+.content_contact li a:hover {
+	background:url(../images/linkman/icon.png) repeat-x 0px -53px
+}
+.content {
+	margin-top: 10px;
+	margin-left: 10px;
+	width:98%;
+	height:auto;
+}
+.content .count {
+	color:#454545;
+	font-size:14px;
+}
+.content .num {
+	color:#cc0104;
+	padding:0px 5px;
+}
+.content table {
+}
+.page_max{ margin-top:10px;}
+.send,.delete,.change_type{ float:left;display:inline; margin-right:8px;}
+.hover{ background:#DDEEFE;}
+
+/*新建联系人*/
+.newcontact{width:500px; border:1px  solid #a9cfff; padding-bottom:30px;margin:10px auto; float:left; display:none;}
+.line{ height:30px;line-height:30px;margin:10px 10px 0px 10px; color:#333333;}
+.title{width:auto;height:30px;line-height:30px;padding-left:10px; border-top:1px solid #FFF;background:#DBECF6;color:#334968; font-weight:bold; }
+.line label,.line input,.line span{ display:block; float:left;}
+.line label{ font-weight:bold;}
+.line span{margin-left:5px;}
+.line .inputtext{ height:30px; line-height:30px; width:180px; border:1px solid #359EE5; outline:none; text-indent:5px;}
+.line .result {display:none;margin-left:5px;}
+.line .success{display:inline; margin-left:5px;background:url(../images/regist_img.png) no-repeat 0px -54px;width:30px; height:30px; text-indent:-9999px;}
+.line .tip{ position:relative;}
+.line .tip_content{ border:1px solid #cccccc; padding:0px 8px; font-size:12px; color:#666666; margin:0px;}
+.line .tip_header{ background:url(../images/linkman/tip_header_t.gif) no-repeat; width:5px; height:10px; display:block; position:absolute; top:10px; left:-9px;}
+.line .btn{ background:url(../images/cont_images/btn.png) no-repeat; border:none;width: 92px;height: 26px; margin-right:10px;}
+/**/

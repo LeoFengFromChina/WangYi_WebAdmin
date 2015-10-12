@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://sdk.worldsms.cn/webservice/sm/types" elementFormDefault="qualified" targetNamespace="http://sdk.worldsms.cn/webservice/sm/types" id="schema3" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://sdk.worldsms.cn/webservice/common/types" />
+  <xs:element name="GetSM_MO">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="RequestMO" type="tns:RequestSM_MO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="RequestSM_MO">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="RequestCount" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SubCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse2" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetSM_MO_Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="MO_Result" type="tns:ArrayOfSM_MO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfSM_MO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MO" nillable="true" type="tns:SM_MO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SM_MO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Mobile" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ReceiveNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Content" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Sendtime" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SubCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse2" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SendSMS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="MT" type="tns:SM_MT" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="SM_MT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Channel" type="xs:long" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Mobile" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Content" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SendTime" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="SeqID" type="xs:long" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SubCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse2" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SendSMS_Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="MT_Result" type="tns:SM_MT_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="SM_MT_Result">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="Result" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ResultText" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MsgID" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Balance" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="SubmitCount" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse2" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetSM_Report">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://sdk.worldsms.cn/webservice/common/types" minOccurs="0" maxOccurs="1" name="RequestReport" type="q1:RequestReport" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSM_Report_Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://sdk.worldsms.cn/webservice/common/types" minOccurs="0" maxOccurs="1" name="Report_Result" type="q2:ArrayOfReport" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

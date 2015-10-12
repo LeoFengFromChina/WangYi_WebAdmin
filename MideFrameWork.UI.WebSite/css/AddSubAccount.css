@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* CSS Document */
+.box {
+	margin:20px auto 0px;
+	width:250px;
+}
+.line {
+	margin-bottom:10px;
+}
+.line .label {
+	font-size:14px;
+	width:80px;
+	height:22px;
+	line-height:22px;
+	text-align:right;
+}
+.inputLine .yesBtn, .inputLine .noBtn {
+
+	margin-right:20px;
+}
+.masterAccount, .at {
+	padding-left:4px;
+}
+.accountLine,.subAccount{ border:1px solid #359ee5; display:block; float:left}
+.accountLine{width:79px; border-left:none; height:22px; color: #999999;}
+.masterAccount{ font-size:14px;}
+.at{font-size:18px;}
+.subAccount{ width:70px;}

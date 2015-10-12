@@ -1,0 +1,28 @@
+@charset "utf-8";
+.send_main {
+	width:100%;
+	height:auto;
+	background:#ffffff;
+}
+.meg_top_dh{font-size:14px;}
+.meg_top_dh a{ color:#61b8ec; font-weight:bold; font-size:16px; text-decoration:none;} 
+
+.title{margin-top:10px; height:26px;line-height:26px; position:relative;}
+.btn{display:block;width:92px; height:26px; line-height:26px;text-align:center;background:url(../images/cont_images/btn.png) no-repeat; color:#334968; text-decoration:none; font-size:14px;}
+.btn:active{color:#000000; background-position:0px -26px;} 
+.import_numbers{ position:absolute;left:60px;top:0px;}
+
+.send_cont{margin-top:4px; }
+.number_cont{margin-top:4px;}
+.text_area{ text-align: left; font-size: 12px; height:100px; resize:none; border:1px solid #6E9FDE;}
+.tip_line{margin-top:10px;color:#454545; position:relative; margin-bottom:12px; height:20px; }
+.tip_line .num_tip{color:#CC0104; font-weight:bold; padding-left:5px; padding-right:5px;}
+.btn_line{ height:26px; position:relative; }
+.send_btn{ position:absolute;right:24px;top:0px;}
+
+.meg_Important{height:auto;border:1px solid #ff9900;margin-top:24px; padding:8px; background:#fdf5ee;color: #FF6600;font-size: 12px;line-height: 24px;}
+.meg_Important_t0 {
+color: #CC0000;
+font-weight: bold;
+}
+

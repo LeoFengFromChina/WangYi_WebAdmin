@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx?wsdl" docRef="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx" xmlns:q1="http://sdk.worldsms.cn/webservice/common/service" binding="q1:commonService" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx" xmlns:q2="http://sdk.worldsms.cn/webservice/mm/service" binding="q2:mmsService" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx" xmlns:q3="http://sdk.worldsms.cn/webservice/sm/service" binding="q3:smsService" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx" xmlns:q4="http://sdk.worldsms.cn/webservice/common/service" binding="q4:commonService1" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx" xmlns:q5="http://sdk.worldsms.cn/webservice/mm/service" binding="q5:mmsService1" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx" xmlns:q6="http://sdk.worldsms.cn/webservice/sm/service" binding="q6:smsService1" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

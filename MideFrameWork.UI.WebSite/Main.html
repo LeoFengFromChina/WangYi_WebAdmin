@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>飞扬短信营销平台</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+    <link href="css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="css/home_head.css" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 9]>
+	<link rel="stylesheet" href="demo/ie.css" type="text/css" media="all" />
+ <![endif]-->
+    <link rel="stylesheet" href="xytipswindow/hl-all.css" type="text/css" media="all" />
+    <script type="text/javascript" src="xytipswindow/hl-all.js"></script>
+    <script type="text/javascript" src="xytipswindow/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript">
+        if (typeof Util == "undefined") var Util = {};
+        //配置信息
+        Util.config = {
+            JSfile: "xytipswindow/core/", 				//设置JS文件夹路径
+            loadingICO: "xytipswindow/core/loading.gif"		//默认载入时图片路径
+        };
+    </script>
+    <script type="text/javascript" src="xytipswindow/core/XY_Base.js"></script>
+    <script type="text/javascript" src="xytipswindow/core/XY_Dialog.js"></script>
+    <script type="text/javascript">
+        jQuery(function ($) {
+            DlHighlight.HELPERS.highlightByName("code", "pre");
+        });
+    </script>
+    <script type="text/javascript" src="js/manage.js"></script>
+    <script type="text/javascript" src="js/calendar.js"></script>
+    <script type="text/javascript">
+        function AlertAndgoBack(url) {
+            alert('您的身份已过期，请重新登录！');
+            window.location.href = url;
+        }
+        function goBack(url) {
+            window.location.href = url;
+        }
+        //iframe互通信
+        function SetFrameContentView(frameID, divID, contentText) {
+            var OrientTerminalObj = document.getElementById(frameID).contentWindow.document.getElementById(divID)
+            OrientTerminalObj.innerText = contentText;
+        }
+        //iframe互通信
+        function SetFrameContentView_Value(frameID, divID, contentText) {
+            var OrientTerminalObj = document.getElementById(frameID).contentWindow.document.getElementById(divID)
+            OrientTerminalObj.value = contentText;
+        }
+        //多层弹出框间互通信
+        function SetFrameContentView_Value_Box(contentText) {
+            var OrientTerminalObj = document.getElementById("dialog-addConntactframe").contentWindow.document.getElementById("txt_PhoneSection");
+            OrientTerminalObj.value = contentText;
+        }
+
+        //关闭弹框
+        function CloseMsgBox(boxID) {
+            manage.CloseMsgBox(boxID);
+        }
+    </script>
+</head>
+<body>
+    <div class="manage_header wrapfix" id="header">
+        <img src="images/logo.png" alt="EGM" class="logo" />
+        <ul>
+            <li class="bg_none"><a href="javascript:;">签到</a> </li>
+            <li><a href="javascript:;">意见反馈</a> </li>
+            <li><a href="Logout.aspx">注销</a> </li>
+        </ul>
+    </div>
+    <!--左边菜单-->
+    <iframe id="menuframe" name="menuframe" frameborder="0" src="menu/Left.aspx" scrolling="no">
+    </iframe>
+    <!-- 左边菜单-->
+    <!--系统内容区-->
+    <div id="app_main">
+        <div class="top_main">
+            <div class="left_radius">
+            </div>
+        </div>
+        <div id="content_main">
+            <iframe id="mainframe" name="mainframe" frameborder="0" src="WelcomePage.aspx" style="width: 100%;
+                height: 100%" scrolling="no"></iframe>
+        </div>
+       
+    </div>
+    <!--系统内容区-->
+    <div id="footer">
+    </div>
+    <!-- <div id="floatBg" style=" display:none;position: absolute;top: 0;left: 0;z-index: 998;background: #fff;opacity: 0.5;filter: alpha(opacity=50);width: 100%;height: 100%;"></div>-->
+</body>
+</html>

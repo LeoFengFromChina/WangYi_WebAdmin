@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5ba6f14e-7e59-4b31-8819-c8b4e8a78362" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="schema1.xsd" MetadataType="Schema" ID="4922a79a-06a9-42c8-a948-97aac3cf3000" SourceId="1" SourceUrl="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx?schema=schema1" />
+    <MetadataFile FileName="schema2.xsd" MetadataType="Schema" ID="59eebb45-db16-438f-9879-b42063541542" SourceId="1" SourceUrl="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx?schema=schema2" />
+    <MetadataFile FileName="schema3.xsd" MetadataType="Schema" ID="2b91ed65-3a25-4b46-8ca9-a403c27cbe50" SourceId="1" SourceUrl="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx?schema=schema3" />
+    <MetadataFile FileName="sdkwebservice.wsdl" MetadataType="Wsdl" ID="96f18a6a-e5e5-4e4d-bb59-ab666f9884dc" SourceId="1" SourceUrl="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx?wsdl=wsdl1" />
+    <MetadataFile FileName="sdkwebservice1.wsdl" MetadataType="Wsdl" ID="13bbdec5-b6d8-4bbe-bb3f-b20e5d1360af" SourceId="1" SourceUrl="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx?wsdl=wsdl2" />
+    <MetadataFile FileName="sdkwebservice2.wsdl" MetadataType="Wsdl" ID="a6d27b52-daf4-4d8b-8630-df58eab5e641" SourceId="1" SourceUrl="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx?wsdl=wsdl3" />
+    <MetadataFile FileName="sdkwebservice3.wsdl" MetadataType="Wsdl" ID="d560d1c7-efa3-4bea-83ef-cac0f64bb9c9" SourceId="1" SourceUrl="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx?wsdl" />
+    <MetadataFile FileName="sdkwebservice.disco" MetadataType="Disco" ID="c5c06ba7-c63d-4199-a702-b614be94c66a" SourceId="1" SourceUrl="http://3g.worldsms.cn/sdkwebservice/sdkwebservice.asmx?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

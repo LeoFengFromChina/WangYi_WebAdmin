@@ -1,0 +1,55 @@
+@charset "utf-8";
+html{ background:url(../images/bg.gif);}
+/*** header***/
+#header {width:900px; height:70px; margin:0 auto; }
+#header .logo{ display:block; float:left;width:400px; height:70px; background:url(../images/logo.png) no-repeat left 10px;}
+#header .headerLink{display:block; float:right; width:atuo; height:30px;line-height: 40px; margin-top:40px;}
+.headerLink li{ float:right; padding-left:12px;}
+.headerLink li a{ font-size:12px; color:#359ee5;}
+.headerLink li a:hover{color:#2a79b5; text-decoration:underline;}
+
+/*** content***/
+#content{ width:900px; height:482px; margin:0 auto; margin-top:12px; position:relative;}
+
+#content #banner{ width:900px; height:480px;border:1px solid #cccccc; overflow:hidden; z-index:2;}
+#content #banner a{position:absolute2;}
+#content .navUl{position:absolute;right:18px;bottom:10px;}
+#content .navUl li{ float:left;margin-right:10px;display:inline;border:1px solid #7eaeea;color:#359ee5;background:#cccccc;width:10px; height:10px;line-height:14px;cursor: pointer;font-size:20px; text-align:center;opacity:0.8;filter:alpha(opacity=80); }
+#content .loginBox{width:356px;height:310px; background:url(../images/login_bg.png) no-repeat left -60px;position:absolute;right:18px; top:18px; z-index:3;}
+.loginBox form{width:356px;height:260px; display:block; overflow:hidden;}
+.loginBox h2{ margin-top:16px; margin-left:26px; font-size:20px; color:#359ee5; font-weight:bold;}
+.loginBox input{color:#8B9096;}
+.loginBox label{color:#8b9096;font-size:16px;height:30px;line-height:30px;margin: 4px 0px;}
+/*** 账号***/
+.loginBox .account{ margin-top:22px; margin-left:26px; background:#030; width:308px;height:38px; background:url(../images/login_bg.png) no-repeat; position:relative;color:#666666;}
+#childText,.childLabel,.account span,#parentText,.parentLabel,#pwdText,.pwd .pwdLabel{ position:absolute;}
+#childText{ display:block;margin:4px 0px; height:30px;line-height:30px;width:126px; outline:none; font-size:16px; left:18px;z-index:2; border:0; background-color:transparent;}
+.account span{display:block;width:18px; height:38px; line-height:38px; text-align:center; border-left:1px solid #57aee9; left:144px;color:#8b9096;font-size:18px;  font-variant:small-caps;}
+#parentText{ display:block;margin:4px 0px; height:30px;line-height:30px;width:126px; outline:none; font-size:16px;left:170px; z-index:2; border:0;background-color:transparent;}
+
+/*** 密码***/
+.loginBox .pwd{margin-top:22px; margin-left:26px; background:#030; width:308px;height:38px; background:url(../images/login_bg.png) no-repeat;position:relative;}
+#pwdText{ display:block;margin:4px 0px; height:30px;line-height:30px;width:270px; outline:none; font-size:16px;left:18px; z-index:2; border:0;background:transparent;}
+
+.loginBox .forgetPwd{width:308px;height:38px;margin-top:18px;margin-left:28px; position:relative;}
+.forgetPwd input{vertical-align: top; margin-right:-0px;}
+.forgetPwd span{color:#333; font-size:12px;}
+.forgetPwd a{ position:absolute;right:0; color:#359ee5; font-size:12px;}
+
+.loginBtnLine{margin:0px 46px; position:relative; width:AUTO; height:38px;}
+.loginBtnLine a{ text-decoration:none;}
+.loginBtnLine a:hover{ text-decoration:none;}
+
+.loginBtnLine .login_btn_wrapper,.loginBtnLine .register_btn_wrapper{width:102px; height:40px; display:inline;background:url(../images/login_bg.png) no-repeat 0px -378px; float:right;}
+.loginBtnLine .login_btn_wrapper:hover{ display:block;background:url(../images/login_bg.png) no-repeat -102px -378px;}
+
+.loginBtnLine .register_btn_wrapper{width:102px; height:40px; line-height:40px; display:inline;background:url(../images/login_bg.png) no-repeat 0px -418px;float:left; text-align:center; font-size:20px;}
+.loginBtnLine .register_btn_wrapper:hover{ display:block;background:url(../images/login_bg.png) no-repeat -102px -418px;}
+
+.loginBtnLine .loginBtn,.registerBtn{width:102px; height:40px; line-height:40px; background-color:transparent; cursor:pointer;display:block;border:none;text-align:center; font-size:20px; color:#ffffff;} 
+.registerBtn{ background-position:-683px 20px;}
+.loginBtnLine .register{color:#000000;}
+/*** footer ***/
+#footer{ margin:0 auto; margin-top:46px; text-align:center; line-height:30px;}
+#footer p{color:#808080; font-size:12px;}
+#footer{width:900px;height:30px; }

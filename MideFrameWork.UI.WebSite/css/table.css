@@ -1,0 +1,35 @@
+﻿/*表格样式*/
+.tab_11 {
+	border: solid 1px #a9cfff;
+	line-height: 22px;
+	width: 100%;
+	border-collapse:separate;
+}
+.tab_11 a{color:#359ee5;}
+.tab_11 a:hover{color:#F60;}
+.tab_11 th {
+	padding: 6px 0px 4px;
+	font-weight: bold;
+	color: #395B7E;
+	background: #DDEEFE;
+	border-top: solid 1px #FFF;
+	text-align:left;
+}
+.tab_11 td {
+	padding: 4px 0px 3px;
+	color: #959595;
+	border-top: solid 1px #C7DCEF;
+	text-align:left;
+}
+.tab_11 th, .tab_11 td {
+text-align: center;
+}
+.text_left, table th.text_left, table td.text_left {
+text-align: left;
+}
+.text_right,table th.text_right, table td.text_right{text-align:right;}
+.icon_head {
+	background:url(../images/linkman/icon.png) no-repeat 0px -84px;
+	width:23px;
+	heigth:23px;
+}

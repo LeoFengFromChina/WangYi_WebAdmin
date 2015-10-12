@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>飞扬短信营销平台_首页</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+    <link href="css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript">
+        window.onload = function load() {
+            $("#childText").focus();
+        }
+    </script>
+</head>
+<body>
+    <div id="header">
+        <a class="logo" href="#"></a>
+        <ul class="headerLink">
+            <li><a href="#">联系</a> </li>
+            <li><a href="#">关于我们</a> </li>
+            <li><a href="#">帮助</a> </li>
+        </ul>
+    </div>
+    <div id="content">
+        <ul id="banner">
+            <li><a href="#">
+                <img src="images/banner1.jpg" alt="" /></a> </li>
+            <li><a href="#">
+                <img src="images/banner2.jpg" alt="" /></a> </li>
+            <li><a href="#">
+                <img src="images/banner3.jpg" alt="" /></a> </li>
+        </ul>
+        <div class="loginBox">
+            <h2>
+                系统登录</h2>
+            <form action="Login.aspx" method="post">
+            <div class="account">
+                <input type="text" id="childText" name="childText" default_txt="个人账号" />
+                <span>@</span>
+                <input type="text" id="parentText" name="parentText" default_txt="企业账号" />
+            </div>
+            <div class="pwd">
+                <input type="password" id="pwdText" name="pwdText" default_txt="密码" />
+            </div>
+            <div class="forgetPwd">
+                <input type="checkbox" />
+                <span>记住密码</span> <a href="#">忘记密码？</a>
+            </div>
+            <div class="loginBtnLine">
+                <a href="javascript:;" class="login_btn_wrapper">
+                    <input type="submit" class="loginBtn" id="loginBtn" value="登录" />
+                </a><a href="regist.html" class="register register_btn_wrapper">注册</a>
+            </div>
+            </form>
+        </div>
+    </div>
+    <div id="footer">
+        <p>
+            <script type="text/javascript">
+                var myDate = new Date();
+                document.write("Copyright © 2012 - " + myDate.getFullYear() + " 八七工作室. All Rights Reserved.");
+            </script>
+        </p>
+        <p>
+            推荐使用<a href="https://www.google.com/intl/zh-CN/chrome/browser/" target="_blank">谷歌浏览器</a></p>
+    </div>
+    <!--[if IE 6]>
+		<script src="js/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		DD_belatedPNG.fix('*');
+		</script>
+		<![endif]-->
+</body>
+</html>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://sdk.worldsms.cn/webservice/mm/types" elementFormDefault="qualified" targetNamespace="http://sdk.worldsms.cn/webservice/mm/types" id="schema2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://sdk.worldsms.cn/webservice/common/types" />
+  <xs:element name="GetMM_MO">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="RequestMO" type="tns:RequestMM_MO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="RequestMM_MO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="SubCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse2" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetMM_MO_Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="MO_Result" type="tns:MM_MO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="MM_MO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Mobile" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ReceiveNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Subject" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Priority" type="tns:MM_Priority" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SendTime" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SubCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse2" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="MM_Priority">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Default" />
+      <xs:enumeration value="Low" />
+      <xs:enumeration value="Normal" />
+      <xs:enumeration value="High" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SendMMS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="MT" type="tns:MM_MT" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="MM_MT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Channel" type="xs:long" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Mobile" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Subject" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Priority" type="tns:MM_Priority" />
+      <xs:element minOccurs="1" maxOccurs="1" name="WithAttachment" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MM_ID" type="xs:long" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SendTime" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SeqID" type="xs:long" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SubCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse2" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SendMMS_Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="MT_Result" type="tns:MM_MT_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="MM_MT_Result">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="Result" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ResultText" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MM_ID" type="xs:long" />
+      <xs:element minOccurs="0" maxOccurs="1" name="MsgID" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Balance" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="SubmitCount" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Reverse2" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetMM_Report">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://sdk.worldsms.cn/webservice/common/types" minOccurs="0" maxOccurs="1" name="RequestReport" type="q1:RequestReport" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMM_Report_Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://sdk.worldsms.cn/webservice/common/types" minOccurs="0" maxOccurs="1" name="GetReportResult" type="q2:ArrayOfReport" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

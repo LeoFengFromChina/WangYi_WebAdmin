@@ -1,0 +1,26 @@
+@charset "utf-8";
+.left_cont {
+	width:100%;
+	height:auto;
+	background:#ffffff;
+}
+.left_cont .salutation{ font-size:16px; font-weight:bold;}
+.salutation a{ color:#359ee5; text-decoration:none;}
+.left_cont .tips{margin-top:26px;color:#666666; font-size:14px;} 
+.tips .tips_cont{color:#000000; }
+.tips_cont a{color:#359ee5; padding:0px 5px;}
+
+.msg_box{ border:1px solid #a9cfff; margin:50px 0px 0 0px; position:relative; }
+.msg_box .title{ position:absolute;left:0px; top:-30px; font-size:14px; font-weight:bold; color:#454545;}
+.msg_box .btn{position:absolute;right:0px; top:-30px; display:block;width:92px; height:26px; line-height:26px;text-align:center;background:url(../images/cont_images/btn.png) no-repeat; color:#334968; text-decoration:none; font-size:14px;}
+.msg_box .btn:active{color:#000000; background-position:0px -26px;} 
+.msg_cont { padding:10px; line-height: 28px; font-size:12px; color:#666666;}
+.msg_cont .icon{ width:65px; height:65px;background:url(../images/cont_images/btn.png) no-repeat; margin-right:10px;float:left;}
+.msg_cont .msg_main{float:left;}
+.msg_main a{ color:#359ee5; text-decoration:none;}
+.msg_main a:hover{ color:#359ee5; text-decoration:underline;}
+
+.sms_box .icon{ background-position: 0px -108px;}
+.contact_box .icon{ background-position: 0px -173px;}
+.account_box .icon{ background-position: 0px -238px;}
+
