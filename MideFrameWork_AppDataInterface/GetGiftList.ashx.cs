@@ -14,6 +14,9 @@ namespace MideFrameWork_AppDataInterface
 
         public void ProcessRequest(HttpContext context)
         {
+            context.Response.AddHeader("Access-Control-Allow-Origin", "*");
+            context.Response.AddHeader("Access-Control-Allow-Methods", "POST");
+            context.Response.AddHeader("Access-Control-Allow-Headers", "x-requested-with,content-type");
             context.Response.ContentType = "text/plain";
             string MenberID = "1";// context.Request["MenberID"];//用户ID
 

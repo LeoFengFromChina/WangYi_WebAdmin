@@ -15,6 +15,9 @@ namespace MideFrameWork_AppDataInterface
 
         public void ProcessRequest(HttpContext context)
         {
+            context.Response.AddHeader("Access-Control-Allow-Origin", "*");
+            context.Response.AddHeader("Access-Control-Allow-Methods", "POST");
+            context.Response.AddHeader("Access-Control-Allow-Headers", "x-requested-with,content-type");
             context.Response.ContentType = "text/plain";
 
             string PromoterIDstr = context.Request["PromoterID"];//求助者ID
@@ -45,6 +48,7 @@ namespace MideFrameWork_AppDataInterface
                 foreach (WG_HelpRequestEntity item in _HelpRequest)
                 {
                     RequestView rv = new RequestView();
+                    rv.ID = item.ID;
                     rv.HelpRequest = item;
                     requestList.Add(rv);
                 }
@@ -105,4 +109,16 @@ namespace MideFrameWork_AppDataInterface
         }
     }
 
+
+
+    public class RequestView
+    {
+        public int ID { get; set; }
+
+        public WG_HelpRequestEntity HelpRequest { get; set; }
+
+        public WG_MenberEntity Author { get; set; }
+
+        public WG_MenberEntity Helper { get; set; }
+    }
 }

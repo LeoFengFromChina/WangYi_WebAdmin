@@ -78,6 +78,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddNewHelpRequest.ashx.cs">
+      <DependentUpon>AddNewHelpRequest.ashx</DependentUpon>
+    </Compile>
     <Compile Include="AppLogin.ashx.cs">
       <DependentUpon>AppLogin.ashx</DependentUpon>
     </Compile>
@@ -88,6 +91,9 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExchangeForGift.ashx.cs">
+      <DependentUpon>ExchangeForGift.ashx</DependentUpon>
     </Compile>
     <Compile Include="GetBannerPictures.ashx.cs">
       <DependentUpon>GetBannerPictures.ashx</DependentUpon>
@@ -105,22 +111,15 @@
     <Compile Include="register.ashx.cs">
       <DependentUpon>register.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Site.Master.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Site.Master.designer.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-    </Compile>
     <Compile Include="GetRankList.ashx.cs">
       <DependentUpon>GetRankList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateHelpRequest.ashx.cs">
+      <DependentUpon>UpdateHelpRequest.ashx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AppLogin.ashx" />
@@ -184,6 +183,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\Banner.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UpdateHelpRequest.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AddNewHelpRequest.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ExchangeForGift.ashx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

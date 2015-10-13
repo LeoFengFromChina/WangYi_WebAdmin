@@ -15,6 +15,9 @@ namespace MideFrameWork_AppDataInterface
 
         public void ProcessRequest(HttpContext context)
         {
+            context.Response.AddHeader("Access-Control-Allow-Origin", "*");
+            context.Response.AddHeader("Access-Control-Allow-Methods", "POST");
+            context.Response.AddHeader("Access-Control-Allow-Headers", "x-requested-with,content-type");
             context.Response.ContentType = "text/plain";
             string GroupID = context.Request["GroupID"];
             JsonBaseObject jbo = new JsonBaseObject();

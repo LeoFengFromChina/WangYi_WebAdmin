@@ -18,6 +18,9 @@ namespace MideFrameWork_AppDataInterface
 
         public void ProcessRequest(HttpContext context)
         {
+            context.Response.AddHeader("Access-Control-Allow-Origin", "*");
+            context.Response.AddHeader("Access-Control-Allow-Methods", "POST");
+            context.Response.AddHeader("Access-Control-Allow-Headers", "x-requested-with,content-type");
             context.Response.ContentType = "text/plain";
             //排名分为全国、全省、全市、全区、本小区
             string country = context.Request["country"];//全国

@@ -35,15 +35,6 @@ namespace MideFrameWork_AppDataInterface
 
 
 
-    public class RequestView
-    {
-        public WG_HelpRequestEntity HelpRequest { get; set; }
-
-        public WG_MenberEntity Author { get; set; }
-
-        public WG_MenberEntity Helper { get; set; }
-    }
-
     [KnownType(typeof(WG_MenberEntity))]
     [KnownType(typeof(WG_HelpRequestEntity))]
     [KnownType(typeof(RequestView))]
@@ -51,7 +42,7 @@ namespace MideFrameWork_AppDataInterface
     [KnownType(typeof(List<MenberRankingView>))]
     [KnownType(typeof(List<OnGoingGiftsView>))]
     [KnownType(typeof(List<WG_GiftsEntity>))]
-    [KnownType(typeof(List<GlobalPictureEntity>))]        
+    [KnownType(typeof(List<GlobalPictureEntity>))]
     [DataContract]
     public class JsonBaseObject
     {

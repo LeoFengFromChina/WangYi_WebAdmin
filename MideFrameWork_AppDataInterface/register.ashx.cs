@@ -15,6 +15,9 @@ namespace MideFrameWork_AppDataInterface
 
         public void ProcessRequest(HttpContext context)
         {
+            context.Response.AddHeader("Access-Control-Allow-Origin", "*");
+            context.Response.AddHeader("Access-Control-Allow-Methods", "POST");
+            context.Response.AddHeader("Access-Control-Allow-Headers", "x-requested-with,content-type");
             context.Response.ContentType = "text/plain";
 
             JsonBaseObject jbo = new JsonBaseObject();
@@ -46,7 +49,7 @@ namespace MideFrameWork_AppDataInterface
                 {
                     string avatar_url = context.Request["avatar_url"];
                     string nickname = context.Request["nickname"];
-                    string sex = context.Request["username"];
+                    string sex = context.Request["sex"];
                     string birthday = context.Request["birthday"];
                     string phoneNumber = context.Request["phoneNumber"];
                     string email = context.Request["email"];
@@ -88,7 +91,7 @@ namespace MideFrameWork_AppDataInterface
                     menber.SpecialSkill = speciality;
                     menber.ServiceIntention = intention;
                     menber.ServiceTimeInterval = intentionTime;
-                    menber.Status = 0;//状态正常
+                    menber.Status = 1;//状态:0正常,1待审核,2状态异常
                     menber.Flag = int.Parse(flag);
                     menber.Scores = 100;//初始积分100
                     menber.ServiceHours = 0;///初始服务时长为0
