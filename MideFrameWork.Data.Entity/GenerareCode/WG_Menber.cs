@@ -108,14 +108,54 @@ namespace MideFrameWork.Data.Entity
             set{ _photourl = value; }
         }
         
-		private string _region;
+		private string _country;
 		/// <summary>
-		/// 区域
+		/// 国家
         /// </summary>
-        public string Region
+        public string Country
         {
-            get{ return _region; }
-            set{ _region = value; }
+            get{ return _country; }
+            set{ _country = value; }
+        }
+        
+		private string _province;
+		/// <summary>
+		/// 省份
+        /// </summary>
+        public string Province
+        {
+            get{ return _province; }
+            set{ _province = value; }
+        }
+        
+		private string _city;
+		/// <summary>
+		/// 市
+        /// </summary>
+        public string City
+        {
+            get{ return _city; }
+            set{ _city = value; }
+        }
+        
+		private string _district;
+		/// <summary>
+		/// 区
+        /// </summary>
+        public string District
+        {
+            get{ return _district; }
+            set{ _district = value; }
+        }
+        
+		private string _community;
+		/// <summary>
+		/// 社区/小区
+        /// </summary>
+        public string Community
+        {
+            get{ return _community; }
+            set{ _community = value; }
         }
         
 		private string _phone;

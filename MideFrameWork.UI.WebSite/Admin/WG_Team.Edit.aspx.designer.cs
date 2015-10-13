@@ -61,22 +61,22 @@ namespace MideFrameWork.UI.WebSite.Admin {
         protected global::System.Web.UI.WebControls.TextBox TextBox_TeamAim;
  		                       
          /// <summary>
-         /// TextBox_ServiceIntentionIDs 控件。
+         /// TextBox_ServiceIntention 控件。
          /// </summary>
          /// <remarks>
          /// 自动生成的字段。
          /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
          /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_ServiceIntentionIDs;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_ServiceIntention;
  		                       
          /// <summary>
-         /// TextBox_RegionID 控件。
+         /// TextBox_Region 控件。
          /// </summary>
          /// <remarks>
          /// 自动生成的字段。
          /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
          /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_RegionID;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Region;
  		                                          
         /// <summary>
         /// Button_submit 控件。

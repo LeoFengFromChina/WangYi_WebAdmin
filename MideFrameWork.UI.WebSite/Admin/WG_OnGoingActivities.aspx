@@ -82,6 +82,9 @@
                         用户ID
                     </th>
                                         <th>
+                        状态
+                    </th>
+                                        <th>
                         创建日期
                     </th>
                                         <th>
@@ -104,6 +107,9 @@
                     </td>
                                         <td>
                         <%#Eval("MenberID")%>
+                    </td>
+                                        <td>
+                        <%#Eval("Status")%>
                     </td>
                                         <td>
                         <%#Eval("CreateDate")%>

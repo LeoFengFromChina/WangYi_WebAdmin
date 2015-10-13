@@ -58,7 +58,15 @@
                     联系人ID：
                 </td>
                 <td>                    
-                                                                       <asp:TextBox id="TextBox_LinkManID" runat="server" Width="200px"></asp:TextBox>
+                                                                       <asp:TextBox id="TextBox_LinkMan" runat="server" Width="200px"></asp:TextBox>
+                               </td>
+            </tr>
+                      		            <tr>
+                <td>
+                    LinkPhone：
+                </td>
+                <td>                    
+                                                                       <asp:TextBox id="TextBox_LinkPhone" runat="server" Width="200px"></asp:TextBox>
                                </td>
             </tr>
                       		            <tr>
@@ -66,7 +74,7 @@
                     活动类型ID：
                 </td>
                 <td>                    
-                                                                       <asp:TextBox id="TextBox_ActivityTypeID" runat="server" Width="200px"></asp:TextBox>
+                                                                       <asp:TextBox id="TextBox_ActivityType" runat="server" Width="200px"></asp:TextBox>
                                </td>
             </tr>
                       		            <tr>
@@ -74,7 +82,7 @@
                     区域ID：
                 </td>
                 <td>                    
-                                                                       <asp:TextBox id="TextBox_RegionID" runat="server" Width="200px"></asp:TextBox>
+                                                                       <asp:TextBox id="TextBox_Region" runat="server" Width="200px"></asp:TextBox>
                                </td>
             </tr>
                       		            <tr>

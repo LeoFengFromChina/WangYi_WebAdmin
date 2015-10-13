@@ -43,6 +43,7 @@ namespace MideFrameWork.UI.WebSite.Admin
                                             
                                             
                                             
+                                            
                         TextBox_BeginTime.Attributes.Add("onclick", "MyCalendar.SetDate(this);");
                                             
                                             
@@ -77,9 +78,10 @@ namespace MideFrameWork.UI.WebSite.Admin
 
                				                				                   TextBox_Title.Text = _WG_ActivitiesEntity.Title.ToString();
                                 				                   TextBox_PromoterID.Text = _WG_ActivitiesEntity.PromoterID.ToString();
-                                				                   TextBox_LinkManID.Text = _WG_ActivitiesEntity.LinkManID.ToString();
-                                				                   TextBox_ActivityTypeID.Text = _WG_ActivitiesEntity.ActivityTypeID.ToString();
-                                				                   TextBox_RegionID.Text = _WG_ActivitiesEntity.RegionID.ToString();
+                                				                   TextBox_LinkMan.Text = _WG_ActivitiesEntity.LinkMan.ToString();
+                                				                   TextBox_LinkPhone.Text = _WG_ActivitiesEntity.LinkPhone.ToString();
+                                				                   TextBox_ActivityType.Text = _WG_ActivitiesEntity.ActivityType.ToString();
+                                				                   TextBox_Region.Text = _WG_ActivitiesEntity.Region.ToString();
                                 				                   TextBox_Address.Text = _WG_ActivitiesEntity.Address.ToString();
                                 				                   TextBox_NeedMenberCount.Text = _WG_ActivitiesEntity.NeedMenberCount.ToString();
                                 				                   TextBox_BeginTime.Text = _WG_ActivitiesEntity.BeginTime.ToString();
@@ -109,22 +111,29 @@ namespace MideFrameWork.UI.WebSite.Admin
                         return;
                   }
 				                                           
-                  var _LinkManID = Request.Form["TextBox_LinkManID"];
-                 if (string.IsNullOrEmpty(_LinkManID))
+                  var _LinkMan = Request.Form["TextBox_LinkMan"];
+                 if (string.IsNullOrEmpty(_LinkMan))
                    {
                         Alert("[ 联系人ID ]不能为空");
                         return;
                   }
 				                                           
-                  var _ActivityTypeID = Request.Form["TextBox_ActivityTypeID"];
-                 if (string.IsNullOrEmpty(_ActivityTypeID))
+                  var _LinkPhone = Request.Form["TextBox_LinkPhone"];
+                 if (string.IsNullOrEmpty(_LinkPhone))
+                   {
+                        Alert("[ LinkPhone ]不能为空");
+                        return;
+                  }
+				                                           
+                  var _ActivityType = Request.Form["TextBox_ActivityType"];
+                 if (string.IsNullOrEmpty(_ActivityType))
                    {
                         Alert("[ 活动类型ID ]不能为空");
                         return;
                   }
 				                                           
-                  var _RegionID = Request.Form["TextBox_RegionID"];
-                 if (string.IsNullOrEmpty(_RegionID))
+                  var _Region = Request.Form["TextBox_Region"];
+                 if (string.IsNullOrEmpty(_Region))
                    {
                         Alert("[ 区域ID ]不能为空");
                         return;
@@ -177,12 +186,18 @@ namespace MideFrameWork.UI.WebSite.Admin
                		                        	  		                            
                  	                 	                     _WG_ActivitiesEntity.PromoterID =Convert.ToInt32(_PromoterID.ToString());
                 	                        	  		                            
-                 	                 	                     _WG_ActivitiesEntity.LinkManID =Convert.ToInt32(_LinkManID.ToString());
-                	                        	  		                            
-                 	                 	                     _WG_ActivitiesEntity.ActivityTypeID =Convert.ToInt32(_ActivityTypeID.ToString());
-                	                        	  		                            
-                 	                 	                     _WG_ActivitiesEntity.RegionID =Convert.ToInt32(_RegionID.ToString());
-                	                        	  		                            
+                 	                 	                
+                    _WG_ActivitiesEntity.LinkMan =Convert.ToString(_LinkMan.ToString());
+               		                        	  		                            
+                 	                 	                
+                    _WG_ActivitiesEntity.LinkPhone =Convert.ToString(_LinkPhone.ToString());
+               		                        	  		                            
+                 	                 	                
+                    _WG_ActivitiesEntity.ActivityType =Convert.ToString(_ActivityType.ToString());
+               		                        	  		                            
+                 	                 	                
+                    _WG_ActivitiesEntity.Region =Convert.ToString(_Region.ToString());
+               		                        	  		                            
                  	                 	                
                     _WG_ActivitiesEntity.Address =Convert.ToString(_Address.ToString());
                		                        	  		                            
@@ -232,22 +247,29 @@ namespace MideFrameWork.UI.WebSite.Admin
                         return;
                   }
 				                                           
-                  var _LinkManID = Request.Form["TextBox_LinkManID"];
-                 if (string.IsNullOrEmpty(_LinkManID))
+                  var _LinkMan = Request.Form["TextBox_LinkMan"];
+                 if (string.IsNullOrEmpty(_LinkMan))
                    {
                         Alert("[ 联系人ID ]不能为空");
                         return;
                   }
 				                                           
-                  var _ActivityTypeID = Request.Form["TextBox_ActivityTypeID"];
-                 if (string.IsNullOrEmpty(_ActivityTypeID))
+                  var _LinkPhone = Request.Form["TextBox_LinkPhone"];
+                 if (string.IsNullOrEmpty(_LinkPhone))
+                   {
+                        Alert("[ LinkPhone ]不能为空");
+                        return;
+                  }
+				                                           
+                  var _ActivityType = Request.Form["TextBox_ActivityType"];
+                 if (string.IsNullOrEmpty(_ActivityType))
                    {
                         Alert("[ 活动类型ID ]不能为空");
                         return;
                   }
 				                                           
-                  var _RegionID = Request.Form["TextBox_RegionID"];
-                 if (string.IsNullOrEmpty(_RegionID))
+                  var _Region = Request.Form["TextBox_Region"];
+                 if (string.IsNullOrEmpty(_Region))
                    {
                         Alert("[ 区域ID ]不能为空");
                         return;
@@ -289,10 +311,7 @@ namespace MideFrameWork.UI.WebSite.Admin
                   }
 				                                                                                
 	        #endregion
-
-
-             
-  
+	        
                		                       					                         
                 
                                                                    
@@ -302,14 +321,21 @@ namespace MideFrameWork.UI.WebSite.Admin
                                                                         _WG_ActivitiesEntity.PromoterID =Convert.ToInt32(_PromoterID.ToString());
                                 					                         
                 
-                                                                        _WG_ActivitiesEntity.LinkManID =Convert.ToInt32(_LinkManID.ToString());
-                                					                         
+                                                                   
+                    _WG_ActivitiesEntity.LinkMan =Convert.ToString(_LinkMan.ToString());
+                               					                         
                 
-                                                                        _WG_ActivitiesEntity.ActivityTypeID =Convert.ToInt32(_ActivityTypeID.ToString());
-                                					                         
+                                                                   
+                    _WG_ActivitiesEntity.LinkPhone =Convert.ToString(_LinkPhone.ToString());
+                               					                         
                 
-                                                                        _WG_ActivitiesEntity.RegionID =Convert.ToInt32(_RegionID.ToString());
-                                					                         
+                                                                   
+                    _WG_ActivitiesEntity.ActivityType =Convert.ToString(_ActivityType.ToString());
+                               					                         
+                
+                                                                   
+                    _WG_ActivitiesEntity.Region =Convert.ToString(_Region.ToString());
+                               					                         
                 
                                                                    
                     _WG_ActivitiesEntity.Address =Convert.ToString(_Address.ToString());

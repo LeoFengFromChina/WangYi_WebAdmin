@@ -11,7 +11,10 @@ namespace MideFrameWork_AppDataInterface
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Redirect("GetHelpRequestList.ashx");
+            //Response.Redirect("GetRankList.ashx");
+            //Response.Redirect("GetHelpRequestList.ashx");
+            //Response.Redirect("GetGiftList.ashx");
+            Response.Redirect("GetBannerPictures.ashx");
         }
     }
 }

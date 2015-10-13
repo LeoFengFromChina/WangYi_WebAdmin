@@ -51,7 +51,11 @@ namespace MideFrameWork_AppDataInterface
                     string phoneNumber = context.Request["phoneNumber"];
                     string email = context.Request["email"];
                     string QQnumber = context.Request["QQnumber"];
-                    string region = context.Request["region"];
+                    string country = context.Request["country"];
+                    string province = context.Request["province"];
+                    string city = context.Request["city"];
+                    string district = context.Request["district"];
+                    string community = context.Request["community"];
                     string personalid = context.Request["identity"];
                     string address = context.Request["address"];
                     string weixinNumber = context.Request["weixinNumber"];
@@ -71,7 +75,11 @@ namespace MideFrameWork_AppDataInterface
                     menber.Phone = phoneNumber;
                     menber.Email = email;
                     menber.QQ = QQnumber;
-                    menber.Region = region;
+                    menber.Country = country;
+                    menber.Province = province;
+                    menber.City = city;
+                    menber.District = district;
+                    menber.Community = community;
                     menber.PersonalID = personalid;
                     menber.Address = address;
                     menber.WeChat = weixinNumber;

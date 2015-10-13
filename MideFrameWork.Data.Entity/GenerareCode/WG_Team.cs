@@ -58,24 +58,24 @@ namespace MideFrameWork.Data.Entity
             set{ _teamaim = value; }
         }
         
-		private string _serviceintentionids;
+		private string _serviceintention;
 		/// <summary>
-		/// 服务意向IDs
+		/// 服务意向
         /// </summary>
-        public string ServiceIntentionIDs
+        public string ServiceIntention
         {
-            get{ return _serviceintentionids; }
-            set{ _serviceintentionids = value; }
+            get{ return _serviceintention; }
+            set{ _serviceintention = value; }
         }
         
-		private int _regionid;
+		private string _region;
 		/// <summary>
-		/// 区域ID
+		/// 区域
         /// </summary>
-        public int RegionID
+        public string Region
         {
-            get{ return _regionid; }
-            set{ _regionid = value; }
+            get{ return _region; }
+            set{ _region = value; }
         }
         
 		private DateTime _createdate;

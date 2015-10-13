@@ -68,14 +68,24 @@ namespace MideFrameWork.Data.Entity
             set{ _detail = value; }
         }
         
-		private int _regionid;
+		private string _region;
 		/// <summary>
-		/// 区域ID
+		/// 区域
         /// </summary>
-        public int RegionID
+        public string Region
         {
-            get{ return _regionid; }
-            set{ _regionid = value; }
+            get{ return _region; }
+            set{ _region = value; }
+        }
+        
+		private int _status;
+		/// <summary>
+		/// 状态
+        /// </summary>
+        public int Status
+        {
+            get{ return _status; }
+            set{ _status = value; }
         }
         
 		private DateTime _createdate;

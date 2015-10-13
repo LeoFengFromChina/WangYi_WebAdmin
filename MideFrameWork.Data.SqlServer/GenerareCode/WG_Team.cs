@@ -31,8 +31,7 @@ namespace MideFrameWork.Data.SqlServer
 			};
 			                        
 						parameters[0].Value = ID;
-			
-			return DbHelperSQL.Exists(strSql.ToString(),parameters);
+						return DbHelperSQL.Exists(strSql.ToString(),parameters);
 		}
 		
 		/// <summary>
@@ -42,9 +41,9 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into WG_Team(");			
-            strSql.Append("Name,CaptainID,LinkManID,TeamAim,ServiceIntentionIDs,RegionID,CreateDate,UpdateDate");
+            strSql.Append("Name,CaptainID,LinkManID,TeamAim,ServiceIntention,Region,CreateDate,UpdateDate");
 			strSql.Append(") values (");
-            strSql.Append("@Name,@CaptainID,@LinkManID,@TeamAim,@ServiceIntentionIDs,@RegionID,@CreateDate,@UpdateDate");            
+            strSql.Append("@Name,@CaptainID,@LinkManID,@TeamAim,@ServiceIntention,@Region,@CreateDate,@UpdateDate");            
             strSql.Append(") ");            
             strSql.Append(";select @@IDENTITY");		
 			SqlParameter[] parameters = {
@@ -52,8 +51,8 @@ namespace MideFrameWork.Data.SqlServer
                         new SqlParameter("@CaptainID", SqlDbType.Int,4) ,            
                         new SqlParameter("@LinkManID", SqlDbType.Int,4) ,            
                         new SqlParameter("@TeamAim", SqlDbType.NVarChar,1024) ,            
-                        new SqlParameter("@ServiceIntentionIDs", SqlDbType.NVarChar,512) ,            
-                        new SqlParameter("@RegionID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@ServiceIntention", SqlDbType.NVarChar,512) ,            
+                        new SqlParameter("@Region", SqlDbType.NVarChar,64) ,            
                         new SqlParameter("@CreateDate", SqlDbType.DateTime) ,            
                         new SqlParameter("@UpdateDate", SqlDbType.DateTime)             
               
@@ -63,8 +62,8 @@ namespace MideFrameWork.Data.SqlServer
             parameters[1].Value = info.CaptainID;                        
             parameters[2].Value = info.LinkManID;                        
             parameters[3].Value = info.TeamAim;                        
-            parameters[4].Value = info.ServiceIntentionIDs;                        
-            parameters[5].Value = info.RegionID;                        
+            parameters[4].Value = info.ServiceIntention;                        
+            parameters[5].Value = info.Region;                        
             parameters[6].Value = info.CreateDate;                        
             parameters[7].Value = info.UpdateDate;                        
 			   
@@ -94,13 +93,13 @@ namespace MideFrameWork.Data.SqlServer
             strSql.Append(" CaptainID = @CaptainID , ");                                    
             strSql.Append(" LinkManID = @LinkManID , ");                                    
             strSql.Append(" TeamAim = @TeamAim , ");                                    
-            strSql.Append(" ServiceIntentionIDs = @ServiceIntentionIDs , ");                                    
-            strSql.Append(" RegionID = @RegionID , ");                                    
+            strSql.Append(" ServiceIntention = @ServiceIntention , ");                                    
+            strSql.Append(" Region = @Region , ");                                    
             strSql.Append(" CreateDate = @CreateDate , ");                                    
             strSql.Append(" UpdateDate = @UpdateDate  ");            			
 			strSql.Append(" where ID=@ID ");			
 			SqlParameter[] parameters = {
-			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@Name", SqlDbType.NVarChar,32) ,                        new SqlParameter("@CaptainID", SqlDbType.Int,4) ,                        new SqlParameter("@LinkManID", SqlDbType.Int,4) ,                        new SqlParameter("@TeamAim", SqlDbType.NVarChar,1024) ,                        new SqlParameter("@ServiceIntentionIDs", SqlDbType.NVarChar,512) ,                        new SqlParameter("@RegionID", SqlDbType.Int,4) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime) ,                        new SqlParameter("@UpdateDate", SqlDbType.DateTime)               
+			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@Name", SqlDbType.NVarChar,32) ,                        new SqlParameter("@CaptainID", SqlDbType.Int,4) ,                        new SqlParameter("@LinkManID", SqlDbType.Int,4) ,                        new SqlParameter("@TeamAim", SqlDbType.NVarChar,1024) ,                        new SqlParameter("@ServiceIntention", SqlDbType.NVarChar,512) ,                        new SqlParameter("@Region", SqlDbType.NVarChar,64) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime) ,                        new SqlParameter("@UpdateDate", SqlDbType.DateTime)               
             };
 						            
             parameters[0].Value = info.ID;                        
@@ -108,8 +107,8 @@ namespace MideFrameWork.Data.SqlServer
             parameters[2].Value = info.CaptainID;                        
             parameters[3].Value = info.LinkManID;                        
             parameters[4].Value = info.TeamAim;                        
-            parameters[5].Value = info.ServiceIntentionIDs;                        
-            parameters[6].Value = info.RegionID;                        
+            parameters[5].Value = info.ServiceIntention;                        
+            parameters[6].Value = info.Region;                        
             parameters[7].Value = info.CreateDate;                        
             parameters[8].Value = info.UpdateDate;                        
             int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
@@ -175,7 +174,7 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID, Name, CaptainID, LinkManID, TeamAim, ServiceIntentionIDs, RegionID, CreateDate, UpdateDate  ");			
+			strSql.Append("select ID, Name, CaptainID, LinkManID, TeamAim, ServiceIntention, Region, CreateDate, UpdateDate  ");			
 			strSql.Append("  from WG_Team ");
 			strSql.Append(" where ID=@ID");
 			SqlParameter[] parameters ={
@@ -202,7 +201,7 @@ namespace MideFrameWork.Data.SqlServer
 		public IList<MideFrameWork.Data.Entity.WG_TeamEntity> GetWG_TeamList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,Name,CaptainID,LinkManID,TeamAim,ServiceIntentionIDs,RegionID,CreateDate,UpdateDate");
+			strSql.Append("select ID,Name,CaptainID,LinkManID,TeamAim,ServiceIntention,Region,CreateDate,UpdateDate");
 			strSql.Append(" FROM WG_Team ");
 			if(strWhere.Trim()!="")
 			{
@@ -231,7 +230,7 @@ namespace MideFrameWork.Data.SqlServer
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append("ID,Name,CaptainID,LinkManID,TeamAim,ServiceIntentionIDs,RegionID,CreateDate,UpdateDate");
+			strSql.Append("ID,Name,CaptainID,LinkManID,TeamAim,ServiceIntention,Region,CreateDate,UpdateDate");
 			strSql.Append(" FROM WG_Team ");
 			if(strWhere.Trim()!="")
 			{
@@ -264,7 +263,7 @@ namespace MideFrameWork.Data.SqlServer
             IList<MideFrameWork.Data.Entity.WG_TeamEntity> list = new List<MideFrameWork.Data.Entity.WG_TeamEntity>();
             recordCount = 0;
             totalPage = 0;
-            DataSet ds = GetRecordByPage(" WG_Team", "ID,Name,CaptainID,LinkManID,TeamAim,ServiceIntentionIDs,RegionID,CreateDate,UpdateDate", orderBy,strWhere,PageSize,PageIndex);
+            DataSet ds = GetRecordByPage(" WG_Team", "ID,Name,CaptainID,LinkManID,TeamAim,ServiceIntention,Region,CreateDate,UpdateDate", orderBy,strWhere,PageSize,PageIndex);
             if (ds.Tables.Count == 2)
             {
                 // 组装
@@ -312,15 +311,15 @@ namespace MideFrameWork.Data.SqlServer
 			else	
 				info.TeamAim= dr["TeamAim"].ToString();
 																								
-						if(DBNull.Value==dr["ServiceIntentionIDs"])
-				info.ServiceIntentionIDs= string.Empty;
+						if(DBNull.Value==dr["ServiceIntention"])
+				info.ServiceIntention= string.Empty;
 			else	
-				info.ServiceIntentionIDs= dr["ServiceIntentionIDs"].ToString();
-																						if(DBNull.Value==dr["RegionID"])
-					info.RegionID=0;
-				else
-					info.RegionID=int.Parse(dr["RegionID"].ToString());
-									
+				info.ServiceIntention= dr["ServiceIntention"].ToString();
+																								
+						if(DBNull.Value==dr["Region"])
+				info.Region= string.Empty;
+			else	
+				info.Region= dr["Region"].ToString();
 																									if(DBNull.Value==dr["CreateDate"])
 					info.CreateDate=DateTime.Now;
 				else

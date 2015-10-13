@@ -106,13 +106,49 @@ namespace MideFrameWork.UI.WebSite.Admin {
         protected global::System.Web.UI.WebControls.TextBox TextBox_PhotoUrl;
  		                       
          /// <summary>
-         /// TextBox_Region 控件。
+         /// TextBox_Country 控件。
          /// </summary>
          /// <remarks>
          /// 自动生成的字段。
          /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
          /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Region;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Country;
+ 		                       
+         /// <summary>
+         /// TextBox_Province 控件。
+         /// </summary>
+         /// <remarks>
+         /// 自动生成的字段。
+         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+         /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Province;
+ 		                       
+         /// <summary>
+         /// TextBox_City 控件。
+         /// </summary>
+         /// <remarks>
+         /// 自动生成的字段。
+         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+         /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_City;
+ 		                       
+         /// <summary>
+         /// TextBox_District 控件。
+         /// </summary>
+         /// <remarks>
+         /// 自动生成的字段。
+         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+         /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_District;
+ 		                       
+         /// <summary>
+         /// TextBox_Community 控件。
+         /// </summary>
+         /// <remarks>
+         /// 自动生成的字段。
+         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+         /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Community;
  		                       
          /// <summary>
          /// TextBox_Phone 控件。

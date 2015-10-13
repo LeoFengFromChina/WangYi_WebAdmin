@@ -85,6 +85,9 @@
                         联系人ID
                     </th>
                                         <th>
+                        
+                    </th>
+                                        <th>
                         活动类型ID
                     </th>
                                         <th>
@@ -133,13 +136,16 @@
                         <%#Eval("PromoterID")%>
                     </td>
                                         <td>
-                        <%#Eval("LinkManID")%>
+                        <%#Eval("LinkMan")%>
                     </td>
                                         <td>
-                        <%#Eval("ActivityTypeID")%>
+                        <%#Eval("LinkPhone")%>
                     </td>
                                         <td>
-                        <%#Eval("RegionID")%>
+                        <%#Eval("ActivityType")%>
+                    </td>
+                                        <td>
+                        <%#Eval("Region")%>
                     </td>
                                         <td>
                         <%#Eval("Address")%>

@@ -38,6 +38,16 @@ namespace MideFrameWork.Data.Entity
             set{ _menberid = value; }
         }
         
+		private int _status;
+		/// <summary>
+		/// 状态
+        /// </summary>
+        public int Status
+        {
+            get{ return _status; }
+            set{ _status = value; }
+        }
+        
 		private DateTime _createdate;
 		/// <summary>
 		/// 创建日期

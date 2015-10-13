@@ -111,10 +111,42 @@
             </tr>
                       		            <tr>
                 <td>
-                    区域：
+                    国家：
                 </td>
                 <td>                    
-                                                                       <asp:TextBox id="TextBox_Region" runat="server" Width="200px"></asp:TextBox>
+                                                                       <asp:TextBox id="TextBox_Country" runat="server" Width="200px"></asp:TextBox>
+                               </td>
+            </tr>
+                      		            <tr>
+                <td>
+                    省份：
+                </td>
+                <td>                    
+                                                                       <asp:TextBox id="TextBox_Province" runat="server" Width="200px"></asp:TextBox>
+                               </td>
+            </tr>
+                      		            <tr>
+                <td>
+                    市：
+                </td>
+                <td>                    
+                                                                       <asp:TextBox id="TextBox_City" runat="server" Width="200px"></asp:TextBox>
+                               </td>
+            </tr>
+                      		            <tr>
+                <td>
+                    区：
+                </td>
+                <td>                    
+                                                                       <asp:TextBox id="TextBox_District" runat="server" Width="200px"></asp:TextBox>
+                               </td>
+            </tr>
+                      		            <tr>
+                <td>
+                    社区/小区：
+                </td>
+                <td>                    
+                                                                       <asp:TextBox id="TextBox_Community" runat="server" Width="200px"></asp:TextBox>
                                </td>
             </tr>
                       		            <tr>

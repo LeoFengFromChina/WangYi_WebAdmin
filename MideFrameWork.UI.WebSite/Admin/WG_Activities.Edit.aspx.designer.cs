@@ -43,31 +43,40 @@ namespace MideFrameWork.UI.WebSite.Admin {
         protected global::System.Web.UI.WebControls.TextBox TextBox_PromoterID;
  		                       
          /// <summary>
-         /// TextBox_LinkManID 控件。
+         /// TextBox_LinkMan 控件。
          /// </summary>
          /// <remarks>
          /// 自动生成的字段。
          /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
          /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_LinkManID;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_LinkMan;
  		                       
          /// <summary>
-         /// TextBox_ActivityTypeID 控件。
+         /// TextBox_LinkPhone 控件。
          /// </summary>
          /// <remarks>
          /// 自动生成的字段。
          /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
          /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_ActivityTypeID;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_LinkPhone;
  		                       
          /// <summary>
-         /// TextBox_RegionID 控件。
+         /// TextBox_ActivityType 控件。
          /// </summary>
          /// <remarks>
          /// 自动生成的字段。
          /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
          /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_RegionID;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_ActivityType;
+ 		                       
+         /// <summary>
+         /// TextBox_Region 控件。
+         /// </summary>
+         /// <remarks>
+         /// 自动生成的字段。
+         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+         /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Region;
  		                       
          /// <summary>
          /// TextBox_Address 控件。

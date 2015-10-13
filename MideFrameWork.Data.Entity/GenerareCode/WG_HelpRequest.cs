@@ -28,6 +28,16 @@ namespace MideFrameWork.Data.Entity
             set{ _title = value; }
         }
         
+		private int _type;
+		/// <summary>
+		/// 类别（1求助，2帮助）
+        /// </summary>
+        public int Type
+        {
+            get{ return _type; }
+            set{ _type = value; }
+        }
+        
 		private int _promoterid;
 		/// <summary>
 		/// 发起人ID

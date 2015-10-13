@@ -103,7 +103,19 @@
                         头像地址
                     </th>
                                         <th>
-                        区域
+                        国家
+                    </th>
+                                        <th>
+                        省份
+                    </th>
+                                        <th>
+                        市
+                    </th>
+                                        <th>
+                        区
+                    </th>
+                                        <th>
+                        社区/小区
                     </th>
                                         <th>
                         联系电话
@@ -190,7 +202,19 @@
                         <%#Eval("PhotoUrl")%>
                     </td>
                                         <td>
-                        <%#Eval("Region")%>
+                        <%#Eval("Country")%>
+                    </td>
+                                        <td>
+                        <%#Eval("Province")%>
+                    </td>
+                                        <td>
+                        <%#Eval("City")%>
+                    </td>
+                                        <td>
+                        <%#Eval("District")%>
+                    </td>
+                                        <td>
+                        <%#Eval("Community")%>
                     </td>
                                         <td>
                         <%#Eval("Phone")%>

@@ -91,7 +91,10 @@
                         详细说明
                     </th>
                                         <th>
-                        区域ID
+                        区域
+                    </th>
+                                        <th>
+                        状态
                     </th>
                                         <th>
                         创建日期
@@ -130,7 +133,10 @@
                         <%#Eval("Detail")%>
                     </td>
                                         <td>
-                        <%#Eval("RegionID")%>
+                        <%#Eval("Region")%>
+                    </td>
+                                        <td>
+                        <%#Eval("Status")%>
                     </td>
                                         <td>
                         <%#Eval("CreateDate")%>

@@ -47,6 +47,14 @@
             </tr>
                       		            <tr>
                 <td>
+                    类别（1求助，2帮助）：
+                </td>
+                <td>                    
+                                                                       <asp:TextBox id="TextBox_Type" runat="server" Width="200px"></asp:TextBox>
+                               </td>
+            </tr>
+                      		            <tr>
+                <td>
                     发起人ID：
                 </td>
                 <td>                    

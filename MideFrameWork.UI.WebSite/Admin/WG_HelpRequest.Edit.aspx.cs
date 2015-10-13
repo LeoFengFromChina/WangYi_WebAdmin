@@ -40,6 +40,7 @@ namespace MideFrameWork.UI.WebSite.Admin
                                             
                                             
                                             
+                                            
                         TextBox_BeginTime.Attributes.Add("onclick", "MyCalendar.SetDate(this);");
                                             
                                             
@@ -77,6 +78,7 @@ namespace MideFrameWork.UI.WebSite.Admin
                 _WG_HelpRequestEntity = DataProvider.GetInstance().GetWG_HelpRequestEntity(int.Parse(ctrID));
 
                				                				                   TextBox_Title.Text = _WG_HelpRequestEntity.Title.ToString();
+                                				                   TextBox_Type.Text = _WG_HelpRequestEntity.Type.ToString();
                                 				                   TextBox_PromoterID.Text = _WG_HelpRequestEntity.PromoterID.ToString();
                                 				                   TextBox_LinkMan.Text = _WG_HelpRequestEntity.LinkMan.ToString();
                                 				                   TextBox_LinkPhone.Text = _WG_HelpRequestEntity.LinkPhone.ToString();
@@ -101,6 +103,13 @@ namespace MideFrameWork.UI.WebSite.Admin
                  if (string.IsNullOrEmpty(_Title))
                    {
                         Alert("[ 求助标题 ]不能为空");
+                        return;
+                  }
+				                                           
+                  var _Type = Request.Form["TextBox_Type"];
+                 if (string.IsNullOrEmpty(_Type))
+                   {
+                        Alert("[ 类别（1求助，2帮助） ]不能为空");
                         return;
                   }
 				                                           
@@ -184,6 +193,8 @@ namespace MideFrameWork.UI.WebSite.Admin
                  	                 	                
                     _WG_HelpRequestEntity.Title =Convert.ToString(_Title.ToString());
                		                        	  		                            
+                 	                 	                     _WG_HelpRequestEntity.Type =Convert.ToInt32(_Type.ToString());
+                	                        	  		                            
                  	                 	                     _WG_HelpRequestEntity.PromoterID =Convert.ToInt32(_PromoterID.ToString());
                 	                        	  		                            
                  	                 	                
@@ -236,6 +247,13 @@ namespace MideFrameWork.UI.WebSite.Admin
                  if (string.IsNullOrEmpty(_Title))
                    {
                         Alert("[ 求助标题 ]不能为空");
+                        return;
+                  }
+				                                           
+                  var _Type = Request.Form["TextBox_Type"];
+                 if (string.IsNullOrEmpty(_Type))
+                   {
+                        Alert("[ 类别（1求助，2帮助） ]不能为空");
                         return;
                   }
 				                                           
@@ -316,6 +334,9 @@ namespace MideFrameWork.UI.WebSite.Admin
                                                                    
                     _WG_HelpRequestEntity.Title =Convert.ToString(_Title.ToString());
                                					                         
+                
+                                                                        _WG_HelpRequestEntity.Type =Convert.ToInt32(_Type.ToString());
+                                					                         
                 
                                                                         _WG_HelpRequestEntity.PromoterID =Convert.ToInt32(_PromoterID.ToString());
                                 					                         

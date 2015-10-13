@@ -31,8 +31,7 @@ namespace MideFrameWork.Data.SqlServer
 			};
 			                        
 						parameters[0].Value = ID;
-			
-			return DbHelperSQL.Exists(strSql.ToString(),parameters);
+						return DbHelperSQL.Exists(strSql.ToString(),parameters);
 		}
 		
 		/// <summary>
@@ -42,17 +41,18 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into WG_Activities(");			
-            strSql.Append("Title,PromoterID,LinkManID,ActivityTypeID,RegionID,Address,NeedMenberCount,BeginTime,Detail,Status,CreateDate,UpdateDate");
+            strSql.Append("Title,PromoterID,LinkMan,LinkPhone,ActivityType,Region,Address,NeedMenberCount,BeginTime,Detail,Status,CreateDate,UpdateDate");
 			strSql.Append(") values (");
-            strSql.Append("@Title,@PromoterID,@LinkManID,@ActivityTypeID,@RegionID,@Address,@NeedMenberCount,@BeginTime,@Detail,@Status,@CreateDate,@UpdateDate");            
+            strSql.Append("@Title,@PromoterID,@LinkMan,@LinkPhone,@ActivityType,@Region,@Address,@NeedMenberCount,@BeginTime,@Detail,@Status,@CreateDate,@UpdateDate");            
             strSql.Append(") ");            
             strSql.Append(";select @@IDENTITY");		
 			SqlParameter[] parameters = {
 			            new SqlParameter("@Title", SqlDbType.NVarChar,128) ,            
                         new SqlParameter("@PromoterID", SqlDbType.Int,4) ,            
-                        new SqlParameter("@LinkManID", SqlDbType.Int,4) ,            
-                        new SqlParameter("@ActivityTypeID", SqlDbType.Int,4) ,            
-                        new SqlParameter("@RegionID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@LinkMan", SqlDbType.NVarChar,32) ,            
+                        new SqlParameter("@LinkPhone", SqlDbType.NVarChar,11) ,            
+                        new SqlParameter("@ActivityType", SqlDbType.NVarChar,64) ,            
+                        new SqlParameter("@Region", SqlDbType.NVarChar,64) ,            
                         new SqlParameter("@Address", SqlDbType.NVarChar,512) ,            
                         new SqlParameter("@NeedMenberCount", SqlDbType.Int,4) ,            
                         new SqlParameter("@BeginTime", SqlDbType.DateTime) ,            
@@ -65,16 +65,17 @@ namespace MideFrameWork.Data.SqlServer
 			            
             parameters[0].Value = info.Title;                        
             parameters[1].Value = info.PromoterID;                        
-            parameters[2].Value = info.LinkManID;                        
-            parameters[3].Value = info.ActivityTypeID;                        
-            parameters[4].Value = info.RegionID;                        
-            parameters[5].Value = info.Address;                        
-            parameters[6].Value = info.NeedMenberCount;                        
-            parameters[7].Value = info.BeginTime;                        
-            parameters[8].Value = info.Detail;                        
-            parameters[9].Value = info.Status;                        
-            parameters[10].Value = info.CreateDate;                        
-            parameters[11].Value = info.UpdateDate;                        
+            parameters[2].Value = info.LinkMan;                        
+            parameters[3].Value = info.LinkPhone;                        
+            parameters[4].Value = info.ActivityType;                        
+            parameters[5].Value = info.Region;                        
+            parameters[6].Value = info.Address;                        
+            parameters[7].Value = info.NeedMenberCount;                        
+            parameters[8].Value = info.BeginTime;                        
+            parameters[9].Value = info.Detail;                        
+            parameters[10].Value = info.Status;                        
+            parameters[11].Value = info.CreateDate;                        
+            parameters[12].Value = info.UpdateDate;                        
 			   
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);			
 			if (obj == null)
@@ -100,9 +101,10 @@ namespace MideFrameWork.Data.SqlServer
 			                                                
             strSql.Append(" Title = @Title , ");                                    
             strSql.Append(" PromoterID = @PromoterID , ");                                    
-            strSql.Append(" LinkManID = @LinkManID , ");                                    
-            strSql.Append(" ActivityTypeID = @ActivityTypeID , ");                                    
-            strSql.Append(" RegionID = @RegionID , ");                                    
+            strSql.Append(" LinkMan = @LinkMan , ");                                    
+            strSql.Append(" LinkPhone = @LinkPhone , ");                                    
+            strSql.Append(" ActivityType = @ActivityType , ");                                    
+            strSql.Append(" Region = @Region , ");                                    
             strSql.Append(" Address = @Address , ");                                    
             strSql.Append(" NeedMenberCount = @NeedMenberCount , ");                                    
             strSql.Append(" BeginTime = @BeginTime , ");                                    
@@ -112,22 +114,23 @@ namespace MideFrameWork.Data.SqlServer
             strSql.Append(" UpdateDate = @UpdateDate  ");            			
 			strSql.Append(" where ID=@ID ");			
 			SqlParameter[] parameters = {
-			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@Title", SqlDbType.NVarChar,128) ,                        new SqlParameter("@PromoterID", SqlDbType.Int,4) ,                        new SqlParameter("@LinkManID", SqlDbType.Int,4) ,                        new SqlParameter("@ActivityTypeID", SqlDbType.Int,4) ,                        new SqlParameter("@RegionID", SqlDbType.Int,4) ,                        new SqlParameter("@Address", SqlDbType.NVarChar,512) ,                        new SqlParameter("@NeedMenberCount", SqlDbType.Int,4) ,                        new SqlParameter("@BeginTime", SqlDbType.DateTime) ,                        new SqlParameter("@Detail", SqlDbType.NVarChar) ,                        new SqlParameter("@Status", SqlDbType.Int,4) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime) ,                        new SqlParameter("@UpdateDate", SqlDbType.DateTime)               
+			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@Title", SqlDbType.NVarChar,128) ,                        new SqlParameter("@PromoterID", SqlDbType.Int,4) ,                        new SqlParameter("@LinkMan", SqlDbType.NVarChar,32) ,                        new SqlParameter("@LinkPhone", SqlDbType.NVarChar,11) ,                        new SqlParameter("@ActivityType", SqlDbType.NVarChar,64) ,                        new SqlParameter("@Region", SqlDbType.NVarChar,64) ,                        new SqlParameter("@Address", SqlDbType.NVarChar,512) ,                        new SqlParameter("@NeedMenberCount", SqlDbType.Int,4) ,                        new SqlParameter("@BeginTime", SqlDbType.DateTime) ,                        new SqlParameter("@Detail", SqlDbType.NVarChar) ,                        new SqlParameter("@Status", SqlDbType.Int,4) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime) ,                        new SqlParameter("@UpdateDate", SqlDbType.DateTime)               
             };
 						            
             parameters[0].Value = info.ID;                        
             parameters[1].Value = info.Title;                        
             parameters[2].Value = info.PromoterID;                        
-            parameters[3].Value = info.LinkManID;                        
-            parameters[4].Value = info.ActivityTypeID;                        
-            parameters[5].Value = info.RegionID;                        
-            parameters[6].Value = info.Address;                        
-            parameters[7].Value = info.NeedMenberCount;                        
-            parameters[8].Value = info.BeginTime;                        
-            parameters[9].Value = info.Detail;                        
-            parameters[10].Value = info.Status;                        
-            parameters[11].Value = info.CreateDate;                        
-            parameters[12].Value = info.UpdateDate;                        
+            parameters[3].Value = info.LinkMan;                        
+            parameters[4].Value = info.LinkPhone;                        
+            parameters[5].Value = info.ActivityType;                        
+            parameters[6].Value = info.Region;                        
+            parameters[7].Value = info.Address;                        
+            parameters[8].Value = info.NeedMenberCount;                        
+            parameters[9].Value = info.BeginTime;                        
+            parameters[10].Value = info.Detail;                        
+            parameters[11].Value = info.Status;                        
+            parameters[12].Value = info.CreateDate;                        
+            parameters[13].Value = info.UpdateDate;                        
             int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
 			{
@@ -191,7 +194,7 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID, Title, PromoterID, LinkManID, ActivityTypeID, RegionID, Address, NeedMenberCount, BeginTime, Detail, Status, CreateDate, UpdateDate  ");			
+			strSql.Append("select ID, Title, PromoterID, LinkMan, LinkPhone, ActivityType, Region, Address, NeedMenberCount, BeginTime, Detail, Status, CreateDate, UpdateDate  ");			
 			strSql.Append("  from WG_Activities ");
 			strSql.Append(" where ID=@ID");
 			SqlParameter[] parameters ={
@@ -218,7 +221,7 @@ namespace MideFrameWork.Data.SqlServer
 		public IList<MideFrameWork.Data.Entity.WG_ActivitiesEntity> GetWG_ActivitiesList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,Title,PromoterID,LinkManID,ActivityTypeID,RegionID,Address,NeedMenberCount,BeginTime,Detail,Status,CreateDate,UpdateDate");
+			strSql.Append("select ID,Title,PromoterID,LinkMan,LinkPhone,ActivityType,Region,Address,NeedMenberCount,BeginTime,Detail,Status,CreateDate,UpdateDate");
 			strSql.Append(" FROM WG_Activities ");
 			if(strWhere.Trim()!="")
 			{
@@ -247,7 +250,7 @@ namespace MideFrameWork.Data.SqlServer
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append("ID,Title,PromoterID,LinkManID,ActivityTypeID,RegionID,Address,NeedMenberCount,BeginTime,Detail,Status,CreateDate,UpdateDate");
+			strSql.Append("ID,Title,PromoterID,LinkMan,LinkPhone,ActivityType,Region,Address,NeedMenberCount,BeginTime,Detail,Status,CreateDate,UpdateDate");
 			strSql.Append(" FROM WG_Activities ");
 			if(strWhere.Trim()!="")
 			{
@@ -280,7 +283,7 @@ namespace MideFrameWork.Data.SqlServer
             IList<MideFrameWork.Data.Entity.WG_ActivitiesEntity> list = new List<MideFrameWork.Data.Entity.WG_ActivitiesEntity>();
             recordCount = 0;
             totalPage = 0;
-            DataSet ds = GetRecordByPage(" WG_Activities", "ID,Title,PromoterID,LinkManID,ActivityTypeID,RegionID,Address,NeedMenberCount,BeginTime,Detail,Status,CreateDate,UpdateDate", orderBy,strWhere,PageSize,PageIndex);
+            DataSet ds = GetRecordByPage(" WG_Activities", "ID,Title,PromoterID,LinkMan,LinkPhone,ActivityType,Region,Address,NeedMenberCount,BeginTime,Detail,Status,CreateDate,UpdateDate", orderBy,strWhere,PageSize,PageIndex);
             if (ds.Tables.Count == 2)
             {
                 // 组装
@@ -317,21 +320,26 @@ namespace MideFrameWork.Data.SqlServer
 				else
 					info.PromoterID=int.Parse(dr["PromoterID"].ToString());
 									
-																						if(DBNull.Value==dr["LinkManID"])
-					info.LinkManID=0;
-				else
-					info.LinkManID=int.Parse(dr["LinkManID"].ToString());
-									
-																						if(DBNull.Value==dr["ActivityTypeID"])
-					info.ActivityTypeID=0;
-				else
-					info.ActivityTypeID=int.Parse(dr["ActivityTypeID"].ToString());
-									
-																						if(DBNull.Value==dr["RegionID"])
-					info.RegionID=0;
-				else
-					info.RegionID=int.Parse(dr["RegionID"].ToString());
-									
+																								
+						if(DBNull.Value==dr["LinkMan"])
+				info.LinkMan= string.Empty;
+			else	
+				info.LinkMan= dr["LinkMan"].ToString();
+																								
+						if(DBNull.Value==dr["LinkPhone"])
+				info.LinkPhone= string.Empty;
+			else	
+				info.LinkPhone= dr["LinkPhone"].ToString();
+																								
+						if(DBNull.Value==dr["ActivityType"])
+				info.ActivityType= string.Empty;
+			else	
+				info.ActivityType= dr["ActivityType"].ToString();
+																								
+						if(DBNull.Value==dr["Region"])
+				info.Region= string.Empty;
+			else	
+				info.Region= dr["Region"].ToString();
 																								
 						if(DBNull.Value==dr["Address"])
 				info.Address= string.Empty;

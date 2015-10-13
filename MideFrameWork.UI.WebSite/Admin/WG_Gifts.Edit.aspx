@@ -79,10 +79,18 @@
             </tr>
                       		            <tr>
                 <td>
-                    区域ID：
+                    区域：
                 </td>
                 <td>                    
-                                                                       <asp:TextBox id="TextBox_RegionID" runat="server" Width="200px"></asp:TextBox>
+                                                                       <asp:TextBox id="TextBox_Region" runat="server" Width="200px"></asp:TextBox>
+                               </td>
+            </tr>
+                      		            <tr>
+                <td>
+                    状态：
+                </td>
+                <td>                    
+                                                                       <asp:TextBox id="TextBox_Status" runat="server" Width="200px"></asp:TextBox>
                                </td>
             </tr>
                       		           		                    <tr>

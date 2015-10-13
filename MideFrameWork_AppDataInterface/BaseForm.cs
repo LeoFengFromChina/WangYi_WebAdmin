@@ -8,6 +8,7 @@ using MideFrameWork.Data.Entity;
 using System.Runtime.Serialization.Json;
 using System.IO;
 using System.Text;
+using System.Data;
 namespace MideFrameWork_AppDataInterface
 {
     public class BaseForm
@@ -47,8 +48,11 @@ namespace MideFrameWork_AppDataInterface
     [KnownType(typeof(WG_HelpRequestEntity))]
     [KnownType(typeof(RequestView))]
     [KnownType(typeof(List<RequestView>))]
+    [KnownType(typeof(List<MenberRankingView>))]
+    [KnownType(typeof(List<OnGoingGiftsView>))]
+    [KnownType(typeof(List<WG_GiftsEntity>))]
+    [KnownType(typeof(List<GlobalPictureEntity>))]        
     [DataContract]
-    [Serializable]
     public class JsonBaseObject
     {
         private int _code;

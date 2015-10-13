@@ -74,8 +74,8 @@ namespace MideFrameWork.UI.WebSite.Admin
                                 				                   TextBox_CaptainID.Text = _WG_TeamEntity.CaptainID.ToString();
                                 				                   TextBox_LinkManID.Text = _WG_TeamEntity.LinkManID.ToString();
                                 				                   TextBox_TeamAim.Text = _WG_TeamEntity.TeamAim.ToString();
-                                				                   TextBox_ServiceIntentionIDs.Text = _WG_TeamEntity.ServiceIntentionIDs.ToString();
-                                				                   TextBox_RegionID.Text = _WG_TeamEntity.RegionID.ToString();
+                                				                   TextBox_ServiceIntention.Text = _WG_TeamEntity.ServiceIntention.ToString();
+                                				                   TextBox_Region.Text = _WG_TeamEntity.Region.ToString();
                                 				                				                            }
         }
         #endregion
@@ -114,17 +114,17 @@ namespace MideFrameWork.UI.WebSite.Admin
                         return;
                   }
 				                                           
-                  var _ServiceIntentionIDs = Request.Form["TextBox_ServiceIntentionIDs"];
-                 if (string.IsNullOrEmpty(_ServiceIntentionIDs))
+                  var _ServiceIntention = Request.Form["TextBox_ServiceIntention"];
+                 if (string.IsNullOrEmpty(_ServiceIntention))
                    {
-                        Alert("[ 服务意向IDs ]不能为空");
+                        Alert("[ 服务意向 ]不能为空");
                         return;
                   }
 				                                           
-                  var _RegionID = Request.Form["TextBox_RegionID"];
-                 if (string.IsNullOrEmpty(_RegionID))
+                  var _Region = Request.Form["TextBox_Region"];
+                 if (string.IsNullOrEmpty(_Region))
                    {
-                        Alert("[ 区域ID ]不能为空");
+                        Alert("[ 区域 ]不能为空");
                         return;
                   }
 				                                                                                
@@ -146,10 +146,11 @@ namespace MideFrameWork.UI.WebSite.Admin
                     _WG_TeamEntity.TeamAim =Convert.ToString(_TeamAim.ToString());
                		                        	  		                            
                  	                 	                
-                    _WG_TeamEntity.ServiceIntentionIDs =Convert.ToString(_ServiceIntentionIDs.ToString());
+                    _WG_TeamEntity.ServiceIntention =Convert.ToString(_ServiceIntention.ToString());
                		                        	  		                            
-                 	                 	                     _WG_TeamEntity.RegionID =Convert.ToInt32(_RegionID.ToString());
-                	                        	  		        
+                 	                 	                
+                    _WG_TeamEntity.Region =Convert.ToString(_Region.ToString());
+               		                        	  		        
 		       	_WG_TeamEntity.CreateDate =DateTime.Now;
 		               	  		        
 		       	_WG_TeamEntity.UpdateDate =DateTime.Now;
@@ -201,25 +202,22 @@ namespace MideFrameWork.UI.WebSite.Admin
                         return;
                   }
 				                                           
-                  var _ServiceIntentionIDs = Request.Form["TextBox_ServiceIntentionIDs"];
-                 if (string.IsNullOrEmpty(_ServiceIntentionIDs))
+                  var _ServiceIntention = Request.Form["TextBox_ServiceIntention"];
+                 if (string.IsNullOrEmpty(_ServiceIntention))
                    {
-                        Alert("[ 服务意向IDs ]不能为空");
+                        Alert("[ 服务意向 ]不能为空");
                         return;
                   }
 				                                           
-                  var _RegionID = Request.Form["TextBox_RegionID"];
-                 if (string.IsNullOrEmpty(_RegionID))
+                  var _Region = Request.Form["TextBox_Region"];
+                 if (string.IsNullOrEmpty(_Region))
                    {
-                        Alert("[ 区域ID ]不能为空");
+                        Alert("[ 区域 ]不能为空");
                         return;
                   }
 				                                                                                
 	        #endregion
-
-
-             
-  
+	        
                		                       					                         
                 
                                                                    
@@ -237,11 +235,12 @@ namespace MideFrameWork.UI.WebSite.Admin
                                					                         
                 
                                                                    
-                    _WG_TeamEntity.ServiceIntentionIDs =Convert.ToString(_ServiceIntentionIDs.ToString());
+                    _WG_TeamEntity.ServiceIntention =Convert.ToString(_ServiceIntention.ToString());
                                					                         
                 
-                                                                        _WG_TeamEntity.RegionID =Convert.ToInt32(_RegionID.ToString());
-                                					                       					        
+                                                                   
+                    _WG_TeamEntity.Region =Convert.ToString(_Region.ToString());
+                               					                       					        
 		       	_WG_TeamEntity.UpdateDate =DateTime.Now;
 		       			            try
             {

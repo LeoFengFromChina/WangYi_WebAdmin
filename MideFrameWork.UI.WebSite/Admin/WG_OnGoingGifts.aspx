@@ -85,6 +85,9 @@
                         礼物ID
                     </th>
                                         <th>
+                        状态
+                    </th>
+                                        <th>
                         创建日期
                     </th>
                                         <th>
@@ -110,6 +113,9 @@
                     </td>
                                         <td>
                         <%#Eval("GiftID")%>
+                    </td>
+                                        <td>
+                        <%#Eval("Status")%>
                     </td>
                                         <td>
                         <%#Eval("CreateDate")%>

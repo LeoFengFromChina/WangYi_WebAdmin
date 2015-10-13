@@ -38,34 +38,44 @@ namespace MideFrameWork.Data.Entity
             set{ _promoterid = value; }
         }
         
-		private int _linkmanid;
+		private string _linkman;
 		/// <summary>
 		/// 联系人ID
         /// </summary>
-        public int LinkManID
+        public string LinkMan
         {
-            get{ return _linkmanid; }
-            set{ _linkmanid = value; }
+            get{ return _linkman; }
+            set{ _linkman = value; }
         }
         
-		private int _activitytypeid;
+		private string _linkphone;
+		/// <summary>
+		/// LinkPhone
+        /// </summary>
+        public string LinkPhone
+        {
+            get{ return _linkphone; }
+            set{ _linkphone = value; }
+        }
+        
+		private string _activitytype;
 		/// <summary>
 		/// 活动类型ID
         /// </summary>
-        public int ActivityTypeID
+        public string ActivityType
         {
-            get{ return _activitytypeid; }
-            set{ _activitytypeid = value; }
+            get{ return _activitytype; }
+            set{ _activitytype = value; }
         }
         
-		private int _regionid;
+		private string _region;
 		/// <summary>
 		/// 区域ID
         /// </summary>
-        public int RegionID
+        public string Region
         {
-            get{ return _regionid; }
-            set{ _regionid = value; }
+            get{ return _region; }
+            set{ _region = value; }
         }
         
 		private string _address;

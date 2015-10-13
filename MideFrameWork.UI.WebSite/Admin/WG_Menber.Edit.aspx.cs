@@ -59,6 +59,10 @@ namespace MideFrameWork.UI.WebSite.Admin
                                             
                                             
                                             
+                                            
+                                            
+                                            
+                                            
                                     
             //表单提交事件
             Button_submit.Click += new EventHandler(Button_submit_Click);
@@ -95,7 +99,11 @@ namespace MideFrameWork.UI.WebSite.Admin
                                 				                   TextBox_Email.Text = _WG_MenberEntity.Email.ToString();
                                 				                   TextBox_Flag.Text = _WG_MenberEntity.Flag.ToString();
                                 				                   TextBox_PhotoUrl.Text = _WG_MenberEntity.PhotoUrl.ToString();
-                                				                   TextBox_Region.Text = _WG_MenberEntity.Region.ToString();
+                                				                   TextBox_Country.Text = _WG_MenberEntity.Country.ToString();
+                                				                   TextBox_Province.Text = _WG_MenberEntity.Province.ToString();
+                                				                   TextBox_City.Text = _WG_MenberEntity.City.ToString();
+                                				                   TextBox_District.Text = _WG_MenberEntity.District.ToString();
+                                				                   TextBox_Community.Text = _WG_MenberEntity.Community.ToString();
                                 				                   TextBox_Phone.Text = _WG_MenberEntity.Phone.ToString();
                                 				                   TextBox_WeChat.Text = _WG_MenberEntity.WeChat.ToString();
                                 				                   TextBox_QQ.Text = _WG_MenberEntity.QQ.ToString();
@@ -181,10 +189,38 @@ namespace MideFrameWork.UI.WebSite.Admin
                         return;
                   }
 				                                           
-                  var _Region = Request.Form["TextBox_Region"];
-                 if (string.IsNullOrEmpty(_Region))
+                  var _Country = Request.Form["TextBox_Country"];
+                 if (string.IsNullOrEmpty(_Country))
                    {
-                        Alert("[ 区域 ]不能为空");
+                        Alert("[ 国家 ]不能为空");
+                        return;
+                  }
+				                                           
+                  var _Province = Request.Form["TextBox_Province"];
+                 if (string.IsNullOrEmpty(_Province))
+                   {
+                        Alert("[ 省份 ]不能为空");
+                        return;
+                  }
+				                                           
+                  var _City = Request.Form["TextBox_City"];
+                 if (string.IsNullOrEmpty(_City))
+                   {
+                        Alert("[ 市 ]不能为空");
+                        return;
+                  }
+				                                           
+                  var _District = Request.Form["TextBox_District"];
+                 if (string.IsNullOrEmpty(_District))
+                   {
+                        Alert("[ 区 ]不能为空");
+                        return;
+                  }
+				                                           
+                  var _Community = Request.Form["TextBox_Community"];
+                 if (string.IsNullOrEmpty(_Community))
+                   {
+                        Alert("[ 社区/小区 ]不能为空");
                         return;
                   }
 				                                           
@@ -305,7 +341,19 @@ namespace MideFrameWork.UI.WebSite.Admin
                     _WG_MenberEntity.PhotoUrl =Convert.ToString(_PhotoUrl.ToString());
                		                        	  		                            
                  	                 	                
-                    _WG_MenberEntity.Region =Convert.ToString(_Region.ToString());
+                    _WG_MenberEntity.Country =Convert.ToString(_Country.ToString());
+               		                        	  		                            
+                 	                 	                
+                    _WG_MenberEntity.Province =Convert.ToString(_Province.ToString());
+               		                        	  		                            
+                 	                 	                
+                    _WG_MenberEntity.City =Convert.ToString(_City.ToString());
+               		                        	  		                            
+                 	                 	                
+                    _WG_MenberEntity.District =Convert.ToString(_District.ToString());
+               		                        	  		                            
+                 	                 	                
+                    _WG_MenberEntity.Community =Convert.ToString(_Community.ToString());
                		                        	  		                            
                  	                 	                
                     _WG_MenberEntity.Phone =Convert.ToString(_Phone.ToString());
@@ -427,10 +475,38 @@ namespace MideFrameWork.UI.WebSite.Admin
                         return;
                   }
 				                                           
-                  var _Region = Request.Form["TextBox_Region"];
-                 if (string.IsNullOrEmpty(_Region))
+                  var _Country = Request.Form["TextBox_Country"];
+                 if (string.IsNullOrEmpty(_Country))
                    {
-                        Alert("[ 区域 ]不能为空");
+                        Alert("[ 国家 ]不能为空");
+                        return;
+                  }
+				                                           
+                  var _Province = Request.Form["TextBox_Province"];
+                 if (string.IsNullOrEmpty(_Province))
+                   {
+                        Alert("[ 省份 ]不能为空");
+                        return;
+                  }
+				                                           
+                  var _City = Request.Form["TextBox_City"];
+                 if (string.IsNullOrEmpty(_City))
+                   {
+                        Alert("[ 市 ]不能为空");
+                        return;
+                  }
+				                                           
+                  var _District = Request.Form["TextBox_District"];
+                 if (string.IsNullOrEmpty(_District))
+                   {
+                        Alert("[ 区 ]不能为空");
+                        return;
+                  }
+				                                           
+                  var _Community = Request.Form["TextBox_Community"];
+                 if (string.IsNullOrEmpty(_Community))
+                   {
+                        Alert("[ 社区/小区 ]不能为空");
                         return;
                   }
 				                                           
@@ -557,7 +633,23 @@ namespace MideFrameWork.UI.WebSite.Admin
                                					                         
                 
                                                                    
-                    _WG_MenberEntity.Region =Convert.ToString(_Region.ToString());
+                    _WG_MenberEntity.Country =Convert.ToString(_Country.ToString());
+                               					                         
+                
+                                                                   
+                    _WG_MenberEntity.Province =Convert.ToString(_Province.ToString());
+                               					                         
+                
+                                                                   
+                    _WG_MenberEntity.City =Convert.ToString(_City.ToString());
+                               					                         
+                
+                                                                   
+                    _WG_MenberEntity.District =Convert.ToString(_District.ToString());
+                               					                         
+                
+                                                                   
+                    _WG_MenberEntity.Community =Convert.ToString(_Community.ToString());
                                					                         
                 
                                                                    

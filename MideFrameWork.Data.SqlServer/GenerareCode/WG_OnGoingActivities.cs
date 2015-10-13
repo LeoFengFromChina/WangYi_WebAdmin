@@ -31,8 +31,7 @@ namespace MideFrameWork.Data.SqlServer
 			};
 			                        
 						parameters[0].Value = ID;
-			
-			return DbHelperSQL.Exists(strSql.ToString(),parameters);
+						return DbHelperSQL.Exists(strSql.ToString(),parameters);
 		}
 		
 		/// <summary>
@@ -42,21 +41,23 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into WG_OnGoingActivities(");			
-            strSql.Append("ActivityID,MenberID,CreateDate");
+            strSql.Append("ActivityID,MenberID,Status,CreateDate");
 			strSql.Append(") values (");
-            strSql.Append("@ActivityID,@MenberID,@CreateDate");            
+            strSql.Append("@ActivityID,@MenberID,@Status,@CreateDate");            
             strSql.Append(") ");            
             strSql.Append(";select @@IDENTITY");		
 			SqlParameter[] parameters = {
 			            new SqlParameter("@ActivityID", SqlDbType.Int,4) ,            
                         new SqlParameter("@MenberID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Status", SqlDbType.Int,4) ,            
                         new SqlParameter("@CreateDate", SqlDbType.DateTime)             
               
             };
 			            
             parameters[0].Value = info.ActivityID;                        
             parameters[1].Value = info.MenberID;                        
-            parameters[2].Value = info.CreateDate;                        
+            parameters[2].Value = info.Status;                        
+            parameters[3].Value = info.CreateDate;                        
 			   
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);			
 			if (obj == null)
@@ -82,16 +83,18 @@ namespace MideFrameWork.Data.SqlServer
 			                                                
             strSql.Append(" ActivityID = @ActivityID , ");                                    
             strSql.Append(" MenberID = @MenberID , ");                                    
+            strSql.Append(" Status = @Status , ");                                    
             strSql.Append(" CreateDate = @CreateDate  ");            			
 			strSql.Append(" where ID=@ID ");			
 			SqlParameter[] parameters = {
-			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@ActivityID", SqlDbType.Int,4) ,                        new SqlParameter("@MenberID", SqlDbType.Int,4) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime)               
+			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@ActivityID", SqlDbType.Int,4) ,                        new SqlParameter("@MenberID", SqlDbType.Int,4) ,                        new SqlParameter("@Status", SqlDbType.Int,4) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime)               
             };
 						            
             parameters[0].Value = info.ID;                        
             parameters[1].Value = info.ActivityID;                        
             parameters[2].Value = info.MenberID;                        
-            parameters[3].Value = info.CreateDate;                        
+            parameters[3].Value = info.Status;                        
+            parameters[4].Value = info.CreateDate;                        
             int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
 			{
@@ -155,7 +158,7 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID, ActivityID, MenberID, CreateDate  ");			
+			strSql.Append("select ID, ActivityID, MenberID, Status, CreateDate  ");			
 			strSql.Append("  from WG_OnGoingActivities ");
 			strSql.Append(" where ID=@ID");
 			SqlParameter[] parameters ={
@@ -182,7 +185,7 @@ namespace MideFrameWork.Data.SqlServer
 		public IList<MideFrameWork.Data.Entity.WG_OnGoingActivitiesEntity> GetWG_OnGoingActivitiesList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,ActivityID,MenberID,CreateDate");
+			strSql.Append("select ID,ActivityID,MenberID,Status,CreateDate");
 			strSql.Append(" FROM WG_OnGoingActivities ");
 			if(strWhere.Trim()!="")
 			{
@@ -211,7 +214,7 @@ namespace MideFrameWork.Data.SqlServer
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append("ID,ActivityID,MenberID,CreateDate");
+			strSql.Append("ID,ActivityID,MenberID,Status,CreateDate");
 			strSql.Append(" FROM WG_OnGoingActivities ");
 			if(strWhere.Trim()!="")
 			{
@@ -244,7 +247,7 @@ namespace MideFrameWork.Data.SqlServer
             IList<MideFrameWork.Data.Entity.WG_OnGoingActivitiesEntity> list = new List<MideFrameWork.Data.Entity.WG_OnGoingActivitiesEntity>();
             recordCount = 0;
             totalPage = 0;
-            DataSet ds = GetRecordByPage(" WG_OnGoingActivities", "ID,ActivityID,MenberID,CreateDate", orderBy,strWhere,PageSize,PageIndex);
+            DataSet ds = GetRecordByPage(" WG_OnGoingActivities", "ID,ActivityID,MenberID,Status,CreateDate", orderBy,strWhere,PageSize,PageIndex);
             if (ds.Tables.Count == 2)
             {
                 // 组装
@@ -280,6 +283,11 @@ namespace MideFrameWork.Data.SqlServer
 					info.MenberID=0;
 				else
 					info.MenberID=int.Parse(dr["MenberID"].ToString());
+									
+																						if(DBNull.Value==dr["Status"])
+					info.Status=0;
+				else
+					info.Status=int.Parse(dr["Status"].ToString());
 									
 																									if(DBNull.Value==dr["CreateDate"])
 					info.CreateDate=DateTime.Now;

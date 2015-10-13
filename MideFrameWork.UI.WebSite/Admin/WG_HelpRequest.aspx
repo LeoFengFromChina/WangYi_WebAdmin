@@ -73,10 +73,13 @@
                         <input type="checkbox" id="chkAll" onclick="javascript:return SelectAll(this.checked,this.id);">全选
                     </th>
                                         <th>
-                        ID
+                        
                     </th>
                                         <th>
                         求助标题
+                    </th>
+                                        <th>
+                        类别（1求助，2帮助）
                     </th>
                                         <th>
                         发起人ID
@@ -131,6 +134,9 @@
                     </td>
                                         <td>
                         <%#Eval("Title")%>
+                    </td>
+                                        <td>
+                        <%#Eval("Type")%>
                     </td>
                                         <td>
                         <%#Eval("PromoterID")%>

@@ -61,6 +61,14 @@
                                                                        <asp:TextBox id="TextBox_GiftID" runat="server" Width="200px"></asp:TextBox>
                                </td>
             </tr>
+                      		            <tr>
+                <td>
+                    状态：
+                </td>
+                <td>                    
+                                                                       <asp:TextBox id="TextBox_Status" runat="server" Width="200px"></asp:TextBox>
+                               </td>
+            </tr>
                       		                    <tr>
             <td></td>
             <td>

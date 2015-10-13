@@ -31,8 +31,7 @@ namespace MideFrameWork.Data.SqlServer
 			};
 			                        
 						parameters[0].Value = ID;
-			
-			return DbHelperSQL.Exists(strSql.ToString(),parameters);
+						return DbHelperSQL.Exists(strSql.ToString(),parameters);
 		}
 		
 		/// <summary>
@@ -42,9 +41,9 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into WG_Gifts(");			
-            strSql.Append("Title,PhotoUrl,NeedScores,Count,Detail,RegionID,CreateDate,UpdateDate");
+            strSql.Append("Title,PhotoUrl,NeedScores,Count,Detail,Region,Status,CreateDate,UpdateDate");
 			strSql.Append(") values (");
-            strSql.Append("@Title,@PhotoUrl,@NeedScores,@Count,@Detail,@RegionID,@CreateDate,@UpdateDate");            
+            strSql.Append("@Title,@PhotoUrl,@NeedScores,@Count,@Detail,@Region,@Status,@CreateDate,@UpdateDate");            
             strSql.Append(") ");            
             strSql.Append(";select @@IDENTITY");		
 			SqlParameter[] parameters = {
@@ -53,7 +52,8 @@ namespace MideFrameWork.Data.SqlServer
                         new SqlParameter("@NeedScores", SqlDbType.Int,4) ,            
                         new SqlParameter("@Count", SqlDbType.Int,4) ,            
                         new SqlParameter("@Detail", SqlDbType.NVarChar) ,            
-                        new SqlParameter("@RegionID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Region", SqlDbType.NVarChar,64) ,            
+                        new SqlParameter("@Status", SqlDbType.Int,4) ,            
                         new SqlParameter("@CreateDate", SqlDbType.DateTime) ,            
                         new SqlParameter("@UpdateDate", SqlDbType.DateTime)             
               
@@ -64,9 +64,10 @@ namespace MideFrameWork.Data.SqlServer
             parameters[2].Value = info.NeedScores;                        
             parameters[3].Value = info.Count;                        
             parameters[4].Value = info.Detail;                        
-            parameters[5].Value = info.RegionID;                        
-            parameters[6].Value = info.CreateDate;                        
-            parameters[7].Value = info.UpdateDate;                        
+            parameters[5].Value = info.Region;                        
+            parameters[6].Value = info.Status;                        
+            parameters[7].Value = info.CreateDate;                        
+            parameters[8].Value = info.UpdateDate;                        
 			   
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);			
 			if (obj == null)
@@ -95,12 +96,13 @@ namespace MideFrameWork.Data.SqlServer
             strSql.Append(" NeedScores = @NeedScores , ");                                    
             strSql.Append(" Count = @Count , ");                                    
             strSql.Append(" Detail = @Detail , ");                                    
-            strSql.Append(" RegionID = @RegionID , ");                                    
+            strSql.Append(" Region = @Region , ");                                    
+            strSql.Append(" Status = @Status , ");                                    
             strSql.Append(" CreateDate = @CreateDate , ");                                    
             strSql.Append(" UpdateDate = @UpdateDate  ");            			
 			strSql.Append(" where ID=@ID ");			
 			SqlParameter[] parameters = {
-			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@Title", SqlDbType.NVarChar,32) ,                        new SqlParameter("@PhotoUrl", SqlDbType.NVarChar,512) ,                        new SqlParameter("@NeedScores", SqlDbType.Int,4) ,                        new SqlParameter("@Count", SqlDbType.Int,4) ,                        new SqlParameter("@Detail", SqlDbType.NVarChar) ,                        new SqlParameter("@RegionID", SqlDbType.Int,4) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime) ,                        new SqlParameter("@UpdateDate", SqlDbType.DateTime)               
+			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@Title", SqlDbType.NVarChar,32) ,                        new SqlParameter("@PhotoUrl", SqlDbType.NVarChar,512) ,                        new SqlParameter("@NeedScores", SqlDbType.Int,4) ,                        new SqlParameter("@Count", SqlDbType.Int,4) ,                        new SqlParameter("@Detail", SqlDbType.NVarChar) ,                        new SqlParameter("@Region", SqlDbType.NVarChar,64) ,                        new SqlParameter("@Status", SqlDbType.Int,4) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime) ,                        new SqlParameter("@UpdateDate", SqlDbType.DateTime)               
             };
 						            
             parameters[0].Value = info.ID;                        
@@ -109,9 +111,10 @@ namespace MideFrameWork.Data.SqlServer
             parameters[3].Value = info.NeedScores;                        
             parameters[4].Value = info.Count;                        
             parameters[5].Value = info.Detail;                        
-            parameters[6].Value = info.RegionID;                        
-            parameters[7].Value = info.CreateDate;                        
-            parameters[8].Value = info.UpdateDate;                        
+            parameters[6].Value = info.Region;                        
+            parameters[7].Value = info.Status;                        
+            parameters[8].Value = info.CreateDate;                        
+            parameters[9].Value = info.UpdateDate;                        
             int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
 			{
@@ -175,7 +178,7 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID, Title, PhotoUrl, NeedScores, Count, Detail, RegionID, CreateDate, UpdateDate  ");			
+			strSql.Append("select ID, Title, PhotoUrl, NeedScores, Count, Detail, Region, Status, CreateDate, UpdateDate  ");			
 			strSql.Append("  from WG_Gifts ");
 			strSql.Append(" where ID=@ID");
 			SqlParameter[] parameters ={
@@ -202,7 +205,7 @@ namespace MideFrameWork.Data.SqlServer
 		public IList<MideFrameWork.Data.Entity.WG_GiftsEntity> GetWG_GiftsList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,Title,PhotoUrl,NeedScores,Count,Detail,RegionID,CreateDate,UpdateDate");
+			strSql.Append("select ID,Title,PhotoUrl,NeedScores,Count,Detail,Region,Status,CreateDate,UpdateDate");
 			strSql.Append(" FROM WG_Gifts ");
 			if(strWhere.Trim()!="")
 			{
@@ -231,7 +234,7 @@ namespace MideFrameWork.Data.SqlServer
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append("ID,Title,PhotoUrl,NeedScores,Count,Detail,RegionID,CreateDate,UpdateDate");
+			strSql.Append("ID,Title,PhotoUrl,NeedScores,Count,Detail,Region,Status,CreateDate,UpdateDate");
 			strSql.Append(" FROM WG_Gifts ");
 			if(strWhere.Trim()!="")
 			{
@@ -264,7 +267,7 @@ namespace MideFrameWork.Data.SqlServer
             IList<MideFrameWork.Data.Entity.WG_GiftsEntity> list = new List<MideFrameWork.Data.Entity.WG_GiftsEntity>();
             recordCount = 0;
             totalPage = 0;
-            DataSet ds = GetRecordByPage(" WG_Gifts", "ID,Title,PhotoUrl,NeedScores,Count,Detail,RegionID,CreateDate,UpdateDate", orderBy,strWhere,PageSize,PageIndex);
+            DataSet ds = GetRecordByPage(" WG_Gifts", "ID,Title,PhotoUrl,NeedScores,Count,Detail,Region,Status,CreateDate,UpdateDate", orderBy,strWhere,PageSize,PageIndex);
             if (ds.Tables.Count == 2)
             {
                 // 组装
@@ -316,10 +319,15 @@ namespace MideFrameWork.Data.SqlServer
 				info.Detail= string.Empty;
 			else	
 				info.Detail= dr["Detail"].ToString();
-																						if(DBNull.Value==dr["RegionID"])
-					info.RegionID=0;
+																								
+						if(DBNull.Value==dr["Region"])
+				info.Region= string.Empty;
+			else	
+				info.Region= dr["Region"].ToString();
+																						if(DBNull.Value==dr["Status"])
+					info.Status=0;
 				else
-					info.RegionID=int.Parse(dr["RegionID"].ToString());
+					info.Status=int.Parse(dr["Status"].ToString());
 									
 																									if(DBNull.Value==dr["CreateDate"])
 					info.CreateDate=DateTime.Now;

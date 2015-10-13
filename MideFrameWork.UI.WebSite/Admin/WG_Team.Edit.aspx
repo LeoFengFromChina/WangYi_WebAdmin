@@ -71,18 +71,18 @@
             </tr>
                       		            <tr>
                 <td>
-                    服务意向IDs：
+                    服务意向：
                 </td>
                 <td>                    
-                                                                       <asp:TextBox id="TextBox_ServiceIntentionIDs" runat="server" Width="200px"></asp:TextBox>
+                                                                       <asp:TextBox id="TextBox_ServiceIntention" runat="server" Width="200px"></asp:TextBox>
                                </td>
             </tr>
                       		            <tr>
                 <td>
-                    区域ID：
+                    区域：
                 </td>
                 <td>                    
-                                                                       <asp:TextBox id="TextBox_RegionID" runat="server" Width="200px"></asp:TextBox>
+                                                                       <asp:TextBox id="TextBox_Region" runat="server" Width="200px"></asp:TextBox>
                                </td>
             </tr>
                       		           		                    <tr>

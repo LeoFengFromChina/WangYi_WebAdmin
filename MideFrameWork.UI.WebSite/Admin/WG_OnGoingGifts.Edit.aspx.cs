@@ -39,6 +39,7 @@ namespace MideFrameWork.UI.WebSite.Admin
                                             
                                             
                                             
+                                            
                                     
             //表单提交事件
             Button_submit.Click += new EventHandler(Button_submit_Click);
@@ -69,6 +70,7 @@ namespace MideFrameWork.UI.WebSite.Admin
                				                				                   TextBox_Code.Text = _WG_OnGoingGiftsEntity.Code.ToString();
                                 				                   TextBox_MenberID.Text = _WG_OnGoingGiftsEntity.MenberID.ToString();
                                 				                   TextBox_GiftID.Text = _WG_OnGoingGiftsEntity.GiftID.ToString();
+                                				                   TextBox_Status.Text = _WG_OnGoingGiftsEntity.Status.ToString();
                                 				                            }
         }
         #endregion
@@ -99,6 +101,13 @@ namespace MideFrameWork.UI.WebSite.Admin
                         Alert("[ 礼物ID ]不能为空");
                         return;
                   }
+				                                           
+                  var _Status = Request.Form["TextBox_Status"];
+                 if (string.IsNullOrEmpty(_Status))
+                   {
+                        Alert("[ 状态 ]不能为空");
+                        return;
+                  }
 				                                                
 	        #endregion
            
@@ -113,6 +122,8 @@ namespace MideFrameWork.UI.WebSite.Admin
                  	                 	                     _WG_OnGoingGiftsEntity.MenberID =Convert.ToInt32(_MenberID.ToString());
                 	                        	  		                            
                  	                 	                     _WG_OnGoingGiftsEntity.GiftID =Convert.ToInt32(_GiftID.ToString());
+                	                        	  		                            
+                 	                 	                     _WG_OnGoingGiftsEntity.Status =Convert.ToInt32(_Status.ToString());
                 	                        	  		        
 		       	_WG_OnGoingGiftsEntity.CreateDate =DateTime.Now;
 		               	              try
@@ -155,12 +166,16 @@ namespace MideFrameWork.UI.WebSite.Admin
                         Alert("[ 礼物ID ]不能为空");
                         return;
                   }
+				                                           
+                  var _Status = Request.Form["TextBox_Status"];
+                 if (string.IsNullOrEmpty(_Status))
+                   {
+                        Alert("[ 状态 ]不能为空");
+                        return;
+                  }
 				                                                
 	        #endregion
-
-
-             
-  
+	        
                		                       					                         
                 
                                                                    
@@ -171,6 +186,9 @@ namespace MideFrameWork.UI.WebSite.Admin
                                 					                         
                 
                                                                         _WG_OnGoingGiftsEntity.GiftID =Convert.ToInt32(_GiftID.ToString());
+                                					                         
+                
+                                                                        _WG_OnGoingGiftsEntity.Status =Convert.ToInt32(_Status.ToString());
                                 					                       			            try
             {
                 DataProvider.GetInstance().UpdateWG_OnGoingGifts(_WG_OnGoingGiftsEntity);

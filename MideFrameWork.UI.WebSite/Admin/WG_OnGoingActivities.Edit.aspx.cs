@@ -38,6 +38,7 @@ namespace MideFrameWork.UI.WebSite.Admin
                                             
                                             
                                             
+                                            
                                     
             //表单提交事件
             Button_submit.Click += new EventHandler(Button_submit_Click);
@@ -67,6 +68,7 @@ namespace MideFrameWork.UI.WebSite.Admin
 
                				                				                   TextBox_ActivityID.Text = _WG_OnGoingActivitiesEntity.ActivityID.ToString();
                                 				                   TextBox_MenberID.Text = _WG_OnGoingActivitiesEntity.MenberID.ToString();
+                                				                   TextBox_Status.Text = _WG_OnGoingActivitiesEntity.Status.ToString();
                                 				                            }
         }
         #endregion
@@ -90,6 +92,13 @@ namespace MideFrameWork.UI.WebSite.Admin
                         Alert("[ 用户ID ]不能为空");
                         return;
                   }
+				                                           
+                  var _Status = Request.Form["TextBox_Status"];
+                 if (string.IsNullOrEmpty(_Status))
+                   {
+                        Alert("[ 状态 ]不能为空");
+                        return;
+                  }
 				                                                
 	        #endregion
            
@@ -101,6 +110,8 @@ namespace MideFrameWork.UI.WebSite.Admin
                  	                 	                     _WG_OnGoingActivitiesEntity.ActivityID =Convert.ToInt32(_ActivityID.ToString());
                 	                        	  		                            
                  	                 	                     _WG_OnGoingActivitiesEntity.MenberID =Convert.ToInt32(_MenberID.ToString());
+                	                        	  		                            
+                 	                 	                     _WG_OnGoingActivitiesEntity.Status =Convert.ToInt32(_Status.ToString());
                 	                        	  		        
 		       	_WG_OnGoingActivitiesEntity.CreateDate =DateTime.Now;
 		               	              try
@@ -136,18 +147,25 @@ namespace MideFrameWork.UI.WebSite.Admin
                         Alert("[ 用户ID ]不能为空");
                         return;
                   }
+				                                           
+                  var _Status = Request.Form["TextBox_Status"];
+                 if (string.IsNullOrEmpty(_Status))
+                   {
+                        Alert("[ 状态 ]不能为空");
+                        return;
+                  }
 				                                                
 	        #endregion
-
-
-             
-  
+	        
                		                       					                         
                 
                                                                         _WG_OnGoingActivitiesEntity.ActivityID =Convert.ToInt32(_ActivityID.ToString());
                                 					                         
                 
                                                                         _WG_OnGoingActivitiesEntity.MenberID =Convert.ToInt32(_MenberID.ToString());
+                                					                         
+                
+                                                                        _WG_OnGoingActivitiesEntity.Status =Convert.ToInt32(_Status.ToString());
                                 					                       			            try
             {
                 DataProvider.GetInstance().UpdateWG_OnGoingActivities(_WG_OnGoingActivitiesEntity);

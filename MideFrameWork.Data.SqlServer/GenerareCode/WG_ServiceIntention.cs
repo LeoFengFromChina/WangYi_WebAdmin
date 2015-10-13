@@ -31,8 +31,7 @@ namespace MideFrameWork.Data.SqlServer
 			};
 			                        
 						parameters[0].Value = ID;
-			
-			return DbHelperSQL.Exists(strSql.ToString(),parameters);
+						return DbHelperSQL.Exists(strSql.ToString(),parameters);
 		}
 		
 		/// <summary>

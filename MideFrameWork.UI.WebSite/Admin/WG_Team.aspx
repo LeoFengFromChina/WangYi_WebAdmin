@@ -88,10 +88,10 @@
                         团队宗旨
                     </th>
                                         <th>
-                        服务意向IDs
+                        服务意向
                     </th>
                                         <th>
-                        区域ID
+                        区域
                     </th>
                                         <th>
                         创建日期
@@ -127,10 +127,10 @@
                         <%#Eval("TeamAim")%>
                     </td>
                                         <td>
-                        <%#Eval("ServiceIntentionIDs")%>
+                        <%#Eval("ServiceIntention")%>
                     </td>
                                         <td>
-                        <%#Eval("RegionID")%>
+                        <%#Eval("Region")%>
                     </td>
                                         <td>
                         <%#Eval("CreateDate")%>
