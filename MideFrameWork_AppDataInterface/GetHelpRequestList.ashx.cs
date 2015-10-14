@@ -20,30 +20,41 @@ namespace MideFrameWork_AppDataInterface
             context.Response.AddHeader("Access-Control-Allow-Headers", "x-requested-with,content-type");
             context.Response.ContentType = "text/plain";
 
-            string PromoterIDstr = context.Request["PromoterID"];//求助者ID
-            string UnderTakerIDstr = context.Request["UnderTakerID"];//帮助者ID
-            string TypeID = context.Request["TypeID"];//1求助，2帮助
-            string whereStr = " 1= 1 ";
-            if (!string.IsNullOrEmpty(TypeID))
-            {
-                whereStr += " AND TypeID=" + TypeID;
-            }
-            if (!string.IsNullOrEmpty(PromoterIDstr))
-            {
-                whereStr += " AND PromoterID=" + PromoterIDstr;
-            }
-            if (!string.IsNullOrEmpty(UnderTakerIDstr))
-            {
-                whereStr += " AND UnderTakerID=" + UnderTakerIDstr;
-            }
-            whereStr += " ";//加多一个空格，避免sql的语法问题
-
             JsonBaseObject jbo = new JsonBaseObject();
             string result = string.Empty;
             try
             {
+                string PromoterIDstr = context.Request["PromoterID"];//求助者ID
+                string UnderTakerIDstr = context.Request["UnderTakerID"];//帮助者ID
+                string Type = context.Request["Type"];//1求助，2帮助
+                string PageIndex = "1";
+                if (!string.IsNullOrEmpty(context.Request["PageIndex"]))
+                    PageIndex = context.Request["PageIndex"];
+                string whereStr = " 1 = 1 ";
+                if (!string.IsNullOrEmpty(Type))
+                {
+                    whereStr += " AND Type=" + Type;
+                }
+                if (!string.IsNullOrEmpty(PromoterIDstr))
+                {
+                    whereStr += " AND PromoterID=" + PromoterIDstr;
+                }
+                if (!string.IsNullOrEmpty(UnderTakerIDstr))
+                {
+                    whereStr += " AND UnderTakerID=" + UnderTakerIDstr;
+                }
+                whereStr += " ";//加多一个空格，避免sql的语法问题
+
+                int recordCount = -1;
+                int pageCount = -1;
                 // 查找条件：如typeid=1 and promoterid=1 and undertakerid=1
-                IList<WG_HelpRequestEntity> _HelpRequest = DataProvider.GetInstance().GetWG_HelpRequestList(20, whereStr, " CreateDate Desc ");
+                IList<WG_HelpRequestEntity>  _HelpRequest = DataProvider.GetInstance().GetWG_HelpRequestList(20, int.Parse(PageIndex), " WHERE " + whereStr, " CreateDate Desc ", out recordCount, out pageCount);
+
+                //如果所有数据分页后的总页数比请求的页数小，则返回空。
+                if (int.Parse(PageIndex) > pageCount)
+                    _HelpRequest.Clear();
+
+
                 IList<RequestView> requestList = new List<RequestView>();
                 foreach (WG_HelpRequestEntity item in _HelpRequest)
                 {

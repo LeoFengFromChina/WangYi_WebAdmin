@@ -22,17 +22,19 @@ namespace MideFrameWork_AppDataInterface
             context.Response.AddHeader("Access-Control-Allow-Methods", "POST");
             context.Response.AddHeader("Access-Control-Allow-Headers", "x-requested-with,content-type");
             context.Response.ContentType = "text/plain";
-            //排名分为全国、全省、全市、全区、本小区
-            string country = context.Request["country"];//全国
-            string province = context.Request["province"];//广东
-            string city = context.Request["city"];//广州
-            string district = context.Request["district"];//天河
-            string community = context.Request["community"];//羊城花园
 
             JsonBaseObject jbo = new JsonBaseObject();
             string result = string.Empty;
+
             try
             {
+
+                //排名分为全国、全省、全市、全区、本小区
+                string country = context.Request["country"];//全国
+                string province = context.Request["province"];//广东
+                string city = context.Request["city"];//广州
+                string district = context.Request["district"];//天河
+                string community = context.Request["community"];//羊城花园
 
                 SqlParameter[] parameters ={
                                                new SqlParameter("@Country",SqlDbType.NVarChar,64),
@@ -79,8 +81,7 @@ namespace MideFrameWork_AppDataInterface
                 jbo.message = "接口调用过程中出现其他错误。";
                 jbo.success = false;
             }
-
-
+            
             result = JsonSerializer<JsonBaseObject>(jbo);
             context.Response.Write(result);
 

@@ -21,30 +21,41 @@ namespace MideFrameWork_AppDataInterface
             context.Response.AddHeader("Access-Control-Allow-Methods", "POST");
             context.Response.AddHeader("Access-Control-Allow-Headers", "x-requested-with,content-type");
             context.Response.ContentType = "text/plain";
-
-            string userName = context.Request["username"];
-            string psw = context.Request["psw"];
-
-            //登录
-            string userWhere = " Name ='" + userName + "' AND Psw='" + psw + "' " + " AND Status=0 ";
-
-            IList<WG_MenberEntity> userList = DataProvider.GetInstance().GetWG_MenberList(userWhere);
             JsonBaseObject jbo = new JsonBaseObject();
             string result = "";
-            if (userList.Count <= 0)
+            try
+            {
+                string userName = context.Request["username"];
+                string psw = context.Request["psw"];
+
+                //登录
+                string userWhere = " Name ='" + userName + "' AND Psw='" + psw + "' " + " AND Status=0 ";
+
+                IList<WG_MenberEntity> userList = DataProvider.GetInstance().GetWG_MenberList(userWhere);
+
+                if (userList.Count <= 0)
+                {
+                    jbo.code = -1;
+                    jbo.data = null;
+                    jbo.message = "用户不存在或密码错误！";
+                    jbo.success = false;
+                }
+                else
+                {
+                    jbo.code = 0;
+                    jbo.data = userList[0];
+                    jbo.message = "成功！";
+                    jbo.success = true;
+                }
+            }
+            catch (Exception ex)
             {
                 jbo.code = -1;
                 jbo.data = null;
-                jbo.message = "该用户不存在！";
+                jbo.message = "接口调用过程中出现异常。";
                 jbo.success = false;
             }
-            else
-            {
-                jbo.code = 0;
-                jbo.data = userList[0];
-                jbo.message = "成功！";
-                jbo.success = true;
-            }
+            
             result = JsonSerializer<JsonBaseObject>(jbo);
             context.Response.Write(result);
         }

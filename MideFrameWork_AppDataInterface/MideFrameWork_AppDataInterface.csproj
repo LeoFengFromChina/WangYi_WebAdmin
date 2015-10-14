@@ -63,6 +63,7 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GetBackPsw.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -78,8 +79,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddNewHelpRequest.ashx.cs">
-      <DependentUpon>AddNewHelpRequest.ashx</DependentUpon>
+    <Compile Include="AddFeedBack.ashx.cs">
+      <DependentUpon>AddFeedBack.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AddHelp.ashx.cs">
+      <DependentUpon>AddHelp.ashx</DependentUpon>
     </Compile>
     <Compile Include="AppLogin.ashx.cs">
       <DependentUpon>AppLogin.ashx</DependentUpon>
@@ -95,6 +99,19 @@
     <Compile Include="ExchangeForGift.ashx.cs">
       <DependentUpon>ExchangeForGift.ashx</DependentUpon>
     </Compile>
+    <Compile Include="GetActivityList.ashx.cs">
+      <DependentUpon>GetActivityList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="GetBackPsw.ashx.cs">
+      <DependentUpon>GetBackPsw.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="GetBackPsw.aspx.cs">
+      <DependentUpon>GetBackPsw.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GetBackPsw.aspx.designer.cs">
+      <DependentUpon>GetBackPsw.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GetBannerPictures.ashx.cs">
       <DependentUpon>GetBannerPictures.ashx</DependentUpon>
     </Compile>
@@ -103,6 +120,9 @@
     </Compile>
     <Compile Include="GetHelpRequestList.ashx.cs">
       <DependentUpon>GetHelpRequestList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="GetNoticeList.ashx.cs">
+      <DependentUpon>GetNoticeList.ashx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -114,8 +134,14 @@
     <Compile Include="GetRankList.ashx.cs">
       <DependentUpon>GetRankList.ashx</DependentUpon>
     </Compile>
+    <Compile Include="UpdateActivity.ashx.cs">
+      <DependentUpon>UpdateActivity.ashx</DependentUpon>
+    </Compile>
     <Compile Include="UpdateHelpRequest.ashx.cs">
       <DependentUpon>UpdateHelpRequest.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateMenberInfo.ashx.cs">
+      <DependentUpon>UpdateMenberInfo.ashx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -188,10 +214,20 @@
     <Content Include="UpdateHelpRequest.ashx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AddNewHelpRequest.ashx" />
+    <Content Include="ExchangeForGift.ashx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ExchangeForGift.ashx" />
+    <Content Include="AddFeedBack.ashx" />
+    <Content Include="GetActivityList.ashx" />
+    <Content Include="GetNoticeList.ashx" />
+    <Content Include="UpdateActivity.ashx" />
+    <Content Include="UpdateMenberInfo.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GetBackPsw.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AddHelp.ashx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

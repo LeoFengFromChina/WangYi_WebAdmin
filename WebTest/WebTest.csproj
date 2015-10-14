@@ -16,7 +16,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
     <FileUpgradeFlags>40</FileUpgradeFlags>
-    <UpgradeBackupLocation>D:\项目\网益公益\MideFrameWork\Backup2\</UpgradeBackupLocation>
+    <UpgradeBackupLocation>D:\项目\网益公益\MideFrameWork\Backup3\</UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
