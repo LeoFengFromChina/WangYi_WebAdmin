@@ -43,6 +43,8 @@ namespace MideFrameWork.UI.WebSite.Admin
                                             
                                             
                                             
+                                            
+                                            
                                     
             //表单提交事件
             Button_submit.Click += new EventHandler(Button_submit_Click);
@@ -72,7 +74,9 @@ namespace MideFrameWork.UI.WebSite.Admin
 
                				                				                   TextBox_Name.Text = _WG_TeamEntity.Name.ToString();
                                 				                   TextBox_CaptainID.Text = _WG_TeamEntity.CaptainID.ToString();
-                                				                   TextBox_LinkManID.Text = _WG_TeamEntity.LinkManID.ToString();
+                                				                   TextBox_LinkMan.Text = _WG_TeamEntity.LinkMan.ToString();
+                                				                   TextBox_LinkPhone.Text = _WG_TeamEntity.LinkPhone.ToString();
+                                				                   TextBox_LinkAddress.Text = _WG_TeamEntity.LinkAddress.ToString();
                                 				                   TextBox_TeamAim.Text = _WG_TeamEntity.TeamAim.ToString();
                                 				                   TextBox_ServiceIntention.Text = _WG_TeamEntity.ServiceIntention.ToString();
                                 				                   TextBox_Region.Text = _WG_TeamEntity.Region.ToString();
@@ -100,10 +104,24 @@ namespace MideFrameWork.UI.WebSite.Admin
                         return;
                   }
 				                                           
-                  var _LinkManID = Request.Form["TextBox_LinkManID"];
-                 if (string.IsNullOrEmpty(_LinkManID))
+                  var _LinkMan = Request.Form["TextBox_LinkMan"];
+                 if (string.IsNullOrEmpty(_LinkMan))
                    {
-                        Alert("[ 联系人ID ]不能为空");
+                        Alert("[ 联系人 ]不能为空");
+                        return;
+                  }
+				                                           
+                  var _LinkPhone = Request.Form["TextBox_LinkPhone"];
+                 if (string.IsNullOrEmpty(_LinkPhone))
+                   {
+                        Alert("[ 联系电话 ]不能为空");
+                        return;
+                  }
+				                                           
+                  var _LinkAddress = Request.Form["TextBox_LinkAddress"];
+                 if (string.IsNullOrEmpty(_LinkAddress))
+                   {
+                        Alert("[ 联系地址 ]不能为空");
                         return;
                   }
 				                                           
@@ -140,8 +158,15 @@ namespace MideFrameWork.UI.WebSite.Admin
                		                        	  		                            
                  	                 	                     _WG_TeamEntity.CaptainID =Convert.ToInt32(_CaptainID.ToString());
                 	                        	  		                            
-                 	                 	                     _WG_TeamEntity.LinkManID =Convert.ToInt32(_LinkManID.ToString());
-                	                        	  		                            
+                 	                 	                
+                    _WG_TeamEntity.LinkMan =Convert.ToString(_LinkMan.ToString());
+               		                        	  		                            
+                 	                 	                
+                    _WG_TeamEntity.LinkPhone =Convert.ToString(_LinkPhone.ToString());
+               		                        	  		                            
+                 	                 	                
+                    _WG_TeamEntity.LinkAddress =Convert.ToString(_LinkAddress.ToString());
+               		                        	  		                            
                  	                 	                
                     _WG_TeamEntity.TeamAim =Convert.ToString(_TeamAim.ToString());
                		                        	  		                            
@@ -188,10 +213,24 @@ namespace MideFrameWork.UI.WebSite.Admin
                         return;
                   }
 				                                           
-                  var _LinkManID = Request.Form["TextBox_LinkManID"];
-                 if (string.IsNullOrEmpty(_LinkManID))
+                  var _LinkMan = Request.Form["TextBox_LinkMan"];
+                 if (string.IsNullOrEmpty(_LinkMan))
                    {
-                        Alert("[ 联系人ID ]不能为空");
+                        Alert("[ 联系人 ]不能为空");
+                        return;
+                  }
+				                                           
+                  var _LinkPhone = Request.Form["TextBox_LinkPhone"];
+                 if (string.IsNullOrEmpty(_LinkPhone))
+                   {
+                        Alert("[ 联系电话 ]不能为空");
+                        return;
+                  }
+				                                           
+                  var _LinkAddress = Request.Form["TextBox_LinkAddress"];
+                 if (string.IsNullOrEmpty(_LinkAddress))
+                   {
+                        Alert("[ 联系地址 ]不能为空");
                         return;
                   }
 				                                           
@@ -227,8 +266,17 @@ namespace MideFrameWork.UI.WebSite.Admin
                                                                         _WG_TeamEntity.CaptainID =Convert.ToInt32(_CaptainID.ToString());
                                 					                         
                 
-                                                                        _WG_TeamEntity.LinkManID =Convert.ToInt32(_LinkManID.ToString());
-                                					                         
+                                                                   
+                    _WG_TeamEntity.LinkMan =Convert.ToString(_LinkMan.ToString());
+                               					                         
+                
+                                                                   
+                    _WG_TeamEntity.LinkPhone =Convert.ToString(_LinkPhone.ToString());
+                               					                         
+                
+                                                                   
+                    _WG_TeamEntity.LinkAddress =Convert.ToString(_LinkAddress.ToString());
+                               					                         
                 
                                                                    
                     _WG_TeamEntity.TeamAim =Convert.ToString(_TeamAim.ToString());

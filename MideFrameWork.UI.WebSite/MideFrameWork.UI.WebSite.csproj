@@ -28,6 +28,11 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -112,6 +117,8 @@
     <Content Include="Admin\WG_OnGoingActivities.Edit.aspx" />
     <Content Include="Admin\WG_OnGoingGifts.aspx" />
     <Content Include="Admin\WG_OnGoingGifts.Edit.aspx" />
+    <Content Include="Admin\WG_OnGoingTeam.aspx" />
+    <Content Include="Admin\WG_OnGoingTeam.Edit.aspx" />
     <Content Include="Admin\WG_Region.aspx" />
     <Content Include="Admin\WG_Region.Edit.aspx" />
     <Content Include="Admin\WG_Score.aspx" />
@@ -666,6 +673,20 @@
     </Compile>
     <Compile Include="Admin\WG_OnGoingGifts.Edit.aspx.designer.cs">
       <DependentUpon>WG_OnGoingGifts.Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WG_OnGoingTeam.aspx.cs">
+      <DependentUpon>WG_OnGoingTeam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WG_OnGoingTeam.aspx.designer.cs">
+      <DependentUpon>WG_OnGoingTeam.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WG_OnGoingTeam.Edit.aspx.cs">
+      <DependentUpon>WG_OnGoingTeam.Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WG_OnGoingTeam.Edit.aspx.designer.cs">
+      <DependentUpon>WG_OnGoingTeam.Edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\WG_Region.aspx.cs">
       <DependentUpon>WG_Region.aspx</DependentUpon>

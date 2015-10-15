@@ -121,6 +121,9 @@
     <Compile Include="GetHelpRequestList.ashx.cs">
       <DependentUpon>GetHelpRequestList.ashx</DependentUpon>
     </Compile>
+    <Compile Include="GetMyTeamList.ashx.cs">
+      <DependentUpon>GetMyTeamList.ashx</DependentUpon>
+    </Compile>
     <Compile Include="GetNoticeList.ashx.cs">
       <DependentUpon>GetNoticeList.ashx</DependentUpon>
     </Compile>
@@ -133,6 +136,9 @@
     </Compile>
     <Compile Include="GetRankList.ashx.cs">
       <DependentUpon>GetRankList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="TeamAtion.ashx.cs">
+      <DependentUpon>TeamAtion.ashx</DependentUpon>
     </Compile>
     <Compile Include="UpdateActivity.ashx.cs">
       <DependentUpon>UpdateActivity.ashx</DependentUpon>
@@ -228,6 +234,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddHelp.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GetMyTeamList.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TeamAtion.ashx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

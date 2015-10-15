@@ -38,14 +38,34 @@ namespace MideFrameWork.Data.Entity
             set{ _captainid = value; }
         }
         
-		private int _linkmanid;
+		private string _linkman;
 		/// <summary>
-		/// 联系人ID
+		/// 联系人
         /// </summary>
-        public int LinkManID
+        public string LinkMan
         {
-            get{ return _linkmanid; }
-            set{ _linkmanid = value; }
+            get{ return _linkman; }
+            set{ _linkman = value; }
+        }
+        
+		private string _linkphone;
+		/// <summary>
+		/// 联系电话
+        /// </summary>
+        public string LinkPhone
+        {
+            get{ return _linkphone; }
+            set{ _linkphone = value; }
+        }
+        
+		private string _linkaddress;
+		/// <summary>
+		/// 联系地址
+        /// </summary>
+        public string LinkAddress
+        {
+            get{ return _linkaddress; }
+            set{ _linkaddress = value; }
         }
         
 		private string _teamaim;

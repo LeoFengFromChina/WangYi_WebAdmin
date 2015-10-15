@@ -45,6 +45,7 @@ namespace MideFrameWork_AppDataInterface
     [KnownType(typeof(List<GlobalPictureEntity>))]
     [KnownType(typeof(List<WG_ActivitiesEntity>))]    
     [KnownType(typeof(List<NoticeEntity>))]
+    [KnownType(typeof(List<WG_TeamEntity>))]
     [DataContract]
     public class JsonBaseObject
     {

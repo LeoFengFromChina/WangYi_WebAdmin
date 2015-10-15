@@ -55,10 +55,26 @@
             </tr>
                       		            <tr>
                 <td>
-                    联系人ID：
+                    联系人：
                 </td>
                 <td>                    
-                                                                       <asp:TextBox id="TextBox_LinkManID" runat="server" Width="200px"></asp:TextBox>
+                                                                       <asp:TextBox id="TextBox_LinkMan" runat="server" Width="200px"></asp:TextBox>
+                               </td>
+            </tr>
+                      		            <tr>
+                <td>
+                    联系电话：
+                </td>
+                <td>                    
+                                                                       <asp:TextBox id="TextBox_LinkPhone" runat="server" Width="200px"></asp:TextBox>
+                               </td>
+            </tr>
+                      		            <tr>
+                <td>
+                    联系地址：
+                </td>
+                <td>                    
+                                                                       <asp:TextBox id="TextBox_LinkAddress" runat="server" Width="200px"></asp:TextBox>
                                </td>
             </tr>
                       		            <tr>

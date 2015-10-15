@@ -98,6 +98,9 @@ namespace MideFrameWork_AppDataInterface
                             if (underTaker != null)
                             {
                                 underTaker.ServiceHours += currEntity.Duration;
+                                underTaker.Scores += currEntity.Duration;
+                                //积分明细
+
                             }
                             else
                             {

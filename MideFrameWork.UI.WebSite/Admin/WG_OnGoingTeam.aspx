@@ -1,5 +1,5 @@
 ﻿
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WG_Team.aspx.cs" Inherits="MideFrameWork.UI.WebSite.Admin.WG_TeamList" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WG_OnGoingTeam.aspx.cs" Inherits="MideFrameWork.UI.WebSite.Admin.WG_OnGoingTeamList" %>
 
 <%@ Register Src="~/UserControl/ucToolBarButton.ascx" TagName="ucToolBarButton" TagPrefix="uc" %>
 <%@ Register Src="~/UserControl/ucPagination.ascx" TagName="ucPagination" TagPrefix="uc" %>
@@ -25,7 +25,7 @@
         });
 
         function box_create_item() {
-            manage.messagebox({ title: '团队表管理', width: '600px', height: '350px', boxID: 'dialog-addConntact', showborder: true, showbg: true, fixed: true, content: 'iframe:/Admin/WG_Team.Edit.aspx' });
+            manage.messagebox({ title: 'WG_OnGoingTeam管理', width: '600px', height: '350px', boxID: 'dialog-addConntact', showborder: true, showbg: true, fixed: true, content: 'iframe:/Admin/WG_OnGoingTeam.Edit.aspx' });
             return false;
         }
     </script>
@@ -66,7 +66,7 @@
         </div>
     </div>
     <table  class="table table-hover table-condensed bordered">
-        <asp:Repeater ID="WG_TeamRepeat" runat="server">
+        <asp:Repeater ID="WG_OnGoingTeamRepeat" runat="server">
             <HeaderTemplate>
                 <tr>
                     <th>
@@ -76,34 +76,13 @@
                         ID
                     </th>
                                         <th>
-                        团队名称
+                        团队ID
                     </th>
                                         <th>
-                        队长ID
-                    </th>
-                                        <th>
-                        联系人
-                    </th>
-                                        <th>
-                        联系电话
-                    </th>
-                                        <th>
-                        联系地址
-                    </th>
-                                        <th>
-                        团队宗旨
-                    </th>
-                                        <th>
-                        服务意向
-                    </th>
-                                        <th>
-                        区域
+                        用户ID
                     </th>
                                         <th>
                         创建日期
-                    </th>
-                                        <th>
-                        更新日期
                     </th>
                                         <th>
                         操作
@@ -121,38 +100,17 @@
                         <%#Eval("ID")%>
                     </td>
                                         <td>
-                        <%#Eval("Name")%>
+                        <%#Eval("TeamID")%>
                     </td>
                                         <td>
-                        <%#Eval("CaptainID")%>
-                    </td>
-                                        <td>
-                        <%#Eval("LinkMan")%>
-                    </td>
-                                        <td>
-                        <%#Eval("LinkPhone")%>
-                    </td>
-                                        <td>
-                        <%#Eval("LinkAddress")%>
-                    </td>
-                                        <td>
-                        <%#Eval("TeamAim")%>
-                    </td>
-                                        <td>
-                        <%#Eval("ServiceIntention")%>
-                    </td>
-                                        <td>
-                        <%#Eval("Region")%>
+                        <%#Eval("MenberID")%>
                     </td>
                                         <td>
                         <%#Eval("CreateDate")%>
                     </td>
-                                        <td>
-                        <%#Eval("UpdateDate")%>
-                    </td>
                     
                     <td>
-                        <a href="javascript:void(0);" id="test" onclick="aa({ title: '团队表管理', width: '600px', height: '350px', boxID: 'dialog-addConntact', showborder: true, showbg: true, fixed: true, content: 'iframe:/Admin/WG_Team.Edit.aspx?ctrID=<%#Eval("ID") %>' })">
+                        <a href="javascript:void(0);" id="test" onclick="aa({ title: 'WG_OnGoingTeam管理', width: '600px', height: '350px', boxID: 'dialog-addConntact', showborder: true, showbg: true, fixed: true, content: 'iframe:/Admin/WG_OnGoingTeam.Edit.aspx?ctrID=<%#Eval("ID") %>' })">
                             编辑</a>
                     </td>
                 </tr>

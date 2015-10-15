@@ -73,6 +73,7 @@
     <Compile Include="GenerareCode\WG_Menber.cs" />
     <Compile Include="GenerareCode\WG_OnGoingActivities.cs" />
     <Compile Include="GenerareCode\WG_OnGoingGifts.cs" />
+    <Compile Include="GenerareCode\WG_OnGoingTeam.cs" />
     <Compile Include="GenerareCode\WG_Region.cs" />
     <Compile Include="GenerareCode\WG_Score.cs" />
     <Compile Include="GenerareCode\WG_ServiceIntention.cs" />
