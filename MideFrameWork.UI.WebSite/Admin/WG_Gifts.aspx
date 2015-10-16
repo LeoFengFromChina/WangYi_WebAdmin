@@ -136,7 +136,7 @@
                         <%#Eval("Region")%>
                     </td>
                                         <td>
-                        <%#Eval("Status")%>
+                        <%#Eval("Status").ToString()=="0"?"正常":"已过期"%>
                     </td>
                                         <td>
                         <%#Eval("CreateDate")%>

@@ -1,0 +1,58 @@
+﻿{
+  "code": 0,
+  "data": [
+    {
+      "__type": "WG_ActivitiesEntity:#MideFrameWork.Data.Entity",
+      "_activitytype": "公益慈善",
+      "_address": "广州市萝岗植树公园",
+      "_begintime": "/Date(1444446000000+0800)/",
+      "_createdate": "/Date(1444406400000+0800)/",
+      "_detail": "正文",
+      "_id": 1,
+      "_linkman": "冯如德",
+      "_linkphone": "13430239925",
+      "_needmenbercount": 10,
+      "_promoterid": 1,
+      "_region": "广州",
+      "_status": 0,
+      "_title": "前往植树公园种树",
+      "_updatedate": "/Date(1444406400000+0800)/"
+    },
+    {
+      "__type": "WG_ActivitiesEntity:#MideFrameWork.Data.Entity",
+      "_activitytype": "弱势帮扶",
+      "_address": "广州市萝岗植树公园",
+      "_begintime": "/Date(1444446000000+0800)/",
+      "_createdate": "/Date(1444406400000+0800)/",
+      "_detail": "正文",
+      "_id": 2,
+      "_linkman": "欧可烨",
+      "_linkphone": "13580530583",
+      "_needmenbercount": 2,
+      "_promoterid": 2,
+      "_region": "花都",
+      "_status": 0,
+      "_title": "为孩子提供课外咨询",
+      "_updatedate": "/Date(1444406400000+0800)/"
+    },
+    {
+      "__type": "WG_ActivitiesEntity:#MideFrameWork.Data.Entity",
+      "_activitytype": "社区服务",
+      "_address": "广州市萝岗植树公园",
+      "_begintime": "/Date(1444446000000+0800)/",
+      "_createdate": "/Date(1444406400000+0800)/",
+      "_detail": "正文",
+      "_id": 3,
+      "_linkman": "李摇摇",
+      "_linkphone": "13556120910",
+      "_needmenbercount": 10,
+      "_promoterid": 3,
+      "_region": "南海",
+      "_status": 0,
+      "_title": "为本小区老人大扫除",
+      "_updatedate": "/Date(1444406400000+0800)/"
+    }
+  ],
+  "message": "成功",
+  "success": true
+}

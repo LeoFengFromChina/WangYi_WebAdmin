@@ -32,7 +32,7 @@ namespace MideFrameWork_AppDataInterface
             {
                 string menberID = context.Request["menberID"];
                 string activityID = context.Request["activityID"];
-                string status = context.Request["status"];
+                string status = context.Request["status"];//1参加活动，2退出活动，3完成活动（发起人权利）
 
 
                 if (string.IsNullOrEmpty(menberID)
@@ -47,7 +47,7 @@ namespace MideFrameWork_AppDataInterface
                 }
                 else
                 {
-                    //当前活动
+                    //当前活动，ae.Status，0等待报名...，1活动正在进行(禁止报名),2,活动已结束
                     WG_ActivitiesEntity ae = DataProvider.GetInstance().GetWG_ActivitiesEntity(int.Parse(activityID));
                     //不存在
                     if (null == ae)
@@ -77,12 +77,12 @@ namespace MideFrameWork_AppDataInterface
                     else
                     {
                         //判断是否已经参加
-                        string whereStr = " status=" + status + " AND  menberID= " + menberID + " AND activityID= " + activityID;
+                        string whereStr = " status= 0 " + " AND  menberID= " + menberID + " AND activityID= " + activityID;
                         IList<WG_OnGoingActivitiesEntity> ogaeList = DataProvider.GetInstance().GetWG_OnGoingActivitiesList(whereStr);
 
-                        if ("0" == status)
+                        if ("1" == status)
                         {
-                            #region 参加活动
+                            #region 1参加活动
                             if (null != ogaeList && ogaeList.Count > 0)
                             {
                                 //已经参加
@@ -96,7 +96,7 @@ namespace MideFrameWork_AppDataInterface
                                 //判断参加活动的人数是否已经满了
                                 string sql = " select * from dbo.WG_OnGoingActivities where ActivityID=" + activityID + " and Status=0 ";
                                 DataSet ds = DbHelperSQL.Query(sql);
-                                if (ds.Tables[0].Rows.Count >= ae.NeedMenberCount)
+                                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count >= ae.NeedMenberCount)
                                 {
                                     //人已经满了
                                     jbo.code = -1;
@@ -114,7 +114,7 @@ namespace MideFrameWork_AppDataInterface
                                     ogae.CreateDate = DateTime.Now;
                                     DataProvider.GetInstance().AddWG_OnGoingActivities(ogae);
 
-                                    if (ds.Tables[0].Rows.Count + 1 == ae.NeedMenberCount)
+                                    if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count + 1 == ae.NeedMenberCount)
                                     {
                                         //人满了
                                         ae.Status = 1;//活动被激活
@@ -129,9 +129,9 @@ namespace MideFrameWork_AppDataInterface
                             #endregion
 
                         }
-                        else if ("1" == status)
+                        else if ("2" == status)
                         {
-                            //1只能是退出活动，如果是激活活动，是不能人工的，需要自动人数到了触发活动
+                            //2只能是退出活动，如果是激活活动，是不能人工的，需要自动人数到了触发活动
                             #region 退出活动
                             if (null != ogaeList && ogaeList.Count > 0)
                             {
@@ -155,9 +155,9 @@ namespace MideFrameWork_AppDataInterface
                             }
                             #endregion
                         }
-                        else if ("2" == status)
+                        else if ("3" == status)
                         {
-                            //2活动完成
+                            //3活动完成,发起人有权限
                             ae.Status = 2;
                             DataProvider.GetInstance().UpdateWG_Activities(ae);
 
@@ -185,7 +185,7 @@ namespace MideFrameWork_AppDataInterface
                 jbo.message = "接口调用过程中出现其他错误";
                 jbo.success = false;
             }
-            
+
             resultStr = JsonSerializer<JsonBaseObject>(jbo);
             context.Response.Write(resultStr);
 

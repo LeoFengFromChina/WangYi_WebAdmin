@@ -29,11 +29,11 @@ namespace MideFrameWork_AppDataInterface
                 string psw = context.Request["psw"];
 
                 //登录
-                string userWhere = " Name ='" + userName + "' AND Psw='" + psw + "' " + " AND Status=0 ";
+                string userWhere = " Name ='" + userName + "' AND Psw='" + psw + "' ";
 
                 IList<WG_MenberEntity> userList = DataProvider.GetInstance().GetWG_MenberList(userWhere);
 
-                if (userList.Count <= 0)
+                if (userList == null || userList.Count <= 0)
                 {
                     jbo.code = -1;
                     jbo.data = null;
@@ -42,10 +42,28 @@ namespace MideFrameWork_AppDataInterface
                 }
                 else
                 {
-                    jbo.code = 0;
-                    jbo.data = userList[0];
-                    jbo.message = "成功！";
-                    jbo.success = true;
+                    if (userList[0].Status == 0)
+                    {
+                        jbo.code = 0;
+                        jbo.data = userList[0];
+                        jbo.message = "成功！";
+                        jbo.success = true;
+                    }
+                    else if (userList[0].Status == 1)
+                    {
+                        //待审核
+                        jbo.code = 0;
+                        jbo.data = userList[0];
+                        jbo.message = "成功！但目前还在审核状态，可能影响部分功能";
+                        jbo.success = true;
+                    }
+                    else
+                    {
+                        jbo.code = -1;
+                        jbo.data = null;
+                        jbo.message = "账号有异常，请联系管理员";
+                        jbo.success = false;
+                    }
                 }
             }
             catch (Exception ex)
@@ -55,7 +73,7 @@ namespace MideFrameWork_AppDataInterface
                 jbo.message = "接口调用过程中出现异常。";
                 jbo.success = false;
             }
-            
+
             result = JsonSerializer<JsonBaseObject>(jbo);
             context.Response.Write(result);
         }

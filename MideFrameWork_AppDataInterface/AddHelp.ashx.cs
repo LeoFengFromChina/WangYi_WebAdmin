@@ -36,7 +36,9 @@ namespace MideFrameWork_AppDataInterface
                 string detail = context.Request["detail"];
                 string status = context.Request["status"];
 
-                if (!string.IsNullOrEmpty(title) && !string.IsNullOrEmpty(linkphone))
+                if (!string.IsNullOrEmpty(title) 
+                    && !string.IsNullOrEmpty(linkphone)
+                    && !string.IsNullOrEmpty(promoterID))
                 {
                     WG_HelpRequestEntity currEntity = new WG_HelpRequestEntity();
                     currEntity.Title = title;

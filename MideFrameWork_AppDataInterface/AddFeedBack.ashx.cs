@@ -16,9 +16,9 @@ namespace MideFrameWork_AppDataInterface
         public void ProcessRequest(HttpContext context)
         {
             //todo:加入跨域允许语句
-            //context.Response.AddHeader("Access-Control-Allow-Origin", "*");
-            //context.Response.AddHeader("Access-Control-Allow-Methods", "POST");
-            //context.Response.AddHeader("Access-Control-Allow-Headers", "x-requested-with,content-type");
+            context.Response.AddHeader("Access-Control-Allow-Origin", "*");
+            context.Response.AddHeader("Access-Control-Allow-Methods", "POST");
+            context.Response.AddHeader("Access-Control-Allow-Headers", "x-requested-with,content-type");
 
             context.Response.ContentType = "text/plain";
             JsonBaseObject jbo = new JsonBaseObject();

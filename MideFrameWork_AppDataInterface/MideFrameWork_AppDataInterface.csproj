@@ -70,13 +70,16 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="Des.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddFeedBack.ashx.cs">
@@ -137,8 +140,8 @@
     <Compile Include="GetRankList.ashx.cs">
       <DependentUpon>GetRankList.ashx</DependentUpon>
     </Compile>
-    <Compile Include="TeamAtion.ashx.cs">
-      <DependentUpon>TeamAtion.ashx</DependentUpon>
+    <Compile Include="TeamAction.ashx.cs">
+      <DependentUpon>TeamAction.ashx</DependentUpon>
     </Compile>
     <Compile Include="UpdateActivity.ashx.cs">
       <DependentUpon>UpdateActivity.ashx</DependentUpon>
@@ -148,6 +151,13 @@
     </Compile>
     <Compile Include="UpdateMenberInfo.ashx.cs">
       <DependentUpon>UpdateMenberInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Des.aspx.cs">
+      <DependentUpon>Des.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Des.aspx.designer.cs">
+      <DependentUpon>Des.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -239,7 +249,7 @@
     <Content Include="GetMyTeamList.ashx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TeamAtion.ashx" />
+    <Content Include="TeamAction.ashx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

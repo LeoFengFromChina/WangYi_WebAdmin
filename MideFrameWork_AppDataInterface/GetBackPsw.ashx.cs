@@ -4,7 +4,10 @@ using System.Linq;
 using System.Web;
 using MideFrameWork.Common.DailyUtility;
 using MideFrameWork.Common.DBUtility;
+using System.Configuration;
 
+using MideFrameWork.Data.Entity;
+using MideFrameWork.Data.Interface;
 namespace MideFrameWork_AppDataInterface
 {
     /// <summary>
@@ -37,31 +40,47 @@ namespace MideFrameWork_AppDataInterface
                 }
                 else
                 {
-                    List<string> emailTo = new List<string>() { email };
-                    string fromAddress = "mide_2008@126.com";
-                    string fromName = "管理员";
-                    string subject = "[网益公益]---找回密码";
-                    string account = "mide_2008@126.com";
-                    string psw = "mide022196183";
-                    string decUserName = DESEncrypt.Encrypt(userName, "WYGY_BQGZS");
-                    string body = "http://localhost:5918/GetBackPsw.aspx?key=" + decUserName;
-                    string errorStr = "";
-                    int count = SendEmail.SendEmailnonAnonymous(fromAddress, fromName, subject, body, emailTo, emailTo, out errorStr, account, psw);
-                    if (count > 0)
+                    string whereStr = " name='" + userName + "' and Email='" + email + "'";
+
+                    IList<WG_MenberEntity> menberList = DataProvider.GetInstance().GetWG_MenberList(whereStr);
+                    if (menberList == null || menberList.Count <= 0)
                     {
-                        jbo.code = 0;
+                        //账号与邮箱不匹配
+                        jbo.code = -1;
                         jbo.data = null;
-                        jbo.message = "邮件发送成功，请登陆邮件并根据链接重置密码";
-                        jbo.success = true;
+                        jbo.message = "邮箱与账号不匹配，请确认";
+                        jbo.success = false;
+
                     }
                     else
                     {
-                        //失败
-                        jbo.code = -1;
-                        jbo.data = null;
-                        jbo.message = "邮件发送失败";
-                        jbo.success = false;
+                        List<string> emailTo = new List<string>() { email };
+                        string fromAddress = DESEncrypt.Decrypt(ConfigurationManager.AppSettings["EmailAccount"].ToString(), "WYGY_BQGZS");
+                        string fromName = ConfigurationManager.AppSettings["FromName"].ToString();
+                        string subject = ConfigurationManager.AppSettings["Subject"].ToString();
+                        string account = DESEncrypt.Decrypt(ConfigurationManager.AppSettings["EmailAccount"].ToString(), "WYGY_BQGZS");
+                        string psw = DESEncrypt.Decrypt(ConfigurationManager.AppSettings["EmailPsw"].ToString(), "WYGY_BQGZS"); ;
+                        string decUserName = DESEncrypt.Encrypt(userName, "WYGY_BQGZS");
+                        string body = ConfigurationManager.AppSettings["GetBackUrl"].ToString() + decUserName;
+                        string errorStr = "";
+                        int count = SendEmail.SendEmailnonAnonymous(fromAddress, fromName, subject, body, emailTo, emailTo, out errorStr, account, psw);
+                        if (count > 0)
+                        {
+                            jbo.code = 0;
+                            jbo.data = null;
+                            jbo.message = "邮件发送成功，请登陆邮件并根据链接重置密码";
+                            jbo.success = true;
+                        }
+                        else
+                        {
+                            //失败
+                            jbo.code = -1;
+                            jbo.data = null;
+                            jbo.message = "邮件发送失败";
+                            jbo.success = false;
+                        }
                     }
+                    
                 }
 
             }

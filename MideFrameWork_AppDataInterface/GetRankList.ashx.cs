@@ -36,26 +36,63 @@ namespace MideFrameWork_AppDataInterface
                 string district = context.Request["district"];//天河
                 string community = context.Request["community"];//羊城花园
 
-                SqlParameter[] parameters ={
-                                               new SqlParameter("@Country",SqlDbType.NVarChar,64),
-                                               new SqlParameter("@Province",SqlDbType.NVarChar,64),
-                                               new SqlParameter("@City",SqlDbType.NVarChar,64),
-                                               new SqlParameter("@District",SqlDbType.NVarChar,64),
-                                               new SqlParameter("@Community",SqlDbType.NVarChar,64)
-                                           };
-                parameters[0].Value = country;
-                parameters[1].Value = province;
-                parameters[2].Value = city;
-                parameters[3].Value = district;
-                parameters[4].Value = community;
-                DataSet ds = DbHelperSQL.RunProcedure("[dbo].[up_MenberRanking]", parameters);
-                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                string whereStr = " 1=1 ";
+                if (!string.IsNullOrEmpty(country))
+                    whereStr += " AND Country='" + country + "' ";
+                else if (!string.IsNullOrEmpty(province))
+                    whereStr += " AND Province='" + province + "' ";
+                else if (!string.IsNullOrEmpty(city))
+                    whereStr += " AND City='" + city + "'";
+                else if (!string.IsNullOrEmpty(district))
+                    whereStr += " AND District='" + district + "' ";
+                else if (!string.IsNullOrEmpty(community))
+                    whereStr += " AND Community='" + community + "' ";
+                else
+                    whereStr += "";
+
+
+                string PageIndex = "1";
+                if (!string.IsNullOrEmpty(context.Request["PageIndex"]))
+                    PageIndex = context.Request["PageIndex"];
+
+                //IList<WG_OnGoingGiftsEntity> OnGoingGiftList = DataProvider.GetInstance().GetWG_OnGoingGiftsList(whereStr);
+                int recordCount = -1;
+                int pageCount = -1;
+                // 查找条件：如typeid=1 and promoterid=1 and undertakerid=1
+                IList<WG_MenberEntity> menberList = DataProvider.GetInstance().GetWG_MenberList(20, int.Parse(PageIndex), " WHERE " + whereStr, " ServiceHours Desc ", out recordCount, out pageCount);
+
+                //如果所有数据分页后的总页数比请求的页数小，则返回空。
+                if (int.Parse(PageIndex) > pageCount)
+                    menberList.Clear();
+
+                //SqlParameter[] parameters ={
+                //                               new SqlParameter("@Country",SqlDbType.NVarChar,64),
+                //                               new SqlParameter("@Province",SqlDbType.NVarChar,64),
+                //                               new SqlParameter("@City",SqlDbType.NVarChar,64),
+                //                               new SqlParameter("@District",SqlDbType.NVarChar,64),
+                //                               new SqlParameter("@Community",SqlDbType.NVarChar,64)
+                //                           };
+                //parameters[0].Value = country;
+                //parameters[1].Value = province;
+                //parameters[2].Value = city;
+                //parameters[3].Value = district;
+                //parameters[4].Value = community;
+                //DataSet ds = DbHelperSQL.RunProcedure("[dbo].[up_MenberRanking]", parameters);
+                if (menberList != null && menberList.Count > 0)
                 {
                     IList<MenberRankingView> list = new List<MenberRankingView>();
+                   
                     // 组装
-                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    for (int i = 0; i < menberList.Count; i++)
                     {
-                        list.Add(GetArticle(dr));
+                        MenberRankingView mrv = new MenberRankingView();
+                        mrv.ID = menberList[i].ID;
+                        mrv.Name = menberList[i].Name;
+                        mrv.NickName = menberList[i].NickName;
+                        mrv.ServiceHours = menberList[i].ServiceHours.ToString();
+                        mrv.Rank = i + 1;
+                        mrv.CreateDate = menberList[i].CreateDate.ToString();
+                        list.Add(mrv);
                     }
                     //数据
                     jbo.code = 0;
@@ -81,7 +118,7 @@ namespace MideFrameWork_AppDataInterface
                 jbo.message = "接口调用过程中出现其他错误。";
                 jbo.success = false;
             }
-            
+
             result = JsonSerializer<JsonBaseObject>(jbo);
             context.Response.Write(result);
 

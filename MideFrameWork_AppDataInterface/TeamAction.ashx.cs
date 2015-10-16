@@ -10,7 +10,7 @@ namespace MideFrameWork_AppDataInterface
     /// <summary>
     /// TeamAtion 的摘要说明
     /// </summary>
-    public class TeamAtion : BaseForm, IHttpHandler
+    public class TeamAction : BaseForm, IHttpHandler
     {
 
         public void ProcessRequest(HttpContext context)
@@ -32,13 +32,13 @@ namespace MideFrameWork_AppDataInterface
                 if (!string.IsNullOrEmpty(context.Request["PageIndex"]))
                     PageIndex = context.Request["PageIndex"];
                 if (string.IsNullOrEmpty(menberid)
-                    && string.IsNullOrEmpty(teamid)
-                    && string.IsNullOrEmpty(opc))
+                    || string.IsNullOrEmpty(teamid)
+                    || string.IsNullOrEmpty(opc))
                 {
                     //失败
                     jbo.code = -1;
                     jbo.data = null;
-                    jbo.message = "参数必须有用户ID,团队ID和操作代码";
+                    jbo.message = "参数:用户ID,团队ID和操作代码都不能为空";
                     jbo.success = false;
                 }
                 else

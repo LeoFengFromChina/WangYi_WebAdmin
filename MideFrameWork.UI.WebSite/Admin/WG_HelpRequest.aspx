@@ -1,5 +1,5 @@
-﻿
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WG_HelpRequest.aspx.cs" Inherits="MideFrameWork.UI.WebSite.Admin.WG_HelpRequestList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WG_HelpRequest.aspx.cs"
+    Inherits="MideFrameWork.UI.WebSite.Admin.WG_HelpRequestList" %>
 
 <%@ Register Src="~/UserControl/ucToolBarButton.ascx" TagName="ucToolBarButton" TagPrefix="uc" %>
 <%@ Register Src="~/UserControl/ucPagination.ascx" TagName="ucPagination" TagPrefix="uc" %>
@@ -55,9 +55,10 @@
         <div style="float: left; height: 50px;">
             <%--<uc:ucToolBarButton ID="myToolBarButton" runat="server" />--%>
             <div class="toolBar">
-                <span><a href="javascript:void(0)" onclick="box_create_item()" class="btn btn-sm btn-primary">新增</a>
-                    <asp:LinkButton ID="lbt_Delete" runat="server" OnClick="lbt_Delete_Click"  class="btn btn-sm btn-danger">删除</asp:LinkButton>
-                    <asp:LinkButton ID="lbt_Refresh" runat="server" OnClick="lbt_Refresh_Click"  class="btn btn-sm btn-info ">刷新</asp:LinkButton>
+                <span><a href="javascript:void(0)" onclick="box_create_item()" class="btn btn-sm btn-primary">
+                    新增</a>
+                    <asp:LinkButton ID="lbt_Delete" runat="server" OnClick="lbt_Delete_Click" class="btn btn-sm btn-danger">删除</asp:LinkButton>
+                    <asp:LinkButton ID="lbt_Refresh" runat="server" OnClick="lbt_Refresh_Click" class="btn btn-sm btn-info ">刷新</asp:LinkButton>
                 </span>
             </div>
         </div>
@@ -65,59 +66,47 @@
             <uc:ucQueryHelper2 ID="myQueryHelper" runat="server" />
         </div>
     </div>
-    <table  class="table table-hover table-condensed bordered">
+    <table class="table table-hover table-condensed bordered">
         <asp:Repeater ID="WG_HelpRequestRepeat" runat="server">
             <HeaderTemplate>
                 <tr>
                     <th>
                         <input type="checkbox" id="chkAll" onclick="javascript:return SelectAll(this.checked,this.id);">全选
                     </th>
-                                        <th>
-                        
-                    </th>
-                                        <th>
+                    <th>
                         求助标题
                     </th>
-                                        <th>
-                        类别（1求助，2帮助）
+                    <th>
+                        类别
                     </th>
-                                        <th>
-                        发起人ID
-                    </th>
-                                        <th>
+                    <th>
                         联系人
                     </th>
-                                        <th>
+                    <th>
                         联系电话
                     </th>
-                                        <th>
+                    <th>
                         求助日期
                     </th>
-                                        <th>
-                        区域ID
+                    <th>
+                        区域
                     </th>
-                                        <th>
+                    <th>
                         服务时段
                     </th>
-                                        <th>
+                    <th>
                         服务时长
                     </th>
-                                        <th>
+                    <th>
                         服务明细
                     </th>
-                                        <th>
-                        承接者
-                    </th>
-                                        <th>
+                    <th>
                         当前状态
                     </th>
-                                        <th>
-                        创建日期
-                    </th>
-                                        <th>
+                    <th>
                         更新日期
                     </th>
-                                        <th>
+                    <th>
                         操作
                     </th>
                 </tr>
@@ -128,53 +117,39 @@
                         <asp:CheckBox ID="chkItem" runat="server"></asp:CheckBox>
                         <asp:HiddenField ID="hdfID" runat="server" Value='<%# Eval("ID")%>' />
                     </td>
-
-                                        <td>
-                        <%#Eval("ID")%>
-                    </td>
-                                        <td>
+                    <td>
                         <%#Eval("Title")%>
                     </td>
-                                        <td>
-                        <%#Eval("Type")%>
+                    <td>
+                        <%#Eval("Type").ToString()=="1"?"求助":Eval("Type").ToString()=="2"?"帮助":"其他"%>
                     </td>
-                                        <td>
-                        <%#Eval("PromoterID")%>
-                    </td>
-                                        <td>
+                    <td>
                         <%#Eval("LinkMan")%>
                     </td>
-                                        <td>
+                    <td>
                         <%#Eval("LinkPhone")%>
                     </td>
-                                        <td>
+                    <td>
                         <%#Eval("BeginTime")%>
                     </td>
-                                        <td>
+                    <td>
                         <%#Eval("Region")%>
                     </td>
-                                        <td>
+                    <td>
                         <%#Eval("ServiceIntention")%>
                     </td>
-                                        <td>
+                    <td>
                         <%#Eval("Duration")%>
                     </td>
-                                        <td>
+                    <td>
                         <%#Eval("Detail")%>
                     </td>
-                                        <td>
-                        <%#Eval("UnderTakerID")%>
+                    <td>
+                        <%#Eval("Status").ToString() == "0" ? "待配对" : Eval("Status").ToString() == "1" ? "已匹配" : "已完成"%>
                     </td>
-                                        <td>
-                        <%#Eval("Status")%>
-                    </td>
-                                        <td>
-                        <%#Eval("CreateDate")%>
-                    </td>
-                                        <td>
+                    <td>
                         <%#Eval("UpdateDate")%>
                     </td>
-                    
                     <td>
                         <a href="javascript:void(0);" id="test" onclick="aa({ title: '求助表管理', width: '600px', height: '350px', boxID: 'dialog-addConntact', showborder: true, showbg: true, fixed: true, content: 'iframe:/Admin/WG_HelpRequest.Edit.aspx?ctrID=<%#Eval("ID") %>' })">
                             编辑</a>

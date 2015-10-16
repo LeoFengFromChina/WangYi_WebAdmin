@@ -1,5 +1,4 @@
-﻿
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WG_Feeback.aspx.cs" Inherits="MideFrameWork.UI.WebSite.Admin.WG_FeebackList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WG_Feeback.aspx.cs" Inherits="MideFrameWork.UI.WebSite.Admin.WG_FeebackList" %>
 
 <%@ Register Src="~/UserControl/ucToolBarButton.ascx" TagName="ucToolBarButton" TagPrefix="uc" %>
 <%@ Register Src="~/UserControl/ucPagination.ascx" TagName="ucPagination" TagPrefix="uc" %>
@@ -55,9 +54,10 @@
         <div style="float: left; height: 50px;">
             <%--<uc:ucToolBarButton ID="myToolBarButton" runat="server" />--%>
             <div class="toolBar">
-                <span><a href="javascript:void(0)" onclick="box_create_item()" class="btn btn-sm btn-primary">新增</a>
-                    <asp:LinkButton ID="lbt_Delete" runat="server" OnClick="lbt_Delete_Click"  class="btn btn-sm btn-danger">删除</asp:LinkButton>
-                    <asp:LinkButton ID="lbt_Refresh" runat="server" OnClick="lbt_Refresh_Click"  class="btn btn-sm btn-info ">刷新</asp:LinkButton>
+                <span><a href="javascript:void(0)" onclick="box_create_item()" class="btn btn-sm btn-primary">
+                    新增</a>
+                    <asp:LinkButton ID="lbt_Delete" runat="server" OnClick="lbt_Delete_Click" class="btn btn-sm btn-danger">删除</asp:LinkButton>
+                    <asp:LinkButton ID="lbt_Refresh" runat="server" OnClick="lbt_Refresh_Click" class="btn btn-sm btn-info ">刷新</asp:LinkButton>
                 </span>
             </div>
         </div>
@@ -65,29 +65,24 @@
             <uc:ucQueryHelper2 ID="myQueryHelper" runat="server" />
         </div>
     </div>
-    <table  class="table table-hover table-condensed bordered">
+    <table class="table table-hover table-condensed bordered">
         <asp:Repeater ID="WG_FeebackRepeat" runat="server">
             <HeaderTemplate>
                 <tr>
                     <th>
                         <input type="checkbox" id="chkAll" onclick="javascript:return SelectAll(this.checked,this.id);">全选
                     </th>
-                                        <th>
-                        ID
-                    </th>
-                                        <th>
-                        反馈人ID
-                    </th>
-                                        <th>
+                    
+                    <th>
                         反馈明显
                     </th>
-                                        <th>
+                    <th>
                         备注
                     </th>
-                                        <th>
+                    <th>
                         创建日期
                     </th>
-                                        <th>
+                    <th>
                         操作
                     </th>
                 </tr>
@@ -98,23 +93,16 @@
                         <asp:CheckBox ID="chkItem" runat="server"></asp:CheckBox>
                         <asp:HiddenField ID="hdfID" runat="server" Value='<%# Eval("ID")%>' />
                     </td>
-
-                                        <td>
-                        <%#Eval("ID")%>
-                    </td>
-                                        <td>
-                        <%#Eval("PromoterID")%>
-                    </td>
-                                        <td>
+                    
+                    <td>
                         <%#Eval("Detail")%>
                     </td>
-                                        <td>
+                    <td>
                         <%#Eval("Memo")%>
                     </td>
-                                        <td>
+                    <td>
                         <%#Eval("CreateDate")%>
                     </td>
-                    
                     <td>
                         <a href="javascript:void(0);" id="test" onclick="aa({ title: 'WG_Feeback管理', width: '600px', height: '350px', boxID: 'dialog-addConntact', showborder: true, showbg: true, fixed: true, content: 'iframe:/Admin/WG_Feeback.Edit.aspx?ctrID=<%#Eval("ID") %>' })">
                             编辑</a>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using MideFrameWork.Data.Entity;
 using MideFrameWork.Data.Interface;
+using System.Configuration;
 
 namespace MideFrameWork_AppDataInterface
 {
@@ -37,7 +38,7 @@ namespace MideFrameWork_AppDataInterface
                     context.Response.Write(result);
                 }
 
-                string whereStr = " Name ='" + username + "' AND Psw='" + psw + "' ";
+                string whereStr = " Name ='" + username + "'";
                 IList<WG_MenberEntity> userList = DataProvider.GetInstance().GetWG_MenberList(whereStr);
                 if (userList.Count > 0)
                 {
@@ -94,7 +95,13 @@ namespace MideFrameWork_AppDataInterface
                         menber.SpecialSkill = speciality;
                         menber.ServiceIntention = intention;
                         menber.ServiceTimeInterval = intentionTime;
-                        menber.Status = 1;//状态:0正常,1待审核,2状态异常
+                        //0为游客，1位求助者，2为志愿者。求助者和自愿者才需要审核
+                        if (int.Parse(flag) > 0)
+                            menber.Status = 1;//状态:0正常,1待审核,2状态异常
+                        else
+                        {
+                            menber.Status = 0;
+                        }
                         menber.Flag = int.Parse(flag);
                         menber.Scores = 100;//初始积分100
                         menber.ServiceHours = 0;///初始服务时长为0
@@ -107,9 +114,9 @@ namespace MideFrameWork_AppDataInterface
                         //新增得分明细表
                         WG_ScoreEntity se = new WG_ScoreEntity();
                         se.MenberID = mID;
-                        se.Scores = 100;
+                        se.Scores = int.Parse(ConfigurationManager.AppSettings["DefaultScore"].ToString());
                         se.CreateDate = DateTime.Now;
-                        se.Title = "新用户注册获得100积分";
+                        se.Title = "新用户注册获得" + se.Scores + "积分";
                         DataProvider.GetInstance().AddWG_Score(se);
                         //看看是否心中其他表
 
@@ -138,7 +145,7 @@ namespace MideFrameWork_AppDataInterface
                 jbo.message = "接口调用过程中出现其他错误";
                 jbo.success = false;
             }
-            
+
 
             #region 返回json
 

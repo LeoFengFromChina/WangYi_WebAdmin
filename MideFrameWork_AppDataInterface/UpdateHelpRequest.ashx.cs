@@ -40,7 +40,7 @@ namespace MideFrameWork_AppDataInterface
                         //非法操作
                         jbo.code = -1;
                         jbo.data = null;
-                        jbo.message = "非法操作";
+                        jbo.message = "单子已完成";
                         jbo.success = false;
 
                         resultStr = JsonSerializer<JsonBaseObject>(jbo);
