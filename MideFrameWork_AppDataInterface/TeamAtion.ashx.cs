@@ -32,8 +32,8 @@ namespace MideFrameWork_AppDataInterface
                 if (!string.IsNullOrEmpty(context.Request["PageIndex"]))
                     PageIndex = context.Request["PageIndex"];
                 if (string.IsNullOrEmpty(menberid)
-                    && string.IsNullOrEmpty(teamid)
-                    && string.IsNullOrEmpty(opc))
+                    || string.IsNullOrEmpty(teamid)
+                    || string.IsNullOrEmpty(opc))
                 {
                     //失败
                     jbo.code = -1;
