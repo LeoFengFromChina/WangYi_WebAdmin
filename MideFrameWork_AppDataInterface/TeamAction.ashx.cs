@@ -25,7 +25,7 @@ namespace MideFrameWork_AppDataInterface
 
             try
             {
-                string opc = context.Request["opc"];//1为加入团队，2为退出团队
+                string opc = context.Request["opc"];//1为加入团队，2为退出团队,3解散团队，4获取团队成员
                 string menberid = context.Request["menberid"];
                 string teamid = context.Request["teamid"];
                 string PageIndex = "1";
@@ -43,10 +43,13 @@ namespace MideFrameWork_AppDataInterface
                 }
                 else
                 {
-                    string whereStr = " menberid=" + menberid + " AND teamid=" + teamid;
-                    IList<WG_OnGoingTeamEntity> ogteList = DataProvider.GetInstance().GetWG_OnGoingTeamList(whereStr);
+                    string whereStr = " 1=1 ";
                     if ("1".Equals(opc.Trim()))
                     {
+                        #region 加入团队
+
+                        whereStr += " and menberid=" + menberid + " AND teamid=" + teamid;
+                        IList<WG_OnGoingTeamEntity> ogteList = DataProvider.GetInstance().GetWG_OnGoingTeamList(whereStr);
                         if (ogteList != null && ogteList.Count > 0)
                         {
                             jbo.code = -1;
@@ -68,11 +71,14 @@ namespace MideFrameWork_AppDataInterface
                             jbo.success = true;
                             jbo.message = "成功加入团队";
                         }
+                        #endregion
                     }
                     else if ("2".Equals(opc.Trim()))
                     {
-                        //退出团队
+                        #region 退出团队
 
+                        whereStr += " and menberid=" + menberid + " AND teamid=" + teamid;
+                        IList<WG_OnGoingTeamEntity> ogteList = DataProvider.GetInstance().GetWG_OnGoingTeamList(whereStr);
                         if (ogteList != null && ogteList.Count > 0)
                         {
                             foreach (WG_OnGoingTeamEntity item in ogteList)
@@ -94,15 +100,63 @@ namespace MideFrameWork_AppDataInterface
                             jbo.message = "你尚未加入团队";
                             jbo.success = false;
                         }
+                        #endregion
+                    }
+                    else if ("3".Equals(opc))
+                    {
+                        #region 解散团队
+                        //1删除团队信息
+                        DataProvider.GetInstance().DeleteWG_Team(int.Parse(teamid));
+
+                        //2.删除所有已经加入团队的关系
+                        whereStr += " And Teamid=" + teamid;
+                        IList<WG_OnGoingTeamEntity> ote = DataProvider.GetInstance().GetWG_OnGoingTeamList(whereStr);
+                        if (ote != null && ote.Count > 0)
+                        {
+                            foreach (WG_OnGoingTeamEntity item in ote)
+                            {
+                                DataProvider.GetInstance().DeleteWG_OnGoingTeam(item.ID);
+                            }
+                        }
+
+                        jbo.code = 0;
+                        jbo.data = null;
+                        jbo.message = "团队解散成功";
+                        jbo.success = true;
+                        #endregion
+                    }
+                    else if ("4".Equals(opc))
+                    {
+                        #region 获取团队成员列表
+
+                        whereStr += " And Teamid=" + teamid;
+                        IList<WG_OnGoingTeamEntity> ote = DataProvider.GetInstance().GetWG_OnGoingTeamList(whereStr);
+                        IList<WG_MenberEntity> meList = new List<WG_MenberEntity>();
+                        if (ote != null && ote.Count > 0)
+                        {
+                            foreach (WG_OnGoingTeamEntity item in ote)
+                            {
+                                WG_MenberEntity me = DataProvider.GetInstance().GetWG_MenberEntity(item.MenberID);
+                                meList.Add(me);
+                            }
+                        }
+                        jbo.code = 0;
+                        jbo.data = meList;
+                        jbo.message = "获取团队成员列表成功";
+                        jbo.success = true;
+
+                        #endregion
                     }
                     else
                     {
-                        //非法操作
+                        #region 非法操作
+
                         jbo.code = -1;
                         jbo.data = null;
                         jbo.message = "非法操作";
                         jbo.success = false;
 
+                        #endregion
                     }
                 }
             }

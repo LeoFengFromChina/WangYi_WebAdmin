@@ -63,6 +63,14 @@
             </tr>
                       		            <tr>
                 <td>
+                    数量：
+                </td>
+                <td>                    
+                                                                       <asp:TextBox id="TextBox_Count" runat="server" Width="200px"></asp:TextBox>
+                               </td>
+            </tr>
+                      		            <tr>
+                <td>
                     状态：
                 </td>
                 <td>                    

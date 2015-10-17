@@ -31,7 +31,8 @@ namespace MideFrameWork.Data.SqlServer
 			};
 			                        
 						parameters[0].Value = ID;
-						return DbHelperSQL.Exists(strSql.ToString(),parameters);
+			
+			return DbHelperSQL.Exists(strSql.ToString(),parameters);
 		}
 		
 		/// <summary>
@@ -41,15 +42,16 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into WG_OnGoingGifts(");			
-            strSql.Append("Code,MenberID,GiftID,Status,CreateDate");
+            strSql.Append("Code,MenberID,GiftID,Count,Status,CreateDate");
 			strSql.Append(") values (");
-            strSql.Append("@Code,@MenberID,@GiftID,@Status,@CreateDate");            
+            strSql.Append("@Code,@MenberID,@GiftID,@Count,@Status,@CreateDate");            
             strSql.Append(") ");            
             strSql.Append(";select @@IDENTITY");		
 			SqlParameter[] parameters = {
 			            new SqlParameter("@Code", SqlDbType.NVarChar,32) ,            
                         new SqlParameter("@MenberID", SqlDbType.Int,4) ,            
                         new SqlParameter("@GiftID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Count", SqlDbType.Int,4) ,            
                         new SqlParameter("@Status", SqlDbType.Int,4) ,            
                         new SqlParameter("@CreateDate", SqlDbType.DateTime)             
               
@@ -58,8 +60,9 @@ namespace MideFrameWork.Data.SqlServer
             parameters[0].Value = info.Code;                        
             parameters[1].Value = info.MenberID;                        
             parameters[2].Value = info.GiftID;                        
-            parameters[3].Value = info.Status;                        
-            parameters[4].Value = info.CreateDate;                        
+            parameters[3].Value = info.Count;                        
+            parameters[4].Value = info.Status;                        
+            parameters[5].Value = info.CreateDate;                        
 			   
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);			
 			if (obj == null)
@@ -86,19 +89,21 @@ namespace MideFrameWork.Data.SqlServer
             strSql.Append(" Code = @Code , ");                                    
             strSql.Append(" MenberID = @MenberID , ");                                    
             strSql.Append(" GiftID = @GiftID , ");                                    
+            strSql.Append(" Count = @Count , ");                                    
             strSql.Append(" Status = @Status , ");                                    
             strSql.Append(" CreateDate = @CreateDate  ");            			
 			strSql.Append(" where ID=@ID ");			
 			SqlParameter[] parameters = {
-			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@Code", SqlDbType.NVarChar,32) ,                        new SqlParameter("@MenberID", SqlDbType.Int,4) ,                        new SqlParameter("@GiftID", SqlDbType.Int,4) ,                        new SqlParameter("@Status", SqlDbType.Int,4) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime)               
+			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@Code", SqlDbType.NVarChar,32) ,                        new SqlParameter("@MenberID", SqlDbType.Int,4) ,                        new SqlParameter("@GiftID", SqlDbType.Int,4) ,                        new SqlParameter("@Count", SqlDbType.Int,4) ,                        new SqlParameter("@Status", SqlDbType.Int,4) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime)               
             };
 						            
             parameters[0].Value = info.ID;                        
             parameters[1].Value = info.Code;                        
             parameters[2].Value = info.MenberID;                        
             parameters[3].Value = info.GiftID;                        
-            parameters[4].Value = info.Status;                        
-            parameters[5].Value = info.CreateDate;                        
+            parameters[4].Value = info.Count;                        
+            parameters[5].Value = info.Status;                        
+            parameters[6].Value = info.CreateDate;                        
             int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
 			{
@@ -162,7 +167,7 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID, Code, MenberID, GiftID, Status, CreateDate  ");			
+			strSql.Append("select ID, Code, MenberID, GiftID, Count, Status, CreateDate  ");			
 			strSql.Append("  from WG_OnGoingGifts ");
 			strSql.Append(" where ID=@ID");
 			SqlParameter[] parameters ={
@@ -189,7 +194,7 @@ namespace MideFrameWork.Data.SqlServer
 		public IList<MideFrameWork.Data.Entity.WG_OnGoingGiftsEntity> GetWG_OnGoingGiftsList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,Code,MenberID,GiftID,Status,CreateDate");
+			strSql.Append("select ID,Code,MenberID,GiftID,Count,Status,CreateDate");
 			strSql.Append(" FROM WG_OnGoingGifts ");
 			if(strWhere.Trim()!="")
 			{
@@ -218,7 +223,7 @@ namespace MideFrameWork.Data.SqlServer
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append("ID,Code,MenberID,GiftID,Status,CreateDate");
+			strSql.Append("ID,Code,MenberID,GiftID,Count,Status,CreateDate");
 			strSql.Append(" FROM WG_OnGoingGifts ");
 			if(strWhere.Trim()!="")
 			{
@@ -251,7 +256,7 @@ namespace MideFrameWork.Data.SqlServer
             IList<MideFrameWork.Data.Entity.WG_OnGoingGiftsEntity> list = new List<MideFrameWork.Data.Entity.WG_OnGoingGiftsEntity>();
             recordCount = 0;
             totalPage = 0;
-            DataSet ds = GetRecordByPage(" WG_OnGoingGifts", "ID,Code,MenberID,GiftID,Status,CreateDate", orderBy,strWhere,PageSize,PageIndex);
+            DataSet ds = GetRecordByPage(" WG_OnGoingGifts", "ID,Code,MenberID,GiftID,Count,Status,CreateDate", orderBy,strWhere,PageSize,PageIndex);
             if (ds.Tables.Count == 2)
             {
                 // 组装
@@ -292,6 +297,11 @@ namespace MideFrameWork.Data.SqlServer
 					info.GiftID=0;
 				else
 					info.GiftID=int.Parse(dr["GiftID"].ToString());
+									
+																						if(DBNull.Value==dr["Count"])
+					info.Count=0;
+				else
+					info.Count=int.Parse(dr["Count"].ToString());
 									
 																						if(DBNull.Value==dr["Status"])
 					info.Status=0;

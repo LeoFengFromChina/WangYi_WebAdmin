@@ -40,6 +40,7 @@ namespace MideFrameWork.UI.WebSite.Admin
                                             
                                             
                                             
+                                            
                                     
             //表单提交事件
             Button_submit.Click += new EventHandler(Button_submit_Click);
@@ -70,6 +71,7 @@ namespace MideFrameWork.UI.WebSite.Admin
                				                				                   TextBox_Code.Text = _WG_OnGoingGiftsEntity.Code.ToString();
                                 				                   TextBox_MenberID.Text = _WG_OnGoingGiftsEntity.MenberID.ToString();
                                 				                   TextBox_GiftID.Text = _WG_OnGoingGiftsEntity.GiftID.ToString();
+                                				                   TextBox_Count.Text = _WG_OnGoingGiftsEntity.Count.ToString();
                                 				                   TextBox_Status.Text = _WG_OnGoingGiftsEntity.Status.ToString();
                                 				                            }
         }
@@ -102,6 +104,13 @@ namespace MideFrameWork.UI.WebSite.Admin
                         return;
                   }
 				                                           
+                  var _Count = Request.Form["TextBox_Count"];
+                 if (string.IsNullOrEmpty(_Count))
+                   {
+                        Alert("[ 数量 ]不能为空");
+                        return;
+                  }
+				                                           
                   var _Status = Request.Form["TextBox_Status"];
                  if (string.IsNullOrEmpty(_Status))
                    {
@@ -122,6 +131,8 @@ namespace MideFrameWork.UI.WebSite.Admin
                  	                 	                     _WG_OnGoingGiftsEntity.MenberID =Convert.ToInt32(_MenberID.ToString());
                 	                        	  		                            
                  	                 	                     _WG_OnGoingGiftsEntity.GiftID =Convert.ToInt32(_GiftID.ToString());
+                	                        	  		                            
+                 	                 	                     _WG_OnGoingGiftsEntity.Count =Convert.ToInt32(_Count.ToString());
                 	                        	  		                            
                  	                 	                     _WG_OnGoingGiftsEntity.Status =Convert.ToInt32(_Status.ToString());
                 	                        	  		        
@@ -167,6 +178,13 @@ namespace MideFrameWork.UI.WebSite.Admin
                         return;
                   }
 				                                           
+                  var _Count = Request.Form["TextBox_Count"];
+                 if (string.IsNullOrEmpty(_Count))
+                   {
+                        Alert("[ 数量 ]不能为空");
+                        return;
+                  }
+				                                           
                   var _Status = Request.Form["TextBox_Status"];
                  if (string.IsNullOrEmpty(_Status))
                    {
@@ -186,6 +204,9 @@ namespace MideFrameWork.UI.WebSite.Admin
                                 					                         
                 
                                                                         _WG_OnGoingGiftsEntity.GiftID =Convert.ToInt32(_GiftID.ToString());
+                                					                         
+                
+                                                                        _WG_OnGoingGiftsEntity.Count =Convert.ToInt32(_Count.ToString());
                                 					                         
                 
                                                                         _WG_OnGoingGiftsEntity.Status =Convert.ToInt32(_Status.ToString());

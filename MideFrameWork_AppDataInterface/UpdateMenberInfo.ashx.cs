@@ -102,9 +102,13 @@ namespace MideFrameWork_AppDataInterface
                         string intentionTime = context.Request["intentionTime"];
                         if (intentionTime != null)
                             me.ServiceTimeInterval = intentionTime;
-                        //string flag = context.Request["flag"];
-                        //if (flag != null)
-                        //    me.Flag = int.Parse(flag);
+                        string flag = context.Request["flag"];
+                        if (flag != null)
+                        {
+                            if(int.Parse(flag)>me.Flag)
+                            me.Flag = int.Parse(flag);
+                            me.Status = 1;//越级升级需要重新审核
+                        }
 
                         if (DataProvider.GetInstance().UpdateWG_Menber(me))
                         {

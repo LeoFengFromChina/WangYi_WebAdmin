@@ -57,10 +57,11 @@ namespace MideFrameWork_AppDataInterface
                         {
                             idSub = me.ID.ToString().Substring(me.ID.ToString().Length - 4, 4);
                         }
-                        ogge.Code = timespan + idSub;
+                        ogge.Code = idSub + timespan;
                         ogge.MenberID = int.Parse(menberID);
                         ogge.GiftID = int.Parse(giftID);
                         ogge.Status = int.Parse(status);
+                        ogge.Count = count;
                         ogge.CreateDate = DateTime.Now;
                         int addresult = DataProvider.GetInstance().AddWG_OnGoingGifts(ogge);
                         if (addresult >= 0)
@@ -125,7 +126,7 @@ namespace MideFrameWork_AppDataInterface
                 jbo.message = "接口调用过程中出现其他错误";
                 jbo.success = false;
             }
-            
+
             #region 返回json
 
             result = JsonSerializer<JsonBaseObject>(jbo);

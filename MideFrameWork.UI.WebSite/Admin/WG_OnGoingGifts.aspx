@@ -85,6 +85,9 @@
                         礼物ID
                     </th>
                                         <th>
+                        数量
+                    </th>
+                                        <th>
                         状态
                     </th>
                                         <th>
@@ -113,6 +116,9 @@
                     </td>
                                         <td>
                         <%#Eval("GiftID")%>
+                    </td>
+                                        <td>
+                        <%#Eval("Count")%>
                     </td>
                                         <td>
                         <%#Eval("Status")%>

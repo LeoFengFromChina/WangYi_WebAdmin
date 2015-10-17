@@ -48,6 +48,16 @@ namespace MideFrameWork.Data.Entity
             set{ _giftid = value; }
         }
         
+		private int _count;
+		/// <summary>
+		/// 数量
+        /// </summary>
+        public int Count
+        {
+            get{ return _count; }
+            set{ _count = value; }
+        }
+        
 		private int _status;
 		/// <summary>
 		/// 状态

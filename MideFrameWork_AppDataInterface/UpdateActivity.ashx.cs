@@ -32,12 +32,12 @@ namespace MideFrameWork_AppDataInterface
             {
                 string menberID = context.Request["menberID"];
                 string activityID = context.Request["activityID"];
-                string status = context.Request["status"];//1参加活动，2退出活动，3完成活动（发起人权利）
+                string opc = context.Request["opc"];//1参加活动，2退出活动，3完成活动（发起人权利),4撤销活动,5.获取活动参与者列表
 
 
                 if (string.IsNullOrEmpty(menberID)
                     || string.IsNullOrEmpty(activityID)
-                    || string.IsNullOrEmpty(status))
+                    || string.IsNullOrEmpty(opc))
                 {
                     //参数空
                     jbo.code = -1;
@@ -58,7 +58,37 @@ namespace MideFrameWork_AppDataInterface
                         jbo.message = "活动不存在";
                         jbo.success = false;
                     }
-                    else if (ae.Status == 1 && status != "2")
+                    else if (opc == "5")
+                    {
+                        #region 获取活动参与者列表
+                        string whereStr = " activityID=" + activityID;
+                        IList<WG_OnGoingActivitiesEntity> ogaeList = DataProvider.GetInstance().GetWG_OnGoingActivitiesList(whereStr);
+
+                        IList<WG_MenberEntity> meList = new List<WG_MenberEntity>();
+                        if (ogaeList != null && ogaeList.Count > 0)
+                        {
+                            foreach (WG_OnGoingActivitiesEntity item in ogaeList)
+                            {
+                                WG_MenberEntity me = DataProvider.GetInstance().GetWG_MenberEntity(item.MenberID);
+                                meList.Add(me);
+                            }
+                        }
+                        jbo.code = 0;
+                        jbo.data = meList;
+                        jbo.message = "成功获取活动参与者列表";
+                        jbo.success = true;
+
+                        #endregion
+                    }
+                    else if (ae.Status == 2)
+                    {
+                        //活动已经结束
+                        jbo.code = -1;
+                        jbo.data = null;
+                        jbo.message = "活动已经结束";
+                        jbo.success = false;
+                    }
+                    else if (ae.Status == 1 && opc != "3")
                     {
                         //活动已经开始
                         jbo.code = -1;
@@ -66,13 +96,30 @@ namespace MideFrameWork_AppDataInterface
                         jbo.message = "活动已经开始了";
                         jbo.success = false;
                     }
-                    else if (ae.Status == 2)
+                    else if (ae.Status == 0 && opc == "4")
                     {
+                        //只有在等待报名的活动才可以撤销，已经开始或者已经结束的都不可以撤销
+
+                        //1.删除这个活动
+                        DataProvider.GetInstance().DeleteWG_Activities(int.Parse(activityID));
+
+                        //2.删除报名列表
+                        string whereStr = " 1=1 AND activityID=" + activityID;
+                        IList<WG_OnGoingActivitiesEntity> ogae = DataProvider.GetInstance().GetWG_OnGoingActivitiesList(whereStr);
+                        if (ogae != null && ogae.Count > 0)
+                        {
+                            foreach (WG_OnGoingActivitiesEntity item in ogae)
+                            {
+                                DataProvider.GetInstance().DeleteWG_OnGoingActivities(item.ID);
+                            }
+                        }
+
                         //活动已经开始
-                        jbo.code = -1;
+                        jbo.code = 0;
                         jbo.data = null;
-                        jbo.message = "活动已经结束";
-                        jbo.success = false;
+                        jbo.message = "撤销活动成功";
+                        jbo.success = true;
+
                     }
                     else
                     {
@@ -80,7 +127,7 @@ namespace MideFrameWork_AppDataInterface
                         string whereStr = " status= 0 " + " AND  menberID= " + menberID + " AND activityID= " + activityID;
                         IList<WG_OnGoingActivitiesEntity> ogaeList = DataProvider.GetInstance().GetWG_OnGoingActivitiesList(whereStr);
 
-                        if ("1" == status)
+                        if ("1" == opc)
                         {
                             #region 1参加活动
                             if (null != ogaeList && ogaeList.Count > 0)
@@ -129,7 +176,7 @@ namespace MideFrameWork_AppDataInterface
                             #endregion
 
                         }
-                        else if ("2" == status)
+                        else if ("2" == opc)
                         {
                             //2只能是退出活动，如果是激活活动，是不能人工的，需要自动人数到了触发活动
                             #region 退出活动
@@ -155,7 +202,7 @@ namespace MideFrameWork_AppDataInterface
                             }
                             #endregion
                         }
-                        else if ("3" == status)
+                        else if ("3" == opc)
                         {
                             //3活动完成,发起人有权限
                             ae.Status = 2;
