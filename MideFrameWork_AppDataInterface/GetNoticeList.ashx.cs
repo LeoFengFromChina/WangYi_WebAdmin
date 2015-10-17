@@ -41,7 +41,8 @@ namespace MideFrameWork_AppDataInterface
                 }
                 else
                 {
-                    string whereStr = " toUserID= " + menberid;
+                    //toUser=0说明是系统群发的消息
+                    string whereStr = " toUserID= " + menberid + " OR toUserID=0";
                     //IList<NoticeEntity> noticeList = DataProvider.GetInstance().GetNoticeList(whereStr);
 
                     int recordCount = -1;
@@ -76,7 +77,7 @@ namespace MideFrameWork_AppDataInterface
                 jbo.message = "接口调用过程中出现其他错误。";
                 jbo.success = false;
             }
-            
+
 
             resultStr = JsonSerializer<JsonBaseObject>(jbo);
             context.Response.Write(resultStr);
