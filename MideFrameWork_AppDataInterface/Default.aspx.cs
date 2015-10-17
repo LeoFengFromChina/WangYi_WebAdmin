@@ -14,7 +14,7 @@ namespace MideFrameWork_AppDataInterface
             //Response.Redirect("GetRankList.ashx");
             //Response.Redirect("GetHelpRequestList.ashx");
             //Response.Redirect("GetGiftList.ashx");
-            Response.Redirect("GetRankList.ashx");
+            Response.Redirect("UpdateActivity.ashx");
             //List<string> emailTo = new List<string>() { "502342395@qq.com", "mide_2008@126.com" };
             //string errorStr = "";
             //string body = "http://localhost:5918/GetBackPsw.aspx";

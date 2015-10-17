@@ -35,6 +35,7 @@ namespace MideFrameWork_AppDataInterface
 
 
 
+    [KnownType(typeof(DateTime))]
     [KnownType(typeof(WG_MenberEntity))]
     [KnownType(typeof(WG_HelpRequestEntity))]
     [KnownType(typeof(RequestView))]
@@ -43,9 +44,10 @@ namespace MideFrameWork_AppDataInterface
     [KnownType(typeof(List<OnGoingGiftsView>))]
     [KnownType(typeof(List<WG_GiftsEntity>))]
     [KnownType(typeof(List<GlobalPictureEntity>))]
-    [KnownType(typeof(List<WG_ActivitiesEntity>))]    
+    [KnownType(typeof(List<WG_ActivitiesEntity>))]
     [KnownType(typeof(List<NoticeEntity>))]
     [KnownType(typeof(List<WG_TeamEntity>))]
+    [KnownType(typeof(List<WG_MenberEntity>))]
     [DataContract]
     public class JsonBaseObject
     {

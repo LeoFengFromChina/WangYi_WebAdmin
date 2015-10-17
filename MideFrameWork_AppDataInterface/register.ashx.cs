@@ -75,7 +75,9 @@ namespace MideFrameWork_AppDataInterface
 
                         WG_MenberEntity menber = new WG_MenberEntity();
                         menber.Name = username;
+                        menber.NickName = nickname;
                         menber.Psw = psw;
+                        menber.Sex = sex;
                         menber.NickName = nickname;
                         menber.PhotoUrl = avatar_url;
                         menber.Birthday = birthday;

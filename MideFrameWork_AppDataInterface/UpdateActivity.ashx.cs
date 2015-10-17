@@ -96,7 +96,7 @@ namespace MideFrameWork_AppDataInterface
                         jbo.message = "活动已经开始了";
                         jbo.success = false;
                     }
-                    else if (ae.Status == 0 && opc == "4")
+                    else if (ae.Status == 0 && opc == "4" && ae.PromoterID == int.Parse(menberID))
                     {
                         //只有在等待报名的活动才可以撤销，已经开始或者已经结束的都不可以撤销
 
