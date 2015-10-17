@@ -48,7 +48,16 @@ namespace MideFrameWork_AppDataInterface
                     {
                         //1.在ongoinggift表中新增一条记录
                         WG_OnGoingGiftsEntity ogge = new WG_OnGoingGiftsEntity();
-                        ogge.Code = Guid.NewGuid().ToString();
+                        //领取码=年月日时分秒+id后四位（不够四位前补零）
+                        string timespan = DateTime.Now.ToString("yyyyMMddhhmmss");
+                        string idSub = string.Empty;
+                        if (me.ID.ToString().Length < 4)
+                            idSub = me.ID.ToString().PadLeft(4, '0');
+                        else
+                        {
+                            idSub = me.ID.ToString().Substring(me.ID.ToString().Length - 4, 4);
+                        }
+                        ogge.Code = timespan + idSub;
                         ogge.MenberID = int.Parse(menberID);
                         ogge.GiftID = int.Parse(giftID);
                         ogge.Status = int.Parse(status);
