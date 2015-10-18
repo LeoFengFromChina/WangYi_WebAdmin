@@ -73,7 +73,10 @@
     <Content Include="Admin\ArticleType.aspx" />
     <Content Include="Admin\ArticleType.Edit.aspx" />
     <Content Include="Admin\Base_Button.aspx" />
+    <Content Include="Admin\WG_Menber_Operation.aspx" />
     <Content Include="Admin\Base_Button.Edit.aspx" />
+    <Content Include="Admin\Base_Module.aspx" />
+    <Content Include="Admin\Base_Module.Edit.aspx" />
     <Content Include="Admin\Base_Privilege.aspx" />
     <Content Include="Admin\Base_Privilege.Edit.aspx" />
     <Content Include="Admin\DistrictEdit.aspx" />
@@ -112,6 +115,7 @@
     <Content Include="Admin\WG_Major.aspx" />
     <Content Include="Admin\WG_Major.Edit.aspx" />
     <Content Include="Admin\WG_Menber.aspx" />
+    <Content Include="Admin\WG_Menber.Validate.aspx" />
     <Content Include="Admin\WG_Menber.Edit.aspx" />
     <Content Include="Admin\WG_OnGoingActivities.aspx" />
     <Content Include="Admin\WG_OnGoingActivities.Edit.aspx" />
@@ -366,12 +370,33 @@
     <Compile Include="Admin\Base_Button.aspx.designer.cs">
       <DependentUpon>Base_Button.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\WG_Menber_Operation.aspx.cs">
+      <DependentUpon>WG_Menber_Operation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WG_Menber_Operation.aspx.designer.cs">
+      <DependentUpon>WG_Menber_Operation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Base_Button.Edit.aspx.cs">
       <DependentUpon>Base_Button.Edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Base_Button.Edit.aspx.designer.cs">
       <DependentUpon>Base_Button.Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Base_Module.aspx.cs">
+      <DependentUpon>Base_Module.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Base_Module.aspx.designer.cs">
+      <DependentUpon>Base_Module.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Base_Module.Edit.aspx.cs">
+      <DependentUpon>Base_Module.Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Base_Module.Edit.aspx.designer.cs">
+      <DependentUpon>Base_Module.Edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Base_Privilege.aspx.cs">
       <DependentUpon>Base_Privilege.aspx</DependentUpon>
@@ -638,6 +663,13 @@
     </Compile>
     <Compile Include="Admin\WG_Menber.aspx.designer.cs">
       <DependentUpon>WG_Menber.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WG_Menber.Validate.aspx.cs">
+      <DependentUpon>WG_Menber.Validate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WG_Menber.Validate.aspx.designer.cs">
+      <DependentUpon>WG_Menber.Validate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\WG_Menber.Edit.aspx.cs">
       <DependentUpon>WG_Menber.Edit.aspx</DependentUpon>

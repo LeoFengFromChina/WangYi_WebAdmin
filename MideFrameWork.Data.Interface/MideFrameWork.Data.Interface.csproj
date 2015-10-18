@@ -53,6 +53,7 @@
     <Compile Include="GenerareCode\Article.cs" />
     <Compile Include="GenerareCode\ArticleType.cs" />
     <Compile Include="GenerareCode\Base_Button.cs" />
+    <Compile Include="GenerareCode\Base_Module.cs" />
     <Compile Include="GenerareCode\Base_Privilege.cs" />
     <Compile Include="GenerareCode\District.cs" />
     <Compile Include="GenerareCode\FriendLinks.cs" />

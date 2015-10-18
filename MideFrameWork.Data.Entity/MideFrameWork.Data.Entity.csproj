@@ -47,9 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extention\WG_MenberView.cs" />
     <Compile Include="GenerareCode\Article.cs" />
     <Compile Include="GenerareCode\ArticleType.cs" />
     <Compile Include="GenerareCode\Base_Button.cs" />
+    <Compile Include="GenerareCode\Base_Module.cs" />
     <Compile Include="GenerareCode\Base_Privilege.cs" />
     <Compile Include="GenerareCode\District.cs" />
     <Compile Include="GenerareCode\FriendLinks.cs" />
@@ -80,9 +82,7 @@
     <Compile Include="GenerareCode\WG_Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Extention\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

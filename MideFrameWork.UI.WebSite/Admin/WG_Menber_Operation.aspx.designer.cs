@@ -10,7 +10,7 @@
 namespace MideFrameWork.UI.WebSite.Admin {
     
     
-    public partial class NoticeList {
+    public partial class WG_Menber_Operation {
         
         /// <summary>
         /// form1 控件。
@@ -22,48 +22,30 @@ namespace MideFrameWork.UI.WebSite.Admin {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// lbt_Delete 控件。
+        /// ddl_Module 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbt_Delete;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_Module;
         
         /// <summary>
-        /// lbt_Refresh 控件。
+        /// Base_ButtonList 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbt_Refresh;
+        protected global::System.Web.UI.WebControls.Repeater Base_ButtonList;
         
         /// <summary>
-        /// myQueryHelper 控件。
+        /// Button_submit 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::MideFrameWork.UI.WebSite.ucQueryHelper2 myQueryHelper;
-        
-        /// <summary>
-        /// NoticeRepeat 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater NoticeRepeat;
-        
-        /// <summary>
-        /// myPagination 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::MideFrameWork.UI.WebSite.ucPagination myPagination;
+        protected global::System.Web.UI.WebControls.Button Button_submit;
     }
 }

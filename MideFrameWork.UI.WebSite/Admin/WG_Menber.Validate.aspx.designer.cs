@@ -10,7 +10,7 @@
 namespace MideFrameWork.UI.WebSite.Admin {
     
     
-    public partial class WG_MenberEdit {
+    public partial class WG_MenberValidate {
         
         /// <summary>
         /// form1 控件。
@@ -20,6 +20,33 @@ namespace MideFrameWork.UI.WebSite.Admin {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        
+        /// <summary>
+        /// Button_submit2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_submit2;
+        
+        /// <summary>
+        /// Button_NoPassTo2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_NoPassTo2;
+        
+        /// <summary>
+        /// DropDownList1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
         
         /// <summary>
         /// TextBox_NickName 控件。
@@ -38,15 +65,6 @@ namespace MideFrameWork.UI.WebSite.Admin {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_Name;
-        
-        /// <summary>
-        /// TextBox_Psw 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Psw;
         
         /// <summary>
         /// TextBox_Scores 控件。
@@ -256,12 +274,30 @@ namespace MideFrameWork.UI.WebSite.Admin {
         protected global::System.Web.UI.WebControls.TextBox TextBox_Status;
         
         /// <summary>
-        /// Button_submit 控件。
+        /// Button_submit1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_submit;
+        protected global::System.Web.UI.WebControls.Button Button_submit1;
+        
+        /// <summary>
+        /// Button_NoPassTo1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_NoPassTo1;
+        
+        /// <summary>
+        /// ddl_Flag 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_Flag;
     }
 }

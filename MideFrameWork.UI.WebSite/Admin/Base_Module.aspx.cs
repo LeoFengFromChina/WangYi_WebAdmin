@@ -10,7 +10,7 @@ using MideFrameWork.Data.Interface;
 
 namespace MideFrameWork.UI.WebSite.Admin
 {
-    public partial class WG_MenberList : BaseForm
+    public partial class Base_ModuleList : BaseForm
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,9 +22,7 @@ namespace MideFrameWork.UI.WebSite.Admin
                 myQueryHelper.FirstSelectDataSource = null;
                 List<DropDownItem> firstDataSource = new List<DropDownItem>();
                 firstDataSource.Add(new DropDownItem("全部", "all", "content"));
-                firstDataSource.Add(new DropDownItem("电话", "Phone", "content"));
-                firstDataSource.Add(new DropDownItem("帐号", "Name", "content"));
-                firstDataSource.Add(new DropDownItem("姓名", "NickName", "content"));
+                firstDataSource.Add(new DropDownItem("内容", "MsgContent", "content"));
                 firstDataSource.Add(new DropDownItem("日期", "CreateDate", "date"));
                 firstDataSource.Add(new DropDownItem("状态", "Status", "status"));
                 myQueryHelper.FirstSelectDataSource = firstDataSource;
@@ -32,8 +30,8 @@ namespace MideFrameWork.UI.WebSite.Admin
 
                 myQueryHelper.SecondSelectDataSource = null;
                 List<DropDownItem> secondDataSource = new List<DropDownItem>();
-                secondDataSource.Add(new DropDownItem("待审核", "1", "status"));
-                secondDataSource.Add(new DropDownItem("正常", "0", "status"));
+                secondDataSource.Add(new DropDownItem("成功", "1", "status"));
+                secondDataSource.Add(new DropDownItem("失败", "2", "status"));
                 myQueryHelper.SecondSelectDataSource = secondDataSource;
 
                 this.myQueryHelper.OrderBy = "CreateDate Desc";
@@ -50,14 +48,14 @@ namespace MideFrameWork.UI.WebSite.Admin
             int totalRecords = 0;
             int totalPages = 0;
             myPagination.Query = myQueryHelper;
-            IList<WG_MenberEntity> WG_MenberList = DataProvider.GetInstance().GetWG_MenberList(myPagination.PageSize,
+            IList<Base_ModuleEntity> Base_ModuleList = DataProvider.GetInstance().GetBase_ModuleList(myPagination.PageSize,
                 myPagination.CurrentPageIndex,
                 myPagination.Query.WhereStr,
                 myPagination.Query.OrderBy,
                 out totalRecords,
                 out totalPages);
-            WG_MenberRepeat.DataSource = WG_MenberList;
-            WG_MenberRepeat.DataBind();
+            Base_ModuleRepeat.DataSource = Base_ModuleList;
+            Base_ModuleRepeat.DataBind();
             myPagination.TotalRecord = totalRecords;
             myPagination.TotalPage = totalPages;
         }
@@ -70,10 +68,10 @@ namespace MideFrameWork.UI.WebSite.Admin
         {
             try
             {
-                string ids = GetSelectedAsString(WG_MenberRepeat);
+                string ids = GetSelectedAsString(Base_ModuleRepeat);
                 if (ids.Length > 0)
                 {
-                    DataProvider.GetInstance().DeleteWG_MenberList(ids);
+                    DataProvider.GetInstance().DeleteBase_ModuleList(ids);
                     Alert("操作成功!");
                     myPagination.DataBind();
                 }
@@ -84,7 +82,7 @@ namespace MideFrameWork.UI.WebSite.Admin
             }
             catch (Exception ex)
             {
-                WriteLog("WG_Menberlist", "lbt_Delete_Click", ex.ToString(), Common.DailyUtility.MideSmsType.LogType.SystemLog);
+                WriteLog("Base_Modulelist", "lbt_Delete_Click", ex.ToString(), Common.DailyUtility.MideSmsType.LogType.SystemLog);
                 Alert("无法删除！删除前请清空相关的操作权限！");
             }
         }

@@ -48,6 +48,8 @@ namespace MideFrameWork_AppDataInterface
     [KnownType(typeof(List<NoticeEntity>))]
     [KnownType(typeof(List<WG_TeamEntity>))]
     [KnownType(typeof(List<WG_MenberEntity>))]
+    [KnownType(typeof(WG_MenberEntityView))]
+    [KnownType(typeof(IList<Base_PrivilegeEntity>))]
     [DataContract]
     public class JsonBaseObject
     {

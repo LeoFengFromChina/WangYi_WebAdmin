@@ -25,7 +25,7 @@ namespace MideFrameWork_AppDataInterface
 
             try
             {
-                string opc = context.Request["opc"];//1为加入团队，2为退出团队,3解散团队，4获取团队成员
+                string opc = context.Request["opc"];//1为加入团队，2为退出团队,3解散团队，4获取团队成员，5.创建团队
                 string menberid = context.Request["menberid"];
                 string teamid = context.Request["teamid"];
                 string PageIndex = "1";
@@ -146,6 +146,60 @@ namespace MideFrameWork_AppDataInterface
                         jbo.success = true;
 
                         #endregion
+                    }
+                    else if ("5".Equals(opc))
+                    {
+                        //创建团队。判断权限
+                        string name = context.Request["name"];
+                        string captainid = context.Request["captainid"];
+                        string linkman = context.Request["linkman"];
+                        string linkphone = context.Request["linkphone"];
+                        string linkaddress = context.Request["linkaddress"];
+                        string teamaim = context.Request["teamaim"];
+                        string serviceintention = context.Request["serviceintention"];
+                        string region = context.Request["region"];
+
+
+                        if (!string.IsNullOrEmpty(name)
+                            && !string.IsNullOrEmpty(linkman)
+                            && !string.IsNullOrEmpty(linkphone))
+                        {
+                            WG_TeamEntity te = new WG_TeamEntity();
+                            te.Name = name;
+                            te.CaptainID = int.Parse(menberid);
+                            te.LinkAddress = linkaddress;
+                            te.LinkMan = linkman;
+                            te.LinkPhone = linkphone;
+                            te.TeamAim = teamaim;
+                            te.ServiceIntention = serviceintention;
+                            te.Region = region;
+                            te.CreateDate = DateTime.Now;
+                            te.UpdateDate = DateTime.Now;
+                            int newTeamid = DataProvider.GetInstance().AddWG_Team(te);
+
+                            //创建完成，自己立马加入团队
+
+                            WG_OnGoingTeamEntity ogte = new WG_OnGoingTeamEntity();
+                            ogte.MenberID = int.Parse(menberid);
+                            ogte.TeamID = newTeamid;
+                            ogte.CreateDate = DateTime.Now;
+                            DataProvider.GetInstance().AddWG_OnGoingTeam(ogte);
+
+
+                            //创建成功
+                            jbo.code = 0;
+                            jbo.data = null;
+                            jbo.message = "标题，联系方式，联系人不能为空";
+                            jbo.success = true;
+                        }
+                        else
+                        {
+                            //缺少必要信息，不能创建
+                            jbo.code = -1;
+                            jbo.data = null;
+                            jbo.message = "标题，联系方式，联系人不能为空";
+                            jbo.success = false;
+                        }
                     }
                     else
                     {

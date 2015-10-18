@@ -32,7 +32,7 @@ namespace MideFrameWork_AppDataInterface
             {
                 string menberID = context.Request["menberID"];
                 string activityID = context.Request["activityID"];
-                string opc = context.Request["opc"];//1参加活动，2退出活动，3完成活动（发起人权利),4撤销活动,5.获取活动参与者列表
+                string opc = context.Request["opc"];//1参加活动，2退出活动，3完成活动（发起人权利),4撤销活动,5.获取活动参与者列表，6发布活动
 
 
                 if (string.IsNullOrEmpty(menberID)
@@ -79,6 +79,57 @@ namespace MideFrameWork_AppDataInterface
                         jbo.success = true;
 
                         #endregion
+                    }
+
+                    else if (opc == "6")
+                    {
+                        //发布活动，需要权限
+                        string title = context.Request["title"];
+                        string promoterid = context.Request["promoterid"];
+                        string linkman = context.Request["linkman"];
+                        string linkphone = context.Request["linkphone"];
+                        string linkaddress = context.Request["linkaddress"];
+                        string activitytype = context.Request["activitytype"];
+                        string region = context.Request["region"];
+                        string begintime = context.Request["begintime"];
+                        string needmenbercount = context.Request["needmenbercount"];
+                        string detail = context.Request["detail"];
+
+                        if (!string.IsNullOrEmpty(title)
+                            && !string.IsNullOrEmpty(linkman)
+                            && !string.IsNullOrEmpty(linkphone))
+                        {
+                            WG_ActivitiesEntity aee = new WG_ActivitiesEntity();
+                            aee.Title = title;
+                            aee.PromoterID = int.Parse(menberID);
+                            aee.LinkMan = linkman;
+                            aee.LinkPhone = linkphone;
+                            aee.Address = linkaddress;
+                            aee.ActivityType = activitytype;
+                            aee.Region = region;
+                            aee.NeedMenberCount = int.Parse(needmenbercount);
+                            aee.Detail = detail;
+                            aee.BeginTime = Convert.ToDateTime(begintime);
+                            aee.Status = 0;//正在报名中
+                            aee.CreateDate = DateTime.Now;
+                            aee.UpdateDate = DateTime.Now;
+
+                            DataProvider.GetInstance().AddWG_Activities(aee);
+                            //成功
+                            jbo.code = 0;
+                            jbo.data = null;
+                            jbo.message = "创建活动成功";
+                            jbo.success = false;
+
+                        }
+                        else
+                        {
+                            //信息不够，不能创建
+                            jbo.code = -1;
+                            jbo.data = null;
+                            jbo.message = "标题，联系人、联系电话不能为空";
+                            jbo.success = false;
+                        }
                     }
                     else if (ae.Status == 2)
                     {

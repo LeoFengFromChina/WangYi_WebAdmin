@@ -1,5 +1,4 @@
-﻿
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WG_Gifts.aspx.cs" Inherits="MideFrameWork.UI.WebSite.Admin.WG_GiftsList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WG_Gifts.aspx.cs" Inherits="MideFrameWork.UI.WebSite.Admin.WG_GiftsList" %>
 
 <%@ Register Src="~/UserControl/ucToolBarButton.ascx" TagName="ucToolBarButton" TagPrefix="uc" %>
 <%@ Register Src="~/UserControl/ucPagination.ascx" TagName="ucPagination" TagPrefix="uc" %>
@@ -51,111 +50,94 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div style="width: 100%">
-        <div style="float: left; height: 50px;">
-            <%--<uc:ucToolBarButton ID="myToolBarButton" runat="server" />--%>
-            <div class="toolBar">
-                <span><a href="javascript:void(0)" onclick="box_create_item()" class="btn btn-sm btn-primary">新增</a>
-                    <asp:LinkButton ID="lbt_Delete" runat="server" OnClick="lbt_Delete_Click"  class="btn btn-sm btn-danger">删除</asp:LinkButton>
-                    <asp:LinkButton ID="lbt_Refresh" runat="server" OnClick="lbt_Refresh_Click"  class="btn btn-sm btn-info ">刷新</asp:LinkButton>
-                </span>
+        <div style="width: 100%">
+            <div style="float: left; height: 50px;">
+                <%--<uc:ucToolBarButton ID="myToolBarButton" runat="server" />--%>
+                <div class="toolBar">
+                    <span><a href="javascript:void(0)" onclick="box_create_item()" class="btn btn-sm btn-primary">新增</a>
+                        <asp:LinkButton ID="lbt_Delete" runat="server" OnClick="lbt_Delete_Click" class="btn btn-sm btn-danger">删除</asp:LinkButton>
+                        <asp:LinkButton ID="lbt_Refresh" runat="server" OnClick="lbt_Refresh_Click" class="btn btn-sm btn-info ">刷新</asp:LinkButton>
+                    </span>
+                </div>
+            </div>
+            <div style="height: 50px;">
+                <uc:ucQueryHelper2 ID="myQueryHelper" runat="server" />
             </div>
         </div>
-        <div style="height: 50px;">
-            <uc:ucQueryHelper2 ID="myQueryHelper" runat="server" />
-        </div>
-    </div>
-    <table  class="table table-hover table-condensed bordered">
-        <asp:Repeater ID="WG_GiftsRepeat" runat="server">
-            <HeaderTemplate>
-                <tr>
-                    <th>
-                        <input type="checkbox" id="chkAll" onclick="javascript:return SelectAll(this.checked,this.id);">全选
-                    </th>
-                                        <th>
-                        ID
-                    </th>
-                                        <th>
-                        礼物名称
-                    </th>
-                                        <th>
-                        图片地址
-                    </th>
-                                        <th>
-                        所需积分
-                    </th>
-                                        <th>
-                        礼物数量
-                    </th>
-                                        <th>
-                        详细说明
-                    </th>
-                                        <th>
-                        区域
-                    </th>
-                                        <th>
-                        状态
-                    </th>
-                                        <th>
-                        创建日期
-                    </th>
-                                        <th>
-                        更新日期
-                    </th>
-                                        <th>
-                        操作
-                    </th>
-                </tr>
-            </HeaderTemplate>
-            <ItemTemplate>
-                <tr>
-                    <td>
-                        <asp:CheckBox ID="chkItem" runat="server"></asp:CheckBox>
-                        <asp:HiddenField ID="hdfID" runat="server" Value='<%# Eval("ID")%>' />
-                    </td>
+        <table class="table table-hover table-condensed bordered">
+            <asp:Repeater ID="WG_GiftsRepeat" runat="server">
+                <HeaderTemplate>
+                    <tr>
+                        <th>
+                            <input type="checkbox" id="chkAll" onclick="javascript: return SelectAll(this.checked, this.id);">全选
+                        </th>
+                        <th>礼物名称
+                        </th>
+                        <th>图片地址
+                        </th>
+                        <th>所需积分
+                        </th>
+                        <th>礼物数量
+                        </th>
+                        <th>详细说明
+                        </th>
+                        <th>区域
+                        </th>
+                        <th>状态
+                        </th>
+                        <th>创建日期
+                        </th>
+                        <th>更新日期
+                        </th>
+                        <th>操作
+                        </th>
+                    </tr>
+                </HeaderTemplate>
+                <ItemTemplate>
+                    <tr>
+                        <td>
+                            <asp:CheckBox ID="chkItem" runat="server"></asp:CheckBox>
+                            <asp:HiddenField ID="hdfID" runat="server" Value='<%# Eval("ID")%>' />
+                        </td>
 
-                                        <td>
-                        <%#Eval("ID")%>
-                    </td>
-                                        <td>
-                        <%#Eval("Title")%>
-                    </td>
-                                        <td>
-                        <%#Eval("PhotoUrl")%>
-                    </td>
-                                        <td>
-                        <%#Eval("NeedScores")%>
-                    </td>
-                                        <td>
-                        <%#Eval("Count")%>
-                    </td>
-                                        <td>
-                        <%#Eval("Detail")%>
-                    </td>
-                                        <td>
-                        <%#Eval("Region")%>
-                    </td>
-                                        <td>
-                        <%#Eval("Status").ToString()=="0"?"正常":"已过期"%>
-                    </td>
-                                        <td>
-                        <%#Eval("CreateDate")%>
-                    </td>
-                                        <td>
-                        <%#Eval("UpdateDate")%>
-                    </td>
-                    
-                    <td>
-                        <a href="javascript:void(0);" id="test" onclick="aa({ title: '礼物表管理', width: '600px', height: '350px', boxID: 'dialog-addConntact', showborder: true, showbg: true, fixed: true, content: 'iframe:/Admin/WG_Gifts.Edit.aspx?ctrID=<%#Eval("ID") %>' })">
-                            编辑</a>
-                    </td>
-                </tr>
-            </ItemTemplate>
-        </asp:Repeater>
-    </table>
-    <div style="width: 100%">
-        <uc:ucPagination ID="myPagination" runat="server" />
-    </div>
+                        <td>
+                            <%#Eval("Title")%>
+                        </td>
+                        <td>
+                            <a href="<%#Eval("PhotoUrl")%>" target="_blank">预览</a>
+                        </td>
+                        <td>
+                            <%#Eval("NeedScores")%>
+                        </td>
+                        <td>
+                            <%#Eval("Count")%>
+                        </td>
+                        <td>
+                            <%#Eval("Detail")%>
+                        </td>
+                        <td>
+                            <%#Eval("Region")%>
+                        </td>
+                        <td>
+                            <%#Eval("Status").ToString()=="0"?"正常":"已过期"%>
+                        </td>
+                        <td>
+                            <%#Eval("CreateDate")%>
+                        </td>
+                        <td>
+                            <%#Eval("UpdateDate")%>
+                        </td>
+
+                        <td>
+                            <a href="javascript:void(0);" id="test" onclick="aa({ title: '礼物表管理', width: '600px', height: '350px', boxID: 'dialog-addConntact', showborder: true, showbg: true, fixed: true, content: 'iframe:/Admin/WG_Gifts.Edit.aspx?ctrID=<%#Eval("ID") %>' })">编辑</a>
+                        </td>
+                    </tr>
+                </ItemTemplate>
+            </asp:Repeater>
+        </table>
+        <div style="width: 100%">
+            <uc:ucPagination ID="myPagination" runat="server" />
+        </div>
     </form>
 </body>
 </html>

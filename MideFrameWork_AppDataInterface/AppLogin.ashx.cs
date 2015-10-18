@@ -22,6 +22,7 @@ namespace MideFrameWork_AppDataInterface
             context.Response.AddHeader("Access-Control-Allow-Headers", "x-requested-with,content-type");
             context.Response.ContentType = "text/plain";
             JsonBaseObject jbo = new JsonBaseObject();
+            WG_MenberEntityView menberView = new WG_MenberEntityView();
             string result = "";
             try
             {
@@ -42,10 +43,15 @@ namespace MideFrameWork_AppDataInterface
                 }
                 else
                 {
+                    string whereStr = " UserID=" + userList[0].ID;
+                    IList<Base_PrivilegeEntity> peList = DataProvider.GetInstance().GetBase_PrivilegeList(whereStr);
+                    menberView.Menber = userList[0];
+                    menberView.Privilege = peList;
+
                     if (userList[0].Status == 0)
                     {
                         jbo.code = 0;
-                        jbo.data = userList[0];
+                        jbo.data = menberView;
                         jbo.message = "成功！";
                         jbo.success = true;
                     }
@@ -53,7 +59,7 @@ namespace MideFrameWork_AppDataInterface
                     {
                         //待审核
                         jbo.code = 0;
-                        jbo.data = userList[0];
+                        jbo.data = menberView;
                         jbo.message = "成功！但目前还在审核状态，可能影响部分功能";
                         jbo.success = true;
                     }

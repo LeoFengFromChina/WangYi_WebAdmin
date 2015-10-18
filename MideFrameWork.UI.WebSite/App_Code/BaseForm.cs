@@ -134,6 +134,25 @@ namespace MideFrameWork.UI.WebSite
                 }
             }
         }
+
+        protected void CheckedAllIN(Repeater rpt, string notinIDS)
+        {
+            CheckBox cb = new CheckBox();
+            HiddenField hdf = new HiddenField();
+            int count = rpt.Items.Count;
+            ArrayList al = new ArrayList();
+
+            for (int i = 0; i < count; i++)
+            {
+                hdf = (HiddenField)rpt.Items[i].FindControl("hdfID");
+                cb = (CheckBox)rpt.Items[i].FindControl("chkItem");
+                if (notinIDS.Contains(hdf.Value + ","))
+                {
+                    cb.Checked = true;
+                }
+            }
+        }
+
         protected void HtmlCheckedAll(Repeater rpt, List<string> notinIDS)
         {
 

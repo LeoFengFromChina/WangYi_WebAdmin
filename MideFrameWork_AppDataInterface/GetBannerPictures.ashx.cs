@@ -27,7 +27,7 @@ namespace MideFrameWork_AppDataInterface
                 if (!string.IsNullOrEmpty(GroupID))
                 {
                     string whereStr = " IsEnable=0 AND GroupID=" + GroupID;
-                    IList<GlobalPictureEntity> pictureList = DataProvider.GetInstance().GetGlobalPictureList(whereStr);
+                    IList<GlobalPictureEntity> pictureList = DataProvider.GetInstance().GetGlobalPictureList(5,whereStr, " DisplayIndex ASC");
                     if (pictureList != null && pictureList.Count > 0)
                     {
                         //数据
