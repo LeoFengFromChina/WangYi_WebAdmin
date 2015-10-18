@@ -153,9 +153,9 @@ namespace MideFrameWork.UI.WebSite.Admin
         protected void init_form(string ctrID)
         {
             UnCheckedAll(Base_ButtonList, "");
-            if (!string.IsNullOrEmpty(ctrID))
+            string moduleIDstr = ddl_Module.SelectedValue;
+            if (!string.IsNullOrEmpty(ctrID) && !string.IsNullOrEmpty(moduleIDstr))
             {
-                string moduleIDstr = ddl_Module.SelectedValue;
                 ModuleID = int.Parse(moduleIDstr);
                 string whereStr = " UserID=" + ctrID + " AND ModuleID=" + moduleIDstr;
 

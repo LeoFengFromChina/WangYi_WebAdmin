@@ -49,7 +49,7 @@ namespace MideFrameWork_AppDataInterface
     [KnownType(typeof(List<WG_TeamEntity>))]
     [KnownType(typeof(List<WG_MenberEntity>))]
     [KnownType(typeof(WG_MenberEntityView))]
-    [KnownType(typeof(IList<Base_PrivilegeEntity>))]
+    [KnownType(typeof(List<PrivilegeViewEntity>))]
     [DataContract]
     public class JsonBaseObject
     {

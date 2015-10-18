@@ -10,6 +10,6 @@ namespace MideFrameWork.Data.Entity
     public partial class WG_MenberEntityView
     {
         public WG_MenberEntity Menber { get; set; }
-        public IList<Base_PrivilegeEntity> Privilege { get; set; }
+        public List<PrivilegeViewEntity> Privilege { get; set; }
     }
 }

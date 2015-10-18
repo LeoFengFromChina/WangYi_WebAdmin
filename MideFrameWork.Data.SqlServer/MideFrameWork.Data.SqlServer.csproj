@@ -65,6 +65,7 @@
     <Compile Include="GenerareCode\Log.cs" />
     <Compile Include="GenerareCode\Menu.cs" />
     <Compile Include="GenerareCode\Notice.cs" />
+    <Compile Include="GenerareCode\PrivilegeView.cs" />
     <Compile Include="GenerareCode\RegisterDetail.cs" />
     <Compile Include="GenerareCode\Users.cs" />
     <Compile Include="GenerareCode\WebSiteManagement.cs" />

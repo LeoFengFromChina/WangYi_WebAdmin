@@ -44,7 +44,7 @@ namespace MideFrameWork_AppDataInterface
                 else
                 {
                     string whereStr = " UserID=" + userList[0].ID;
-                    IList<Base_PrivilegeEntity> peList = DataProvider.GetInstance().GetBase_PrivilegeList(whereStr);
+                    List<PrivilegeViewEntity> peList = DataProvider.GetInstance().GetPrivilegeViewList(whereStr).ToList<PrivilegeViewEntity>();
                     menberView.Menber = userList[0];
                     menberView.Privilege = peList;
 
@@ -92,4 +92,5 @@ namespace MideFrameWork_AppDataInterface
             }
         }
     }
+    
 }
