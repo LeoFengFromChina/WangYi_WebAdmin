@@ -189,7 +189,7 @@ namespace MideFrameWork_AppDataInterface
                             //创建成功
                             jbo.code = 0;
                             jbo.data = null;
-                            jbo.message = "标题，联系方式，联系人不能为空";
+                            jbo.message = "团队创建成功";
                             jbo.success = true;
                         }
                         else
