@@ -51,7 +51,7 @@
                         <asp:Repeater ID="Base_ButtonList" runat="server">
 
                             <ItemTemplate>
-                                <asp:CheckBox ID="chkItem" runat="server"></asp:CheckBox><%#Eval("Title")%>
+                                <asp:CheckBox ID="chkItem" runat="server"></asp:CheckBox><%#Eval("Memo")%>
                                 <asp:HiddenField ID="hdfID" runat="server" Value='<%# Eval("ID")%>' />
                                 <br />
                             </ItemTemplate>

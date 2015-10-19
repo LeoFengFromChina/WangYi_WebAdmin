@@ -38,6 +38,7 @@ namespace MideFrameWork.UI.WebSite.Admin
                                             
                                             
                                             
+                                            
                                     
             //表单提交事件
             Button_submit.Click += new EventHandler(Button_submit_Click);
@@ -66,6 +67,7 @@ namespace MideFrameWork.UI.WebSite.Admin
                 _Base_ButtonEntity = DataProvider.GetInstance().GetBase_ButtonEntity(int.Parse(ctrID));
 
                				                				                   TextBox_Title.Text = _Base_ButtonEntity.Title.ToString();
+                                				                   TextBox_Memo.Text = _Base_ButtonEntity.Memo.ToString();
                                 				                				                            }
         }
         #endregion
@@ -82,6 +84,13 @@ namespace MideFrameWork.UI.WebSite.Admin
                         Alert("[ 权限名称 ]不能为空");
                         return;
                   }
+				                                           
+                  var _Memo = Request.Form["TextBox_Memo"];
+                 if (string.IsNullOrEmpty(_Memo))
+                   {
+                        Alert("[ 备注 ]不能为空");
+                        return;
+                  }
 				                                                                                
 	        #endregion
            
@@ -92,6 +101,9 @@ namespace MideFrameWork.UI.WebSite.Admin
                		                               	  		                            
                  	                 	                
                     _Base_ButtonEntity.Title =Convert.ToString(_Title.ToString());
+               		                        	  		                            
+                 	                 	                
+                    _Base_ButtonEntity.Memo =Convert.ToString(_Memo.ToString());
                		                        	  		        
 		       	_Base_ButtonEntity.CreateDate =DateTime.Now;
 		               	  		        
@@ -122,6 +134,13 @@ namespace MideFrameWork.UI.WebSite.Admin
                         Alert("[ 权限名称 ]不能为空");
                         return;
                   }
+				                                           
+                  var _Memo = Request.Form["TextBox_Memo"];
+                 if (string.IsNullOrEmpty(_Memo))
+                   {
+                        Alert("[ 备注 ]不能为空");
+                        return;
+                  }
 				                                                                                
 	        #endregion
 	        
@@ -129,6 +148,10 @@ namespace MideFrameWork.UI.WebSite.Admin
                 
                                                                    
                     _Base_ButtonEntity.Title =Convert.ToString(_Title.ToString());
+                               					                         
+                
+                                                                   
+                    _Base_ButtonEntity.Memo =Convert.ToString(_Memo.ToString());
                                					                       					        
 		       	_Base_ButtonEntity.UpdateDate =DateTime.Now;
 		       			            try

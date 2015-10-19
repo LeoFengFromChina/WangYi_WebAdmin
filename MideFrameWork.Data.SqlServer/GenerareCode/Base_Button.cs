@@ -42,21 +42,23 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into Base_Button(");			
-            strSql.Append("Title,CreateDate,UpdateDate");
+            strSql.Append("Title,Memo,CreateDate,UpdateDate");
 			strSql.Append(") values (");
-            strSql.Append("@Title,@CreateDate,@UpdateDate");            
+            strSql.Append("@Title,@Memo,@CreateDate,@UpdateDate");            
             strSql.Append(") ");            
             strSql.Append(";select @@IDENTITY");		
 			SqlParameter[] parameters = {
 			            new SqlParameter("@Title", SqlDbType.NVarChar,32) ,            
+                        new SqlParameter("@Memo", SqlDbType.NVarChar,32) ,            
                         new SqlParameter("@CreateDate", SqlDbType.DateTime) ,            
                         new SqlParameter("@UpdateDate", SqlDbType.DateTime)             
               
             };
 			            
             parameters[0].Value = info.Title;                        
-            parameters[1].Value = info.CreateDate;                        
-            parameters[2].Value = info.UpdateDate;                        
+            parameters[1].Value = info.Memo;                        
+            parameters[2].Value = info.CreateDate;                        
+            parameters[3].Value = info.UpdateDate;                        
 			   
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);			
 			if (obj == null)
@@ -81,17 +83,19 @@ namespace MideFrameWork.Data.SqlServer
 			strSql.Append("update Base_Button set ");
 			                                                
             strSql.Append(" Title = @Title , ");                                    
+            strSql.Append(" Memo = @Memo , ");                                    
             strSql.Append(" CreateDate = @CreateDate , ");                                    
             strSql.Append(" UpdateDate = @UpdateDate  ");            			
 			strSql.Append(" where ID=@ID ");			
 			SqlParameter[] parameters = {
-			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@Title", SqlDbType.NVarChar,32) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime) ,                        new SqlParameter("@UpdateDate", SqlDbType.DateTime)               
+			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@Title", SqlDbType.NVarChar,32) ,                        new SqlParameter("@Memo", SqlDbType.NVarChar,32) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime) ,                        new SqlParameter("@UpdateDate", SqlDbType.DateTime)               
             };
 						            
             parameters[0].Value = info.ID;                        
             parameters[1].Value = info.Title;                        
-            parameters[2].Value = info.CreateDate;                        
-            parameters[3].Value = info.UpdateDate;                        
+            parameters[2].Value = info.Memo;                        
+            parameters[3].Value = info.CreateDate;                        
+            parameters[4].Value = info.UpdateDate;                        
             int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
 			{
@@ -155,7 +159,7 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID, Title, CreateDate, UpdateDate  ");			
+			strSql.Append("select ID, Title, Memo, CreateDate, UpdateDate  ");			
 			strSql.Append("  from Base_Button ");
 			strSql.Append(" where ID=@ID");
 			SqlParameter[] parameters ={
@@ -182,7 +186,7 @@ namespace MideFrameWork.Data.SqlServer
 		public IList<MideFrameWork.Data.Entity.Base_ButtonEntity> GetBase_ButtonList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,Title,CreateDate,UpdateDate");
+			strSql.Append("select ID,Title,Memo,CreateDate,UpdateDate");
 			strSql.Append(" FROM Base_Button ");
 			if(strWhere.Trim()!="")
 			{
@@ -211,7 +215,7 @@ namespace MideFrameWork.Data.SqlServer
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append("ID,Title,CreateDate,UpdateDate");
+			strSql.Append("ID,Title,Memo,CreateDate,UpdateDate");
 			strSql.Append(" FROM Base_Button ");
 			if(strWhere.Trim()!="")
 			{
@@ -244,7 +248,7 @@ namespace MideFrameWork.Data.SqlServer
             IList<MideFrameWork.Data.Entity.Base_ButtonEntity> list = new List<MideFrameWork.Data.Entity.Base_ButtonEntity>();
             recordCount = 0;
             totalPage = 0;
-            DataSet ds = GetRecordByPage(" Base_Button", "ID,Title,CreateDate,UpdateDate", orderBy,strWhere,PageSize,PageIndex);
+            DataSet ds = GetRecordByPage(" Base_Button", "ID,Title,Memo,CreateDate,UpdateDate", orderBy,strWhere,PageSize,PageIndex);
             if (ds.Tables.Count == 2)
             {
                 // 组装
@@ -276,6 +280,11 @@ namespace MideFrameWork.Data.SqlServer
 				info.Title= string.Empty;
 			else	
 				info.Title= dr["Title"].ToString();
+																								
+						if(DBNull.Value==dr["Memo"])
+				info.Memo= string.Empty;
+			else	
+				info.Memo= dr["Memo"].ToString();
 																									if(DBNull.Value==dr["CreateDate"])
 					info.CreateDate=DateTime.Now;
 				else

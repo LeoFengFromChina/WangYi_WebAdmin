@@ -31,7 +31,8 @@ namespace MideFrameWork.Data.SqlServer
 			};
 			                        
 						parameters[0].Value = ID;
-						return DbHelperSQL.Exists(strSql.ToString(),parameters);
+			
+			return DbHelperSQL.Exists(strSql.ToString(),parameters);
 		}
 		
 		/// <summary>
@@ -41,19 +42,21 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into Base_Module(");			
-            strSql.Append("Name,CreateDate");
+            strSql.Append("Name,Memo,CreateDate");
 			strSql.Append(") values (");
-            strSql.Append("@Name,@CreateDate");            
+            strSql.Append("@Name,@Memo,@CreateDate");            
             strSql.Append(") ");            
             strSql.Append(";select @@IDENTITY");		
 			SqlParameter[] parameters = {
 			            new SqlParameter("@Name", SqlDbType.NVarChar,128) ,            
+                        new SqlParameter("@Memo", SqlDbType.NVarChar,32) ,            
                         new SqlParameter("@CreateDate", SqlDbType.DateTime)             
               
             };
 			            
             parameters[0].Value = info.Name;                        
-            parameters[1].Value = info.CreateDate;                        
+            parameters[1].Value = info.Memo;                        
+            parameters[2].Value = info.CreateDate;                        
 			   
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);			
 			if (obj == null)
@@ -78,15 +81,17 @@ namespace MideFrameWork.Data.SqlServer
 			strSql.Append("update Base_Module set ");
 			                                                
             strSql.Append(" Name = @Name , ");                                    
+            strSql.Append(" Memo = @Memo , ");                                    
             strSql.Append(" CreateDate = @CreateDate  ");            			
 			strSql.Append(" where ID=@ID ");			
 			SqlParameter[] parameters = {
-			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@Name", SqlDbType.NVarChar,128) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime)               
+			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@Name", SqlDbType.NVarChar,128) ,                        new SqlParameter("@Memo", SqlDbType.NVarChar,32) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime)               
             };
 						            
             parameters[0].Value = info.ID;                        
             parameters[1].Value = info.Name;                        
-            parameters[2].Value = info.CreateDate;                        
+            parameters[2].Value = info.Memo;                        
+            parameters[3].Value = info.CreateDate;                        
             int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
 			{
@@ -150,7 +155,7 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID, Name, CreateDate  ");			
+			strSql.Append("select ID, Name, Memo, CreateDate  ");			
 			strSql.Append("  from Base_Module ");
 			strSql.Append(" where ID=@ID");
 			SqlParameter[] parameters ={
@@ -177,7 +182,7 @@ namespace MideFrameWork.Data.SqlServer
 		public IList<MideFrameWork.Data.Entity.Base_ModuleEntity> GetBase_ModuleList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,Name,CreateDate");
+			strSql.Append("select ID,Name,Memo,CreateDate");
 			strSql.Append(" FROM Base_Module ");
 			if(strWhere.Trim()!="")
 			{
@@ -206,7 +211,7 @@ namespace MideFrameWork.Data.SqlServer
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append("ID,Name,CreateDate");
+			strSql.Append("ID,Name,Memo,CreateDate");
 			strSql.Append(" FROM Base_Module ");
 			if(strWhere.Trim()!="")
 			{
@@ -239,7 +244,7 @@ namespace MideFrameWork.Data.SqlServer
             IList<MideFrameWork.Data.Entity.Base_ModuleEntity> list = new List<MideFrameWork.Data.Entity.Base_ModuleEntity>();
             recordCount = 0;
             totalPage = 0;
-            DataSet ds = GetRecordByPage(" Base_Module", "ID,Name,CreateDate", orderBy,strWhere,PageSize,PageIndex);
+            DataSet ds = GetRecordByPage(" Base_Module", "ID,Name,Memo,CreateDate", orderBy,strWhere,PageSize,PageIndex);
             if (ds.Tables.Count == 2)
             {
                 // 组装
@@ -271,6 +276,11 @@ namespace MideFrameWork.Data.SqlServer
 				info.Name= string.Empty;
 			else	
 				info.Name= dr["Name"].ToString();
+																								
+						if(DBNull.Value==dr["Memo"])
+				info.Memo= string.Empty;
+			else	
+				info.Memo= dr["Memo"].ToString();
 																									if(DBNull.Value==dr["CreateDate"])
 					info.CreateDate=DateTime.Now;
 				else

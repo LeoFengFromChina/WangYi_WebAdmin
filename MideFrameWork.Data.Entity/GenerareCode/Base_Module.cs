@@ -28,6 +28,16 @@ namespace MideFrameWork.Data.Entity
             set{ _name = value; }
         }
         
+		private string _memo;
+		/// <summary>
+		/// 备注
+        /// </summary>
+        public string Memo
+        {
+            get{ return _memo; }
+            set{ _memo = value; }
+        }
+        
 		private DateTime _createdate;
 		/// <summary>
 		/// 创建日期

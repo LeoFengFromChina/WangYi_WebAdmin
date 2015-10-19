@@ -140,9 +140,9 @@
                     </td>
                     <td>
                        
-                        <a href="javascript:void(0);" id="test2" onclick="aa({ title: '会员表管理', width: '600px', height: '350px', boxID: 'dialog-addConntact', showborder: true, showbg: true, fixed: true, content: 'iframe:/Admin/WG_Menber.Edit.aspx?ctrID=<%#Eval("ID") %>' })">
+                        <a href="javascript:void(0);" id="test3" onclick="aa({ title: '会员管理', width: '600px', height: '350px', boxID: 'dialog-addConntact', showborder: true, showbg: true, fixed: true, content: 'iframe:/Admin/WG_Menber.Edit.aspx?ctrID=<%#Eval("ID") %>' })">
                             编辑</a>
-                        <a href="javascript:void(0);" id="test2" onclick="aa({ title: '会员表管理', width: '600px', height: '350px', boxID: 'dialog-addConntact', showborder: true, showbg: true, fixed: true, content: 'iframe:/Admin/WG_Menber_Operation.aspx?ctrID=<%#Eval("ID") %>' })">
+                        <a href="javascript:void(0);" id="test2" onclick="aa({ title: '会员授权', width: '600px', height: '350px', boxID: 'dialog-addConntact', showborder: true, showbg: true, fixed: true, content: 'iframe:/Admin/WG_Menber_Operation.aspx?ctrID=<%#Eval("ID") %>' })">
                             授权</a>
                         <a href="javascript:void(0);" id="test1" onclick="aa({ title: '会员审核', width: '600px', height: '350px', boxID: 'dialog-addConntact', showborder: true, showbg: true, fixed: true, content: 'iframe:/Admin/WG_Menber.Validate.aspx?ctrID=<%#Eval("ID") %>' })"> <%#Eval("Status").ToString() == "0" ? "":"审核"%></a>
                     </td>

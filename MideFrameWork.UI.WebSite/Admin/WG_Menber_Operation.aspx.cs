@@ -68,7 +68,7 @@ namespace MideFrameWork.UI.WebSite.Admin
                 if (me != null && me.Count > 0)
                 {
                     ddl_Module.DataSource = me;
-                    ddl_Module.DataTextField = "Name";
+                    ddl_Module.DataTextField = "Memo";
                     ddl_Module.DataValueField = "ID";
                     ddl_Module.DataBind();
                 }
@@ -85,24 +85,6 @@ namespace MideFrameWork.UI.WebSite.Admin
         private void Ddl_Module_SelectedIndexChanged(object sender, EventArgs e)
         {
             init_form(ctrID);
-            //string moduleIDstr = ddl_Module.SelectedValue;
-            //ModuleID = int.Parse(moduleIDstr);
-            //Alert("moduleID" + ModuleID);
-            //string whereStr = " UserID=" + ctrID + " AND ModuleID=" + moduleIDstr;
-
-            //IList<Base_PrivilegeEntity> peList = DataProvider.GetInstance().GetBase_PrivilegeList(whereStr);
-            //string ids = string.Empty;
-            //if (peList != null && peList.Count > 0)
-            //{
-            //    foreach (Base_PrivilegeEntity item in peList)
-            //    {
-            //        ids += item.ID + ",";
-            //    }
-            //}
-            //if (!string.IsNullOrEmpty(ids))
-            //{
-            //    CheckedAll(Base_ButtonList, ids);
-            //}
         }
 
         void Button_submit_Click(object sender, EventArgs e)
@@ -114,28 +96,67 @@ namespace MideFrameWork.UI.WebSite.Admin
 
             IList<Base_PrivilegeEntity> peList = DataProvider.GetInstance().GetBase_PrivilegeList(whereStr);
 
-            bool isFind = false;
-            foreach (int intItem in idsArray)
-            {
+            List<int> idsAlreadyExist = new List<int>();
 
+            if (peList != null && peList.Count > 0)
+            {
                 foreach (Base_PrivilegeEntity item in peList)
                 {
-                    if (item.ButtonID == item.ButtonID)
+                    idsAlreadyExist.Add(item.ID);
+                }
+            }
+
+
+
+            bool isFind = false;
+            List<int> todeleteIDS = new List<int>();
+            List<int> tonewIDS = new List<int>();
+            #region 要删除的
+            for (int i = 0; i < idsAlreadyExist.Count; i++)
+            {
+                for (int j = 0; j < idsArray.Length; j++)
+                {
+                    if (idsAlreadyExist[i] == idsArray[j])
                     {
                         isFind = true;
-                        continue;
                     }
-                    else
-                    {
-                        isFind = false;
-                        break;
-                    }
-
                 }
                 if (!isFind)
                 {
+                    todeleteIDS.Add(idsAlreadyExist[i]);
+                }
+            }
+            #endregion
+            #region 要新增的
+            for (int i = 0; i < idsArray.Length; i++)
+            {
+                for (int j = 0; j < idsAlreadyExist.Count; j++)
+                {
+                    if (idsArray[i] == idsAlreadyExist[j])
+                    {
+                        isFind = true;
+                    }
+                }
+                if (!isFind)
+                {
+                    tonewIDS.Add(idsArray[i]);
+                }
+            }
+            #endregion
+
+            if (todeleteIDS.Count > 0)
+            {
+                foreach (int item in todeleteIDS)
+                {
+                    DataProvider.GetInstance().DeleteBase_Privilege(item);
+                }
+            }
+            if (tonewIDS.Count > 0)
+            {
+                foreach (int item in tonewIDS)
+                {
                     Base_PrivilegeEntity pe = new Base_PrivilegeEntity();
-                    pe.ButtonID = intItem;
+                    pe.ButtonID = item;
                     pe.ModuleID = ModuleID;
                     pe.UserID = int.Parse(ctrID);
                     pe.CreaterID = CurrentUser.ID;

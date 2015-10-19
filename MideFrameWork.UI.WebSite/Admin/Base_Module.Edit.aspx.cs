@@ -37,6 +37,7 @@ namespace MideFrameWork.UI.WebSite.Admin
                                 
                                             
                                             
+                                            
                                     
             //表单提交事件
             Button_submit.Click += new EventHandler(Button_submit_Click);
@@ -65,6 +66,7 @@ namespace MideFrameWork.UI.WebSite.Admin
                 _Base_ModuleEntity = DataProvider.GetInstance().GetBase_ModuleEntity(int.Parse(ctrID));
 
                				                				                   TextBox_Name.Text = _Base_ModuleEntity.Name.ToString();
+                                				                   TextBox_Memo.Text = _Base_ModuleEntity.Memo.ToString();
                                 				                            }
         }
         #endregion
@@ -81,6 +83,13 @@ namespace MideFrameWork.UI.WebSite.Admin
                         Alert("[ 模块名称 ]不能为空");
                         return;
                   }
+				                                           
+                  var _Memo = Request.Form["TextBox_Memo"];
+                 if (string.IsNullOrEmpty(_Memo))
+                   {
+                        Alert("[ 备注 ]不能为空");
+                        return;
+                  }
 				                                                
 	        #endregion
            
@@ -91,6 +100,9 @@ namespace MideFrameWork.UI.WebSite.Admin
                		                               	  		                            
                  	                 	                
                     _Base_ModuleEntity.Name =Convert.ToString(_Name.ToString());
+               		                        	  		                            
+                 	                 	                
+                    _Base_ModuleEntity.Memo =Convert.ToString(_Memo.ToString());
                		                        	  		        
 		       	_Base_ModuleEntity.CreateDate =DateTime.Now;
 		               	              try
@@ -119,6 +131,13 @@ namespace MideFrameWork.UI.WebSite.Admin
                         Alert("[ 模块名称 ]不能为空");
                         return;
                   }
+				                                           
+                  var _Memo = Request.Form["TextBox_Memo"];
+                 if (string.IsNullOrEmpty(_Memo))
+                   {
+                        Alert("[ 备注 ]不能为空");
+                        return;
+                  }
 				                                                
 	        #endregion
 	        
@@ -126,6 +145,10 @@ namespace MideFrameWork.UI.WebSite.Admin
                 
                                                                    
                     _Base_ModuleEntity.Name =Convert.ToString(_Name.ToString());
+                               					                         
+                
+                                                                   
+                    _Base_ModuleEntity.Memo =Convert.ToString(_Memo.ToString());
                                					                       			            try
             {
                 DataProvider.GetInstance().UpdateBase_Module(_Base_ModuleEntity);

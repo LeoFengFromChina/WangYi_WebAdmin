@@ -48,40 +48,11 @@ namespace MideFrameWork_AppDataInterface
                 else
                 {
                     //当前活动，ae.Status，0等待报名...，1活动正在进行(禁止报名),2,活动已结束
-                    WG_ActivitiesEntity ae = DataProvider.GetInstance().GetWG_ActivitiesEntity(int.Parse(activityID));
-                    //不存在
-                    if (null == ae)
-                    {
-                        //活动不存在
-                        jbo.code = -1;
-                        jbo.data = null;
-                        jbo.message = "活动不存在";
-                        jbo.success = false;
-                    }
-                    else if (opc == "5")
-                    {
-                        #region 获取活动参与者列表
-                        string whereStr = " activityID=" + activityID;
-                        IList<WG_OnGoingActivitiesEntity> ogaeList = DataProvider.GetInstance().GetWG_OnGoingActivitiesList(whereStr);
-
-                        IList<WG_MenberEntity> meList = new List<WG_MenberEntity>();
-                        if (ogaeList != null && ogaeList.Count > 0)
-                        {
-                            foreach (WG_OnGoingActivitiesEntity item in ogaeList)
-                            {
-                                WG_MenberEntity me = DataProvider.GetInstance().GetWG_MenberEntity(item.MenberID);
-                                meList.Add(me);
-                            }
-                        }
-                        jbo.code = 0;
-                        jbo.data = meList;
-                        jbo.message = "成功获取活动参与者列表";
-                        jbo.success = true;
-
-                        #endregion
-                    }
-
-                    else if (opc == "6")
+                    WG_ActivitiesEntity ae = new WG_ActivitiesEntity();
+                    if (!string.IsNullOrEmpty(activityID))
+                        ae = DataProvider.GetInstance().GetWG_ActivitiesEntity(int.Parse(activityID));
+                    
+                    if (opc == "6")
                     {
                         //发布活动，需要权限
                         string title = context.Request["title"];
@@ -130,6 +101,36 @@ namespace MideFrameWork_AppDataInterface
                             jbo.message = "标题，联系人、联系电话不能为空";
                             jbo.success = false;
                         }
+                    }
+                    else if (null == ae)
+                    {
+                        //活动不存在
+                        jbo.code = -1;
+                        jbo.data = null;
+                        jbo.message = "活动不存在";
+                        jbo.success = false;
+                    }
+                    else if (opc == "5")
+                    {
+                        #region 获取活动参与者列表
+                        string whereStr = " activityID=" + activityID;
+                        IList<WG_OnGoingActivitiesEntity> ogaeList = DataProvider.GetInstance().GetWG_OnGoingActivitiesList(whereStr);
+
+                        IList<WG_MenberEntity> meList = new List<WG_MenberEntity>();
+                        if (ogaeList != null && ogaeList.Count > 0)
+                        {
+                            foreach (WG_OnGoingActivitiesEntity item in ogaeList)
+                            {
+                                WG_MenberEntity me = DataProvider.GetInstance().GetWG_MenberEntity(item.MenberID);
+                                meList.Add(me);
+                            }
+                        }
+                        jbo.code = 0;
+                        jbo.data = meList;
+                        jbo.message = "成功获取活动参与者列表";
+                        jbo.success = true;
+
+                        #endregion
                     }
                     else if (ae.Status == 2)
                     {

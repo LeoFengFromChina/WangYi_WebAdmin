@@ -45,6 +45,14 @@
                                                                        <asp:TextBox id="TextBox_Name" runat="server" Width="200px"></asp:TextBox>
                                </td>
             </tr>
+                      		            <tr>
+                <td>
+                    备注：
+                </td>
+                <td>                    
+                                                                       <asp:TextBox id="TextBox_Memo" runat="server" Width="200px"></asp:TextBox>
+                               </td>
+            </tr>
                       		                    <tr>
             <td></td>
             <td>
