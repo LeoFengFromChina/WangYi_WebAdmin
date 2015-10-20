@@ -60,8 +60,10 @@ namespace MideFrameWork_AppDataInterface
                         string subject = ConfigurationManager.AppSettings["Subject"].ToString();
                         string account = DESEncrypt.Decrypt(ConfigurationManager.AppSettings["EmailAccount"].ToString(), "WYGY_BQGZS");
                         string psw = DESEncrypt.Decrypt(ConfigurationManager.AppSettings["EmailPsw"].ToString(), "WYGY_BQGZS"); ;
-                        string decUserName = DESEncrypt.Encrypt(userName, "WYGY_BQGZS");
-                        string body = ConfigurationManager.AppSettings["GetBackUrl"].ToString() + decUserName;
+                        string TimeStr = DateTime.Now.ToString();
+                        string keyStrBeforeDec = userName + "|" + TimeStr;
+                        string decKey = DESEncrypt.Encrypt(keyStrBeforeDec, "WYGY_BQGZS");
+                        string body = ConfigurationManager.AppSettings["GetBackUrl"].ToString() + decKey;
                         string errorStr = "";
                         int count = SendEmail.SendEmailnonAnonymous(fromAddress, fromName, subject, body, emailTo, emailTo, out errorStr, account, psw);
                         if (count > 0)
@@ -80,7 +82,7 @@ namespace MideFrameWork_AppDataInterface
                             jbo.success = false;
                         }
                     }
-                    
+
                 }
 
             }

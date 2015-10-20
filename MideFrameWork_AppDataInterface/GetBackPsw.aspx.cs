@@ -29,17 +29,56 @@ namespace MideFrameWork_AppDataInterface
                 ViewState["MenberName"] = value;
             }
         }
+        private bool IsTimeout
+        {
+            get
+            {
+                if (ViewState["IsTimeout"] != null)
+                    return (bool)ViewState["IsTimeout"];
+                else
+                {
+                    return true;
+                }
+            }
+            set
+            {
+                ViewState["IsTimeout"] = value;
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             lbl_Hint.Text = "";
             string userName = Context.Request["key"];
+            if (string.IsNullOrEmpty(userName))
+            {
+                lbl_Hint.Text = "您没有通过身份验证，不能使用本功能。";
+                txt_Confirm.Enabled = false;
+                txt_NewPsw.Enabled = false;
+                return;
+            }
             string decUserName = DESEncrypt.Decrypt(userName, "WYGY_BQGZS");
-            MenberName = decUserName;
+            string[] name_time_Array = decUserName.Split('|');
+            MenberName = name_time_Array[0];
+            DateTime dt = Convert.ToDateTime(name_time_Array[1]);
+            double totalMinute = (DateTime.Now - dt).TotalMinutes;
+            //30分钟内处理修改密码
+            if (totalMinute > 15)
+            {
+                ProcessTimeout();
+                IsTimeout = true;
+                return;
+            }
+
 
         }
 
         protected void btn_OK_Click(object sender, EventArgs e)
         {
+            if (IsTimeout)
+            {
+                ProcessTimeout();
+                return;
+            }
             string newPsw = txt_NewPsw.Text.Trim();
             string confirmPsw = txt_Confirm.Text.Trim();
             if (!newPsw.Equals(confirmPsw))
@@ -55,8 +94,8 @@ namespace MideFrameWork_AppDataInterface
                 }
                 else
                 {
-                    string whereStr = " name=" + MenberName;
-                    IList<WG_MenberEntity> meList = DataProvider.GetInstance().GetWG_MenberList("");
+                    string whereStr = " name='" + MenberName + "'";
+                    IList<WG_MenberEntity> meList = DataProvider.GetInstance().GetWG_MenberList(whereStr);
                     if (meList == null || meList.Count <= 0)
                     {
                         //用户不存在
@@ -80,6 +119,16 @@ namespace MideFrameWork_AppDataInterface
                     }
                 }
             }
+        }
+
+        private void ProcessTimeout()
+        {
+            lbl_Hint.Text = "您已经超时，请在App端重新验证！";
+            txt_Confirm.Enabled = false;
+            txt_NewPsw.Enabled = false;
+            btn_OK.Enabled = false;
+            IsTimeout = true;
+            return;
         }
     }
 }
