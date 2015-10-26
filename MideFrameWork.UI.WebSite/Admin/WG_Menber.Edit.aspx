@@ -44,10 +44,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>会员名称：
+                    <td>账号：
                     </td>
                     <td>
-                        <asp:TextBox ID="TextBox_Name" runat="server" Width="200px"></asp:TextBox>
+                        <asp:TextBox ID="TextBox_Name" runat="server" ReadOnly="true" Width="200px"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
