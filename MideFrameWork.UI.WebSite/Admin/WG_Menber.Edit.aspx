@@ -128,6 +128,13 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>镇：
+                    </td>
+                    <td>
+                        <asp:TextBox ID="TextBox_Town" runat="server" Width="200px"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
                     <td>社区/小区：
                     </td>
                     <td>

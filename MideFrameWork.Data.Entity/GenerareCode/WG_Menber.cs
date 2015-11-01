@@ -148,6 +148,16 @@ namespace MideFrameWork.Data.Entity
             set{ _district = value; }
         }
         
+		private string _town;
+		/// <summary>
+		/// 镇
+        /// </summary>
+        public string Town
+        {
+            get{ return _town; }
+            set{ _town = value; }
+        }
+        
 		private string _community;
 		/// <summary>
 		/// 社区/小区

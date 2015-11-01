@@ -261,6 +261,7 @@
     <Content Include="searchbar\css\search.css" />
     <Content Include="searchbar\images\search.png" />
     <Content Include="searchbar\js\search.js" />
+    <None Include="Properties\PublishProfiles\Web_Admin.pubxml" />
     <None Include="Service References\HuaXiaSms\MideSms.UI.WebSite.HuaXiaSms.MM_MO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

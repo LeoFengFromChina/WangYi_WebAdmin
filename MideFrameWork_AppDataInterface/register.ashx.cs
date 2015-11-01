@@ -53,7 +53,7 @@ namespace MideFrameWork_AppDataInterface
                     {
                         string sex = context.Request["sex"];
                         //设置默认
-                        string avatar_url = sex == "男" ? "http://120.24.230.139/AppData/imgs/man.jpg" : "http://120.24.230.139/AppData/imgs/woman.jpg";//context.Request["avatar_url"];
+                        string avatar_url = ConfigurationManager.AppSettings["HostUrl"].ToString()+"imgs/" + context.Request["avatar_url"]; //sex == "男" ? "http://120.24.230.139/AppData/imgs/man.jpg" : "http://120.24.230.139/AppData/imgs/woman.jpg";//context.Request["avatar_url"];
                         string nickname = context.Request["nickname"];
                         string birthday = context.Request["birthday"];
                         string phoneNumber = context.Request["phoneNumber"];

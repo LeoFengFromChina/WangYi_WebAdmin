@@ -31,7 +31,8 @@ namespace MideFrameWork.Data.SqlServer
 			};
 			                        
 						parameters[0].Value = ID;
-						return DbHelperSQL.Exists(strSql.ToString(),parameters);
+			
+			return DbHelperSQL.Exists(strSql.ToString(),parameters);
 		}
 		
 		/// <summary>
@@ -41,21 +42,23 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into WG_ServiceIntention(");			
-            strSql.Append("Content,CreateDate,UpdateDate");
+            strSql.Append("ParentID,Content,CreateDate,UpdateDate");
 			strSql.Append(") values (");
-            strSql.Append("@Content,@CreateDate,@UpdateDate");            
+            strSql.Append("@ParentID,@Content,@CreateDate,@UpdateDate");            
             strSql.Append(") ");            
             strSql.Append(";select @@IDENTITY");		
 			SqlParameter[] parameters = {
-			            new SqlParameter("@Content", SqlDbType.NVarChar,128) ,            
+			            new SqlParameter("@ParentID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Content", SqlDbType.NVarChar,128) ,            
                         new SqlParameter("@CreateDate", SqlDbType.DateTime) ,            
                         new SqlParameter("@UpdateDate", SqlDbType.DateTime)             
               
             };
 			            
-            parameters[0].Value = info.Content;                        
-            parameters[1].Value = info.CreateDate;                        
-            parameters[2].Value = info.UpdateDate;                        
+            parameters[0].Value = info.ParentID;                        
+            parameters[1].Value = info.Content;                        
+            parameters[2].Value = info.CreateDate;                        
+            parameters[3].Value = info.UpdateDate;                        
 			   
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);			
 			if (obj == null)
@@ -79,18 +82,20 @@ namespace MideFrameWork.Data.SqlServer
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update WG_ServiceIntention set ");
 			                                                
+            strSql.Append(" ParentID = @ParentID , ");                                    
             strSql.Append(" Content = @Content , ");                                    
             strSql.Append(" CreateDate = @CreateDate , ");                                    
             strSql.Append(" UpdateDate = @UpdateDate  ");            			
 			strSql.Append(" where ID=@ID ");			
 			SqlParameter[] parameters = {
-			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@Content", SqlDbType.NVarChar,128) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime) ,                        new SqlParameter("@UpdateDate", SqlDbType.DateTime)               
+			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@ParentID", SqlDbType.Int,4) ,                        new SqlParameter("@Content", SqlDbType.NVarChar,128) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime) ,                        new SqlParameter("@UpdateDate", SqlDbType.DateTime)               
             };
 						            
             parameters[0].Value = info.ID;                        
-            parameters[1].Value = info.Content;                        
-            parameters[2].Value = info.CreateDate;                        
-            parameters[3].Value = info.UpdateDate;                        
+            parameters[1].Value = info.ParentID;                        
+            parameters[2].Value = info.Content;                        
+            parameters[3].Value = info.CreateDate;                        
+            parameters[4].Value = info.UpdateDate;                        
             int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
 			{
@@ -154,7 +159,7 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID, Content, CreateDate, UpdateDate  ");			
+			strSql.Append("select ID, ParentID, Content, CreateDate, UpdateDate  ");			
 			strSql.Append("  from WG_ServiceIntention ");
 			strSql.Append(" where ID=@ID");
 			SqlParameter[] parameters ={
@@ -181,7 +186,7 @@ namespace MideFrameWork.Data.SqlServer
 		public IList<MideFrameWork.Data.Entity.WG_ServiceIntentionEntity> GetWG_ServiceIntentionList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,Content,CreateDate,UpdateDate");
+			strSql.Append("select ID,ParentID,Content,CreateDate,UpdateDate");
 			strSql.Append(" FROM WG_ServiceIntention ");
 			if(strWhere.Trim()!="")
 			{
@@ -210,7 +215,7 @@ namespace MideFrameWork.Data.SqlServer
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append("ID,Content,CreateDate,UpdateDate");
+			strSql.Append("ID,ParentID,Content,CreateDate,UpdateDate");
 			strSql.Append(" FROM WG_ServiceIntention ");
 			if(strWhere.Trim()!="")
 			{
@@ -243,7 +248,7 @@ namespace MideFrameWork.Data.SqlServer
             IList<MideFrameWork.Data.Entity.WG_ServiceIntentionEntity> list = new List<MideFrameWork.Data.Entity.WG_ServiceIntentionEntity>();
             recordCount = 0;
             totalPage = 0;
-            DataSet ds = GetRecordByPage(" WG_ServiceIntention", "ID,Content,CreateDate,UpdateDate", orderBy,strWhere,PageSize,PageIndex);
+            DataSet ds = GetRecordByPage(" WG_ServiceIntention", "ID,ParentID,Content,CreateDate,UpdateDate", orderBy,strWhere,PageSize,PageIndex);
             if (ds.Tables.Count == 2)
             {
                 // 组装
@@ -269,6 +274,11 @@ namespace MideFrameWork.Data.SqlServer
 					info.ID=0;
 				else
 					info.ID=int.Parse(dr["ID"].ToString());
+									
+																						if(DBNull.Value==dr["ParentID"])
+					info.ParentID=0;
+				else
+					info.ParentID=int.Parse(dr["ParentID"].ToString());
 									
 																								
 						if(DBNull.Value==dr["Content"])

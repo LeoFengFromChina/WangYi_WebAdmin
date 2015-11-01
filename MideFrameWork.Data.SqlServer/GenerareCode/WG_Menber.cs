@@ -31,7 +31,8 @@ namespace MideFrameWork.Data.SqlServer
 			};
 			                        
 						parameters[0].Value = ID;
-						return DbHelperSQL.Exists(strSql.ToString(),parameters);
+			
+			return DbHelperSQL.Exists(strSql.ToString(),parameters);
 		}
 		
 		/// <summary>
@@ -41,9 +42,9 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into WG_Menber(");			
-            strSql.Append("NickName,Name,Psw,Scores,Sex,Birthday,Email,Flag,PhotoUrl,Country,Province,City,District,Community,Phone,WeChat,QQ,PersonalID,Address,Education,Major,SpecialSkill,ServiceIntention,ServiceTimeInterval,ServiceHours,Status,CreateDate,UpdateDate");
+            strSql.Append("NickName,Name,Psw,Scores,Sex,Birthday,Email,Flag,PhotoUrl,Country,Province,City,District,Town,Community,Phone,WeChat,QQ,PersonalID,Address,Education,Major,SpecialSkill,ServiceIntention,ServiceTimeInterval,ServiceHours,Status,CreateDate,UpdateDate");
 			strSql.Append(") values (");
-            strSql.Append("@NickName,@Name,@Psw,@Scores,@Sex,@Birthday,@Email,@Flag,@PhotoUrl,@Country,@Province,@City,@District,@Community,@Phone,@WeChat,@QQ,@PersonalID,@Address,@Education,@Major,@SpecialSkill,@ServiceIntention,@ServiceTimeInterval,@ServiceHours,@Status,@CreateDate,@UpdateDate");            
+            strSql.Append("@NickName,@Name,@Psw,@Scores,@Sex,@Birthday,@Email,@Flag,@PhotoUrl,@Country,@Province,@City,@District,@Town,@Community,@Phone,@WeChat,@QQ,@PersonalID,@Address,@Education,@Major,@SpecialSkill,@ServiceIntention,@ServiceTimeInterval,@ServiceHours,@Status,@CreateDate,@UpdateDate");            
             strSql.Append(") ");            
             strSql.Append(";select @@IDENTITY");		
 			SqlParameter[] parameters = {
@@ -60,6 +61,7 @@ namespace MideFrameWork.Data.SqlServer
                         new SqlParameter("@Province", SqlDbType.NVarChar,64) ,            
                         new SqlParameter("@City", SqlDbType.NVarChar,64) ,            
                         new SqlParameter("@District", SqlDbType.NVarChar,64) ,            
+                        new SqlParameter("@Town", SqlDbType.NVarChar,64) ,            
                         new SqlParameter("@Community", SqlDbType.NVarChar,64) ,            
                         new SqlParameter("@Phone", SqlDbType.NVarChar,11) ,            
                         new SqlParameter("@WeChat", SqlDbType.NVarChar,32) ,            
@@ -91,21 +93,22 @@ namespace MideFrameWork.Data.SqlServer
             parameters[10].Value = info.Province;                        
             parameters[11].Value = info.City;                        
             parameters[12].Value = info.District;                        
-            parameters[13].Value = info.Community;                        
-            parameters[14].Value = info.Phone;                        
-            parameters[15].Value = info.WeChat;                        
-            parameters[16].Value = info.QQ;                        
-            parameters[17].Value = info.PersonalID;                        
-            parameters[18].Value = info.Address;                        
-            parameters[19].Value = info.Education;                        
-            parameters[20].Value = info.Major;                        
-            parameters[21].Value = info.SpecialSkill;                        
-            parameters[22].Value = info.ServiceIntention;                        
-            parameters[23].Value = info.ServiceTimeInterval;                        
-            parameters[24].Value = info.ServiceHours;                        
-            parameters[25].Value = info.Status;                        
-            parameters[26].Value = info.CreateDate;                        
-            parameters[27].Value = info.UpdateDate;                        
+            parameters[13].Value = info.Town;                        
+            parameters[14].Value = info.Community;                        
+            parameters[15].Value = info.Phone;                        
+            parameters[16].Value = info.WeChat;                        
+            parameters[17].Value = info.QQ;                        
+            parameters[18].Value = info.PersonalID;                        
+            parameters[19].Value = info.Address;                        
+            parameters[20].Value = info.Education;                        
+            parameters[21].Value = info.Major;                        
+            parameters[22].Value = info.SpecialSkill;                        
+            parameters[23].Value = info.ServiceIntention;                        
+            parameters[24].Value = info.ServiceTimeInterval;                        
+            parameters[25].Value = info.ServiceHours;                        
+            parameters[26].Value = info.Status;                        
+            parameters[27].Value = info.CreateDate;                        
+            parameters[28].Value = info.UpdateDate;                        
 			   
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);			
 			if (obj == null)
@@ -142,6 +145,7 @@ namespace MideFrameWork.Data.SqlServer
             strSql.Append(" Province = @Province , ");                                    
             strSql.Append(" City = @City , ");                                    
             strSql.Append(" District = @District , ");                                    
+            strSql.Append(" Town = @Town , ");                                    
             strSql.Append(" Community = @Community , ");                                    
             strSql.Append(" Phone = @Phone , ");                                    
             strSql.Append(" WeChat = @WeChat , ");                                    
@@ -159,7 +163,7 @@ namespace MideFrameWork.Data.SqlServer
             strSql.Append(" UpdateDate = @UpdateDate  ");            			
 			strSql.Append(" where ID=@ID ");			
 			SqlParameter[] parameters = {
-			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@NickName", SqlDbType.NVarChar,32) ,                        new SqlParameter("@Name", SqlDbType.NVarChar,32) ,                        new SqlParameter("@Psw", SqlDbType.NVarChar,64) ,                        new SqlParameter("@Scores", SqlDbType.Int,4) ,                        new SqlParameter("@Sex", SqlDbType.NVarChar,2) ,                        new SqlParameter("@Birthday", SqlDbType.NVarChar,32) ,                        new SqlParameter("@Email", SqlDbType.NVarChar,128) ,                        new SqlParameter("@Flag", SqlDbType.Int,4) ,                        new SqlParameter("@PhotoUrl", SqlDbType.NVarChar,1024) ,                        new SqlParameter("@Country", SqlDbType.NVarChar,64) ,                        new SqlParameter("@Province", SqlDbType.NVarChar,64) ,                        new SqlParameter("@City", SqlDbType.NVarChar,64) ,                        new SqlParameter("@District", SqlDbType.NVarChar,64) ,                        new SqlParameter("@Community", SqlDbType.NVarChar,64) ,                        new SqlParameter("@Phone", SqlDbType.NVarChar,11) ,                        new SqlParameter("@WeChat", SqlDbType.NVarChar,32) ,                        new SqlParameter("@QQ", SqlDbType.NVarChar,32) ,                        new SqlParameter("@PersonalID", SqlDbType.NVarChar,18) ,                        new SqlParameter("@Address", SqlDbType.NVarChar,256) ,                        new SqlParameter("@Education", SqlDbType.NVarChar,16) ,                        new SqlParameter("@Major", SqlDbType.NVarChar,16) ,                        new SqlParameter("@SpecialSkill", SqlDbType.NVarChar,512) ,                        new SqlParameter("@ServiceIntention", SqlDbType.NVarChar,128) ,                        new SqlParameter("@ServiceTimeInterval", SqlDbType.NVarChar,32) ,                        new SqlParameter("@ServiceHours", SqlDbType.Int,4) ,                        new SqlParameter("@Status", SqlDbType.Int,4) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime) ,                        new SqlParameter("@UpdateDate", SqlDbType.DateTime)               
+			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@NickName", SqlDbType.NVarChar,32) ,                        new SqlParameter("@Name", SqlDbType.NVarChar,32) ,                        new SqlParameter("@Psw", SqlDbType.NVarChar,64) ,                        new SqlParameter("@Scores", SqlDbType.Int,4) ,                        new SqlParameter("@Sex", SqlDbType.NVarChar,2) ,                        new SqlParameter("@Birthday", SqlDbType.NVarChar,32) ,                        new SqlParameter("@Email", SqlDbType.NVarChar,128) ,                        new SqlParameter("@Flag", SqlDbType.Int,4) ,                        new SqlParameter("@PhotoUrl", SqlDbType.NVarChar,1024) ,                        new SqlParameter("@Country", SqlDbType.NVarChar,64) ,                        new SqlParameter("@Province", SqlDbType.NVarChar,64) ,                        new SqlParameter("@City", SqlDbType.NVarChar,64) ,                        new SqlParameter("@District", SqlDbType.NVarChar,64) ,                        new SqlParameter("@Town", SqlDbType.NVarChar,64) ,                        new SqlParameter("@Community", SqlDbType.NVarChar,64) ,                        new SqlParameter("@Phone", SqlDbType.NVarChar,11) ,                        new SqlParameter("@WeChat", SqlDbType.NVarChar,32) ,                        new SqlParameter("@QQ", SqlDbType.NVarChar,32) ,                        new SqlParameter("@PersonalID", SqlDbType.NVarChar,18) ,                        new SqlParameter("@Address", SqlDbType.NVarChar,256) ,                        new SqlParameter("@Education", SqlDbType.NVarChar,16) ,                        new SqlParameter("@Major", SqlDbType.NVarChar,16) ,                        new SqlParameter("@SpecialSkill", SqlDbType.NVarChar,512) ,                        new SqlParameter("@ServiceIntention", SqlDbType.NVarChar,128) ,                        new SqlParameter("@ServiceTimeInterval", SqlDbType.NVarChar,32) ,                        new SqlParameter("@ServiceHours", SqlDbType.Int,4) ,                        new SqlParameter("@Status", SqlDbType.Int,4) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime) ,                        new SqlParameter("@UpdateDate", SqlDbType.DateTime)               
             };
 						            
             parameters[0].Value = info.ID;                        
@@ -176,21 +180,22 @@ namespace MideFrameWork.Data.SqlServer
             parameters[11].Value = info.Province;                        
             parameters[12].Value = info.City;                        
             parameters[13].Value = info.District;                        
-            parameters[14].Value = info.Community;                        
-            parameters[15].Value = info.Phone;                        
-            parameters[16].Value = info.WeChat;                        
-            parameters[17].Value = info.QQ;                        
-            parameters[18].Value = info.PersonalID;                        
-            parameters[19].Value = info.Address;                        
-            parameters[20].Value = info.Education;                        
-            parameters[21].Value = info.Major;                        
-            parameters[22].Value = info.SpecialSkill;                        
-            parameters[23].Value = info.ServiceIntention;                        
-            parameters[24].Value = info.ServiceTimeInterval;                        
-            parameters[25].Value = info.ServiceHours;                        
-            parameters[26].Value = info.Status;                        
-            parameters[27].Value = info.CreateDate;                        
-            parameters[28].Value = info.UpdateDate;                        
+            parameters[14].Value = info.Town;                        
+            parameters[15].Value = info.Community;                        
+            parameters[16].Value = info.Phone;                        
+            parameters[17].Value = info.WeChat;                        
+            parameters[18].Value = info.QQ;                        
+            parameters[19].Value = info.PersonalID;                        
+            parameters[20].Value = info.Address;                        
+            parameters[21].Value = info.Education;                        
+            parameters[22].Value = info.Major;                        
+            parameters[23].Value = info.SpecialSkill;                        
+            parameters[24].Value = info.ServiceIntention;                        
+            parameters[25].Value = info.ServiceTimeInterval;                        
+            parameters[26].Value = info.ServiceHours;                        
+            parameters[27].Value = info.Status;                        
+            parameters[28].Value = info.CreateDate;                        
+            parameters[29].Value = info.UpdateDate;                        
             int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
 			{
@@ -254,7 +259,7 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID, NickName, Name, Psw, Scores, Sex, Birthday, Email, Flag, PhotoUrl, Country, Province, City, District, Community, Phone, WeChat, QQ, PersonalID, Address, Education, Major, SpecialSkill, ServiceIntention, ServiceTimeInterval, ServiceHours, Status, CreateDate, UpdateDate  ");			
+			strSql.Append("select ID, NickName, Name, Psw, Scores, Sex, Birthday, Email, Flag, PhotoUrl, Country, Province, City, District, Town, Community, Phone, WeChat, QQ, PersonalID, Address, Education, Major, SpecialSkill, ServiceIntention, ServiceTimeInterval, ServiceHours, Status, CreateDate, UpdateDate  ");			
 			strSql.Append("  from WG_Menber ");
 			strSql.Append(" where ID=@ID");
 			SqlParameter[] parameters ={
@@ -281,7 +286,7 @@ namespace MideFrameWork.Data.SqlServer
 		public IList<MideFrameWork.Data.Entity.WG_MenberEntity> GetWG_MenberList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,NickName,Name,Psw,Scores,Sex,Birthday,Email,Flag,PhotoUrl,Country,Province,City,District,Community,Phone,WeChat,QQ,PersonalID,Address,Education,Major,SpecialSkill,ServiceIntention,ServiceTimeInterval,ServiceHours,Status,CreateDate,UpdateDate");
+			strSql.Append("select ID,NickName,Name,Psw,Scores,Sex,Birthday,Email,Flag,PhotoUrl,Country,Province,City,District,Town,Community,Phone,WeChat,QQ,PersonalID,Address,Education,Major,SpecialSkill,ServiceIntention,ServiceTimeInterval,ServiceHours,Status,CreateDate,UpdateDate");
 			strSql.Append(" FROM WG_Menber ");
 			if(strWhere.Trim()!="")
 			{
@@ -310,7 +315,7 @@ namespace MideFrameWork.Data.SqlServer
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append("ID,NickName,Name,Psw,Scores,Sex,Birthday,Email,Flag,PhotoUrl,Country,Province,City,District,Community,Phone,WeChat,QQ,PersonalID,Address,Education,Major,SpecialSkill,ServiceIntention,ServiceTimeInterval,ServiceHours,Status,CreateDate,UpdateDate");
+			strSql.Append("ID,NickName,Name,Psw,Scores,Sex,Birthday,Email,Flag,PhotoUrl,Country,Province,City,District,Town,Community,Phone,WeChat,QQ,PersonalID,Address,Education,Major,SpecialSkill,ServiceIntention,ServiceTimeInterval,ServiceHours,Status,CreateDate,UpdateDate");
 			strSql.Append(" FROM WG_Menber ");
 			if(strWhere.Trim()!="")
 			{
@@ -343,7 +348,7 @@ namespace MideFrameWork.Data.SqlServer
             IList<MideFrameWork.Data.Entity.WG_MenberEntity> list = new List<MideFrameWork.Data.Entity.WG_MenberEntity>();
             recordCount = 0;
             totalPage = 0;
-            DataSet ds = GetRecordByPage(" WG_Menber", "ID,NickName,Name,Psw,Scores,Sex,Birthday,Email,Flag,PhotoUrl,Country,Province,City,District,Community,Phone,WeChat,QQ,PersonalID,Address,Education,Major,SpecialSkill,ServiceIntention,ServiceTimeInterval,ServiceHours,Status,CreateDate,UpdateDate", orderBy,strWhere,PageSize,PageIndex);
+            DataSet ds = GetRecordByPage(" WG_Menber", "ID,NickName,Name,Psw,Scores,Sex,Birthday,Email,Flag,PhotoUrl,Country,Province,City,District,Town,Community,Phone,WeChat,QQ,PersonalID,Address,Education,Major,SpecialSkill,ServiceIntention,ServiceTimeInterval,ServiceHours,Status,CreateDate,UpdateDate", orderBy,strWhere,PageSize,PageIndex);
             if (ds.Tables.Count == 2)
             {
                 // 组装
@@ -435,6 +440,11 @@ namespace MideFrameWork.Data.SqlServer
 				info.District= string.Empty;
 			else	
 				info.District= dr["District"].ToString();
+																								
+						if(DBNull.Value==dr["Town"])
+				info.Town= string.Empty;
+			else	
+				info.Town= dr["Town"].ToString();
 																								
 						if(DBNull.Value==dr["Community"])
 				info.Community= string.Empty;

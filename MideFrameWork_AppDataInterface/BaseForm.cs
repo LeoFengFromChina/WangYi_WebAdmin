@@ -50,6 +50,8 @@ namespace MideFrameWork_AppDataInterface
     [KnownType(typeof(List<WG_MenberEntity>))]
     [KnownType(typeof(WG_MenberEntityView))]
     [KnownType(typeof(List<PrivilegeViewEntity>))]
+    [KnownType(typeof(ServiceIntentionView))]
+    [KnownType(typeof(List<ServiceIntentionView>))]
     [DataContract]
     public class JsonBaseObject
     {

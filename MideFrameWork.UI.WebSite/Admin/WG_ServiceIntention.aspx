@@ -76,6 +76,9 @@
                         ID
                     </th>
                                         <th>
+                        父ID
+                    </th>
+                                        <th>
                         意向名称
                     </th>
                                         <th>
@@ -98,6 +101,9 @@
 
                                         <td>
                         <%#Eval("ID")%>
+                    </td>
+                                        <td>
+                        <%#Eval("ParentID")%>
                     </td>
                                         <td>
                         <%#Eval("Content")%>

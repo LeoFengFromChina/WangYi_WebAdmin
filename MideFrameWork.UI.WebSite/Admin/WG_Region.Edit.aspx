@@ -41,7 +41,9 @@
                     归属地区：
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_ParentID" runat="server" Width="200px"></asp:TextBox>
+                    <%--<asp:TextBox ID="TextBox_ParentID" runat="server" Width="200px"></asp:TextBox>--%>                    
+                    <asp:DropDownList ID="DropDownList_parentId" runat="server">
+                    </asp:DropDownList>
                 </td>
             </tr>
             <tr>

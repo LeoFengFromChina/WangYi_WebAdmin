@@ -103,6 +103,7 @@ namespace MideFrameWork.UI.WebSite.Admin
                 TextBox_Province.Text = _WG_MenberEntity.Province.ToString();
                 TextBox_City.Text = _WG_MenberEntity.City.ToString();
                 TextBox_District.Text = _WG_MenberEntity.District.ToString();
+                TextBox_Town.Text = _WG_MenberEntity.Town.ToString();
                 TextBox_Community.Text = _WG_MenberEntity.Community.ToString();
                 TextBox_Phone.Text = _WG_MenberEntity.Phone.ToString();
                 TextBox_WeChat.Text = _WG_MenberEntity.WeChat.ToString();
@@ -142,7 +143,7 @@ namespace MideFrameWork.UI.WebSite.Admin
 
 
             var _Sex = Request.Form["TextBox_Sex"];
- 
+
 
             var _Birthday = Request.Form["TextBox_Birthday"];
 
@@ -151,10 +152,10 @@ namespace MideFrameWork.UI.WebSite.Admin
 
 
             var _Flag = Request.Form["TextBox_Flag"];
-    
+
 
             var _PhotoUrl = Request.Form["TextBox_PhotoUrl"];
-  
+
 
             var _Country = Request.Form["TextBox_Country"];
 
@@ -165,6 +166,8 @@ namespace MideFrameWork.UI.WebSite.Admin
 
 
             var _District = Request.Form["TextBox_District"];
+
+            var _Town = Request.Form["TextBox_Town"];
 
             var _Community = Request.Form["TextBox_Community"];
 
@@ -254,6 +257,7 @@ namespace MideFrameWork.UI.WebSite.Admin
 
             _WG_MenberEntity.Community = Convert.ToString(_Community.ToString());
 
+            _WG_MenberEntity.Town = Convert.ToString(_Town.ToString());
 
             _WG_MenberEntity.Phone = Convert.ToString(_Phone.ToString());
 
@@ -338,7 +342,7 @@ namespace MideFrameWork.UI.WebSite.Admin
 
 
             var _PhotoUrl = Request.Form["TextBox_PhotoUrl"];
-  
+
 
             var _Country = Request.Form["TextBox_Country"];
 
@@ -352,10 +356,12 @@ namespace MideFrameWork.UI.WebSite.Admin
             var _District = Request.Form["TextBox_District"];
 
 
+            var _Town = Request.Form["TextBox_Town"];
+
             var _Community = Request.Form["TextBox_Community"];
 
             var _Phone = Request.Form["TextBox_Phone"];
- 
+
 
             var _WeChat = Request.Form["TextBox_WeChat"];
 
@@ -365,7 +371,7 @@ namespace MideFrameWork.UI.WebSite.Admin
             var _PersonalID = Request.Form["TextBox_PersonalID"];
 
             var _Address = Request.Form["TextBox_Address"];
-  
+
 
             var _Education = Request.Form["TextBox_Education"];
 
@@ -442,6 +448,8 @@ namespace MideFrameWork.UI.WebSite.Admin
 
             _WG_MenberEntity.District = Convert.ToString(_District.ToString());
 
+
+            _WG_MenberEntity.Town = Convert.ToString(_Town.ToString());
 
 
             _WG_MenberEntity.Community = Convert.ToString(_Community.ToString());

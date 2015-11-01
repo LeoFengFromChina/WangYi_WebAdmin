@@ -130,11 +130,17 @@
     <Compile Include="GetNoticeList.ashx.cs">
       <DependentUpon>GetNoticeList.ashx</DependentUpon>
     </Compile>
+    <Compile Include="GetServiceIntentionList.ashx.cs">
+      <DependentUpon>GetServiceIntentionList.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="PostFile.ashx.cs">
       <DependentUpon>PostFile.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="PostFile2.ashx.cs">
+      <DependentUpon>PostFile2.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="register.ashx.cs">
@@ -258,6 +264,8 @@
     <Content Include="PostFile.ashx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GetServiceIntentionList.ashx" />
+    <Content Include="PostFile2.ashx" />
     <None Include="Properties\PublishProfiles\Appdata.pubxml" />
   </ItemGroup>
   <PropertyGroup>

@@ -34,13 +34,13 @@ namespace MideFrameWork.UI.WebSite.Admin
             ctrID = Request.QueryString["ctrID"];
 
             //初始化日期选择事件
-                                
-                                            
-                                            
-                                            
-                                            
-                                            
-                                    
+
+
+
+
+
+
+
             //表单提交事件
             Button_submit.Click += new EventHandler(Button_submit_Click);
 
@@ -61,16 +61,43 @@ namespace MideFrameWork.UI.WebSite.Admin
 
         #region 初始化表单
         WG_RegionEntity _WG_RegionEntity = null;
+        WG_RegionEntity _WG_RegionEntity_parent = null;
         protected void init_form(string ctrID)
         {
+            IList<WG_RegionEntity> regionList = DataProvider.GetInstance().GetWG_RegionList(" 1 = 1 ");
+
             if (!string.IsNullOrEmpty(ctrID))
             {
                 _WG_RegionEntity = DataProvider.GetInstance().GetWG_RegionEntity(int.Parse(ctrID));
 
-               				                				                   TextBox_ParentID.Text = _WG_RegionEntity.ParentID.ToString();
-                                				                   TextBox_Name.Text = _WG_RegionEntity.Name.ToString();
-                                				                   TextBox_Meno.Text = _WG_RegionEntity.Meno.ToString();
-                                				                				                            }
+                _WG_RegionEntity_parent = DataProvider.GetInstance().GetWG_RegionEntity(_WG_RegionEntity.ParentID);
+
+            }
+            if (!IsPostBack)
+            {
+                //初始化父菜单
+                //var parentIdDataSource = from parentIdTabels in regionList where parentIdTabels.ParentID == 0 select parentIdTabels;
+                var parentIdDataSource = from parentIdTabels in regionList where 1 == 1 select parentIdTabels;
+                DropDownList_parentId.DataSource = parentIdDataSource;
+                DropDownList_parentId.DataTextField = "Name";
+                DropDownList_parentId.DataValueField = "ID";
+                DropDownList_parentId.DataBind();
+                DropDownList_parentId.Items.Insert(0, new ListItem("全国", "0"));
+
+
+            }
+            #region 编辑
+            if (!string.IsNullOrEmpty(ctrID))
+            {
+                if (_WG_RegionEntity_parent != null)
+                {
+                    DropDownList_parentId.ClearSelection();
+                    DropDownList_parentId.Items.FindByText(_WG_RegionEntity_parent.Name).Selected = true;
+                }
+                TextBox_Name.Text = _WG_RegionEntity.Name.ToString();
+                TextBox_Meno.Text = _WG_RegionEntity.Name.ToString();
+            }
+            #endregion
         }
         #endregion
 
@@ -78,48 +105,48 @@ namespace MideFrameWork.UI.WebSite.Admin
         protected void WG_RegionAdd()
         {
             #region 判断是否可空
-		 
-                                                                          
-                  var _ParentID = Request.Form["TextBox_ParentID"];
-                 if (string.IsNullOrEmpty(_ParentID))
-                   {
-                        Alert("[ 父ID ]不能为空");
-                        return;
-                  }
-				                                           
-                  var _Name = Request.Form["TextBox_Name"];
-                 if (string.IsNullOrEmpty(_Name))
-                   {
-                        Alert("[ 区域名称 ]不能为空");
-                        return;
-                  }
-				                                           
-                  var _Meno = Request.Form["TextBox_Meno"];
-                 if (string.IsNullOrEmpty(_Meno))
-                   {
-                        Alert("[ 备注 ]不能为空");
-                        return;
-                  }
-				                                                                                
-	        #endregion
-           
+
+
+            var _ParentID = DropDownList_parentId.SelectedItem.Value;
+            if (string.IsNullOrEmpty(_ParentID))
+            {
+                Alert("[ 父ID ]不能为空");
+                return;
+            }
+
+            var _Name = Request.Form["TextBox_Name"];
+            if (string.IsNullOrEmpty(_Name))
+            {
+                Alert("[ 区域名称 ]不能为空");
+                return;
+            }
+
+            var _Meno = Request.Form["TextBox_Meno"];
+            //if (string.IsNullOrEmpty(_Meno))
+            //  {
+            //       Alert("[ 备注 ]不能为空");
+            //       return;
+            // }
+
+            #endregion
+
             #region 获取数据
 
-            WG_RegionEntity  _WG_RegionEntity = new WG_RegionEntity();
-            
-               		                               	  		                            
-                 	                 	                     _WG_RegionEntity.ParentID =Convert.ToInt32(_ParentID.ToString());
-                	                        	  		                            
-                 	                 	                
-                    _WG_RegionEntity.Name =Convert.ToString(_Name.ToString());
-               		                        	  		                            
-                 	                 	                
-                    _WG_RegionEntity.Meno =Convert.ToString(_Meno.ToString());
-               		                        	  		        
-		       	_WG_RegionEntity.CreateDate =DateTime.Now;
-		               	  		        
-		       	_WG_RegionEntity.UpdateDate =DateTime.Now;
-		               	              try
+            WG_RegionEntity _WG_RegionEntity = new WG_RegionEntity();
+
+
+            _WG_RegionEntity.ParentID = Convert.ToInt32(_ParentID.ToString());
+
+
+            _WG_RegionEntity.Name = Convert.ToString(_Name.ToString());
+
+
+            _WG_RegionEntity.Meno = Convert.ToString(_Meno.ToString());
+
+            _WG_RegionEntity.CreateDate = DateTime.Now;
+
+            _WG_RegionEntity.UpdateDate = DateTime.Now;
+            try
             {
                 DataProvider.GetInstance().AddWG_Region(_WG_RegionEntity);
             }
@@ -137,48 +164,48 @@ namespace MideFrameWork.UI.WebSite.Admin
         protected void WG_RegionEditFunc(string ctrID)
         {
             #region 判断是否可空		 
-		 
-                                                                          
-                  var _ParentID = Request.Form["TextBox_ParentID"];
-                 if (string.IsNullOrEmpty(_ParentID))
-                   {
-                        Alert("[ 父ID ]不能为空");
-                        return;
-                  }
-				                                           
-                  var _Name = Request.Form["TextBox_Name"];
-                 if (string.IsNullOrEmpty(_Name))
-                   {
-                        Alert("[ 区域名称 ]不能为空");
-                        return;
-                  }
-				                                           
-                  var _Meno = Request.Form["TextBox_Meno"];
-                 if (string.IsNullOrEmpty(_Meno))
-                   {
-                        Alert("[ 备注 ]不能为空");
-                        return;
-                  }
-				                                                                                
-	        #endregion
 
 
-             
-  
-               		                       					                         
-                
-                                                                        _WG_RegionEntity.ParentID =Convert.ToInt32(_ParentID.ToString());
-                                					                         
-                
-                                                                   
-                    _WG_RegionEntity.Name =Convert.ToString(_Name.ToString());
-                               					                         
-                
-                                                                   
-                    _WG_RegionEntity.Meno =Convert.ToString(_Meno.ToString());
-                               					                       					        
-		       	_WG_RegionEntity.UpdateDate =DateTime.Now;
-		       			            try
+            var _ParentID = DropDownList_parentId.SelectedItem.Value;
+            if (string.IsNullOrEmpty(_ParentID))
+            {
+                Alert("[ 父ID ]不能为空");
+                return;
+            }
+
+            var _Name = Request.Form["TextBox_Name"];
+            if (string.IsNullOrEmpty(_Name))
+            {
+                Alert("[ 区域名称 ]不能为空");
+                return;
+            }
+
+            var _Meno = Request.Form["TextBox_Meno"];
+            if (string.IsNullOrEmpty(_Meno))
+            {
+                Alert("[ 备注 ]不能为空");
+                return;
+            }
+
+            #endregion
+
+
+
+
+
+
+            _WG_RegionEntity.ParentID = Convert.ToInt32(_ParentID.ToString());
+
+
+
+            _WG_RegionEntity.Name = Convert.ToString(_Name.ToString());
+
+
+
+            _WG_RegionEntity.Meno = Convert.ToString(_Meno.ToString());
+
+            _WG_RegionEntity.UpdateDate = DateTime.Now;
+            try
             {
                 DataProvider.GetInstance().UpdateWG_Region(_WG_RegionEntity);
             }
@@ -188,7 +215,7 @@ namespace MideFrameWork.UI.WebSite.Admin
                 Alert("更新数据时出错，请重试");
                 return;
             }
-            Alert("更新WG_Region资料成功","");
+            Alert("更新WG_Region资料成功", "");
         }
         #endregion
     }

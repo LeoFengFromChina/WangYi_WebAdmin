@@ -18,6 +18,16 @@ namespace MideFrameWork.Data.Entity
             set{ _id = value; }
         }
         
+		private int _parentid;
+		/// <summary>
+		/// 父ID
+        /// </summary>
+        public int ParentID
+        {
+            get{ return _parentid; }
+            set{ _parentid = value; }
+        }
+        
 		private string _content;
 		/// <summary>
 		/// 意向名称

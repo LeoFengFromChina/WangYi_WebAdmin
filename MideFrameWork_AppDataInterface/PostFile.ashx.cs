@@ -16,8 +16,8 @@ namespace MideFrameWork_AppDataInterface
         {
             HttpRequest request = context.Request;
             Stream Inputstream = request.InputStream;
-            string savaPath = request.Headers["Path"];
-            string fileName = request.Headers["FileName"];
+            string savaPath = "C:\\MyPost\\";// request.Headers["Path"];
+            string fileName = "123123.jpg";// request.Headers["FileName"];
 
             string FileStreamStr = string.Empty;
             if (Inputstream.Length != 0)
@@ -25,11 +25,15 @@ namespace MideFrameWork_AppDataInterface
                 StreamReader streamReader = new StreamReader(Inputstream);
                 FileStreamStr = streamReader.ReadToEnd();
             }
-            if (WriteFile(savaPath, fileName, FileStreamStr))
-                context.Response.Write("fengOk");
-            else
+            if(!string.IsNullOrEmpty(savaPath)
+                && !string.IsNullOrEmpty(fileName))
             {
-                context.Response.Write("fengError");
+                if (WriteFile(savaPath, fileName, FileStreamStr))
+                    context.Response.Write("fengOk");
+                else
+                {
+                    context.Response.Write("fengError");
+                }
             }
         }
         /// <summary>

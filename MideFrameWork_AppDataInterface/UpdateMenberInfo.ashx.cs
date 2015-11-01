@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using MideFrameWork.Data.Entity;
 using MideFrameWork.Data.Interface;
+using System.Configuration;
 
 namespace MideFrameWork_AppDataInterface
 {
@@ -42,7 +43,7 @@ namespace MideFrameWork_AppDataInterface
                         string psw = context.Request["psw"];
                         if (psw != null)
                             me.Psw = psw;
-                        string avatar_url = context.Request["avatar_url"];
+                        string avatar_url = ConfigurationManager.AppSettings["HostUrl"].ToString() + "imgs//" + context.Request["avatar_url"]; //context.Request["avatar_url"];
                         if (avatar_url != null)
                             me.PhotoUrl = avatar_url;
                         string nickname = context.Request["nickname"];
