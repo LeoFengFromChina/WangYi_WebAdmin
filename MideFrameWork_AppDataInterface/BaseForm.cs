@@ -52,6 +52,7 @@ namespace MideFrameWork_AppDataInterface
     [KnownType(typeof(List<PrivilegeViewEntity>))]
     [KnownType(typeof(ServiceIntentionView))]
     [KnownType(typeof(List<ServiceIntentionView>))]
+    [KnownType(typeof(List<RegionView>))]
     [DataContract]
     public class JsonBaseObject
     {

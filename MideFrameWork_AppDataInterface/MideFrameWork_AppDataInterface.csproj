@@ -118,6 +118,9 @@
     <Compile Include="GetBannerPictures.ashx.cs">
       <DependentUpon>GetBannerPictures.ashx</DependentUpon>
     </Compile>
+    <Compile Include="GetDistrict.ashx.cs">
+      <DependentUpon>GetDistrict.ashx</DependentUpon>
+    </Compile>
     <Compile Include="GetGiftList.ashx.cs">
       <DependentUpon>GetGiftList.ashx</DependentUpon>
     </Compile>
@@ -266,6 +269,7 @@
   <ItemGroup>
     <Content Include="GetServiceIntentionList.ashx" />
     <Content Include="PostFile2.ashx" />
+    <Content Include="GetDistrict.ashx" />
     <None Include="Properties\PublishProfiles\Appdata.pubxml" />
   </ItemGroup>
   <PropertyGroup>
