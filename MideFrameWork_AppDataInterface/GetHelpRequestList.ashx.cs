@@ -24,6 +24,7 @@ namespace MideFrameWork_AppDataInterface
             string result = string.Empty;
             try
             {
+                string region = context.Request["Region"];
                 //string PromoterIDstr = context.Request["PromoterID"];//求助者ID
                 //string UnderTakerIDstr = context.Request["UnderTakerID"];//帮助者ID
                 string menberID = context.Request["menberID"];//求助者ID
@@ -32,6 +33,9 @@ namespace MideFrameWork_AppDataInterface
                 if (!string.IsNullOrEmpty(context.Request["PageIndex"]))
                     PageIndex = context.Request["PageIndex"];
                 string whereStr = " 1 = 1 ";
+
+                if (!string.IsNullOrEmpty(region))
+                    whereStr += "  AND Region Like '%" + region + "%'";
                 //if (!string.IsNullOrEmpty(Type))
                 //{
                 //    whereStr += " AND Type=" + Type;

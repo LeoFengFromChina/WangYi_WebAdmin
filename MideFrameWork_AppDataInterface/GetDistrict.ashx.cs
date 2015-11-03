@@ -43,8 +43,8 @@ namespace MideFrameWork_AppDataInterface
                 foreach (WG_RegionEntity item in regionList)
                 {
                     RegionView rv = new RegionView();
-                    rv.CurrentRegion = item.Name;
-                    rv.ChildRegion = GetChilds(item.ID);
+                    rv.Label = item.Name;
+                    rv.Childrens = GetChilds(item.ID);
                     resultRegion.Add(rv);
                 }
 
@@ -76,8 +76,8 @@ namespace MideFrameWork_AppDataInterface
             foreach (WG_RegionEntity item in regionList)
             {
                 RegionView rv = new RegionView();
-                rv.CurrentRegion = item.Name;
-                rv.ChildRegion = GetChilds(item.ID);
+                rv.Label = item.Name;
+                rv.Childrens = GetChilds(item.ID);
                 result.Add(rv);
             }
 
@@ -97,29 +97,29 @@ namespace MideFrameWork_AppDataInterface
     [Serializable]
     public partial class RegionView
     {
-        private string _currentRegion = string.Empty;
-        public string CurrentRegion
+        private string label = string.Empty;
+        public string Label
         {
             get
             {
-                return _currentRegion;
+                return label;
             }
             set
             {
-                _currentRegion = value;
+                label = value;
             }
         }
 
-        private List<RegionView> _childRegions = new List<RegionView>();
-        public List<RegionView> ChildRegion
+        private List<RegionView> childrens = new List<RegionView>();
+        public List<RegionView> Childrens
         {
             get
             {
-                return _childRegions;
+                return childrens;
             }
             set
             {
-                _childRegions = value;
+                childrens = value;
             }
         }
     }
