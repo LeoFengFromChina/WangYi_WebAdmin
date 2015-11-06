@@ -29,24 +29,98 @@ namespace MideFrameWork.UI.WebSite.Admin
                 ViewState["ctrID"] = value;
             }
         }
+        private IList<WG_RegionEntity> GlobalList
+        {
+            get
+            {
+                if (ViewState["GlobalList"] != null)
+                    return (IList<WG_RegionEntity>)ViewState["GlobalList"];
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                ViewState["GlobalList"] = value;
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             ctrID = Request.QueryString["ctrID"];
-
-            //初始化日期选择事件
-
-
-
-
-
-
-
-            //表单提交事件
+            DropDownList_Province.AutoPostBack = true;
+            DropDownList_City.AutoPostBack = true;
+            DropDownList_District.AutoPostBack = true;
+            DropDownList_Town.AutoPostBack = true;
+            DropDownList_Province.SelectedIndexChanged += DropDownList_Province_SelectedIndexChanged;
+            DropDownList_City.SelectedIndexChanged += DropDownList_City_SelectedIndexChanged;
+            DropDownList_District.SelectedIndexChanged += DropDownList_District_SelectedIndexChanged;
+            if (!Page.IsPostBack)
+            {
+                init_form(ctrID);
+            }
             Button_submit.Click += new EventHandler(Button_submit_Click);
-
-            init_form(ctrID);
         }
 
+        private void DropDownList_District_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DropDownList_Town.Items.Clear();
+            int pID = int.Parse(DropDownList_District.SelectedValue);
+            //var parentIdDataSource = from parentIdTabels in GlobalList where parentIdTabels.ParentID == pID select parentIdTabels;
+            //DropDownList_Town.DataSource = parentIdDataSource;
+            //DropDownList_Town.DataTextField = "Name";
+            //DropDownList_Town.DataValueField = "ID";
+            //DropDownList_Town.DataBind();
+            //DropDownList_Town.Items.Insert(0, new ListItem("全区", pID.ToString()));
+
+            SetDropdownListData(DropDownList_Town, pID, "全区");
+        }
+
+        private void DropDownList_City_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            DropDownList_District.Items.Clear();
+            DropDownList_Town.Items.Clear();
+            int pID = int.Parse(DropDownList_City.SelectedValue);
+            //var parentIdDataSource = from parentIdTabels in GlobalList where parentIdTabels.ParentID == pID select parentIdTabels;
+            //DropDownList_District.DataSource = parentIdDataSource;
+            //DropDownList_District.DataTextField = "Name";
+            //DropDownList_District.DataValueField = "ID";
+            //DropDownList_District.DataBind();
+            //DropDownList_District.Items.Insert(0, new ListItem("全市", pID.ToString()));
+            SetDropdownListData(DropDownList_District, pID, "全市");
+        }
+
+        private void DropDownList_Province_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DropDownList_City.Items.Clear();
+            DropDownList_District.Items.Clear();
+            DropDownList_Town.Items.Clear();
+            int pID = int.Parse(DropDownList_Province.SelectedValue);
+            //var parentIdDataSource = from parentIdTabels in GlobalList where parentIdTabels.ParentID == pID select parentIdTabels;
+            //DropDownList_City.DataSource = parentIdDataSource;
+            //DropDownList_City.DataTextField = "Name";
+            //DropDownList_City.DataValueField = "ID";
+            //DropDownList_City.DataBind();
+            //DropDownList_City.Items.Insert(0, new ListItem("全省", pID.ToString()));
+            SetDropdownListData(DropDownList_City, pID, "全省");
+        }
+        /// <summary>
+        /// 统一填充下拉框的数据
+        /// </summary>
+        /// <param name="ddl"></param>
+        /// <param name="rangeID"></param>
+        /// <param name="TopText"></param>
+        private void SetDropdownListData(DropDownList ddl, int rangeID, string TopText)
+        {
+            ddl.Items.Clear();
+            var parentIdDataSource = from parentIdTabels in GlobalList where parentIdTabels.ParentID == rangeID select parentIdTabels;
+            ddl.DataSource = parentIdDataSource;
+            ddl.DataTextField = "Name";
+            ddl.DataValueField = "ID";
+            ddl.DataBind();
+            ddl.Items.Insert(0, new ListItem(TopText, rangeID.ToString()));
+        }
         void Button_submit_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(ctrID))
@@ -65,39 +139,94 @@ namespace MideFrameWork.UI.WebSite.Admin
         protected void init_form(string ctrID)
         {
             IList<WG_RegionEntity> regionList = DataProvider.GetInstance().GetWG_RegionList(" 1 = 1 ");
-
+            GlobalList = regionList;
             if (!string.IsNullOrEmpty(ctrID))
             {
                 _WG_RegionEntity = DataProvider.GetInstance().GetWG_RegionEntity(int.Parse(ctrID));
-
-                _WG_RegionEntity_parent = DataProvider.GetInstance().GetWG_RegionEntity(_WG_RegionEntity.ParentID);
+                GetParent(_WG_RegionEntity);
+                //_WG_RegionEntity_parent = DataProvider.GetInstance().GetWG_RegionEntity(_WG_RegionEntity.ParentID);
 
             }
             if (!IsPostBack)
             {
                 //初始化父菜单
                 //var parentIdDataSource = from parentIdTabels in regionList where parentIdTabels.ParentID == 0 select parentIdTabels;
-                var parentIdDataSource = from parentIdTabels in regionList where 1 == 1 select parentIdTabels;
-                DropDownList_parentId.DataSource = parentIdDataSource;
-                DropDownList_parentId.DataTextField = "Name";
-                DropDownList_parentId.DataValueField = "ID";
-                DropDownList_parentId.DataBind();
-                DropDownList_parentId.Items.Insert(0, new ListItem("全国", "0"));
-
+                var parentIdDataSource = from parentIdTabels in regionList where parentIdTabels.ParentID == 0 select parentIdTabels;
+                DropDownList_Province.DataSource = parentIdDataSource;
+                DropDownList_Province.DataTextField = "Name";
+                DropDownList_Province.DataValueField = "ID";
+                DropDownList_Province.DataBind();
+                DropDownList_Province.Items.Insert(0, new ListItem("全国", "0"));
+                DropDownList_City.Items.Insert(0, new ListItem("全省", "0"));
+                DropDownList_District.Items.Insert(0, new ListItem("全市", "0"));
+                DropDownList_Town.Items.Insert(0, new ListItem("全区", "0"));
 
             }
             #region 编辑
             if (!string.IsNullOrEmpty(ctrID))
             {
-                if (_WG_RegionEntity_parent != null)
-                {
-                    DropDownList_parentId.ClearSelection();
-                    DropDownList_parentId.Items.FindByText(_WG_RegionEntity_parent.Name).Selected = true;
-                }
-                TextBox_Name.Text = _WG_RegionEntity.Name.ToString();
-                TextBox_Meno.Text = _WG_RegionEntity.Name.ToString();
+                //if (_WG_RegionEntity_parent != null)
+                //{
+                //    DropDownList_parentId.ClearSelection();
+                //    DropDownList_parentId.Items.FindByText(_WG_RegionEntity_parent.Name).Selected = true;
+                //}
+                //TextBox_Name.Text = _WG_RegionEntity.Name.ToString();
+                //TextBox_Meno.Text = _WG_RegionEntity.Name.ToString();
             }
             #endregion
+        }
+
+        protected int GetParent(WG_RegionEntity currRegion)
+        {
+
+            int level = 0;
+            WG_RegionEntity ParentRegion = DataProvider.GetInstance().GetWG_RegionEntity(currRegion.ParentID);
+            if (null == ParentRegion)
+                level = 0;
+            else
+            {
+                level = GetParent(ParentRegion);
+            }
+
+            switch (level)
+            {
+                case 0:
+                    {
+                        //省，已经是全国范围了
+                        SetDropdownListData(DropDownList_Province, 0, "全国");
+                        DropDownList_Province.Items.FindByText(currRegion.Name).Selected = true;
+                    }
+                    break;
+                case 1:
+                    {
+                        //市
+                        SetDropdownListData(DropDownList_City, currRegion.ParentID, "全市");
+                        DropDownList_City.Items.FindByText(currRegion.Name).Selected = true;
+                    }
+                    break;
+                case 2:
+                    {
+                        SetDropdownListData(DropDownList_District, currRegion.ParentID, "全区");
+                        DropDownList_District.Items.FindByText(currRegion.Name).Selected = true;
+                    }
+                    break;
+                case 3:
+                    {
+                        SetDropdownListData(DropDownList_Town, currRegion.ParentID, "全镇");
+                        DropDownList_Town.Items.FindByText(currRegion.Name).Selected = true;
+                    }
+                    break;
+                case 4:
+                    {
+                        //TextBox_Name.Text = currRegion.Name;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            TextBox_Name.Text = currRegion.Name;
+            TextBox_Meno.Text = currRegion.Meno;
+            return level + 1; ;
         }
         #endregion
 
@@ -107,7 +236,33 @@ namespace MideFrameWork.UI.WebSite.Admin
             #region 判断是否可空
 
 
-            var _ParentID = DropDownList_parentId.SelectedItem.Value;
+            var _ParentID = "0";
+            if (!string.IsNullOrEmpty(DropDownList_Town.SelectedValue.Replace("0", "")))
+            {
+                //镇
+                _ParentID = DropDownList_Town.SelectedValue;
+            }
+            else if (!string.IsNullOrEmpty(DropDownList_District.SelectedValue.Replace("0", "")))
+            {
+                //区
+                _ParentID = DropDownList_District.SelectedValue;
+            }
+            else if (!string.IsNullOrEmpty(DropDownList_City.SelectedValue.Replace("0", "")))
+            {
+                //市
+                _ParentID = DropDownList_City.SelectedValue;
+            }
+            else if (!string.IsNullOrEmpty(DropDownList_Province.SelectedValue.Replace("0", "")))
+            {
+                //省
+                _ParentID = DropDownList_Province.SelectedValue;
+            }
+            else
+            {
+                //全国
+                _ParentID = "0";
+            }
+
             if (string.IsNullOrEmpty(_ParentID))
             {
                 Alert("[ 父ID ]不能为空");
@@ -122,11 +277,6 @@ namespace MideFrameWork.UI.WebSite.Admin
             }
 
             var _Meno = Request.Form["TextBox_Meno"];
-            //if (string.IsNullOrEmpty(_Meno))
-            //  {
-            //       Alert("[ 备注 ]不能为空");
-            //       return;
-            // }
 
             #endregion
 
@@ -166,7 +316,7 @@ namespace MideFrameWork.UI.WebSite.Admin
             #region 判断是否可空		 
 
 
-            var _ParentID = DropDownList_parentId.SelectedItem.Value;
+            var _ParentID = "";// DropDownList_parentId.SelectedItem.Value;
             if (string.IsNullOrEmpty(_ParentID))
             {
                 Alert("[ 父ID ]不能为空");

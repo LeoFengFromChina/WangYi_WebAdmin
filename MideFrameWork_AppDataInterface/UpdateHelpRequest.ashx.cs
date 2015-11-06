@@ -48,7 +48,7 @@ namespace MideFrameWork_AppDataInterface
                     }
                     else
                     {
-                        if (currEntity.Status == 0)
+                        if (currEntity.Status == 0 && status=="1")
                         {
                             #region 接单===配对
                             //承接
@@ -86,7 +86,7 @@ namespace MideFrameWork_AppDataInterface
 
                             #endregion
                         }
-                        else if (currEntity.Status == 1)
+                        else if (currEntity.Status == 1 && status == "2")
                         {
                             #region 完成订单
 
