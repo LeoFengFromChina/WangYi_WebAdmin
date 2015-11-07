@@ -76,6 +76,9 @@ namespace MideFrameWork_AppDataInterface
                         string district = context.Request["district"];
                         if (district != null)
                             me.District = district;
+                        string town = context.Request["town"];
+                        if (town != null)
+                            me.Town = town;
                         string community = context.Request["community"];
                         if (community != null)
                             me.Community = community;

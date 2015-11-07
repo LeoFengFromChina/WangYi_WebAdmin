@@ -63,6 +63,7 @@ namespace MideFrameWork_AppDataInterface
                         string province = context.Request["province"];
                         string city = context.Request["city"];
                         string district = context.Request["district"];
+                        string town = context.Request["town"];
                         string community = context.Request["community"];
                         string personalid = context.Request["identity"];
                         string address = context.Request["address"];
@@ -88,6 +89,7 @@ namespace MideFrameWork_AppDataInterface
                         menber.Province = province;
                         menber.City = city;
                         menber.District = district;
+                        menber.Town = town;
                         menber.Community = community;
                         menber.PersonalID = personalid;
                         menber.Address = address;

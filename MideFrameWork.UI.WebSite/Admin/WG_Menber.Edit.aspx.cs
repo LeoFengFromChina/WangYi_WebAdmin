@@ -407,9 +407,11 @@ namespace MideFrameWork.UI.WebSite.Admin
 
 
             //要MD5
-            string pswMD5 = MD5Encrypt.MD5Hash(_Psw.ToString());
-            _WG_MenberEntity.Psw = Convert.ToString(pswMD5);
-
+            if (!string.IsNullOrEmpty(_Psw))
+            {
+                string pswMD5 = MD5Encrypt.MD5Hash(_Psw.ToString());
+                _WG_MenberEntity.Psw = Convert.ToString(pswMD5);
+            }
 
             _WG_MenberEntity.Scores = Convert.ToInt32(_Scores.ToString());
 
