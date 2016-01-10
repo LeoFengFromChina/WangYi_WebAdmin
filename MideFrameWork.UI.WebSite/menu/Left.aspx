@@ -49,7 +49,7 @@
                 <span>用户:</span><span><asp:Label ID="lbl_UserName" runat="server" Text="User"></asp:Label></span>
             </div>
             <div class="balanceTip line_paddingleft">
-                <span>余额:</span><span><asp:Label ID="lbl_Balance" runat="server" Text="0"></asp:Label>条</span>
+                <span>积分:</span><span><asp:Label ID="lbl_Balance" runat="server" Text="0"></asp:Label></span>
             </div>
         </div>
         <div>
