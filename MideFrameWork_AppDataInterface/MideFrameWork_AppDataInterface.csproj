@@ -155,6 +155,9 @@
     <Compile Include="TeamAction.ashx.cs">
       <DependentUpon>TeamAction.ashx</DependentUpon>
     </Compile>
+    <Compile Include="UpdateNotice.ashx.cs">
+      <DependentUpon>UpdateNotice.ashx</DependentUpon>
+    </Compile>
     <Compile Include="UpdateActivity.ashx.cs">
       <DependentUpon>UpdateActivity.ashx</DependentUpon>
     </Compile>
@@ -271,6 +274,7 @@
     <Content Include="PostFile2.ashx" />
     <Content Include="GetDistrict.ashx" />
     <None Include="Properties\PublishProfiles\Appdata.pubxml" />
+    <Content Include="UpdateNotice.ashx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -42,15 +42,18 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into Notice(");			
-            strSql.Append("Title,NoticeContent,FromUserID,ToUserID,CreateDate");
+            strSql.Append("Title,NoticeContent,FromUserID,NoticeType,LinkId,AlreadyRead,ToUserID,CreateDate");
 			strSql.Append(") values (");
-            strSql.Append("@Title,@NoticeContent,@FromUserID,@ToUserID,@CreateDate");            
+            strSql.Append("@Title,@NoticeContent,@FromUserID,@NoticeType,@LinkId,@AlreadyRead,@ToUserID,@CreateDate");            
             strSql.Append(") ");            
             strSql.Append(";select @@IDENTITY");		
 			SqlParameter[] parameters = {
 			            new SqlParameter("@Title", SqlDbType.NVarChar,128) ,            
                         new SqlParameter("@NoticeContent", SqlDbType.NVarChar) ,            
                         new SqlParameter("@FromUserID", SqlDbType.Int,4) ,            
+                        new SqlParameter("@NoticeType", SqlDbType.Int,4) ,            
+                        new SqlParameter("@LinkId", SqlDbType.Int,4) ,            
+                        new SqlParameter("@AlreadyRead", SqlDbType.Int,4) ,            
                         new SqlParameter("@ToUserID", SqlDbType.NChar,10) ,            
                         new SqlParameter("@CreateDate", SqlDbType.DateTime)             
               
@@ -59,8 +62,11 @@ namespace MideFrameWork.Data.SqlServer
             parameters[0].Value = info.Title;                        
             parameters[1].Value = info.NoticeContent;                        
             parameters[2].Value = info.FromUserID;                        
-            parameters[3].Value = info.ToUserID;                        
-            parameters[4].Value = info.CreateDate;                        
+            parameters[3].Value = info.NoticeType;                        
+            parameters[4].Value = info.LinkId;                        
+            parameters[5].Value = info.AlreadyRead;                        
+            parameters[6].Value = info.ToUserID;                        
+            parameters[7].Value = info.CreateDate;                        
 			   
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);			
 			if (obj == null)
@@ -87,19 +93,25 @@ namespace MideFrameWork.Data.SqlServer
             strSql.Append(" Title = @Title , ");                                    
             strSql.Append(" NoticeContent = @NoticeContent , ");                                    
             strSql.Append(" FromUserID = @FromUserID , ");                                    
+            strSql.Append(" NoticeType = @NoticeType , ");                                    
+            strSql.Append(" LinkId = @LinkId , ");                                    
+            strSql.Append(" AlreadyRead = @AlreadyRead , ");                                    
             strSql.Append(" ToUserID = @ToUserID , ");                                    
             strSql.Append(" CreateDate = @CreateDate  ");            			
 			strSql.Append(" where ID=@ID ");			
 			SqlParameter[] parameters = {
-			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@Title", SqlDbType.NVarChar,128) ,                        new SqlParameter("@NoticeContent", SqlDbType.NVarChar) ,                        new SqlParameter("@FromUserID", SqlDbType.Int,4) ,                        new SqlParameter("@ToUserID", SqlDbType.NChar,10) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime)               
+			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@Title", SqlDbType.NVarChar,128) ,                        new SqlParameter("@NoticeContent", SqlDbType.NVarChar) ,                        new SqlParameter("@FromUserID", SqlDbType.Int,4) ,                        new SqlParameter("@NoticeType", SqlDbType.Int,4) ,                        new SqlParameter("@LinkId", SqlDbType.Int,4) ,                        new SqlParameter("@AlreadyRead", SqlDbType.Int,4) ,                        new SqlParameter("@ToUserID", SqlDbType.NChar,10) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime)               
             };
 						            
             parameters[0].Value = info.ID;                        
             parameters[1].Value = info.Title;                        
             parameters[2].Value = info.NoticeContent;                        
             parameters[3].Value = info.FromUserID;                        
-            parameters[4].Value = info.ToUserID;                        
-            parameters[5].Value = info.CreateDate;                        
+            parameters[4].Value = info.NoticeType;                        
+            parameters[5].Value = info.LinkId;                        
+            parameters[6].Value = info.AlreadyRead;                        
+            parameters[7].Value = info.ToUserID;                        
+            parameters[8].Value = info.CreateDate;                        
             int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
 			{
@@ -163,7 +175,7 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID, Title, NoticeContent, FromUserID, ToUserID, CreateDate  ");			
+			strSql.Append("select ID, Title, NoticeContent, FromUserID, NoticeType, LinkId, AlreadyRead, ToUserID, CreateDate  ");			
 			strSql.Append("  from Notice ");
 			strSql.Append(" where ID=@ID");
 			SqlParameter[] parameters ={
@@ -190,7 +202,7 @@ namespace MideFrameWork.Data.SqlServer
 		public IList<MideFrameWork.Data.Entity.NoticeEntity> GetNoticeList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,Title,NoticeContent,FromUserID,ToUserID,CreateDate");
+			strSql.Append("select ID,Title,NoticeContent,FromUserID,NoticeType,LinkId,AlreadyRead,ToUserID,CreateDate");
 			strSql.Append(" FROM Notice ");
 			if(strWhere.Trim()!="")
 			{
@@ -219,7 +231,7 @@ namespace MideFrameWork.Data.SqlServer
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append("ID,Title,NoticeContent,FromUserID,ToUserID,CreateDate");
+			strSql.Append("ID,Title,NoticeContent,FromUserID,NoticeType,LinkId,AlreadyRead,ToUserID,CreateDate");
 			strSql.Append(" FROM Notice ");
 			if(strWhere.Trim()!="")
 			{
@@ -252,7 +264,7 @@ namespace MideFrameWork.Data.SqlServer
             IList<MideFrameWork.Data.Entity.NoticeEntity> list = new List<MideFrameWork.Data.Entity.NoticeEntity>();
             recordCount = 0;
             totalPage = 0;
-            DataSet ds = GetRecordByPage(" Notice", "ID,Title,NoticeContent,FromUserID,ToUserID,CreateDate", orderBy,strWhere,PageSize,PageIndex);
+            DataSet ds = GetRecordByPage(" Notice", "ID,Title,NoticeContent,FromUserID,NoticeType,LinkId,AlreadyRead,ToUserID,CreateDate", orderBy,strWhere,PageSize,PageIndex);
             if (ds.Tables.Count == 2)
             {
                 // 组装
@@ -293,6 +305,21 @@ namespace MideFrameWork.Data.SqlServer
 					info.FromUserID=0;
 				else
 					info.FromUserID=int.Parse(dr["FromUserID"].ToString());
+									
+																						if(DBNull.Value==dr["NoticeType"])
+					info.NoticeType=0;
+				else
+					info.NoticeType=int.Parse(dr["NoticeType"].ToString());
+									
+																						if(DBNull.Value==dr["LinkId"])
+					info.LinkId=0;
+				else
+					info.LinkId=int.Parse(dr["LinkId"].ToString());
+									
+																						if(DBNull.Value==dr["AlreadyRead"])
+					info.AlreadyRead=0;
+				else
+					info.AlreadyRead=int.Parse(dr["AlreadyRead"].ToString());
 									
 																								
 						if(DBNull.Value==dr["ToUserID"])

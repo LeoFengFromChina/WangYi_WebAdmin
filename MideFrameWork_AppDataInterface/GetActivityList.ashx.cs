@@ -26,7 +26,15 @@ namespace MideFrameWork_AppDataInterface
             JsonBaseObject jbo = new JsonBaseObject();
             string result = string.Empty;
             try
-            {//获取活动列表，所有活动和我的活动
+            {
+
+                string ID = context.Request["ID"];
+                int count = 20;
+                string countStr = context.Request["Count"];
+                if (!string.IsNullOrEmpty(countStr))
+                    int.TryParse(countStr, out count);
+
+                //获取活动列表，所有活动和我的活动
                 string menberID = context.Request["menberID"];
 
                 string promoterID = context.Request["promoterID"];
@@ -35,16 +43,22 @@ namespace MideFrameWork_AppDataInterface
                 if (!string.IsNullOrEmpty(context.Request["PageIndex"]))
                     PageIndex = context.Request["PageIndex"];
 
+                string whereStr = " 1 = 1 ";
                 if (string.IsNullOrEmpty(menberID)
                     && string.IsNullOrEmpty(promoterID))
                 {
                     //所有活动
                     //IList<WG_ActivitiesEntity> ae = DataProvider.GetInstance().GetWG_ActivitiesList(" 1=1 ");
+                    //如果传了ID，就只有一条
+                    if (!string.IsNullOrEmpty(ID))
+                    {
+                        whereStr = " ID=" + ID;
+                    }
 
                     int recordCount = -1;
                     int pageCount = -1;
                     // 查找条件：如typeid=1 and promoterid=1 and undertakerid=1
-                    IList<WG_ActivitiesEntity> ae = DataProvider.GetInstance().GetWG_ActivitiesList(20, int.Parse(PageIndex), " WHERE 1 = 1", " CreateDate Desc ", out recordCount, out pageCount);
+                    IList<WG_ActivitiesEntity> ae = DataProvider.GetInstance().GetWG_ActivitiesList(count, int.Parse(PageIndex), " WHERE " + whereStr, " CreateDate Desc ", out recordCount, out pageCount);
 
                     //如果所有数据分页后的总页数比请求的页数小，则返回空。
                     if (int.Parse(PageIndex) > pageCount)
@@ -71,13 +85,13 @@ namespace MideFrameWork_AppDataInterface
                     if (!string.IsNullOrEmpty(menberID))
                     {
                         //我的活动
-                        string whereStr = " menberID = " + menberID;
+                         whereStr = " menberID = " + menberID;
 
                         //IList<WG_OnGoingActivitiesEntity> ogae = DataProvider.GetInstance().GetWG_OnGoingActivitiesList(whereStr);
                         int recordCount = -1;
                         int pageCount = -1;
                         // 查找条件：如typeid=1 and promoterid=1 and undertakerid=1
-                        IList<WG_OnGoingActivitiesEntity> ogae = DataProvider.GetInstance().GetWG_OnGoingActivitiesList(20, int.Parse(PageIndex), " WHERE " + whereStr, " CreateDate Desc ", out recordCount, out pageCount);
+                        IList<WG_OnGoingActivitiesEntity> ogae = DataProvider.GetInstance().GetWG_OnGoingActivitiesList(count, int.Parse(PageIndex), " WHERE " + whereStr, " CreateDate Desc ", out recordCount, out pageCount);
 
                         //如果所有数据分页后的总页数比请求的页数小，则返回空。
                         if (int.Parse(PageIndex) > pageCount)
@@ -114,12 +128,12 @@ namespace MideFrameWork_AppDataInterface
                     else if (!string.IsNullOrEmpty(promoterID))
                     {
                         //我发布的活动
-                        string whereStr = " promoterid = " + promoterID;
+                         whereStr = " promoterid = " + promoterID;
                         //IList<WG_OnGoingActivitiesEntity> ogae = DataProvider.GetInstance().GetWG_OnGoingActivitiesList(whereStr);
                         int recordCount = -1;
                         int pageCount = -1;
                         // 查找条件：如typeid=1 and promoterid=1 and undertakerid=1
-                        IList<WG_ActivitiesEntity> aeList = DataProvider.GetInstance().GetWG_ActivitiesList(20, int.Parse(PageIndex), " WHERE " + whereStr, " CreateDate Desc ", out recordCount, out pageCount);
+                        IList<WG_ActivitiesEntity> aeList = DataProvider.GetInstance().GetWG_ActivitiesList(count, int.Parse(PageIndex), " WHERE " + whereStr, " CreateDate Desc ", out recordCount, out pageCount);
 
                         //如果所有数据分页后的总页数比请求的页数小，则返回空。
                         if (int.Parse(PageIndex) > pageCount)

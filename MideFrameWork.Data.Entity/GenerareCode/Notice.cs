@@ -48,6 +48,36 @@ namespace MideFrameWork.Data.Entity
             set{ _fromuserid = value; }
         }
         
+		private int _noticetype;
+		/// <summary>
+		/// 消息类型
+        /// </summary>
+        public int NoticeType
+        {
+            get{ return _noticetype; }
+            set{ _noticetype = value; }
+        }
+        
+		private int _linkid;
+		/// <summary>
+		/// 跳转ID
+        /// </summary>
+        public int LinkId
+        {
+            get{ return _linkid; }
+            set{ _linkid = value; }
+        }
+        
+		private int _alreadyread;
+		/// <summary>
+		/// 已读
+        /// </summary>
+        public int AlreadyRead
+        {
+            get{ return _alreadyread; }
+            set{ _alreadyread = value; }
+        }
+        
 		private string _touserid;
 		/// <summary>
 		/// 接收者ID

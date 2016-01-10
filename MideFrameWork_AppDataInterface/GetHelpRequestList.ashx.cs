@@ -24,11 +24,15 @@ namespace MideFrameWork_AppDataInterface
             string result = string.Empty;
             try
             {
+                string ID = context.Request["ID"];
                 string region = context.Request["Region"];
-                //string PromoterIDstr = context.Request["PromoterID"];//求助者ID
-                //string UnderTakerIDstr = context.Request["UnderTakerID"];//帮助者ID
+                int count = 20;
+                string countStr = context.Request["Count"];
+                if (!string.IsNullOrEmpty(countStr))
+                    int.TryParse(countStr, out count);
                 string menberID = context.Request["menberID"];//求助者ID
                 string Type = context.Request["Type"];//1求助，2帮助
+                string serviceIntention = context.Request["ServiceIntention"];
                 string PageIndex = "1";
                 if (!string.IsNullOrEmpty(context.Request["PageIndex"]))
                     PageIndex = context.Request["PageIndex"];
@@ -36,10 +40,11 @@ namespace MideFrameWork_AppDataInterface
 
                 if (!string.IsNullOrEmpty(region))
                     whereStr += "  AND Region Like '%" + region + "%'";
-                //if (!string.IsNullOrEmpty(Type))
-                //{
-                //    whereStr += " AND Type=" + Type;
-                //}
+                if (!string.IsNullOrEmpty(serviceIntention))
+                {
+                    //加入服务意愿查询
+                    whereStr += "  AND ServiceIntention Like '%" + serviceIntention + "%'";
+                }
                 if (!string.IsNullOrEmpty(menberID))
                 {
                     if (Type == "1")
@@ -51,20 +56,25 @@ namespace MideFrameWork_AppDataInterface
                         whereStr += " AND ((Type=2 AND PromoterID=" + menberID + ") OR (Type=1 AND UnderTakerID=" + menberID + "))";
                     }
                 }
-                //if (!string.IsNullOrEmpty(PromoterIDstr))
-                //{
-                //    whereStr += " AND PromoterID=" + PromoterIDstr;
-                //}
-                //if (!string.IsNullOrEmpty(UnderTakerIDstr))
-                //{
-                //    whereStr += " AND UnderTakerID=" + UnderTakerIDstr;
-                //}
+                else
+                {
+                    //不传用用户ID时，选择指定类型即可
+                    if (!string.IsNullOrEmpty(Type))
+                        whereStr += "AND Type= " + Type;
+                }
                 whereStr += " ";//加多一个空格，避免sql的语法问题
+
+                //如果传了ID，就只有一条
+                if (!string.IsNullOrEmpty(ID))
+                {
+                    whereStr = " ID=" + ID;
+                }
+
 
                 int recordCount = -1;
                 int pageCount = -1;
                 // 查找条件：如typeid=1 and promoterid=1 and undertakerid=1
-                IList<WG_HelpRequestEntity> _HelpRequest = DataProvider.GetInstance().GetWG_HelpRequestList(20, int.Parse(PageIndex), " WHERE " + whereStr, " CreateDate Desc ", out recordCount, out pageCount);
+                IList<WG_HelpRequestEntity> _HelpRequest = DataProvider.GetInstance().GetWG_HelpRequestList(count, int.Parse(PageIndex), " WHERE " + whereStr, " CreateDate Desc ", out recordCount, out pageCount);
 
                 //如果所有数据分页后的总页数比请求的页数小，则返回空。
                 if (int.Parse(PageIndex) > pageCount)

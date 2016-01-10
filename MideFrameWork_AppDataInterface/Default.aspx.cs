@@ -12,9 +12,9 @@ namespace MideFrameWork_AppDataInterface
         protected void Page_Load(object sender, EventArgs e)
         {
             //Response.Redirect("GetRankList.ashx");
-            //Response.Redirect("GetHelpRequestList.ashx");
+            Response.Redirect("GetHelpRequestList.ashx");
             //Response.Redirect("GetGiftList.ashx");
-            Response.Redirect("GetDistrict.ashx");
+            //Response.Redirect("GetDistrict.ashx");
             //List<string> emailTo = new List<string>() { "502342395@qq.com", "mide_2008@126.com" };
             //string errorStr = "";
             //string body = "http://localhost:5918/GetBackPsw.aspx";

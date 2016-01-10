@@ -48,7 +48,7 @@ namespace MideFrameWork_AppDataInterface
                     }
                     else
                     {
-                        if (currEntity.Status == 0 && status=="1")
+                        if (currEntity.Status == 0 && status == "1")
                         {
                             #region 接单===配对
                             //承接
@@ -77,6 +77,24 @@ namespace MideFrameWork_AppDataInterface
                                 jbo.message = "接单失败。";
                                 jbo.success = false;
                             }
+
+                            #region 通知接单人
+
+                            NoticeEntity ne = new NoticeEntity();
+                            ne.ToUserID = currEntity.PromoterID.ToString();//通知发帖人
+                            ne.NoticeType = 1;//1求助帮助，2.活动类型，3.礼物类型
+                            ne.LinkId = currEntity.ID;
+                            ne.NoticeContent = "您的承接的求助单<a>《" + currEntity.Title + "》</a>已被承接。";
+                            try
+                            {
+                                DataProvider.GetInstance().AddNotice(ne);
+                            }
+                            catch (Exception ex)
+                            {
+
+                            }
+                            #endregion
+
                             #region respone
 
                             resultStr = JsonSerializer<JsonBaseObject>(jbo);
@@ -160,6 +178,23 @@ namespace MideFrameWork_AppDataInterface
                             }
                             else
                             {
+
+                                #region 通知接单人
+                                //1.
+                                NoticeEntity ne = new NoticeEntity();
+                                ne.ToUserID = underTaker.ID.ToString();
+                                ne.NoticeType = 1;//1求助帮助，2.活动类型，3.礼物类型
+                                ne.LinkId = currEntity.ID;
+                                ne.NoticeContent = "您的承接的求助单<a>《" + currEntity.Title + "》</a>已被发起人完成，您已获得：" + currEntity.Duration + "的积分和服务时常累积。感谢您的爱心奉献与付出。";
+                                try
+                                {
+                                    DataProvider.GetInstance().AddNotice(ne);
+                                }
+                                catch (Exception ex)
+                                {
+
+                                }
+                                #endregion
                                 #region 完成订单成功
                                 //接单成功
                                 jbo.code = 0;
@@ -175,6 +210,63 @@ namespace MideFrameWork_AppDataInterface
 
                                 #endregion
                             }
+
+                            #endregion
+                        }
+                        else if (currEntity.Status == 1 && status == "3")
+                        {
+
+                            #region 失约重发 20160110
+
+
+                            #region 通知接单人
+                            //1.
+                            NoticeEntity ne = new NoticeEntity();
+                            ne.ToUserID = underTaker.ID.ToString();
+                            ne.NoticeType = 1;//1求助帮助，2.活动类型，3.礼物类型
+                            ne.LinkId = currEntity.ID;
+                            ne.NoticeContent = "您的承接的求助单<a>《" + currEntity.Title + "》</a>已被发起人重新发出，您此次失约了，请注意与发帖人沟通好。";
+                            try
+                            {
+                                DataProvider.GetInstance().AddNotice(ne);
+                            }
+                            catch (Exception ex)
+                            {
+
+                            }
+                            #endregion
+
+                            try
+                            {
+                                //1.修改订单的状态，从已配对（1）改回原来的待配对（0）
+                                currEntity.Status = 0;
+                                //2.清空承接人信息
+                                currEntity.UnderTakerID = -1;//表示没有人承接
+                                currEntity.UpdateDate = DateTime.Now;
+
+                                DataProvider.GetInstance().UpdateWG_HelpRequest(currEntity);
+                                //接单成功
+                                jbo.code = 0;
+                                jbo.data = null;
+                                jbo.message = "失约重发成功。";
+                                jbo.success = true;
+                            }
+                            catch (Exception)
+                            {
+                                jbo.code = -1;
+                                jbo.data = null;
+                                jbo.message = "失约重发失败。";
+                                jbo.success = false;
+                                throw;
+                            }
+
+
+                            #region respone
+
+                            resultStr = JsonSerializer<JsonBaseObject>(jbo);
+                            context.Response.Write(resultStr);
+
+                            #endregion
                             #endregion
                         }
                         else
