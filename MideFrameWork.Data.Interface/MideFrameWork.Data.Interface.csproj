@@ -70,6 +70,7 @@
     <Compile Include="GenerareCode\Users.cs" />
     <Compile Include="GenerareCode\WebSiteManagement.cs" />
     <Compile Include="GenerareCode\WG_Activities.cs" />
+    <Compile Include="GenerareCode\WG_CommunityNews.cs" />
     <Compile Include="GenerareCode\WG_Education.cs" />
     <Compile Include="GenerareCode\WG_Feeback.cs" />
     <Compile Include="GenerareCode\WG_Gifts.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="GenerareCode\WG_Score.cs" />
     <Compile Include="GenerareCode\WG_ServiceIntention.cs" />
     <Compile Include="GenerareCode\WG_Team.cs" />
+    <Compile Include="GenerareCode\WG_Vender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

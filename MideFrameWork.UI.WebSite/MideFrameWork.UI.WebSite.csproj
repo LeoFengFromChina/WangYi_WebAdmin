@@ -73,6 +73,8 @@
     <Content Include="Admin\ArticleType.aspx" />
     <Content Include="Admin\ArticleType.Edit.aspx" />
     <Content Include="Admin\Base_Button.aspx" />
+    <Content Include="Admin\WG_CommunityNews.aspx" />
+    <Content Include="Admin\WG_CommunityNews.Edit.aspx" />
     <Content Include="Admin\WG_Menber_Operation.aspx" />
     <Content Include="Admin\Base_Button.Edit.aspx" />
     <Content Include="Admin\Base_Module.aspx" />
@@ -131,6 +133,8 @@
     <Content Include="Admin\WG_ServiceIntention.Edit.aspx" />
     <Content Include="Admin\WG_Team.aspx" />
     <Content Include="Admin\WG_Team.Edit.aspx" />
+    <Content Include="Admin\WG_Vender.aspx" />
+    <Content Include="Admin\WG_Vender.Edit.aspx" />
     <Content Include="Admin\_CommonSelectBox.aspx" />
     <Content Include="ChangePsw.aspx" />
     <Content Include="css\AddSubAccount.css" />
@@ -370,6 +374,20 @@
     </Compile>
     <Compile Include="Admin\Base_Button.aspx.designer.cs">
       <DependentUpon>Base_Button.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WG_CommunityNews.aspx.cs">
+      <DependentUpon>WG_CommunityNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WG_CommunityNews.aspx.designer.cs">
+      <DependentUpon>WG_CommunityNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WG_CommunityNews.Edit.aspx.cs">
+      <DependentUpon>WG_CommunityNews.Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WG_CommunityNews.Edit.aspx.designer.cs">
+      <DependentUpon>WG_CommunityNews.Edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\WG_Menber_Operation.aspx.cs">
       <DependentUpon>WG_Menber_Operation.aspx</DependentUpon>
@@ -776,6 +794,20 @@
     </Compile>
     <Compile Include="Admin\WG_Team.Edit.aspx.designer.cs">
       <DependentUpon>WG_Team.Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WG_Vender.aspx.cs">
+      <DependentUpon>WG_Vender.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WG_Vender.aspx.designer.cs">
+      <DependentUpon>WG_Vender.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WG_Vender.Edit.aspx.cs">
+      <DependentUpon>WG_Vender.Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WG_Vender.Edit.aspx.designer.cs">
+      <DependentUpon>WG_Vender.Edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\_CommonSelectBox.aspx.cs">
       <DependentUpon>_CommonSelectBox.aspx</DependentUpon>

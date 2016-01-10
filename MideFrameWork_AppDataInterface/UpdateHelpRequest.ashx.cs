@@ -81,9 +81,11 @@ namespace MideFrameWork_AppDataInterface
                             #region 通知接单人
 
                             NoticeEntity ne = new NoticeEntity();
+                            ne.Title = "您的求助/帮助已被承接";
                             ne.ToUserID = currEntity.PromoterID.ToString();//通知发帖人
                             ne.NoticeType = 1;//1求助帮助，2.活动类型，3.礼物类型
                             ne.LinkId = currEntity.ID;
+                            ne.CreateDate = DateTime.Now;
                             ne.NoticeContent = "您的承接的求助单<a>《" + currEntity.Title + "》</a>已被承接。";
                             try
                             {
@@ -182,9 +184,11 @@ namespace MideFrameWork_AppDataInterface
                                 #region 通知接单人
                                 //1.
                                 NoticeEntity ne = new NoticeEntity();
+                                ne.Title = "您承接的单被发起人标记为完成状态";
                                 ne.ToUserID = underTaker.ID.ToString();
                                 ne.NoticeType = 1;//1求助帮助，2.活动类型，3.礼物类型
                                 ne.LinkId = currEntity.ID;
+                                ne.CreateDate = DateTime.Now;
                                 ne.NoticeContent = "您的承接的求助单<a>《" + currEntity.Title + "》</a>已被发起人完成，您已获得：" + currEntity.Duration + "的积分和服务时常累积。感谢您的爱心奉献与付出。";
                                 try
                                 {
@@ -221,10 +225,14 @@ namespace MideFrameWork_AppDataInterface
 
                             #region 通知接单人
                             //1.
+                            string noticeMsg = "";
                             NoticeEntity ne = new NoticeEntity();
-                            ne.ToUserID = underTaker.ID.ToString();
+                            ne.Title = "您承接的单被发起人标记为失约并重新发布了";
+                            ne.ToUserID = currEntity.UnderTakerID.ToString();
                             ne.NoticeType = 1;//1求助帮助，2.活动类型，3.礼物类型
                             ne.LinkId = currEntity.ID;
+                            ne.CreateDate = DateTime.Now;
+                            
                             ne.NoticeContent = "您的承接的求助单<a>《" + currEntity.Title + "》</a>已被发起人重新发出，您此次失约了，请注意与发帖人沟通好。";
                             try
                             {
@@ -232,7 +240,7 @@ namespace MideFrameWork_AppDataInterface
                             }
                             catch (Exception ex)
                             {
-
+                                noticeMsg = ex.ToString();
                             }
                             #endregion
 
@@ -248,7 +256,7 @@ namespace MideFrameWork_AppDataInterface
                                 //接单成功
                                 jbo.code = 0;
                                 jbo.data = null;
-                                jbo.message = "失约重发成功。";
+                                jbo.message = "失约重发成功。"+ noticeMsg;
                                 jbo.success = true;
                             }
                             catch (Exception)
