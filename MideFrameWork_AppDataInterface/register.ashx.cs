@@ -124,6 +124,18 @@ namespace MideFrameWork_AppDataInterface
                         DataProvider.GetInstance().AddWG_Score(se);
                         //看看是否心中其他表
 
+                        #region 通知用户主程成功，等待审核 add by frde 20160130
+                        NoticeEntity ne = new NoticeEntity();
+                        ne.FromUserID = 0;
+                        ne.ToUserID = mID.ToString();
+                        ne.Title = "系统审核消息";
+                        ne.CreateDate = DateTime.Now;
+                        ne.NoticeContent = "注册成功，请等待审核认证。";
+
+                        //给用户一条消息
+                        DataProvider.GetInstance().AddNotice(ne);
+                        #endregion
+
 
                         //返回数据
                         menber.ID = mID;

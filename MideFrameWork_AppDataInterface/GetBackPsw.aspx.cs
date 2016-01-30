@@ -56,6 +56,7 @@ namespace MideFrameWork_AppDataInterface
                 txt_NewPsw.Enabled = false;
                 return;
             }
+
             string decUserName = DESEncrypt.Decrypt(userName, "WYGY_BQGZS");
             string[] name_time_Array = decUserName.Split('|');
             MenberName = name_time_Array[0];
