@@ -9,6 +9,8 @@ using System.Runtime.Serialization.Json;
 using System.IO;
 using System.Text;
 using System.Data;
+using MideFrameWork.Data.Interface;
+
 namespace MideFrameWork_AppDataInterface
 {
     public class BaseForm
@@ -30,6 +32,27 @@ namespace MideFrameWork_AppDataInterface
             MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString));
             T obj = (T)ser.ReadObject(ms);
             return obj;
+        }
+
+
+        public static bool AddNoticeToWG(string title, string content, string userIDs, int noticeType = 0, int linkID = 0)
+        {
+            #region 通知用户主程成功，等待审核 add by frde 20160130
+
+            NoticeEntity ne = new NoticeEntity();
+            ne.FromUserID = 0;
+            ne.ToUserID = userIDs;
+            ne.Title = title;
+            ne.NoticeType = noticeType;//1求助帮助，2.活动类型，3.礼物类型
+            ne.LinkId = linkID;
+            ne.CreateDate = DateTime.Now;
+            ne.NoticeContent = content;
+
+            //给用户一条消息
+            DataProvider.GetInstance().AddNotice(ne);
+
+            #endregion
+            return true;
         }
     }
 

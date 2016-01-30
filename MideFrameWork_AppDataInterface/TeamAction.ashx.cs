@@ -66,6 +66,17 @@ namespace MideFrameWork_AppDataInterface
                             ogte.CreateDate = DateTime.Now;
                             DataProvider.GetInstance().AddWG_OnGoingTeam(ogte);
 
+                            #region 通知创建团队的那个人 add by frde 20160130
+
+                            WG_TeamEntity te = DataProvider.GetInstance().GetWG_TeamEntity(ogte.TeamID);
+                            if(te!= null)
+                            {
+                                AddNoticeToWG("新队员加入信息", "您好，ID为: "+ menberid.ToString()+" 的用户加入了您创建的团队：[ "+te.Name+" ]", te.CaptainID.ToString());
+                            }
+
+
+                            #endregion
+
                             jbo.code = 0;
                             jbo.data = null;
                             jbo.success = true;
@@ -85,6 +96,17 @@ namespace MideFrameWork_AppDataInterface
                             {
                                 DataProvider.GetInstance().DeleteWG_OnGoingTeam(item.ID);
                             }
+
+                            #region 通知创建团队的那个人 add by frde 20160130
+
+                            WG_TeamEntity te = DataProvider.GetInstance().GetWG_TeamEntity(int.Parse(teamid));
+                            if (te != null)
+                            {
+                                AddNoticeToWG("队友退出团队信息", "您好，ID为: " + menberid.ToString() + " 的用户退出了您创建的团队：[ " + te.Name + " ]", te.CaptainID.ToString());
+                            }
+
+
+                            #endregion
                             //成功
                             jbo.code = 0;
                             jbo.data = null;
@@ -113,9 +135,20 @@ namespace MideFrameWork_AppDataInterface
                         IList<WG_OnGoingTeamEntity> ote = DataProvider.GetInstance().GetWG_OnGoingTeamList(whereStr);
                         if (ote != null && ote.Count > 0)
                         {
+                            WG_TeamEntity te = DataProvider.GetInstance().GetWG_TeamEntity(int.Parse(teamid));
                             foreach (WG_OnGoingTeamEntity item in ote)
                             {
                                 DataProvider.GetInstance().DeleteWG_OnGoingTeam(item.ID);
+
+                                #region 通知创建团队的那个人 add by frde 20160130
+
+                                if (te != null)
+                                {
+                                    AddNoticeToWG("团队解散通知","你加入的团队：[ " + te.Name + " ]已 被解散，请知悉。", item.MenberID.ToString());
+                                }
+
+
+                                #endregion
                             }
                         }
 
@@ -185,7 +218,7 @@ namespace MideFrameWork_AppDataInterface
                             ogte.CreateDate = DateTime.Now;
                             DataProvider.GetInstance().AddWG_OnGoingTeam(ogte);
 
-
+                            AddNoticeToWG("团队创建成功", "你的：[ " + te.Name + " ]团队已成功创建，请担当起团队责任。", te.CaptainID.ToString());
                             //创建成功
                             jbo.code = 0;
                             jbo.data = null;

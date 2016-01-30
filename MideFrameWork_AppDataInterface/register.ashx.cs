@@ -128,9 +128,9 @@ namespace MideFrameWork_AppDataInterface
                         NoticeEntity ne = new NoticeEntity();
                         ne.FromUserID = 0;
                         ne.ToUserID = mID.ToString();
-                        ne.Title = "系统审核消息";
+                        ne.Title = "注册成功";
                         ne.CreateDate = DateTime.Now;
-                        ne.NoticeContent = "注册成功，请等待审核认证。";
+                        ne.NoticeContent = "您的账号注册成功，请等待审核认证。";
 
                         //给用户一条消息
                         DataProvider.GetInstance().AddNotice(ne);

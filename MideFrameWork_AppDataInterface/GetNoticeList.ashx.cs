@@ -52,12 +52,12 @@ namespace MideFrameWork_AppDataInterface
                     int pageCount = -1;
                     // 查找条件：如typeid=1 and promoterid=1 and undertakerid=1
                     IList<NoticeEntity> noticeList = DataProvider.GetInstance().GetNoticeList(20, int.Parse(PageIndex), " WHERE " + whereStr, " CreateDate Desc ", out recordCount, out pageCount);
-                    
+
                     //获取未读信息的数量
-                    string sqlStr = @" select count(*)from dbo.Notice where AlreadyRead = 0  and ( "+ whereStr+" )";
+                    string sqlStr = @" select count(*)from dbo.Notice where AlreadyRead = 0  and ( " + whereStr + " )";
                     DataSet ds = DbHelperSQL.Query(sqlStr);
                     int count = 0;
-                    if(ds.Tables.Count>0)
+                    if (ds.Tables.Count > 0)
                     {
                         string countstr = ds.Tables[0].Rows[0][0].ToString();
                         int.TryParse(countstr, out count);
@@ -87,7 +87,7 @@ namespace MideFrameWork_AppDataInterface
                 //没有任何数据
                 jbo.code = -1;
                 jbo.data = null;
-                jbo.message = "接口调用过程中出现其他错误。";
+                jbo.message = "接口调用过程中出现其他错误：" + ex;
                 jbo.success = false;
             }
 

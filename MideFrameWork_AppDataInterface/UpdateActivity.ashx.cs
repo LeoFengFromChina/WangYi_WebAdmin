@@ -219,6 +219,9 @@ namespace MideFrameWork_AppDataInterface
                                         ae.Status = 1;//活动被激活
                                         DataProvider.GetInstance().UpdateWG_Activities(ae);
                                     }
+
+                                    AddNoticeToWG("您发布的活动有新成员参加", "您发布的活动：[ "+ae.Title+" ] 有新成员加入，请知悉。", ae.PromoterID.ToString(),2,ae.ID);
+
                                     jbo.code = 0;
                                     jbo.data = null;
                                     jbo.message = "成功参加活动";
@@ -237,6 +240,7 @@ namespace MideFrameWork_AppDataInterface
                                 foreach (WG_OnGoingActivitiesEntity item in ogaeList)
                                 {
                                     DataProvider.GetInstance().DeleteWG_OnGoingActivities(item.ID);
+                                    AddNoticeToWG("有成员退出了您发布的活动", "您发布的活动：[ " + ae.Title + " ] 有成员退出，请知悉。", ae.PromoterID.ToString(), 2, ae.ID);
                                 }
 
                                 jbo.code = 0;
