@@ -138,6 +138,26 @@ namespace MideFrameWork.Data.Entity
             set{ _status = value; }
         }
         
+		private string _verification;
+		/// <summary>
+		/// 验证信息
+        /// </summary>
+        public string Verification
+        {
+            get{ return _verification; }
+            set{ _verification = value; }
+        }
+        
+		private string _memo;
+		/// <summary>
+		/// 备注
+        /// </summary>
+        public string Memo
+        {
+            get{ return _memo; }
+            set{ _memo = value; }
+        }
+        
 		private DateTime _createdate;
 		/// <summary>
 		/// 创建日期

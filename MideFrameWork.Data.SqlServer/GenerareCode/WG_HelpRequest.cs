@@ -41,9 +41,9 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into WG_HelpRequest(");			
-            strSql.Append("Title,Type,PromoterID,LinkMan,LinkPhone,BeginTime,Region,ServiceIntention,Duration,Detail,UnderTakerID,Status,CreateDate,UpdateDate");
+            strSql.Append("Title,Type,PromoterID,LinkMan,LinkPhone,BeginTime,Region,ServiceIntention,Duration,Detail,UnderTakerID,Status,Verification,Memo,CreateDate,UpdateDate");
 			strSql.Append(") values (");
-            strSql.Append("@Title,@Type,@PromoterID,@LinkMan,@LinkPhone,@BeginTime,@Region,@ServiceIntention,@Duration,@Detail,@UnderTakerID,@Status,@CreateDate,@UpdateDate");            
+            strSql.Append("@Title,@Type,@PromoterID,@LinkMan,@LinkPhone,@BeginTime,@Region,@ServiceIntention,@Duration,@Detail,@UnderTakerID,@Status,@Verification,@Memo,@CreateDate,@UpdateDate");            
             strSql.Append(") ");            
             strSql.Append(";select @@IDENTITY");		
 			SqlParameter[] parameters = {
@@ -59,6 +59,8 @@ namespace MideFrameWork.Data.SqlServer
                         new SqlParameter("@Detail", SqlDbType.NVarChar) ,            
                         new SqlParameter("@UnderTakerID", SqlDbType.Int,4) ,            
                         new SqlParameter("@Status", SqlDbType.Int,4) ,            
+                        new SqlParameter("@Verification", SqlDbType.NVarChar,512) ,            
+                        new SqlParameter("@Memo", SqlDbType.NVarChar,512) ,            
                         new SqlParameter("@CreateDate", SqlDbType.DateTime) ,            
                         new SqlParameter("@UpdateDate", SqlDbType.DateTime)             
               
@@ -76,8 +78,10 @@ namespace MideFrameWork.Data.SqlServer
             parameters[9].Value = info.Detail;                        
             parameters[10].Value = info.UnderTakerID;                        
             parameters[11].Value = info.Status;                        
-            parameters[12].Value = info.CreateDate;                        
-            parameters[13].Value = info.UpdateDate;                        
+            parameters[12].Value = info.Verification;                        
+            parameters[13].Value = info.Memo;                        
+            parameters[14].Value = info.CreateDate;                        
+            parameters[15].Value = info.UpdateDate;                        
 			   
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);			
 			if (obj == null)
@@ -113,11 +117,13 @@ namespace MideFrameWork.Data.SqlServer
             strSql.Append(" Detail = @Detail , ");                                    
             strSql.Append(" UnderTakerID = @UnderTakerID , ");                                    
             strSql.Append(" Status = @Status , ");                                    
+            strSql.Append(" Verification = @Verification , ");                                    
+            strSql.Append(" Memo = @Memo , ");                                    
             strSql.Append(" CreateDate = @CreateDate , ");                                    
             strSql.Append(" UpdateDate = @UpdateDate  ");            			
 			strSql.Append(" where ID=@ID ");			
 			SqlParameter[] parameters = {
-			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@Title", SqlDbType.NVarChar,256) ,                        new SqlParameter("@Type", SqlDbType.Int,4) ,                        new SqlParameter("@PromoterID", SqlDbType.Int,4) ,                        new SqlParameter("@LinkMan", SqlDbType.NVarChar,32) ,                        new SqlParameter("@LinkPhone", SqlDbType.NVarChar,11) ,                        new SqlParameter("@BeginTime", SqlDbType.DateTime) ,                        new SqlParameter("@Region", SqlDbType.NVarChar,64) ,                        new SqlParameter("@ServiceIntention", SqlDbType.NVarChar,128) ,                        new SqlParameter("@Duration", SqlDbType.Int,4) ,                        new SqlParameter("@Detail", SqlDbType.NVarChar) ,                        new SqlParameter("@UnderTakerID", SqlDbType.Int,4) ,                        new SqlParameter("@Status", SqlDbType.Int,4) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime) ,                        new SqlParameter("@UpdateDate", SqlDbType.DateTime)               
+			            new SqlParameter("@ID", SqlDbType.Int,4) ,                        new SqlParameter("@Title", SqlDbType.NVarChar,256) ,                        new SqlParameter("@Type", SqlDbType.Int,4) ,                        new SqlParameter("@PromoterID", SqlDbType.Int,4) ,                        new SqlParameter("@LinkMan", SqlDbType.NVarChar,32) ,                        new SqlParameter("@LinkPhone", SqlDbType.NVarChar,11) ,                        new SqlParameter("@BeginTime", SqlDbType.DateTime) ,                        new SqlParameter("@Region", SqlDbType.NVarChar,64) ,                        new SqlParameter("@ServiceIntention", SqlDbType.NVarChar,128) ,                        new SqlParameter("@Duration", SqlDbType.Int,4) ,                        new SqlParameter("@Detail", SqlDbType.NVarChar) ,                        new SqlParameter("@UnderTakerID", SqlDbType.Int,4) ,                        new SqlParameter("@Status", SqlDbType.Int,4) ,                        new SqlParameter("@Verification", SqlDbType.NVarChar,512) ,                        new SqlParameter("@Memo", SqlDbType.NVarChar,512) ,                        new SqlParameter("@CreateDate", SqlDbType.DateTime) ,                        new SqlParameter("@UpdateDate", SqlDbType.DateTime)               
             };
 						            
             parameters[0].Value = info.ID;                        
@@ -133,8 +139,10 @@ namespace MideFrameWork.Data.SqlServer
             parameters[10].Value = info.Detail;                        
             parameters[11].Value = info.UnderTakerID;                        
             parameters[12].Value = info.Status;                        
-            parameters[13].Value = info.CreateDate;                        
-            parameters[14].Value = info.UpdateDate;                        
+            parameters[13].Value = info.Verification;                        
+            parameters[14].Value = info.Memo;                        
+            parameters[15].Value = info.CreateDate;                        
+            parameters[16].Value = info.UpdateDate;                        
             int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
 			{
@@ -198,7 +206,7 @@ namespace MideFrameWork.Data.SqlServer
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID, Title, Type, PromoterID, LinkMan, LinkPhone, BeginTime, Region, ServiceIntention, Duration, Detail, UnderTakerID, Status, CreateDate, UpdateDate  ");			
+			strSql.Append("select ID, Title, Type, PromoterID, LinkMan, LinkPhone, BeginTime, Region, ServiceIntention, Duration, Detail, UnderTakerID, Status, Verification, Memo, CreateDate, UpdateDate  ");			
 			strSql.Append("  from WG_HelpRequest ");
 			strSql.Append(" where ID=@ID");
 			SqlParameter[] parameters ={
@@ -225,7 +233,7 @@ namespace MideFrameWork.Data.SqlServer
 		public IList<MideFrameWork.Data.Entity.WG_HelpRequestEntity> GetWG_HelpRequestList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,Title,Type,PromoterID,LinkMan,LinkPhone,BeginTime,Region,ServiceIntention,Duration,Detail,UnderTakerID,Status,CreateDate,UpdateDate");
+			strSql.Append("select ID,Title,Type,PromoterID,LinkMan,LinkPhone,BeginTime,Region,ServiceIntention,Duration,Detail,UnderTakerID,Status,Verification,Memo,CreateDate,UpdateDate");
 			strSql.Append(" FROM WG_HelpRequest ");
 			if(strWhere.Trim()!="")
 			{
@@ -254,7 +262,7 @@ namespace MideFrameWork.Data.SqlServer
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append("ID,Title,Type,PromoterID,LinkMan,LinkPhone,BeginTime,Region,ServiceIntention,Duration,Detail,UnderTakerID,Status,CreateDate,UpdateDate");
+			strSql.Append("ID,Title,Type,PromoterID,LinkMan,LinkPhone,BeginTime,Region,ServiceIntention,Duration,Detail,UnderTakerID,Status,Verification,Memo,CreateDate,UpdateDate");
 			strSql.Append(" FROM WG_HelpRequest ");
 			if(strWhere.Trim()!="")
 			{
@@ -287,7 +295,7 @@ namespace MideFrameWork.Data.SqlServer
             IList<MideFrameWork.Data.Entity.WG_HelpRequestEntity> list = new List<MideFrameWork.Data.Entity.WG_HelpRequestEntity>();
             recordCount = 0;
             totalPage = 0;
-            DataSet ds = GetRecordByPage(" WG_HelpRequest", "ID,Title,Type,PromoterID,LinkMan,LinkPhone,BeginTime,Region,ServiceIntention,Duration,Detail,UnderTakerID,Status,CreateDate,UpdateDate", orderBy,strWhere,PageSize,PageIndex);
+            DataSet ds = GetRecordByPage(" WG_HelpRequest", "ID,Title,Type,PromoterID,LinkMan,LinkPhone,BeginTime,Region,ServiceIntention,Duration,Detail,UnderTakerID,Status,Verification,Memo,CreateDate,UpdateDate", orderBy,strWhere,PageSize,PageIndex);
             if (ds.Tables.Count == 2)
             {
                 // 组装
@@ -374,6 +382,16 @@ namespace MideFrameWork.Data.SqlServer
 				else
 					info.Status=int.Parse(dr["Status"].ToString());
 									
+																								
+						if(DBNull.Value==dr["Verification"])
+				info.Verification= string.Empty;
+			else	
+				info.Verification= dr["Verification"].ToString();
+																								
+						if(DBNull.Value==dr["Memo"])
+				info.Memo= string.Empty;
+			else	
+				info.Memo= dr["Memo"].ToString();
 																									if(DBNull.Value==dr["CreateDate"])
 					info.CreateDate=DateTime.Now;
 				else
