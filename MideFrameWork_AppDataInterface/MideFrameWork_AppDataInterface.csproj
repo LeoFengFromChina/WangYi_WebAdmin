@@ -121,6 +121,12 @@
     <Compile Include="GetDistrict.ashx.cs">
       <DependentUpon>GetDistrict.ashx</DependentUpon>
     </Compile>
+    <Compile Include="GetUpdate.ashx.cs">
+      <DependentUpon>GetUpdate.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyPsw.ashx.cs">
+      <DependentUpon>ModifyPsw.ashx</DependentUpon>
+    </Compile>
     <Compile Include="GetGiftList.ashx.cs">
       <DependentUpon>GetGiftList.ashx</DependentUpon>
     </Compile>
@@ -281,6 +287,8 @@
     <Content Include="GetDistrict.ashx" />
     <Content Include="GetCommunityNews.ashx" />
     <Content Include="GeVenderList.ashx" />
+    <Content Include="ModifyPsw.ashx" />
+    <Content Include="GetUpdate.ashx" />
     <None Include="Properties\PublishProfiles\Appdata.pubxml" />
     <Content Include="UpdateNotice.ashx" />
   </ItemGroup>

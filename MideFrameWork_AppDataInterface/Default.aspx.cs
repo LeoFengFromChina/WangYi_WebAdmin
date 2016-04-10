@@ -12,7 +12,7 @@ namespace MideFrameWork_AppDataInterface
         protected void Page_Load(object sender, EventArgs e)
         {
             //Response.Redirect("GetRankList.ashx");
-            Response.Redirect("GetNoticeList.ashx");
+            Response.Redirect("ModifyPsw.ashx");
             //Response.Redirect("GetGiftList.ashx");
             //Response.Redirect("GetDistrict.ashx");
             //List<string> emailTo = new List<string>() { "502342395@qq.com", "mide_2008@126.com" };
