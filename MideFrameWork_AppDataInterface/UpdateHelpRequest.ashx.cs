@@ -33,6 +33,7 @@ namespace MideFrameWork_AppDataInterface
                 int underTakerID = int.Parse(underTakerStr);
                 WG_HelpRequestEntity currEntity = DataProvider.GetInstance().GetWG_HelpRequestEntity(helpRequestID);
                 WG_MenberEntity underTaker = new WG_MenberEntity();
+                WG_MenberEntity Requestor = DataProvider.GetInstance().GetWG_MenberEntity(currEntity.PromoterID);
                 if (currEntity != null)
                 {
                     if (currEntity.Status > 1)
@@ -86,7 +87,7 @@ namespace MideFrameWork_AppDataInterface
                             ne.NoticeType = 1;//1求助帮助，2.活动类型，3.礼物类型
                             ne.LinkId = currEntity.ID;
                             ne.CreateDate = DateTime.Now;
-                            ne.NoticeContent = "您的承接的求助单<a>《" + currEntity.Title + "》</a>已被承接。";
+                            ne.NoticeContent = "您的承接的求助单[ " + currEntity.Title + " ]已被承接。";
                             try
                             {
                                 DataProvider.GetInstance().AddNotice(ne);
@@ -115,12 +116,17 @@ namespace MideFrameWork_AppDataInterface
                             //完成
                             underTaker = DataProvider.GetInstance().GetWG_MenberEntity(currEntity.UnderTakerID);
                             //2.更新承接人服务时常
-                            if (underTaker != null)
+                            if (currEntity.Type == 1 && underTaker != null)
                             {
                                 underTaker.ServiceHours += currEntity.Duration;
-                                underTaker.Scores += currEntity.Duration;
+                                underTaker.Scores += currEntity.Duration * 60;
                                 //积分明细
 
+                            }
+                            else if (currEntity.Type == 2 && Requestor != null)
+                            {
+                                Requestor.ServiceHours += currEntity.Duration;
+                                Requestor.Scores += currEntity.Duration * 60;
                             }
                             else
                             {
@@ -159,7 +165,11 @@ namespace MideFrameWork_AppDataInterface
                                 #endregion
                             }
                             //3.承接者数据更新
-                            bool utakerResult = DataProvider.GetInstance().UpdateWG_Menber(underTaker);
+                            bool utakerResult = false;
+                            if (currEntity.Type == 1)
+                                utakerResult = DataProvider.GetInstance().UpdateWG_Menber(underTaker);
+                            else if (currEntity.Type == 2)
+                                utakerResult = DataProvider.GetInstance().UpdateWG_Menber(Requestor);
                             if (!result)
                             {
                                 #region 更新接单人信息出错
@@ -189,7 +199,7 @@ namespace MideFrameWork_AppDataInterface
                                 ne.NoticeType = 1;//1求助帮助，2.活动类型，3.礼物类型
                                 ne.LinkId = currEntity.ID;
                                 ne.CreateDate = DateTime.Now;
-                                ne.NoticeContent = "您的承接的求助单<a>《" + currEntity.Title + "》</a>已被发起人完成，您已获得：" + currEntity.Duration + "的积分和服务时常累积。感谢您的爱心奉献与付出。";
+                                ne.NoticeContent = "您的承接的求助单[ " + currEntity.Title + " ]已被发起人完成，您已获得：" + currEntity.Duration + "的积分和服务时常累积。感谢您的爱心奉献与付出。";
                                 try
                                 {
                                     DataProvider.GetInstance().AddNotice(ne);
@@ -232,8 +242,8 @@ namespace MideFrameWork_AppDataInterface
                             ne.NoticeType = 1;//1求助帮助，2.活动类型，3.礼物类型
                             ne.LinkId = currEntity.ID;
                             ne.CreateDate = DateTime.Now;
-                            
-                            ne.NoticeContent = "您的承接的求助单<a>《" + currEntity.Title + "》</a>已被发起人重新发出，您此次失约了，请注意与发帖人沟通好。";
+
+                            ne.NoticeContent = "您的承接的求助单[ " + currEntity.Title + " ]已被发起人重新发出，您此次失约了，请注意与发帖人沟通好。";
                             try
                             {
                                 DataProvider.GetInstance().AddNotice(ne);
@@ -256,7 +266,7 @@ namespace MideFrameWork_AppDataInterface
                                 //接单成功
                                 jbo.code = 0;
                                 jbo.data = null;
-                                jbo.message = "失约重发成功。"+ noticeMsg;
+                                jbo.message = "失约重发成功。" + noticeMsg;
                                 jbo.success = true;
                             }
                             catch (Exception)
