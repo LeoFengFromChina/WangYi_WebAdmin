@@ -7,10 +7,10 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace MideFrameWork.UI.WebSite.Admin {
+namespace MideFrameWork.UI.WebSite {
     
     
-    public partial class WG_HelpRequestList {
+    public partial class ViewDitail {
         
         /// <summary>
         /// form1 控件。
@@ -22,48 +22,30 @@ namespace MideFrameWork.UI.WebSite.Admin {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// lbt_Delete 控件。
+        /// hf_title 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbt_Delete;
+        protected global::System.Web.UI.WebControls.HiddenField hf_title;
         
         /// <summary>
-        /// lbt_Refresh 控件。
+        /// hr_authorTime 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbt_Refresh;
+        protected global::System.Web.UI.WebControls.HiddenField hr_authorTime;
         
         /// <summary>
-        /// myQueryHelper 控件。
+        /// hf_content 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::MideFrameWork.UI.WebSite.ucQueryHelper2 myQueryHelper;
-        
-        /// <summary>
-        /// WG_HelpRequestRepeat 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater WG_HelpRequestRepeat;
-        
-        /// <summary>
-        /// myPagination 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::MideFrameWork.UI.WebSite.ucPagination myPagination;
+        protected global::System.Web.UI.WebControls.HiddenField hf_content;
     }
 }

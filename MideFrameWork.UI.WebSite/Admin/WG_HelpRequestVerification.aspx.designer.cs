@@ -10,7 +10,7 @@
 namespace MideFrameWork.UI.WebSite.Admin {
     
     
-    public partial class WG_HelpRequestList {
+    public partial class WG_HelpRequestVerification {
         
         /// <summary>
         /// form1 控件。
@@ -22,48 +22,39 @@ namespace MideFrameWork.UI.WebSite.Admin {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// lbt_Delete 控件。
+        /// chk_agentVer 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbt_Delete;
+        protected global::System.Web.UI.WebControls.CheckBox chk_agentVer;
         
         /// <summary>
-        /// lbt_Refresh 控件。
+        /// chk_CommunityVer 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbt_Refresh;
+        protected global::System.Web.UI.WebControls.CheckBox chk_CommunityVer;
         
         /// <summary>
-        /// myQueryHelper 控件。
+        /// chk_gorvVer 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::MideFrameWork.UI.WebSite.ucQueryHelper2 myQueryHelper;
+        protected global::System.Web.UI.WebControls.CheckBox chk_gorvVer;
         
         /// <summary>
-        /// WG_HelpRequestRepeat 控件。
+        /// Button_submit 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater WG_HelpRequestRepeat;
-        
-        /// <summary>
-        /// myPagination 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::MideFrameWork.UI.WebSite.ucPagination myPagination;
+        protected global::System.Web.UI.WebControls.Button Button_submit;
     }
 }

@@ -75,6 +75,7 @@
     <Content Include="Admin\Base_Button.aspx" />
     <Content Include="Admin\WG_CommunityNews.aspx" />
     <Content Include="Admin\WG_CommunityNews.Edit.aspx" />
+    <Content Include="Admin\WG_HelpRequestVerification.aspx" />
     <Content Include="Admin\WG_Menber_Operation.aspx" />
     <Content Include="Admin\Base_Button.Edit.aspx" />
     <Content Include="Admin\Base_Module.aspx" />
@@ -136,6 +137,7 @@
     <Content Include="Admin\WG_Vender.aspx" />
     <Content Include="Admin\WG_Vender.Edit.aspx" />
     <Content Include="Admin\_CommonSelectBox.aspx" />
+    <Content Include="ViewDitail.aspx" />
     <Content Include="ChangePsw.aspx" />
     <Content Include="css\AddSubAccount.css" />
     <Content Include="css\add_contact.css" />
@@ -388,6 +390,13 @@
     </Compile>
     <Compile Include="Admin\WG_CommunityNews.Edit.aspx.designer.cs">
       <DependentUpon>WG_CommunityNews.Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WG_HelpRequestVerification.aspx.cs">
+      <DependentUpon>WG_HelpRequestVerification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WG_HelpRequestVerification.aspx.designer.cs">
+      <DependentUpon>WG_HelpRequestVerification.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\WG_Menber_Operation.aspx.cs">
       <DependentUpon>WG_Menber_Operation.aspx</DependentUpon>
@@ -821,6 +830,13 @@
     </Compile>
     <Content Include="App_Code\DataValidate.cs" />
     <Content Include="App_Code\MideFrameWorkType.cs" />
+    <Compile Include="ViewDitail.aspx.cs">
+      <DependentUpon>ViewDitail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewDitail.aspx.designer.cs">
+      <DependentUpon>ViewDitail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ChangePsw.aspx.cs">
       <DependentUpon>ChangePsw.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

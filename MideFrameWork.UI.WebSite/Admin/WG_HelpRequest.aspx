@@ -142,7 +142,8 @@
                         <%#Eval("Duration")%>
                     </td>
                     <td>
-                        <%#Eval("Detail")%>
+                        <a href="javascript:void(0);" id="viewdetail" onclick="aa({ title: '明细查看', width: '800px', height: '600px', boxID: 'dialog-addConntact', showborder: true, showbg: true, fixed: true, content: 'iframe:/ViewDitail.aspx?id=<%#Eval("ID")%>&type=1' })">
+                            查看明细</a>
                     </td>
                     <td>
                         <%#Eval("Status").ToString() == "0" ? "待配对" : Eval("Status").ToString() == "1" ? "已匹配" : "已完成"%>
@@ -153,6 +154,9 @@
                     <td>
                         <a href="javascript:void(0);" id="test" onclick="aa({ title: '求助表管理', width: '600px', height: '350px', boxID: 'dialog-addConntact', showborder: true, showbg: true, fixed: true, content: 'iframe:/Admin/WG_HelpRequest.Edit.aspx?ctrID=<%#Eval("ID") %>' })">
                             编辑</a>
+                        <a href="javascript:void(0);" id="verification" onclick="aa({ title: '帖子认证', width: '600px', height: '350px', boxID: 'dialog-addConntact', showborder: true, showbg: true, fixed: true, content: 'iframe:/Admin/WG_HelpRequestVerification.aspx?ctrID=<%#Eval("ID") %>' })">
+                            认证</a>
+
                     </td>
                 </tr>
             </ItemTemplate>

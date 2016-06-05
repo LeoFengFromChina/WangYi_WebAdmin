@@ -105,6 +105,8 @@
                         </td>
                         <td>
                             <a href="<%#Eval("PhotoUrl")%>" target="_blank">预览</a>
+                            <%--<a href="javascript:void(0);" id="test" onclick="aa({ title: '求助表管理', width: '600px', height: '350px', boxID: 'dialog-addConntact', showborder: true, showbg: true, fixed: true, content: 'iframe:<%#Eval("PhotoUrl")%>' })">
+                            预览</a>--%>
                         </td>
                         <td>
                             <%#Eval("NeedScores")%>

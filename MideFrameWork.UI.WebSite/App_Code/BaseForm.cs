@@ -303,6 +303,8 @@ namespace MideFrameWork.UI.WebSite
         {
             Page.ClientScript.RegisterStartupScript(this.GetType(), "alert" + msg, "alert(\"" + ConvertAlertMessage(msg) + "\");window.location.href='" + url + "'", true);
         }
+        
         #endregion
+        
     }
 }

@@ -141,7 +141,8 @@
                         <%#Eval("BeginTime")%>
                     </td>
                     <td>
-                        <%#Eval("Detail")%>
+                        <a href="javascript:void(0);" id="viewdetail" onclick="aa({ title: '明细查看', width: '800px', height: '600px', boxID: 'dialog-addConntact', showborder: true, showbg: true, fixed: true, content: 'iframe:/ViewDitail.aspx?id=<%#Eval("ID")%>&type=2' })">
+                            查看明细</a>
                     </td>
                     <td>
                         <%#Eval("Status").ToString()=="0"?"报名中":Eval("Status").ToString()=="1"?"已开始":"已结束"%>
