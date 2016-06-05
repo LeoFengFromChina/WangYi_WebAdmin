@@ -48,6 +48,7 @@ namespace MideFrameWork_AppDataInterface
         protected void Page_Load(object sender, EventArgs e)
         {
             lbl_Hint.Text = "";
+            IsTimeout = false;
             string userName = Context.Request["key"];
             if (string.IsNullOrEmpty(userName))
             {

@@ -98,9 +98,9 @@ namespace MideFrameWork.UI.WebSite.Admin
                 WG_HelpRequestEntity helpEN = DataProvider.GetInstance().GetWG_HelpRequestEntity(int.Parse(ctrID));
                 //{"v1":false,"v2":true,"v3":false}
                 string verificationStr = helpEN.Verification;
-                verificationStr = verificationStr.Substring(1, verificationStr.Length - 2);
                 if (!string.IsNullOrEmpty(verificationStr))
                 {
+                    verificationStr = verificationStr.Substring(1, verificationStr.Length - 2);
                     string[] verArray = verificationStr.Split(',');
                     if (verArray.Length > 0)
                         chk_agentVer.Checked = bool.Parse(verArray[0].Split(':')[1]);
